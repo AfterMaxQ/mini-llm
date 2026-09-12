@@ -4,23 +4,26 @@
 Build one small but real decoder-only LLM project that supports both training-systems learning and inference-systems learning, with code, experiments, benchmarks, and profiler evidence rather than tutorial-only understanding.
 
 ## Current Stage
-Repository initialization and learning workflow setup.
+Repository scaffold is established. The next stage is defining Mini LLM v0.1 before implementing model code.
 
 ## Completed / Verified
-- GitHub repository exists and is writable.
-- Repository rules are defined in `AGENTS.md`.
-- Project learning workflow is defined in `skills/mini-llm-learning/SKILL.md`.
+- Repository rules exist in `AGENTS.md`.
+- Teaching/engineering workflow exists in `skills/mini-llm-learning/SKILL.md`.
+- Minimal Python/package, config, test, and experiment locations exist on GitHub.
+- Training and inference are defined as equal project tracks.
+- Teaching rules preserve technical depth while limiting one-step cognitive load and keeping side-topic detours short.
 - No model implementation or GPU performance result has been verified yet.
+- Local editable install/import has not yet been verified after pull.
 
 ## Current Understanding
-The project should advance in small, absorbable steps without reducing technical depth. Training and inference are equal long-term tracks; side topics should not derail the main project unless they are blocking.
+The project should advance through small, absorbable, testable steps. Theory is introduced just in time for the current code or experiment. Training builds the model and training systems; the same model later evolves into a Mini Inference Engine for inference/serving optimization.
 
 ## Open Questions
-- Final Mini LLM v0.1 model size and configuration.
-- First learning-critical module to implement after initialization.
+- Mini LLM v0.1 model size and configuration.
+- First learning-critical module to implement.
 
 ## Current Work
-Finish the minimal repository scaffold and verify the files required for future sessions.
+Pull the initialized scaffold locally and verify the Python package setup.
 
 ## Next Step
-Define Mini LLM v0.1's smallest useful architecture/configuration, then implement the first minimal verifiable module.
+Verify the local scaffold, then define Mini LLM v0.1's smallest useful architecture/configuration and implement the first minimal verifiable module.
