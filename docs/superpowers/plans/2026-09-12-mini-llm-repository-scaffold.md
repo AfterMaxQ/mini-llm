@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Initialize `AfterMaxQ/mini-llm` with the smallest durable repository scaffold for project-driven LLM learning, with rules, learning workflow, concise project memory, Python package structure, and experiment locations.
+**Goal:** Initialize `AfterMaxQ/mini-llm` with the smallest durable repository scaffold for project-driven LLM learning across both training systems and inference systems, with rules, learning workflow, concise project memory, Python package structure, and experiment locations.
 
-**Architecture:** Keep durable rules in `AGENTS.md`, reusable mentor/engineering workflow in `skills/mini-llm-learning/SKILL.md`, and resumable current state in `PROJECT_MEMORY.md`. Keep code intentionally minimal: a `src/minillm` package and empty tracked locations for tests, configs, and experiments, without prematurely generating model implementation files.
+**Architecture:** Keep durable rules in `AGENTS.md`, reusable mentor/engineering workflow in `skills/mini-llm-learning/SKILL.md`, and resumable current state in `PROJECT_MEMORY.md`. The skill must cover a connected arc from a correct Mini LLM training baseline through training optimization, then into a Mini Inference Engine with KV Cache, prefill/decode, batching/scheduling, cache-management optimizations, and later vLLM/SGLang study. Keep code intentionally minimal during initialization.
 
 **Tech Stack:** Markdown, Python packaging via `pyproject.toml`, pytest as the initial development/test dependency, Git/GitHub.
 
@@ -13,15 +13,16 @@
 ## Global Constraints
 
 - GitHub/current repository contents are the source of truth for code state.
-- Do not claim local CUDA/GPU execution, training, benchmarks, or profiling occurred unless actual output is available.
+- The long-term learning scope includes both LLM training optimization and inference/serving optimization.
+- Do not claim local CUDA/GPU execution, training, inference, benchmarks, or profiling occurred unless actual output is available.
 - Keep `PROJECT_MEMORY.md` concise and state-focused; do not duplicate repository rules there.
-- Do not create tokenizer, Transformer, training, generation, benchmark, Triton, inference-engine, or CI implementation during initialization.
+- Do not create tokenizer, Transformer, training, generation, benchmark, Triton, KV-cache, scheduler, inference-engine, vLLM/SGLang integration, or CI implementation during initialization.
 - Avoid overengineering and unnecessary dependencies.
 - Preserve user changes and avoid destructive Git operations.
 
 ---
 
-### Task 1: Establish durable agent rules and learning workflow
+### Task 1: Establish durable agent rules and the training+inference learning workflow
 
 **Files:**
 - Create: `AGENTS.md`
@@ -29,11 +30,11 @@
 
 **Interfaces:**
 - Consumes: repository design spec.
-- Produces: durable operating rules and reusable project-first teaching/engineering workflow used by later sessions.
+- Produces: durable operating rules and reusable project-first teaching/engineering workflow used by later training and inference sessions.
 
 - [ ] **Step 1: Create `AGENTS.md`**
 
-Write repository rules that require agents to read `PROJECT_MEMORY.md`, invoke the repository learning skill for teaching/implementation/performance work, treat repository contents as current truth, distinguish GitHub edits from local GPU execution, prefer small testable changes, preserve user work, and update memory only after meaningful progress.
+Write repository rules that require agents to read `PROJECT_MEMORY.md`, invoke the repository learning skill for teaching/implementation/performance work, treat repository contents as current truth, distinguish GitHub edits from local GPU execution, prefer small testable changes, preserve user work, and update memory only after meaningful progress. Explicitly state that the project covers both training systems and inference systems rather than treating inference as an optional appendix.
 
 - [ ] **Step 2: Create `skills/mini-llm-learning/SKILL.md`**
 
@@ -52,9 +53,28 @@ current repository state
 
 Include low-cognitive-load teaching, tensor-shape/data-flow explanations, learning-critical module guidance, baseline-before-optimization, and observation/hypothesis/evidence/conclusion discipline.
 
+Encode both learning arcs:
+
+```text
+Mini LLM training baseline
+→ training correctness/profiling
+→ training optimization
+→ naive inference baseline
+→ KV Cache
+→ prefill/decode
+→ batching / continuous batching
+→ scheduler
+→ paged/prefix cache
+→ chunked prefill
+→ speculative decoding
+→ vLLM / SGLang comparison and source study
+```
+
+For inference experiments, require relevant metrics such as TTFT, TPOT, throughput, latency, concurrency, prompt/generated lengths, memory/KV-cache usage, and cache state when applicable.
+
 - [ ] **Step 3: Verify both files can be fetched from `main`**
 
-Expected: both paths exist and contain the required rule/workflow sections.
+Expected: both paths exist and contain the required rule/workflow sections, including explicit training and inference scopes.
 
 ---
 
@@ -82,6 +102,8 @@ Use exactly these state-oriented headings:
 ## Current Work
 ## Next Step
 ```
+
+The Goal must state that this repository will build a Mini LLM, optimize its training, then evolve the same model into a Mini Inference Engine for inference/serving optimization and later vLLM/SGLang study.
 
 Record that repository scaffolding is being established, no model implementation or GPU experiment has been verified yet, and the next learning milestone is defining Mini LLM v0.1 before implementing the first minimal module.
 
@@ -111,7 +133,7 @@ Use a minimal setuptools `src/` layout, Python `>=3.11`, package name `mini-llm`
 
 - [ ] **Step 2: Create `.gitignore`**
 
-Ignore Python caches, virtual environments, build artifacts, common editor files, datasets, checkpoints/model weights, local artifacts, and large profiler outputs while leaving `experiments/` tracked.
+Ignore Python caches, virtual environments, build artifacts, common editor files, datasets, checkpoints/model weights, local artifacts, large profiler outputs, and large local serving traces while leaving `experiments/` tracked.
 
 - [ ] **Step 3: Create package and tracked empty directories**
 
@@ -123,7 +145,7 @@ Expected sections include `[build-system]`, `[project]`, `[project.optional-depe
 
 ---
 
-### Task 4: Rewrite README around the actual workflow
+### Task 4: Rewrite README around the actual training+inference workflow
 
 **Files:**
 - Modify: `README.md`
@@ -136,7 +158,9 @@ Expected sections include `[build-system]`, `[project]`, `[project.optional-depe
 
 Describe:
 
-- project purpose: learn LLM training, inference, and systems by building and measuring a real mini LLM;
+- project purpose: learn LLM training, inference, serving, and GPU systems by building and measuring a real mini LLM, then evolving it into a mini inference engine;
+- training-side optimization topics at a high level;
+- inference-side optimization topics at a high level, including KV Cache, prefill/decode, batching/scheduling, cache management, speculative decoding, and later vLLM/SGLang;
 - local machine / GitHub / agent responsibilities;
 - current initialization stage;
 - continuity via `PROJECT_MEMORY.md`, `AGENTS.md`, and `skills/mini-llm-learning/SKILL.md`;
@@ -144,7 +168,7 @@ Describe:
 
 - [ ] **Step 2: Add minimal local bootstrap commands**
 
-Include only repository sync and editable development install commands that are valid at this stage; do not imply GPU/model execution exists yet.
+Include only repository sync and editable development install commands that are valid at this stage; do not imply GPU/model/inference execution exists yet.
 
 ---
 
@@ -176,11 +200,11 @@ tests/.gitkeep
 
 - [ ] **Step 2: Verify prohibited premature implementation is absent**
 
-Confirm no `attention.py`, `rope.py`, `train.py`, Triton kernel, benchmark script, inference engine, or CI file was created by this initialization.
+Confirm no `attention.py`, `rope.py`, `train.py`, Triton kernel, benchmark script, KV-cache module, inference scheduler, serving engine, vLLM/SGLang integration, or CI file was created by this initialization.
 
 - [ ] **Step 3: Verify continuity wiring**
 
-Confirm `AGENTS.md` points to `PROJECT_MEMORY.md` and the learning skill, and README explains the same separation without duplicating their full contents.
+Confirm `AGENTS.md` points to `PROJECT_MEMORY.md` and the learning skill, and README explains the same separation without duplicating their full contents. Confirm the learning skill explicitly covers both training and inference optimization.
 
 - [ ] **Step 4: Report local validation commands**
 
