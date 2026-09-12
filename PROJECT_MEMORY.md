@@ -4,7 +4,7 @@
 Build one small but real decoder-only LLM project that supports both training-systems learning and inference-systems learning, with code, experiments, benchmarks, and profiler evidence rather than tutorial-only understanding.
 
 ## Current Stage
-Repository scaffold is established and locally verified. The project is now defining Mini LLM v0.1 before implementing model code.
+Repository scaffold is locally verified. Mini LLM v0.1's baseline configuration is fixed, and the project is ready to begin the first learning-critical model module after local config tests are verified.
 
 ## Completed / Verified
 - Repository rules exist in `AGENTS.md`.
@@ -14,17 +14,19 @@ Repository scaffold is established and locally verified. The project is now defi
 - Local `git pull` completed successfully on `F:\mini-llm`.
 - Local editable install `python -m pip install -e ".[dev]"` completed successfully with Python 3.11.
 - Local import check `python -c "import minillm; print(minillm.__name__)"` returned `minillm`.
-- No model implementation, training run, CUDA/Triton run, GPU benchmark, or profiler result has been verified yet.
+- Mini LLM v0.1 baseline is `vocab_size=8192`, `d_model=512`, `n_layers=8`, `n_heads=8`, `n_kv_heads=2`, `context_length=1024`.
+- `ModelConfig` and its initial contract tests are committed on GitHub; an isolated CPU sandbox run passed all 3 config tests.
+- No model forward path, training run, CUDA/Triton run, GPU benchmark, or profiler result has been verified yet.
 
 ## Current Understanding
-The project should advance through small, absorbable, testable steps. Theory is introduced just in time for the current code or experiment. Training builds the model and training systems; the same model later evolves into a Mini Inference Engine for inference/serving optimization.
+The shared model width is 512. With 8 query heads, `head_dim=64`; with 2 KV heads, each KV head serves 4 query heads. This GQA choice is intentional so the same architecture later exposes meaningful KV-cache and serving trade-offs.
 
 ## Open Questions
-- Mini LLM v0.1 model size and configuration.
-- First learning-critical module to implement after the configuration is fixed.
+- Local Windows verification of the new config tests.
+- First learning-critical model module to implement after config verification.
 
 ## Current Work
-Define Mini LLM v0.1's smallest useful decoder-only architecture and configuration.
+Verify the committed Mini LLM v0.1 configuration on the user's local repository.
 
 ## Next Step
-Settle the initial `vocab_size`, `d_model`, layer count, attention head layout, KV-head layout, and context length, then implement the first minimal verifiable model module.
+Pull the config commit and run the config tests locally. If they pass, begin one model component at a time, starting with the simplest component that establishes the `[B, T] -> [B, T, d_model]` model data path.
