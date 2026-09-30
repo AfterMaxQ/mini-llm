@@ -1,0 +1,33 @@
+{
+  "method": "Codex 主 Agent 逐条阅读50条任务与调用，核对工具选择、参数来源和返回衔接；不是用户亲自检查，也不是公开函数执行验证",
+  "samples": 50,
+  "issues": {
+    "glaive-92797": [
+      "annotation_issue",
+      "未提供音乐 URL，标注凭空填写了两个地址"
+    ],
+    "hermes-d018e2c8-0a01-4124-9c01-f5d9197873fb": [
+      "synthetic_placeholder",
+      "图像参数是占位字符串，不能作为真实视觉执行证据"
+    ],
+    "glaive-14484": [
+      "time_dependent_return",
+      "年龄来自未注明日期的原工具返回，不能理解为当前年龄"
+    ],
+    "glaive-64719": [
+      "annotation_issue",
+      "current_date=2022-03-01 未在用户输入中提供"
+    ],
+    "glaive-73610": [
+      "time_dependent_return",
+      "原返回年龄具有时间依赖，调用的出生日期与输入一致"
+    ],
+    "glaive-33216": [
+      "annotation_caveat",
+      "调用遵循用户给出的交易所，但金融实体与返回没有现实验证"
+    ]
+  },
+  "normalization_finding": "R02 已无损合并连续 assistant 消息；同50条复查工具调用及参数保持不变",
+  "result": "完成50条检查；其中44条未发现明显任务与调用错配，2条参数来源有问题，4条为占位或时间/实体依赖；不声称语义或现实工具执行完全正确",
+  "reviewed_file": "inspection-50-reviewed.csv"
+}

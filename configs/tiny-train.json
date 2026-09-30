@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "data_run": "E02-R02",
+  "category_samples": {"single_call": 16, "multi_turn": 8, "parallel": 8},
+  "rank": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "learning_rate": 0.0001,
+  "gradient_accumulation": 8,
+  "max_sequence_length": 2048,
+  "max_new_tokens": 1024,
+  "max_steps": 300,
+  "evaluate_every": 25,
+  "min_steps": 25,
+  "required_passed": 29,
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "precision": "NF4 double quant, BF16 autocast",
+  "packing": false,
+  "enable_thinking": false,
+  "sampling": "greedy",
+  "unit_policy": "assistant_action"
+}

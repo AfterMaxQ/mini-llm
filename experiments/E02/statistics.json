@@ -1,0 +1,145 @@
+{
+  "raw_sources": {
+    "hermes": 8995,
+    "glaive": 112960
+  },
+  "files": [
+    {
+      "source": "hermes",
+      "file": "func-calling-singleturn.json",
+      "rows": 1893,
+      "sha256": "fb2df9fe3f295dfd65b223c2dbf04d6b90006357d737f8f8927749f0bea09527"
+    },
+    {
+      "source": "hermes",
+      "file": "func-calling.json",
+      "rows": 1893,
+      "sha256": "769478035a886678d525d057ea66e3fd1e247f43e35c8d6d7cc866e080b6742b"
+    },
+    {
+      "source": "hermes",
+      "file": "glaive-function-calling-5k.json",
+      "rows": 5209,
+      "sha256": "b98eb3f160359f27ad15018e974ce6db444f566eb5be4aa9e4aa690b34d50832"
+    },
+    {
+      "source": "glaive",
+      "file": "glaive-function-calling-v2.json",
+      "rows": 112960,
+      "sha256": "e9b5d671812b5ca2fbd7b625a37d5c99a19576c37252cdc806defe256aea6dad"
+    }
+  ],
+  "rejected": {
+    "argument_schema": 781,
+    "SyntaxError": 8220,
+    "no_tool_schema": 35585,
+    "unmatched_tool_response": 197,
+    "incomplete_conversation": 1667,
+    "missing_tool_response": 1,
+    "invalid_or_duplicate_tool_name": 430,
+    "duplicate_exact": 12021,
+    "unknown_tool": 23,
+    "SchemaError": 40,
+    "Unterminated string starting at: line 1 column 12 (char 11)": 360,
+    "unexpected_tool_response": 163,
+    "arguments_not_object": 23,
+    "Expecting ',' delimiter: line 1 column 914 (char 913)": 1,
+    "Unterminated string starting at: line 1 column 173 (char 172)": 1,
+    "Expecting property name enclosed in double quotes: line 1 column 23 (char 22)": 1,
+    "Expecting ',' delimiter: line 1 column 129 (char 128)": 4,
+    "Expecting property name enclosed in double quotes: line 1 column 24 (char 23)": 7,
+    "Unterminated string starting at: line 1 column 31 (char 30)": 1,
+    "Unterminated string starting at: line 1 column 13 (char 12)": 1,
+    "Unterminated string starting at: line 1 column 24 (char 23)": 2,
+    "Expecting ',' delimiter: line 1 column 179 (char 178)": 1,
+    "Invalid \\escape: line 1 column 20 (char 19)": 1,
+    "Unterminated string starting at: line 1 column 92 (char 91)": 1,
+    "Unterminated string starting at: line 1 column 150 (char 149)": 1,
+    "Unterminated string starting at: line 1 column 121 (char 120)": 1,
+    "Unterminated string starting at: line 1 column 143 (char 142)": 1,
+    "Expecting value: line 1 column 59 (char 58)": 1,
+    "Invalid \\escape: line 1 column 13 (char 12)": 1,
+    "Expecting ',' delimiter: line 1 column 32 (char 31)": 1,
+    "Expecting ',' delimiter: line 1 column 222 (char 221)": 1,
+    "Unterminated string starting at: line 1 column 149 (char 148)": 1,
+    "Unterminated string starting at: line 1 column 137 (char 136)": 2,
+    "Unterminated string starting at: line 1 column 223 (char 222)": 1,
+    "Unterminated string starting at: line 1 column 141 (char 140)": 1,
+    "Unterminated string starting at: line 1 column 134 (char 133)": 1,
+    "Unterminated string starting at: line 1 column 33 (char 32)": 2,
+    "Unterminated string starting at: line 1 column 222 (char 221)": 1,
+    "Unterminated string starting at: line 1 column 85 (char 84)": 1,
+    "Expecting property name enclosed in double quotes: line 1 column 29 (char 28)": 1,
+    "Expecting ',' delimiter: line 1 column 135 (char 134)": 3,
+    "Invalid \\escape: line 1 column 18 (char 17)": 2,
+    "Unterminated string starting at: line 1 column 99 (char 98)": 1,
+    "Unterminated string starting at: line 1 column 233 (char 232)": 1,
+    "Unterminated string starting at: line 1 column 375 (char 374)": 1,
+    "Unterminated string starting at: line 1 column 218 (char 217)": 1,
+    "Unterminated string starting at: line 1 column 123 (char 122)": 1,
+    "Unterminated string starting at: line 1 column 163 (char 162)": 1,
+    "Unterminated string starting at: line 1 column 25 (char 24)": 1,
+    "Invalid control character at: line 1 column 36 (char 35)": 1,
+    "Unterminated string starting at: line 1 column 502 (char 501)": 1,
+    "Unterminated string starting at: line 1 column 119 (char 118)": 1,
+    "Unterminated string starting at: line 1 column 125 (char 124)": 1,
+    "Unterminated string starting at: line 1 column 103 (char 102)": 1,
+    "Unterminated string starting at: line 1 column 124 (char 123)": 1,
+    "Unterminated string starting at: line 1 column 138 (char 137)": 1
+  },
+  "duplicates": {
+    "same_prompt_template": 29778,
+    "near_prompt_template": 8807,
+    "exact_normalized": 12021
+  },
+  "accepted_records": 62386,
+  "independent_groups": 23801,
+  "normalization": {
+    "python_literal_call": 40540,
+    "string_arguments": 40540,
+    "merged_consecutive_assistant": 6602
+  },
+  "train_groups_over_2048": 0,
+  "available_groups": {
+    "train": 19040,
+    "dev": 2380,
+    "test": 2381
+  },
+  "selected_categories": {
+    "train": {
+      "single_call": 5392,
+      "no_call": 1656,
+      "multi_turn": 2708,
+      "parallel": 244
+    },
+    "dev": {
+      "multi_turn": 147,
+      "single_call": 257,
+      "no_call": 86,
+      "parallel": 10
+    },
+    "test": {
+      "multi_turn": 138,
+      "single_call": 266,
+      "no_call": 82,
+      "parallel": 14
+    }
+  },
+  "length_histogram_256": {
+    "0": 4677,
+    "256": 46792,
+    "512": 9199,
+    "768": 761,
+    "1024": 335,
+    "1280": 211,
+    "1536": 157,
+    "1792": 111,
+    "2048": 72,
+    "2304": 36,
+    "2560": 16,
+    "2816": 15,
+    "3072": 3,
+    "3840": 1
+  },
+  "inspection_status": "completed_with_annotation_caveats"
+}

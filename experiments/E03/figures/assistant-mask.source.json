@@ -1,0 +1,10 @@
+{
+  "run_id": "E03-R02",
+  "sample_id": "glaive-107893",
+  "window": [
+    171,
+    301
+  ],
+  "source": "sample-01/tokens.csv",
+  "image_sha256": "9e35213199d312f0ff847650ccc704b610280e98ad505d50bfaa18c203040c09"
+}

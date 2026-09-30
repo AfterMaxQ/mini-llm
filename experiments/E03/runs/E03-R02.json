@@ -1,0 +1,603 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "samples": 20,
+  "results": [
+    {
+      "sample_id": "glaive-107893",
+      "category": "single_call",
+      "tokens": 392,
+      "supervised_tokens": 122,
+      "assistant_eos": 4,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 234,
+          "supervised_tokens": 33
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 288,
+          "supervised_tokens": 37
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 350,
+          "supervised_tokens": 34
+        },
+        {
+          "target_message_index": 8,
+          "prefix_identical": true,
+          "tokens": 392,
+          "supervised_tokens": 30
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "e371de6b7a6d6e5917a0e9400620eb9e3aba184cf74fccc7af90903acd444043"
+    },
+    {
+      "sample_id": "glaive-9989",
+      "category": "single_call",
+      "tokens": 406,
+      "supervised_tokens": 69,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 358,
+          "supervised_tokens": 39
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 406,
+          "supervised_tokens": 34
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "a16eaf833dec835dee2397f1a316b3ecbe2b51540121fb3aee436675bcc1f3b0"
+    },
+    {
+      "sample_id": "glaive-28991",
+      "category": "single_call",
+      "tokens": 333,
+      "supervised_tokens": 122,
+      "assistant_eos": 3,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 186,
+          "supervised_tokens": 36
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 267,
+          "supervised_tokens": 43
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 333,
+          "supervised_tokens": 51
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "7ea84c41f413c1c14afc054dfee14263a0b0855f85ba0924fb881cf09e75e664"
+    },
+    {
+      "sample_id": "hermes-5df07ac2-1a79-43f5-9a7f-93b97ef4f020",
+      "category": "single_call",
+      "tokens": 710,
+      "supervised_tokens": 51,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 710,
+          "supervised_tokens": 51
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "8428bfbf34718483486e86ea8f4afe670936f036911ad41ea36944a2f2e6db33"
+    },
+    {
+      "sample_id": "glaive-2312",
+      "category": "single_call",
+      "tokens": 451,
+      "supervised_tokens": 143,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 267,
+          "supervised_tokens": 40
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 451,
+          "supervised_tokens": 107
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "ab7988fe5f6104d413f69de877cdbd323c27cb1d475ff8bf8470d47111d93cb4"
+    },
+    {
+      "sample_id": "glaive-68346",
+      "category": "single_call",
+      "tokens": 415,
+      "supervised_tokens": 91,
+      "assistant_eos": 3,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 328,
+          "supervised_tokens": 39
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 377,
+          "supervised_tokens": 35
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 415,
+          "supervised_tokens": 25
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "9be24dc6c5f55c9067f11eaa9c616c0635ce2edfa853aa4f5e4911d3130cd98a"
+    },
+    {
+      "sample_id": "glaive-90949",
+      "category": "single_call",
+      "tokens": 413,
+      "supervised_tokens": 93,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 306,
+          "supervised_tokens": 47
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 413,
+          "supervised_tokens": 50
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "ba25e50e78abfc32e30b291735c2798aaf4d1330d42cf249068536d84adcc518"
+    },
+    {
+      "sample_id": "glaive-60353",
+      "category": "multi_turn",
+      "tokens": 345,
+      "supervised_tokens": 106,
+      "assistant_eos": 5,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 221,
+          "supervised_tokens": 30
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 249,
+          "supervised_tokens": 19
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 284,
+          "supervised_tokens": 29
+        },
+        {
+          "target_message_index": 8,
+          "prefix_identical": true,
+          "tokens": 312,
+          "supervised_tokens": 19
+        },
+        {
+          "target_message_index": 10,
+          "prefix_identical": true,
+          "tokens": 345,
+          "supervised_tokens": 25
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "c5191f792263755429ebbe22272b39a848d9b5e6be43a24542640710a4f11218"
+    },
+    {
+      "sample_id": "glaive-47206",
+      "category": "multi_turn",
+      "tokens": 525,
+      "supervised_tokens": 158,
+      "assistant_eos": 5,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 333,
+          "supervised_tokens": 40
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 377,
+          "supervised_tokens": 30
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 440,
+          "supervised_tokens": 40
+        },
+        {
+          "target_message_index": 8,
+          "prefix_identical": true,
+          "tokens": 493,
+          "supervised_tokens": 39
+        },
+        {
+          "target_message_index": 10,
+          "prefix_identical": true,
+          "tokens": 525,
+          "supervised_tokens": 25
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "14f0ffbcff0056021cfe703944f7f21eb60e38a85631d9dc57f5171470cfab97"
+    },
+    {
+      "sample_id": "glaive-41949",
+      "category": "multi_turn",
+      "tokens": 496,
+      "supervised_tokens": 172,
+      "assistant_eos": 4,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 281,
+          "supervised_tokens": 54
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 383,
+          "supervised_tokens": 52
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 448,
+          "supervised_tokens": 52
+        },
+        {
+          "target_message_index": 8,
+          "prefix_identical": true,
+          "tokens": 496,
+          "supervised_tokens": 26
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "70dc758af51b6b550e46d81cadf3eea8ecaa7b0b5951e08f510684e8223d062a"
+    },
+    {
+      "sample_id": "glaive-89830",
+      "category": "multi_turn",
+      "tokens": 458,
+      "supervised_tokens": 140,
+      "assistant_eos": 5,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 284,
+          "supervised_tokens": 39
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 323,
+          "supervised_tokens": 26
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 387,
+          "supervised_tokens": 39
+        },
+        {
+          "target_message_index": 8,
+          "prefix_identical": true,
+          "tokens": 426,
+          "supervised_tokens": 27
+        },
+        {
+          "target_message_index": 10,
+          "prefix_identical": true,
+          "tokens": 458,
+          "supervised_tokens": 25
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "a50a0659d08e81fef9673dd0d94f870394b4a404e85fcfa84f2c41c54175fd46"
+    },
+    {
+      "sample_id": "hermes-c40392bb-236a-4afd-94e5-780aeca6bbc6",
+      "category": "parallel",
+      "tokens": 1878,
+      "supervised_tokens": 769,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 489,
+          "supervised_tokens": 72
+        },
+        {
+          "target_message_index": 5,
+          "prefix_identical": true,
+          "tokens": 1878,
+          "supervised_tokens": 701
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "3cc7d2facbd04bbefca44a05ade2d7a8dcdc3acfc47ab6fdb6acfc61a4ef46f8"
+    },
+    {
+      "sample_id": "hermes-c7432f8a-4417-4132-b3ff-6ff9dc857449",
+      "category": "parallel",
+      "tokens": 1004,
+      "supervised_tokens": 272,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 1004,
+          "supervised_tokens": 272
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "317c5bfa2dc2cb609a5895c1e00b5386597a042169cd0447a61129db20b65c75"
+    },
+    {
+      "sample_id": "hermes-3be88296-a5fe-484d-aa3e-fa696aef730b",
+      "category": "parallel",
+      "tokens": 1214,
+      "supervised_tokens": 178,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 1214,
+          "supervised_tokens": 178
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "dc989d679e332c8668f82dc1955ee3344e66d96e9d4ec722ec401c7244eefb30"
+    },
+    {
+      "sample_id": "hermes-480603e5-599e-472e-ace2-48f5c253bccc",
+      "category": "parallel",
+      "tokens": 1131,
+      "supervised_tokens": 353,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 672,
+          "supervised_tokens": 108
+        },
+        {
+          "target_message_index": 5,
+          "prefix_identical": true,
+          "tokens": 1131,
+          "supervised_tokens": 249
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "1abfbc5e6b86645c60f5112d40f57b66c02ff35ec0e65349b5376607845ef3cf"
+    },
+    {
+      "sample_id": "glaive-85653",
+      "category": "no_call",
+      "tokens": 261,
+      "supervised_tokens": 53,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 261,
+          "supervised_tokens": 53
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "e40f040dde569f165f2634ba80d4c521cc28976b9d59cdf90cbe5e6c68f4207f"
+    },
+    {
+      "sample_id": "glaive-54369",
+      "category": "no_call",
+      "tokens": 201,
+      "supervised_tokens": 53,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 201,
+          "supervised_tokens": 53
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "2c39e556d71759ead336b04f3ec94f2712ad776d8b17e6701bfc0f78636b3a8e"
+    },
+    {
+      "sample_id": "glaive-66695",
+      "category": "no_call",
+      "tokens": 270,
+      "supervised_tokens": 48,
+      "assistant_eos": 1,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 270,
+          "supervised_tokens": 48
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "8b0ed1badcf6848ab904a1592ec1b7119bfabdd625ca3f66a155002309362a3f"
+    },
+    {
+      "sample_id": "hermes-f70ff12a-2493-4b0e-9da6-a41251a8af4f",
+      "category": "parallel",
+      "tokens": 2040,
+      "supervised_tokens": 721,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 1128,
+          "supervised_tokens": 187
+        },
+        {
+          "target_message_index": 6,
+          "prefix_identical": true,
+          "tokens": 2040,
+          "supervised_tokens": 538
+        }
+      ],
+      "fixture": null,
+      "record_sha256": "352b0b0a2af97737c2128208cd249204f0c1f6eb8fbf96ad084208214ffcf6dc"
+    },
+    {
+      "sample_id": "glaive-61958-empty-tool-fixture",
+      "category": "single_call",
+      "tokens": 443,
+      "supervised_tokens": 162,
+      "assistant_eos": 2,
+      "render_identical": true,
+      "tokens_identical": true,
+      "non_assistant_supervised": 0,
+      "action_checks": [
+        {
+          "target_message_index": 2,
+          "prefix_identical": true,
+          "tokens": 324,
+          "supervised_tokens": 52
+        },
+        {
+          "target_message_index": 4,
+          "prefix_identical": true,
+          "tokens": 443,
+          "supervised_tokens": 114
+        }
+      ],
+      "fixture": "只把第一条工具返回改为空列表，用于遮罩检查，不作为真实轨迹或能力评测样本",
+      "record_sha256": "92d176af0b85867c794c2088fe933fa629c31f87944089caf610457c2f76d22f"
+    }
+  ],
+  "original_template_sha256": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9",
+  "mask_template_sha256": "d5b8f24b6ae116c100947c126df8c5ba8439024e7a80d804a2c8875a1b827339",
+  "mask_policy": "完整 assistant 消息含角色前缀及 EOS；系统、用户、工具返回、padding 不参与 loss",
+  "thinking": false,
+  "packing": false,
+  "run_id": "E03-R02",
+  "finished": "2026-10-01T02:14:37+08:00",
+  "config": {
+    "samples": 20,
+    "data_run": "E02-R02",
+    "enable_thinking": false,
+    "packing": false,
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/template_probe.py"
+    ],
+    "run_id": "E03-R02",
+    "started": "2026-10-01T02:14:36+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "2fdbbbd1b74bc2b059510bc4addf694745bf3efd50fe09379dd5f6f685678419"
+  },
+  "raw_result_sha256": "6abeaa7d103b010b0d310481738e017b60cbf161ded838159f2f495f8cbde00f"
+}

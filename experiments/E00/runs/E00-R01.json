@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4070 SUPER",
+    "total_mib": 12282,
+    "used_mib": 2566,
+    "free_mib": 9432,
+    "driver": "591.86"
+  },
+  "torch": "2.8.0+cu128",
+  "cuda_build": "12.8",
+  "cuda_available": true,
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.56.2",
+    "trl": "0.22.2",
+    "peft": "0.17.1",
+    "bitsandbytes": "0.47.0",
+    "datasets": "4.0.0",
+    "accelerate": "1.10.1",
+    "numpy": "2.2.6"
+  },
+  "global_python": {
+    "torch": "2.12.0+cpu",
+    "cuda": false
+  },
+  "run_id": "E00-R01",
+  "finished": "2026-10-01T00:58:59+08:00",
+  "config": {
+    "experiment": "E00",
+    "run_id": "E00-R01",
+    "started": "2026-10-01T00:58:41+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "bcc825610dbfcdf72d8050bb786cbcd55d137f8d8dbd802677445d1f5371f0d0"
+  },
+  "raw_result_sha256": "a75cd7c3195d930bd7350b85f53ec742bff06b1e26f380c978ffec977c3ef680"
+}

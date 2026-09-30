@@ -1,0 +1,69 @@
+{
+  "status": "stopped_for_template_mismatch",
+  "exit_code": null,
+  "latest": {
+    "step": 74,
+    "time": "2026-10-01T02:11:56+08:00",
+    "train_loss": 0.00045656685870199,
+    "learning_rate": 0.0001,
+    "step_seconds": 3.632185499998741,
+    "supervised_tokens": 1147,
+    "peak_allocated_mib": 4667.83056640625,
+    "train_passed": "",
+    "train_samples": 32
+  },
+  "baseline": {
+    "samples": 32,
+    "passed": 9,
+    "tool_turns": 40,
+    "result_sha256": "aa0ae22471e5042eda6bd821f2912dad21554ca658f2dd050927fcd5a1aecf71"
+  },
+  "last_eval": {
+    "samples": 32,
+    "passed": 28,
+    "tool_turns": 40,
+    "result_sha256": "8460c3a77b97714ec9c6579142ec4ed8e30db2bffedc29ee3731bb622e1f74a7"
+  },
+  "issue_sha256": "65a76db1f1823c0f50d8cab3d763803cf97133999219dec2af871b2daf17e425",
+  "resume_checkpoints": [
+    "checkpoint-000025",
+    "checkpoint-000050"
+  ],
+  "stop_reason": "整段多轮模板与当前轮非思考推理的空 think 前缀不一致",
+  "run_id": "E06-R01",
+  "finished": "2026-10-01T02:14:33+08:00",
+  "config": {
+    "seed": 42,
+    "data_run": "E02-R02",
+    "category_samples": {
+      "single_call": 16,
+      "multi_turn": 8,
+      "parallel": 8
+    },
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "gradient_accumulation": 8,
+    "max_sequence_length": 2048,
+    "max_new_tokens": 1024,
+    "max_steps": 300,
+    "evaluate_every": 25,
+    "min_steps": 25,
+    "required_passed": 29,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "precision": "NF4 double quant, BF16 autocast",
+    "packing": false,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/tiny_train.py"
+    ],
+    "run_id": "E06-R01",
+    "started": "2026-10-01T01:57:23+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "8d46bd44947d87b7c0afd6a3a67df7c25229e8ad71d9ebabad29fbab29259829"
+  },
+  "raw_result_sha256": "da0a6499bac71c5766213f128ce0a001c23c8e9980d5f919505c23e681cb07ea"
+}

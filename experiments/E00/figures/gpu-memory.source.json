@@ -1,0 +1,6 @@
+{
+  "run_id": "E00-R01",
+  "source": "../metrics.csv",
+  "source_sha256": "54f27e9e14526465c147bf8456d8bd7435c75bbe4054e09bae106c623927aea7",
+  "image_sha256": "e9977bafcc7207ce35e696ee69549adf7c82364e0693b99fbd6bb2ff67b8e862"
+}

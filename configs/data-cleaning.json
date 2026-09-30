@@ -1,0 +1,15 @@
+{
+  "split_seed": 2026,
+  "inspection_seed": 42,
+  "inspection_samples": 50,
+  "training_sizes": [1000, 5000, 10000],
+  "dev_size": 500,
+  "test_size": 500,
+  "training_context": 2048,
+  "evaluation_context": 8192,
+  "near_duplicate_prefix": 12,
+  "near_duplicate_threshold": 0.92,
+  "group_policy": "相同工具名与参数签名，规范化首问一致或同前缀下 SequenceMatcher >= 0.92；组内只选一条完整记录",
+  "schema_policy": "只反序列化标注，不修改语义或补参数；公开工具返回未经本地真实执行",
+  "length_policy": "先按组划分；训练选完整的 <=2048 token 记录，dev/test 保留到8192 token；不截断调用"
+}

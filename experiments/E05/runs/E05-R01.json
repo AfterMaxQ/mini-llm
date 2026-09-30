@@ -1,0 +1,75 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "sample_ids": [
+    "glaive-61958",
+    "glaive-107678"
+  ],
+  "trainable_parameters": 17432576,
+  "steps": [
+    {
+      "step": 1,
+      "loss": 2.186389446258545,
+      "A": {
+        "tensors": 196,
+        "nonzero_tensors": 0,
+        "norm_sum": 0.0,
+        "norm_max": 0.0
+      },
+      "B": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 87.32481450587511,
+        "norm_max": 5.174762725830078
+      }
+    },
+    {
+      "step": 2,
+      "loss": 1.4033311605453491,
+      "A": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 7.350626301486045,
+        "norm_max": 1.2865079641342163
+      },
+      "B": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 61.37752739712596,
+        "norm_max": 3.381829261779785
+      }
+    }
+  ],
+  "frozen_before_sha256": "b116754a4aed4c80a4ee9c3c79d270cd44f02625c419bc225a3ebcb6807691e5",
+  "frozen_after_sha256": "b116754a4aed4c80a4ee9c3c79d270cd44f02625c419bc225a3ebcb6807691e5",
+  "adapter_before_sha256": "3f794ca6e7aea7a3ca18faf27723fe305b4bfe9b588111d65e92382dc3f4cf40",
+  "adapter_after_sha256": "e0894b6fdf9c6961d8cf4f3d15fd5b1fcdb020d5e9436231499185e7ba2c3ff5",
+  "weight_decay": 0,
+  "explanation": "默认 B 初始化为零，第一步 A 梯度为零；B 更新后第二步 A 获得非零梯度",
+  "peak_allocated_mib": 4215.10986328125,
+  "peak_reserved_mib": 5708.0,
+  "run_id": "E05-R01",
+  "finished": "2026-10-01T01:47:44+08:00",
+  "config": {
+    "seed": 42,
+    "data_run": "E02-R02",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "quantization": "NF4 double quant BF16",
+    "enable_thinking": false,
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/mechanisms.py",
+      "--experiment",
+      "E05"
+    ],
+    "run_id": "E05-R01",
+    "started": "2026-10-01T01:47:36+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "e35484d287dc0127b58b0f50e4e3844e32bdf58ffde428f4f8b81e6d849e794e"
+  },
+  "raw_result_sha256": "09f7957b35ee5f7b384e6033157864d8f7c1b22475c8ccca8fce9fa34e6334c4"
+}

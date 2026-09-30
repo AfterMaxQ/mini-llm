@@ -1,0 +1,1 @@
+{"seed": 42, "data_run": "E02-R02", "rank": 16, "alpha": 32, "dropout": 0.05, "learning_rate": 0.0001, "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e", "quantization": "NF4 double quant BF16", "enable_thinking": false, "unit_policy": "assistant_action"}

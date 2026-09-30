@@ -1,0 +1,6 @@
+.local/
+work/
+__pycache__/
+*.py[cod]
+node_modules/
+~$*

@@ -1,0 +1,60 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "steps": 75,
+  "baseline": {
+    "samples": 32,
+    "passed": 9,
+    "tool_turns": 40,
+    "result_sha256": "aa0ae22471e5042eda6bd821f2912dad21554ca658f2dd050927fcd5a1aecf71"
+  },
+  "final": {
+    "samples": 32,
+    "passed": 31,
+    "tool_turns": 40,
+    "result_sha256": "8a3a2b88bbccf061ec0d411106d8dc6a7765745cfc8d15f96ddf74f785d0b75a"
+  },
+  "criterion": "至少29/32条完整轨迹的全部标注调用通过工具名与参数严格检查",
+  "samples_sha256": "564d0cf5bc430b6248242add84a2068584a2de7d4851c38c6c95dd729187de9a",
+  "metrics_sha256": "5057af393e644132b90bdc1bc70be7fdffec723bd63acf8a046e6f2326500055",
+  "data_run": "E02-R02",
+  "resume_checkpoint": "checkpoint-000075",
+  "scope": "训练样本过拟合检查；评估逐轮使用真实标注历史，不是真实 Agent 执行或泛化成绩",
+  "run_id": "E06-R02",
+  "finished": "2026-10-01T02:33:31+08:00",
+  "config": {
+    "seed": 42,
+    "data_run": "E02-R02",
+    "category_samples": {
+      "single_call": 16,
+      "multi_turn": 8,
+      "parallel": 8
+    },
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "gradient_accumulation": 8,
+    "max_sequence_length": 2048,
+    "max_new_tokens": 1024,
+    "max_steps": 300,
+    "evaluate_every": 25,
+    "min_steps": 25,
+    "required_passed": 29,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "precision": "NF4 double quant, BF16 autocast",
+    "packing": false,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "unit_policy": "assistant_action",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/tiny_train.py"
+    ],
+    "run_id": "E06-R02",
+    "started": "2026-10-01T02:16:44+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "68481c41f1cce069ad9cd64cee0c51406f005d07686c3787cef62973b7d344d9"
+  },
+  "raw_result_sha256": "a311c9c13d02b637d109a1c417ae0b86f01afc0d0ce50ca72338fe1ed50a3630"
+}

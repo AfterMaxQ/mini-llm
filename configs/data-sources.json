@@ -1,0 +1,12 @@
+{
+  "hermes": {
+    "repo": "NousResearch/hermes-function-calling-v1",
+    "revision": "dae3e1d28cfbcf4b915c04ea1e072030529b4bda",
+    "license": "apache-2.0"
+  },
+  "glaive": {
+    "repo": "glaiveai/glaive-function-calling-v2",
+    "revision": "e7f4b6456019f5d8bcb991ef0dd67d8ff23221ac",
+    "license": "apache-2.0"
+  }
+}

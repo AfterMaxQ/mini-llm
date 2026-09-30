@@ -1,0 +1,25 @@
+{
+  "found": "2026-10-01T02:14:33+08:00",
+  "sample_id": "glaive-89521",
+  "training_first_assistant_prefix": "<|im_start|>assistant\\nOf course...",
+  "inference_prefix": "<|im_start|>assistant\\n<think>\\n\\n</think>\\n\\n",
+  "finding": "整段多轮模板与当前轮非思考推理的空 think 前缀不一致",
+  "resolution": "保留官方模板，只把完整轨迹展开成逐 assistant 回复的训练单元；仅监督当前回复；另开运行从相同初始权重重跑",
+  "last_metrics": {
+    "step": 74,
+    "time": "2026-10-01T02:11:56+08:00",
+    "train_loss": 0.00045656685870199,
+    "learning_rate": 0.0001,
+    "step_seconds": 3.632185499998741,
+    "supervised_tokens": 1147,
+    "peak_allocated_mib": 4667.83056640625,
+    "train_passed": "",
+    "train_samples": 32
+  },
+  "last_complete_eval": {
+    "samples": 32,
+    "passed": 28,
+    "tool_turns": 40,
+    "result_sha256": "8460c3a77b97714ec9c6579142ec4ed8e30db2bffedc29ee3731bb622e1f74a7"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "source_run": "E06-R02",
+  "saved_step": 75,
+  "continued_step": 76,
+  "generation_identical": true,
+  "adapter_before_sha256": "5d567bba7c6e55d507e304048f689016dcd83f4b67e101798a1cace79ec6a532",
+  "adapter_after_sha256": "0c4e18feb94706310f823a28d025689d7bf6c19a20ed49512d3bd9be34ab5b92",
+  "expected_loss": 0.07063582618502551,
+  "replayed_loss": 0.07063582618502551,
+  "max_parameter_difference": 0.0,
+  "next_unit_indices": [
+    30,
+    47,
+    68,
+    37,
+    18,
+    83,
+    29,
+    77
+  ],
+  "optimizer_restored": true,
+  "random_states_restored": true,
+  "run_id": "E07-R01",
+  "finished": "2026-10-01T02:35:49+08:00",
+  "config": {
+    "source_run": "E06-R02",
+    "checkpoint": "checkpoint-000075",
+    "checkpoint_manifest_sha256": "759887318e451a93f02eb8218f1793fcb5e9d823da29cdc9adb3a868ca5c09fb",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/resume_probe.py",
+      "--from-run",
+      "E06-R02"
+    ],
+    "run_id": "E07-R01",
+    "started": "2026-10-01T02:35:29+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "2b3d53e40bd562a8c1a47dceadad56d32ef82e16524143190542b2ead8d43740"
+  },
+  "raw_result_sha256": "7dd65fec7224d950f1fe4cf2304115b0e922d81ae63723e63803ac4c36b50d3e"
+}

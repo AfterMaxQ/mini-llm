@@ -1,0 +1,94 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "sources": {
+    "hermes": {
+      "repo": "NousResearch/hermes-function-calling-v1",
+      "revision": "dae3e1d28cfbcf4b915c04ea1e072030529b4bda",
+      "license": "apache-2.0"
+    },
+    "glaive": {
+      "repo": "glaiveai/glaive-function-calling-v2",
+      "revision": "e7f4b6456019f5d8bcb991ef0dd67d8ff23221ac",
+      "license": "apache-2.0"
+    }
+  },
+  "raw_rows": 121955,
+  "accepted_records": 62386,
+  "independent_groups": 23801,
+  "outputs": {
+    "train-1000.jsonl": {
+      "samples": 1000,
+      "sha256": "2ada49cee0ec99086067cd107cfae20202ced0291cf77ba486d9e6d0d4886b69"
+    },
+    "train-5000.jsonl": {
+      "samples": 5000,
+      "sha256": "07e4abe73d4e479008be6356e087bd8beab9ac49ce2bc20e1d78310dd612970c"
+    },
+    "train-10000.jsonl": {
+      "samples": 10000,
+      "sha256": "e9165867997bf5435b53e4404fac60d4ee9b279a6f5481b6503f17bc3a1821ae"
+    },
+    "dev.jsonl": {
+      "samples": 500,
+      "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce"
+    },
+    "test.jsonl": {
+      "samples": 500,
+      "sha256": "624e35d750688bfc3f3f302a0690ba11cd5630d12a231afb013f753ce03ee85e"
+    }
+  },
+  "split_manifest_sha256": "0110c9978099b2f4709b0d33cbb746e1a13d0dd871287b53a0b3fb2ab5eef91a",
+  "statistics_sha256": "a6093a0d9dfcc0d1888888360d3190b74a73dfb2b063058f52cb87b10bdb400f",
+  "inspection_samples": 50,
+  "group_intersections": {
+    "train_dev": 0,
+    "train_test": 0,
+    "dev_test": 0
+  },
+  "run_id": "E02-R02",
+  "finished": "2026-10-01T01:40:18+08:00",
+  "config": {
+    "split_seed": 2026,
+    "inspection_seed": 42,
+    "inspection_samples": 50,
+    "training_sizes": [
+      1000,
+      5000,
+      10000
+    ],
+    "dev_size": 500,
+    "test_size": 500,
+    "training_context": 2048,
+    "evaluation_context": 8192,
+    "near_duplicate_prefix": 12,
+    "near_duplicate_threshold": 0.92,
+    "group_policy": "相同工具名与参数签名，规范化首问一致或同前缀下 SequenceMatcher >= 0.92；组内只选一条完整记录",
+    "schema_policy": "只反序列化标注，不修改语义或补参数；公开工具返回未经本地真实执行",
+    "length_policy": "先按组划分；训练选完整的 <=2048 token 记录，dev/test 保留到8192 token；不截断调用",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/data.py"
+    ],
+    "sources": {
+      "hermes": {
+        "repo": "NousResearch/hermes-function-calling-v1",
+        "revision": "dae3e1d28cfbcf4b915c04ea1e072030529b4bda",
+        "license": "apache-2.0"
+      },
+      "glaive": {
+        "repo": "glaiveai/glaive-function-calling-v2",
+        "revision": "e7f4b6456019f5d8bcb991ef0dd67d8ff23221ac",
+        "license": "apache-2.0"
+      }
+    },
+    "run_id": "E02-R02",
+    "started": "2026-10-01T01:38:23+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "6a02f2c08304e190af909bd4d746a89babd682588af6bbf0ee9685543fc45b26"
+  },
+  "raw_result_sha256": "0afebc37dc16035ae393f1964537636a5c540a7a02db4d93b40dbf40d8eda9bd",
+  "sample_review_sha256": "07c73a4be48a986369d2d07366e529117dd4a485b1919bae30464976d79bdf75",
+  "review_completed": "2026-10-01T01:42:59+08:00",
+  "reviewed_statistics_sha256": "ccadbb7f1f856b0f6e73fe698455fcf9322156542a7da58a3a5503fd538711ed"
+}

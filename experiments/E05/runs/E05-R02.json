@@ -1,0 +1,76 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "sample_ids": [
+    "glaive-61958",
+    "glaive-107678"
+  ],
+  "trainable_parameters": 17432576,
+  "steps": [
+    {
+      "step": 1,
+      "loss": 1.776658296585083,
+      "A": {
+        "tensors": 196,
+        "nonzero_tensors": 0,
+        "norm_sum": 0.0,
+        "norm_max": 0.0
+      },
+      "B": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 111.91950940340757,
+        "norm_max": 6.373536109924316
+      }
+    },
+    {
+      "step": 2,
+      "loss": 0.8337223529815674,
+      "A": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 8.214352270122617,
+        "norm_max": 1.258173942565918
+      },
+      "B": {
+        "tensors": 196,
+        "nonzero_tensors": 196,
+        "norm_sum": 77.14385239779949,
+        "norm_max": 4.0118632316589355
+      }
+    }
+  ],
+  "frozen_before_sha256": "b116754a4aed4c80a4ee9c3c79d270cd44f02625c419bc225a3ebcb6807691e5",
+  "frozen_after_sha256": "b116754a4aed4c80a4ee9c3c79d270cd44f02625c419bc225a3ebcb6807691e5",
+  "adapter_before_sha256": "3f794ca6e7aea7a3ca18faf27723fe305b4bfe9b588111d65e92382dc3f4cf40",
+  "adapter_after_sha256": "c20e396b41faf6a91a2d9ed81aea11199692071aca1b6899821322eaadb4bd50",
+  "weight_decay": 0,
+  "explanation": "默认 B 初始化为零，第一步 A 梯度为零；B 更新后第二步 A 获得非零梯度",
+  "peak_allocated_mib": 4215.10986328125,
+  "peak_reserved_mib": 5708.0,
+  "run_id": "E05-R02",
+  "finished": "2026-10-01T02:16:40+08:00",
+  "config": {
+    "seed": 42,
+    "data_run": "E02-R02",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "quantization": "NF4 double quant BF16",
+    "enable_thinking": false,
+    "unit_policy": "assistant_action",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/mechanisms.py",
+      "--experiment",
+      "E05"
+    ],
+    "run_id": "E05-R02",
+    "started": "2026-10-01T02:16:32+08:00",
+    "commit": "41c0d28570488112850c42a9657d71f96112673f",
+    "code_snapshot_sha256": "68481c41f1cce069ad9cd64cee0c51406f005d07686c3787cef62973b7d344d9"
+  },
+  "raw_result_sha256": "e74409b786f2fbe9ad19150aa3c2d5b473b18f054a932ed3b9833b979d513f29"
+}

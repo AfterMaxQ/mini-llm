@@ -1,0 +1,6 @@
+{
+  "run_id": "E02-R02",
+  "source": "../statistics.json",
+  "source_sha256": "ccadbb7f1f856b0f6e73fe698455fcf9322156542a7da58a3a5503fd538711ed",
+  "image_sha256": "0daf671c6b73e9b14422059f639a8064bb8d4b775bb0694b1ccb95fc662f40a6"
+}
