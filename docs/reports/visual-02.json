@@ -1,8 +1,8 @@
 {
-  "word_sha256": "923415733fd2ed706ed2e31c732c7c776feaf6c09a6bceca8fcbb59e137fcd3a",
-  "pdf_sha256": "7758f363cedc56947500e6ef82653517013c035efa88b08c199cdb5e41c6a906",
+  "word_sha256": "486c1a233fdb8938f7fd5672fb6c1b76912df7b8443f1d0188810084310ddc16",
+  "pdf_sha256": "305f1c7dcab944dd5ad2086a83cc17f0475df9eed12b3c8a11ff1355f7c5170e",
   "visual_checked": true,
-  "checked_at": "2026-10-01T09:57:20+08:00",
+  "checked_at": "2026-10-01T10:17:36+08:00",
   "checked_pages": [
     1,
     2,
@@ -18,6 +18,21 @@
     "实际查看 Word 导出的页面，代码缩进和中文可读",
     "图例、坐标与图注清楚，表格未越界，无空白页",
     "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
-    "代码和内嵌图片另与同版 Markdown、源图核对"
-  ]
+    "代码和内嵌图片另与同版 Markdown、源图核对",
+    "变化页实际查看，其余页与上一核验PDF在120dpi下逐像素一致"
+  ],
+  "newly_viewed_pages": [
+    1,
+    4,
+    5
+  ],
+  "identical_to_previous_checked_pages": [
+    2,
+    3,
+    6,
+    7,
+    8,
+    9
+  ],
+  "previous_checked_pdf_sha256": "7758f363cedc56947500e6ef82653517013c035efa88b08c199cdb5e41c6a906"
 }

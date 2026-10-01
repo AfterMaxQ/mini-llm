@@ -1,0 +1,11 @@
+{
+  "experiment": "E10",
+  "training_config": "configs/sft-bf16.json",
+  "jobs": [
+    {
+      "size": 5000,
+      "seed": 17
+    }
+  ],
+  "purpose": "与已完成的E09同条件5k NF4运行比较；训练完后用相同NF4后端完成dev工具评测"
+}

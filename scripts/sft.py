@@ -5,6 +5,7 @@ import subprocess
 import sys
 import time
 import traceback
+from collections import Counter
 
 import torch
 from datasets import load_from_disk
@@ -72,7 +73,8 @@ class RecordCallback(TrainerCallback):
         self.run, self.trainer, self.last_report = run, trainer, 0
 
     def refresh(self):
-        commands=[[sys.executable, 'scripts/notes_sft.py'],
+        script='scripts/notes_precision.py' if self.run.name.startswith('E10-') else 'scripts/notes_sft.py'
+        commands=[[sys.executable, script],
                   [sys.executable, 'scripts/report.py', '--volume', '02']]
         for command in commands:
             result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,encoding='utf-8',errors='replace')
@@ -162,8 +164,13 @@ def main():
         write_json(run/"training-data.json",{"train":train_manifest,"dev":dev_manifest})
         tokenizer,_,_=tokenizer_and_template();tokenizer.padding_side="right"
         train_dataset=load_from_disk(train_cache/"dataset");dev_dataset=load_from_disk(dev_cache/"dataset")
-        # 让 TRL 先准备四位基础权重，再添加 LoRA，避免重复准备冻结适配器。
-        model=load_model()
+        # 裸模型交给 TRL 准备后添加 LoRA，避免重复准备冻结适配器。
+        model=load_model(load_in_4bit=config.get('load_in_4bit',True))
+        storage=Counter()
+        for parameter in model.parameters():storage[str(parameter.dtype)]+=parameter.numel()
+        write_json(run/'base-model-storage.json',{'is_loaded_in_4bit':bool(getattr(model,'is_loaded_in_4bit',False)),
+                   'stored_elements_by_dtype':dict(storage),
+                   'allocated_mib':torch.cuda.memory_allocated()/1024**2})
         peft_config=LoraConfig(r=config['rank'],lora_alpha=config['alpha'],lora_dropout=config['dropout'],
             bias='none',task_type='CAUSAL_LM',target_modules=['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj'])
         training_args=SFTConfig(output_dir=str(run),num_train_epochs=config["epochs"],
@@ -184,7 +191,9 @@ def main():
         assert trainable and all('lora_' in name for name,p in trainable), 'TRL 接入后 LoRA 没有保持可训练'
         write_json(run/'trainable-parameters.json',{'parameters':sum(p.numel() for name,p in trainable),
                    'tensors':len(trainable),'only_lora':True,'dtypes':sorted({str(p.dtype) for name,p in trainable}),
-                   'preparation':'TRL 对裸 NF4 模型准备后创建 LoRA'})
+                   'base_dtypes':sorted({str(p.dtype) for p in trainer.model.parameters() if not p.requires_grad}),
+                   'is_loaded_in_4bit':bool(getattr(trainer.model,'is_loaded_in_4bit',False)),
+                   'preparation':'TRL 准备裸模型后创建 LoRA'})
         if resume:
             state=json.loads((resume/"lab-state.json").read_text(encoding="utf-8"))
             trainer.supervised_tokens=state["supervised_tokens"];trainer._total_train_tokens=state["input_tokens"]
@@ -205,8 +214,11 @@ def main():
         callback.refresh();print(json.dumps(result,ensure_ascii=False),flush=True)
     except Exception:
         (run/f"failure-{time.time_ns()}.txt").write_text(traceback.format_exc(),encoding="utf-8")
-        finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc()})
-        subprocess.run([sys.executable,"scripts/notes_sft.py"],cwd=ROOT,check=True)
+        finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc(),
+                   'allocated_mib_at_failure':torch.cuda.memory_allocated()/1024**2,
+                   'reserved_mib_at_failure':torch.cuda.memory_reserved()/1024**2})
+        script='scripts/notes_precision.py' if args.experiment=='E10' else 'scripts/notes_sft.py'
+        subprocess.run([sys.executable,script],cwd=ROOT,check=True)
         subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)
         raise
 

@@ -93,7 +93,8 @@ def draw_curve(run_id):
     metrics=ROOT/'.local/runs'/run_id/'metrics.jsonl'
     if not metrics.exists():return None
     raw=metrics.read_bytes();rows=[json.loads(x) for x in raw.decode('utf-8').splitlines()]
-    folder=ROOT/'experiments/E09';csv_path=folder/(run_id+'-metrics.csv')
+    folder=ROOT/'experiments'/run_id.split('-')[0];folder.mkdir(parents=True,exist_ok=True)
+    csv_path=folder/(run_id+'-metrics.csv')
     fields=['time','step','loss','eval_loss','grad_norm','learning_rate','epoch','num_tokens','supervised_tokens','step_seconds','peak_allocated_mib','peak_reserved_mib','allocated_mib','reserved_mib','device_free_mib','reserved_before_step_mib','reserved_after_release_mib']
     with csv_path.open('w',encoding='utf-8',newline='') as handle:
         writer=csv.DictWriter(handle,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(rows)

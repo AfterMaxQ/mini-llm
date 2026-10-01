@@ -94,7 +94,7 @@ def main():
             for run_id in [run.name,evaluation['run_id']]:archive_run(run_id)
             print(json.dumps({'time':now(),'job':job,'train_run':run.name,'eval_run':evaluation['run_id'],
                               'trajectory_passed':summary['trajectory_passed'],'denominator':500},ensure_ascii=False),flush=True)
-        write_json(ROOT/'.local/scale-state.json',{'status':'completed','time':now(),'scope':'既定E09训练与完整dev工具评测；后续实验继续按spec执行'})
+        write_json(ROOT/'.local/scale-state.json',{'status':'completed','time':now(),'scope':plan['experiment']+'训练与完整dev工具评测；后续实验继续按spec执行'})
     except Exception as error:
         write_json(ROOT/'.local/scale-state.json',{'status':'failed','time':now(),'error':str(error)})
         raise
