@@ -1,13 +1,13 @@
 {
-  "word_sha256": "a036a213f931bb5fc6a6b88427901d4ed0f18403b0875d2b409df70296f12cbd",
+  "word_sha256": "a4d0f5c20cd68f0258a918ed4f0f3c99a5a450865a32aeef4832a45bff49b642",
   "visual_checked": true,
-  "updated": "2026-10-02T05:06:35+08:00",
+  "updated": "2026-10-02T05:19:01+08:00",
   "previous_checked": {
-    "word_sha256": "7f3127fb07b2a5927a60a41ad3094f423c04d41c140cdd3445caf6dc61f5c0f2",
+    "word_sha256": "a036a213f931bb5fc6a6b88427901d4ed0f18403b0875d2b409df70296f12cbd",
     "visual_checked": true,
-    "updated": "2026-10-02T04:58:31+08:00",
-    "pdf_sha256": "394aa871783a2c72126ea52ab70015efd389806421c27cc375c23138e7bd82e3",
-    "checked_at": "2026-10-02T05:00:50+08:00",
+    "updated": "2026-10-02T05:06:35+08:00",
+    "pdf_sha256": "effe0bef0c4b7da686cdd4a5e16e28522ab0b54337b8e51bd673ee70b7d24cdf",
+    "checked_at": "2026-10-02T05:08:31+08:00",
     "checked_pages": [
       1,
       5,
@@ -47,12 +47,12 @@
       15
     ],
     "page_sha256": {
-      "page-01.png": "7fef6005b87bc708a593d8d521066cd63b0ddaf61047e66e07137a0aef7a4d53",
+      "page-01.png": "f53c0d28daf9f6cf5da053180ddd7a55d1d55bcbf02a1db14e8de617169c7259",
       "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
       "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
       "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-      "page-05.png": "7fcdba96fc19128aeb8506715c1976f0f0632bda2b50532ffe53ffc0ed4c08d7",
-      "page-06.png": "ef1eb0dbe48307cd6bc09cea61ed4aedeee01b1b4be60e849c3fe88be7012233",
+      "page-05.png": "c957870409e9e449755478b2b00cb1177f504f88a63e8eaff74bff66d5cf0f87",
+      "page-06.png": "43829e9460f086898286fa72b3e612f0ebe297b52d3f3434b6b1199ab2a76ed9",
       "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
       "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
       "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -64,12 +64,12 @@
       "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
     },
     "observations": [
-      "实际查看本轮变化页 [1, 5, 6]：中文和章节内容清楚，表格、图表、代码示例无缺字、遮挡、越界或空白页。",
+      "实际查看本轮变化页 [1, 5, 6]：中文、表格与图表显示完整，未见缺字、遮挡、越界或空白页。",
       "其余页面 PNG 哈希与上一份已核验版本一致，沿用原检查结果。"
     ]
   },
-  "pdf_sha256": "effe0bef0c4b7da686cdd4a5e16e28522ab0b54337b8e51bd673ee70b7d24cdf",
-  "checked_at": "2026-10-02T05:08:31+08:00",
+  "pdf_sha256": "0e0b7b01d1f389d7c1c115ab620dcf0567c8604cd4915f5e9f4984fa6a053072",
+  "checked_at": "2026-10-02T05:19:01+08:00",
   "checked_pages": [
     1,
     5,
@@ -109,12 +109,12 @@
     15
   ],
   "page_sha256": {
-    "page-01.png": "f53c0d28daf9f6cf5da053180ddd7a55d1d55bcbf02a1db14e8de617169c7259",
+    "page-01.png": "4e433996e5da93207867fc986cc243dd9acf6567790ee45561369d6cdb58cbfb",
     "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
     "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
     "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-    "page-05.png": "c957870409e9e449755478b2b00cb1177f504f88a63e8eaff74bff66d5cf0f87",
-    "page-06.png": "43829e9460f086898286fa72b3e612f0ebe297b52d3f3434b6b1199ab2a76ed9",
+    "page-05.png": "5a8150d35cbeb7c4e3c064d7934cc874e91feb655260c5fa58fd2cafe133672c",
+    "page-06.png": "045befeca87a9548162af029b9a0a216d8d073e1b2116e37436b81af664f993a",
     "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
     "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
     "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -126,7 +126,7 @@
     "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
   },
   "observations": [
-    "实际查看本轮变化页 [1, 5, 6]：中文、表格与图表显示完整，未见缺字、遮挡、越界或空白页。",
+    "实际查看变化页 [1, 5, 6]：中文、表格、图表与代码示例完整，未见缺字、遮挡、越界或空白页。",
     "其余页面 PNG 哈希与上一份已核验版本一致，沿用原检查结果。"
   ]
 }
