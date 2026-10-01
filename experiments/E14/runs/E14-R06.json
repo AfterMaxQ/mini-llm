@@ -1,0 +1,41 @@
+{
+  "status": "failed",
+  "exit_code": 1,
+  "error": "Traceback (most recent call last):\n  File \"F:\\mini-llm-agent-lab\\scripts\\pi_task_data.py\", line 129, in main\n    hashes=[hashed({'prompt':t['prompt'],'files':t['files']}) for t in tasks];assert len(hashes)==len(set(hashes))==2000\n                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "run_id": "E14-R06",
+  "finished": "2026-10-01T13:09:14+08:00",
+  "config": {
+    "source_runs": [
+      "E14-R01",
+      "E14-R03"
+    ],
+    "seed": 172026,
+    "variant_version": "duration-grid-v2",
+    "training_requests": 2000,
+    "reference_requests": 1000,
+    "split": "train",
+    "policy": "同模板内生成不同实际场景，全部保留原模板族；参考过程必须重新执行，不复制已执行轨迹；dev/test另建模板与仓库族",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/pi_task_data.py"
+    ],
+    "sources": [
+      {
+        "run_id": "E14-R01",
+        "tasks_sha256": "84430e5e07e458a8b4fb10945c200ffc68febc139a5af09e2ec3c8242fad4ed4",
+        "result_sha256": "35491e3daa85c3feb7190c2bf630df08a791ada6aafbee5251a24025f984a679"
+      },
+      {
+        "run_id": "E14-R03",
+        "tasks_sha256": "2ed8bbd349829bcc16c9511d14095a950cc02170d9e2bb4b0dcef07b2a6b3ac3",
+        "result_sha256": "027da974f78598929346c2e13b22b71204c79623151223f4c734548525e11b1e"
+      }
+    ],
+    "run_id": "E14-R06",
+    "started": "2026-10-01T13:09:14+08:00",
+    "commit": "1bce4f1f8c517566ece811d7154344e9dd32885c",
+    "process_id": 20744,
+    "code_snapshot_sha256": "78f568a07289502f0151c2bcabbb7b007ef4ca5d205ead63cf6fb3ecfd0d6b8f"
+  },
+  "raw_result_sha256": "4f44f834039f8b918f302f0c1f276e8f6fbbb93a31125cf20ce9bc744b557146"
+}

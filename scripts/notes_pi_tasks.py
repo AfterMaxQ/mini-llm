@@ -100,6 +100,25 @@ def extension_note(folder):
                '提醒时间没有给时区，先询问', '根据已知速率计算窗口预算', '按商品状态联表统计库存']
     rows = [f"| {LABELS[r['category']]} | {description} | {r['reference_calls']} |"
             for r,description in zip(result['per_task'],details)]
+    encoded = [r for r in runs if r.get('status')=='reference_encoding_verified' and r['config']['source_run']==result['run_id']]
+    pending = '新增八条尚未完成训练格式转换，'
+    format_note = ''
+    if encoded:
+        data=encoded[-1]; local=ROOT/'.local/runs'/data['run_id']
+        assert sha256(local/'units.jsonl')==data['units_sha256'] and sha256(local/'encoded.jsonl')==data['encoded_sha256']
+        assert sha256(ROOT/data['processed_file'])==data['processed_sha256']
+        examples=json.loads((local/'mask-examples.json').read_text(encoding='utf-8'))
+        assert len(examples)==2 and all(e['history_supervised_tokens']==0 for e in examples)
+        pending=''
+        format_note=f'''
+## 新增过程能完整表示吗？37个单元已逐条核验
+
+{data['run_id']} 将新增八条过程转换为{data['assistant_units']}个回复单元，共{data['supervised_tokens']:,}个监督token，最长输入{data['max_sequence_length']}token。29次调用的参数、实际返回和最终回复逐条与原记录比对，解码监督目标也对应当前动作；没有截断，未初始化CUDA。
+
+导入失败后的下一步是读迁移说明，这个单元输入{examples[0]['input_tokens']}token，只监督当前{examples[0]['target_tokens']}个；旧路径错误后的下一步是读项目说明，输入{examples[1]['input_tokens']}token，只监督当前{examples[1]['target_tokens']}个。两个错误返回都留在上下文中，历史监督量为零。这里验证了表示和遮罩，没有进行参数训练。
+
+两批现有16条规则参考合计71个回复单元、2,563个监督token。它们各自属于原模板族，不能把展开单元当成新增独立任务，也不能由最长1,497token推断正式扩展数据都适合2048；后续数据继续逐条检查长度。
+'''
     return f'''
 ## 再加八个模板，解题过程变在哪里？
 
@@ -127,8 +146,41 @@ export const delay = config => config.refreshSeconds * 1000;
 
 移动模块的恢复任务也保留了第一次命令的真实导入错误。参考步骤根据迁移说明修正相对导入，再跑原检查；错误方案补回旧路径文件，被新增文件和执行检查拒绝。故障原因与上一批的空白正则错误不同。
 
-目前两批共16个训练模板族，各有一条已验证参考过程。所有任务仍在train；新增八条尚未完成训练格式转换，正式1,000条有效训练记录、独立dev/test和模型迁移评测继续分别验收。参考步骤由规则给定，没有模型自主选择工具；这16条不能写成模型成功率。判据仍有有限样例和询问语义只查必要词的局限，后续模型结果要保留逐条复查。
+目前两批共16个训练模板族，各有一条已验证参考过程。所有任务仍在train；{pending}正式1,000条有效训练记录、独立dev/test和模型迁移评测继续分别验收。参考步骤由规则给定，没有模型自主选择工具；这16条不能写成模型成功率。判据仍有有限样例和询问语义只查必要词的局限，后续模型结果要保留逐条复查。
+'''+format_note
+
+
+def generation_note(folder):
+    runs=[json.loads(p.read_text(encoding='utf-8')) for p in sorted((folder/'runs').glob('*.json'))]
+    frozen=[r for r in runs if r.get('status')=='training_requests_frozen']
+    if not frozen:return ''
+    data=frozen[-1];assert sha256(ROOT/data['requests_file'])==data['requests_sha256']
+    note=f'''
+## 有2,000个场景，是否已经有2,000条有效轨迹？还没有，先逐条执行
+
+{data['run_id']} 冻结了2,000个训练场景，16个模板族各125个，八类各250个。前1,000个场景作为本轮规则参考目标，八类各125个。清单改变实际配置、边界样例、选择的模块、时间和库存关系；这里只统计待执行场景，不把生成的参考步骤直接算成成功轨迹。
+
+前两轮都被精确去重拦住。第一轮实际只有1,979个不同场景，时间单位任务出现21个重复；第二轮调整延时取值后，提醒任务仍有7个重复，只有1,993个不同场景。随机取值的范围有限，id不同也会抽到同一组实际内容。两轮没有用于参考批量执行。随后为延时和日期使用确定的取值序列，保留其他场景变化，新的2,000份完整问题与文件内容没有精确重复。
+
+这批数据仍共享16个模板族，属于训练区的场景增广。精确去重不能消除这种结构相似性，模型接触过的处理方式也不会因此变成未见任务。后续dev/test另建模板和仓库族；当前没有冻结这两个任务集，也没有让教师接触它们。
 '''
+    batch=[]
+    for config_file in sorted((ROOT/'.local/runs').glob('E14-R*/config.json')):
+        config=json.loads(config_file.read_text(encoding='utf-8'))
+        if config.get('operation')=='pi_reference_batch' and config.get('source_scene_run')==data['run_id']:batch.append(config_file.parent)
+    if batch:
+        run=batch[-1];progress=json.loads((run/'progress.json').read_text(encoding='utf-8'))
+        outcome='整轮还在继续'
+        if (run/'result.json').exists():
+            result=json.loads((run/'result.json').read_text(encoding='utf-8'))
+            outcome='整轮参考执行已结束' if result['status']=='reference_batch_verified' else '本轮未达到有效轨迹目标，保留已执行结果'
+        note+=f"\n{run.name} 已实际处理{progress['completed']}/{progress['target']}个场景，其中{progress['valid']}条参考通过，{progress['failed']}条失败；已记录{progress['reference_tool_calls']}次工具调用和{progress['reference_error_returns']}次错误返回。{outcome}，失败保留在原目标分母。每条过程使用独立容器，执行结束核对最终文件，再移除本轮容器；本阶段没有调用模型。\n"
+        encoded=[r for r in runs if r.get('operation')=='pi_reference_encoding' and
+                 r.get('status')=='reference_encoding_verified' and r['config']['source_run']==run.name]
+        if encoded:
+            r=encoded[-1]
+            note+=f"\n完整参考过程随后在 {r['run_id']} 转成训练格式：{r['independent_trajectories']:,}个场景展开为{r['assistant_units']:,}个当前回复单元，共{r['supervised_tokens']:,}个监督token，最长{r['max_sequence_length']:,}个token。每个单元都核对了实际工具返回、官方模板和监督位置，没有截断。数据仍属于上述16个训练模板族；格式核验通过后，领域训练与独立任务迁移评测继续单独进行。\n"
+    return note
 
 
 def main():
@@ -246,7 +298,7 @@ value.trim().replace(/\\s+/g, '-').toLowerCase();
 
 复习时可以先看两个问题。为什么命令输出正确还可能失败？因为检查文件或不该动的配置也可能被改过，输出只是成功条件的一部分。为什么参考操作 8/8 不能写成 Agent 成功率 100%？因为步骤由规则预先给定，还没有让模型自己选择工具、读取错误并决定下一步。
 """
-    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder), encoding='utf-8')
+    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder)+generation_note(folder), encoding='utf-8')
 
 
 if __name__ == '__main__':

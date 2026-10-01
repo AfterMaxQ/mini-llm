@@ -1,0 +1,61 @@
+{
+  "eval_run": "E09-R10",
+  "train_run": "E09-R09",
+  "trajectories": 500,
+  "baseline_passed": 355,
+  "student_passed": 406,
+  "both_passed": 342,
+  "baseline_only": 13,
+  "student_only": 64,
+  "both_failed": 81,
+  "decision_improvements": 91,
+  "decision_regressions": 22,
+  "difference_percentage_points": 10.2,
+  "paired_bootstrap": {
+    "repeats": 10000,
+    "seed": 2026,
+    "generator": "NumPy PCG64",
+    "interval_percent": 95,
+    "percentile_interval": [
+      7.000000000000001,
+      13.600000000000001
+    ],
+    "unit": "一条完整dev轨迹；配对百分比差值，不含训练seed波动"
+  },
+  "paired_csv_sha256": "7e094d8648eb24dc212f4ce4ba1063c069e0bf396c7dcece1ea53e794aa0d843",
+  "source_rows_sha256": [
+    "d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f",
+    "ee22302f4808160c3cf2edb384b36431c8752809ecab0603bf5971a997433a94"
+  ],
+  "analysis_code_sha256": "165a2f41ecb7a11b60bfffdd45925f843a1a09e0117931720921a811ab45660f",
+  "cases": [
+    {
+      "sample_id": "glaive-60626",
+      "message_index": 2,
+      "user": "I need to add a task to my todo list.",
+      "expected": [],
+      "baseline": "<tool_call>\n{\"name\": \"make_todo\", \"arguments\": {\"task\": \"I need to add a task to my todo list.\", \"priority\": \"medium\"}}\n</tool_call>",
+      "student": "Sure, I can help with that. Could you please tell me the task and its priority level?",
+      "baseline_passed": false,
+      "student_passed": true
+    },
+    {
+      "sample_id": "glaive-60626",
+      "message_index": 4,
+      "user": "The task is to buy groceries and its priority level is high.",
+      "expected": [
+        {
+          "arguments": {
+            "priority": "high",
+            "task": "buy groceries"
+          },
+          "name": "make_todo"
+        }
+      ],
+      "baseline": "<tool_call>\n{\"name\":\"make_todo\",\"arguments\":{\"task\":\"buy groceries\",\"priority\":\"high\"}}\n</tool_call>",
+      "student": "<tool_call>\n{\"name\": \"make_todo\", \"arguments\": {\"priority\": \"high\", \"task\": \"Buy groceries\"}}\n</tool_call>",
+      "baseline_passed": true,
+      "student_passed": false
+    }
+  ]
+}

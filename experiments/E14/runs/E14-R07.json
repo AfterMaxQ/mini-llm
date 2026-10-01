@@ -1,0 +1,92 @@
+{
+  "status": "training_requests_frozen",
+  "exit_code": 0,
+  "operation": "pi_training_scene_generation",
+  "requests": 2000,
+  "reference_request_target": 1000,
+  "template_families": 16,
+  "family_counts": {
+    "train-router-window-budget": 125,
+    "train-profile-cache-json": 125,
+    "train-half-open-booking": 125,
+    "train-metrics-contract-migration": 125,
+    "train-slug-whitespace-regression": 125,
+    "train-unset-upload-timeout": 125,
+    "train-explain-request-rate": 125,
+    "train-stale-inventory-path": 125,
+    "train-selected-storage-registry": 125,
+    "train-layered-environment-override": 125,
+    "train-last-occurrence-order": 125,
+    "train-duration-unit-migration": 125,
+    "train-moved-module-import": 125,
+    "train-unspecified-schedule-zone": 125,
+    "train-given-rate-budget-calculation": 125,
+    "train-current-stock-active-join": 125
+  },
+  "categories": {
+    "read_locate": 250,
+    "config_change": 250,
+    "function_fix": 250,
+    "multi_file": 250,
+    "failure_recovery": 250,
+    "missing_information": 250,
+    "no_tool": 250,
+    "invalid_path_recovery": 250
+  },
+  "reference_prefix_categories": {
+    "read_locate": 125,
+    "config_change": 125,
+    "function_fix": 125,
+    "multi_file": 125,
+    "failure_recovery": 125,
+    "missing_information": 125,
+    "no_tool": 125,
+    "invalid_path_recovery": 125
+  },
+  "exact_scene_duplicates": 0,
+  "near_repeat_policy": "16个共享模板族，族内变体全部train；不宣称2000个独立模板",
+  "requests_file": ".local/data/pi/E14-R07/requests.jsonl",
+  "requests_sha256": "5f1ec4805523e14efafb236ed3104ff67c69081d96cd0bd9a8c11f1fdb832a35",
+  "scene_hashes_sha256": "1bba26992bdc941ca9dc5e9db15c931a28d3a59b3e212b1e18e7f7bf64086926",
+  "valid_executed_references": 0,
+  "model_calls": 0,
+  "dev_tasks": 0,
+  "test_tasks": 0,
+  "scope": "2000个训练场景已冻结，参考步骤尚待逐条本机执行；数量不计为已完成有效轨迹",
+  "run_id": "E14-R07",
+  "finished": "2026-10-01T13:10:15+08:00",
+  "config": {
+    "source_runs": [
+      "E14-R01",
+      "E14-R03"
+    ],
+    "seed": 172026,
+    "variant_version": "duration-and-calendar-grid-v3",
+    "training_requests": 2000,
+    "reference_requests": 1000,
+    "split": "train",
+    "policy": "同模板内生成不同实际场景，全部保留原模板族；参考过程必须重新执行，不复制已执行轨迹；dev/test另建模板与仓库族",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/pi_task_data.py"
+    ],
+    "sources": [
+      {
+        "run_id": "E14-R01",
+        "tasks_sha256": "84430e5e07e458a8b4fb10945c200ffc68febc139a5af09e2ec3c8242fad4ed4",
+        "result_sha256": "35491e3daa85c3feb7190c2bf630df08a791ada6aafbee5251a24025f984a679"
+      },
+      {
+        "run_id": "E14-R03",
+        "tasks_sha256": "2ed8bbd349829bcc16c9511d14095a950cc02170d9e2bb4b0dcef07b2a6b3ac3",
+        "result_sha256": "027da974f78598929346c2e13b22b71204c79623151223f4c734548525e11b1e"
+      }
+    ],
+    "run_id": "E14-R07",
+    "started": "2026-10-01T13:10:15+08:00",
+    "commit": "1bce4f1f8c517566ece811d7154344e9dd32885c",
+    "process_id": 40660,
+    "code_snapshot_sha256": "905e77995d298e4067b27e8e19f8e7ab1b4084c617fd848ddb83601cc9ad9c19"
+  },
+  "raw_result_sha256": "40aab97ec4c89361f4332d129f3e6d631016a53e6f16665c2a6727fc7b374e1f"
+}

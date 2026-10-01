@@ -22,9 +22,12 @@ def archive_run(run_id):
     log=ROOT/'.local/logs'/(run_id+'.log')
     if log.exists():files.append(log)
     if (run/'external-log.json').exists():
-        external=(ROOT/json.loads((run/'external-log.json').read_text(encoding='utf-8'))['file']).resolve()
-        assert external.is_relative_to(ROOT/'.local/logs')
-        if external.exists() and external not in files:files.append(external)
+        logs=json.loads((run/'external-log.json').read_text(encoding='utf-8'))
+        for name in ('file','stdout','stderr'):
+            if name not in logs:continue
+            external=(ROOT/logs[name]).resolve()
+            assert external.is_relative_to((ROOT/'.local/logs').resolve())
+            if external.exists() and external not in files:files.append(external)
     items=[{'file':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':sha256(p)} for p in files]
     path=directory/(run_id+'.zip')
     with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED) as zipped:

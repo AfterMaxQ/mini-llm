@@ -1,0 +1,13 @@
+{
+  "source_run": "E14-R03",
+  "scope": "新增八个训练模板的完整历史与当前回复监督核验；未满足正式轨迹规模，未进行Pi训练",
+  "output_file": "train-extension.jsonl",
+  "system_prompt": "你是一个在隔离开发项目中工作的助手。使用提供的工具完成用户任务，按照实际返回判断下一步。缺少必要信息时先询问，不擅自修改无关文件。工具路径使用任务工作区内的相对路径。不要声称未执行的操作已经完成。",
+  "enable_thinking": false,
+  "packing": false,
+  "unit_policy": "assistant_action",
+  "context_limit": 8192,
+  "training_lengths_to_inspect": [2048, 4096, 8192],
+  "tool_result_policy": "原样保留Pi文本返回和错误；调用id与错误元数据单独保存",
+  "final_answer_source": "已执行规则参考的最终回答，非教师或学生输出"
+}

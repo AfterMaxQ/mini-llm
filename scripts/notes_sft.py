@@ -71,12 +71,24 @@ def draw_comparison(completed):
     return path
 
 
+def put_evidence(evidence,label,files):
+    row=f'| {label} | {files} |';prefix=f'| {label} |';lines=[];seen=False
+    for line in evidence.splitlines():
+        if line.startswith(prefix):
+            if not seen:lines.append(row)
+            seen=True
+        else:lines.append(line)
+    result='\n'.join(lines)+'\n'
+    return result if seen else result.replace('| 后续训练与生成结果 |',row+'\n| 后续训练与生成结果 |')
+
+
 def update_summary(completed):
     path=ROOT/'docs/reports/summaries/02.md'
     if not path.exists():return
     evidence='## 证据索引'+path.read_text(encoding='utf-8').split('## 证据索引',1)[1]
     rows=[('工具生成比较','experiments/E09/dev-tool-comparison.csv'),
           ('1k 配对变化与失败例子','experiments/E09/E09-R06-comparison.json；experiments/E09/E09-R06-paired.csv'),
+          ('5k 配对变化与失败例子','experiments/E09/E09-R10-comparison.json；experiments/E09/E09-R10-paired.csv'),
           ('Windows 记录写入排查','experiments/E09/runs/E09-R07.json；experiments/E09/runs/E09-R08.json'),
           ('Pi 工具链准备','experiments/E13/preparation.json；experiments/E13/notes.md'),
           ('Pi 实际工具定义与容器参数','configs/pi-tools.json；configs/pi-sandbox.json'),
@@ -88,12 +100,10 @@ def update_summary(completed):
           ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
           ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs'),
           ('Pi 多轮训练格式与监督检查','configs/pi-reference-data.json；scripts/pi_reference_data.py；experiments/E14/runs/E14-R02.json；experiments/E14/current-reply-mask.csv')]
+    rows.append(('Pi 场景去重与失败记录','experiments/E14/scene-generation-audit.json；experiments/E14/runs/E14-R05.json；experiments/E14/runs/E14-R06.json；experiments/E14/runs/E14-R07.json'))
     for label,files in rows:
         if (ROOT/files.split('；')[0]).exists():
-            row=f'| {label} | {files} |'
-            previous=next((line for line in evidence.splitlines() if line.startswith(f'| {label} |')),None)
-            if previous:evidence=evidence.replace(previous,row)
-            else:evidence=evidence.replace('| 后续训练与生成结果 |',row+'\n| 后续训练与生成结果 |')
+            evidence=put_evidence(evidence,label,files)
     intro='# 从提示词基线走向正式微调\n\n原模型在相同完整 dev 上，零样本通过 268/500，加入三条固定示例后通过 355/500。少样本提示提高了调用轮表现，也增加了本该询问或不调用时的误调用。后续模型都沿用这个已冻结的提示。\n\n'
     if completed:
         r=completed[-1];s=r['summary']
@@ -113,8 +123,13 @@ def update_summary(completed):
     extension=ROOT/'experiments/E14/runs/E14-R03.json'
     if extension.exists() and json.loads(extension.read_text(encoding='utf-8'))['status']=='reference_extension_verified':
         intro+='新增八个训练模板改变了配置层级、单位换算、去重顺序和故障原因，两批共16个训练模板族。参考步骤由规则给定，逐条执行不等于模型自主完成任务。\n\n'
-        row='| Pi 新增模板与错误方案 | scripts/pi_tasks_extended.mjs；experiments/E14/runs/E14-R03.json；experiments/E14/extension-calls.csv；experiments/E14/extension-events.jsonl |'
-        if row not in evidence:evidence=evidence.replace('| 后续训练与生成结果 |',row+'\n| 后续训练与生成结果 |')
+        evidence=put_evidence(evidence,'Pi 新增模板与错误方案','scripts/pi_tasks_extended.mjs；experiments/E14/runs/E14-R03.json；experiments/E14/extension-calls.csv；experiments/E14/extension-events.jsonl')
+    converted=ROOT/'experiments/E14/runs/E14-R04.json'
+    if converted.exists() and json.loads(converted.read_text(encoding='utf-8'))['status']=='reference_encoding_verified':
+        evidence=put_evidence(evidence,'Pi 新增参考的训练格式','configs/pi-reference-extension.json；experiments/E14/runs/E14-R04.json')
+    scenes=ROOT/'experiments/E14/runs/E14-R07.json'
+    if scenes.exists() and json.loads(scenes.read_text(encoding='utf-8'))['status']=='training_requests_frozen':
+        evidence=put_evidence(evidence,'Pi 训练场景与批量参考入口','configs/pi-task-data.json；configs/pi-reference-batch.json；scripts/pi_task_data.py；scripts/pi_reference_batch.mjs')
     path.write_text(intro+evidence,encoding='utf-8')
 
 
@@ -239,7 +254,8 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
     fivek=next((entry for entry in reversed(entries) if entry[1]['train_size']==5000 and entry[2] and entry[2]['status']=='trained_pending_tool_eval'),None)
     if fivek:
         r=fivek[2]
-        note+=f"\n5k 的 {fivek[0]} 也完成了一个epoch，{r['train']['assistant_units']:,} 个回复单元共有 {r['train']['supervised_tokens']:,} 个监督 token，实际更新 {r['steps']:,} 次。最低完整 dev loss 为 {r['selected_dev_loss']:.5f}，选择 {r['selected_checkpoint']}；参数训练耗时 {r['train_metrics']['train_runtime']/3600:.2f} 小时，包含中途完整验证与保存。选中适配器随后单独做同一500条dev的工具生成评测，结果完整后再讨论规模变化。\n"
+        outcome='选中适配器的同一500条dev工具生成评测也已完成，下面结合实际回复判断规模变化。' if fivek[0] in evaluated else '选中适配器随后单独做同一500条dev的工具生成评测，结果完整后再讨论规模变化。'
+        note+=f"\n5k 的 {fivek[0]} 也完成了一个epoch，{r['train']['assistant_units']:,} 个回复单元共有 {r['train']['supervised_tokens']:,} 个监督 token，实际更新 {r['steps']:,} 次。最低完整 dev loss 为 {r['selected_dev_loss']:.5f}，选择 {r['selected_checkpoint']}；参数训练耗时 {r['train_metrics']['train_runtime']/3600:.2f} 小时，包含中途完整验证与保存。{outcome}\n"
     note+='\n这一步要观察两条线：训练 loss 是否继续下降，完整 dev loss 是否也下降。只有两条线和工具结果放在一起，才有依据区分记住训练内容与适应新任务。\n'
     if active:
         note+='\n## 生成评测进行到哪一步？\n\n'
@@ -268,6 +284,12 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
             note+=f"\n## 只少通过五条，是原来的题都差了一点吗？\n\n不是。1k 这轮和提示词基线有 {a['both_passed']} 条共同通过、{a['both_failed']} 条共同失败；另外 {a['student_only']} 条原来错的轨迹被修好，{a['baseline_only']} 条原来对的轨迹退步了。最后相差五条，是这两边变化抵消后的结果。逐轮看也有 {a['decision_improvements']} 次改对和 {a['decision_regressions']} 次改错，不能说模型几乎没有变化。\n"
             note+=f"\n把同一批 500 条轨迹成对重抽 10,000 次，差值的 95% 区间为 {low:.1f} 到 {high:+.1f} 个百分点，覆盖零。这里先把结论收住：本轮没有证明整体改善，也没有充分依据把这一点差距推广为稳定退步。区间只反映这份 dev 的轨迹差异，不包含重新训练不同 seed 的波动。\n"
             note+='\n## 是不是每个缺参数的问题都变差了？\n\n也不是。上一节的待办例子 glaive-60626，这轮已经改成先询问任务和优先级；原模型猜参数的问题得到了修正。但 glaive-19711 只说想听音乐，没有给出类型，原模型会问想听什么，微调后却直接调用了下面的工具：\n\n```json\n{"name":"play_music","arguments":{"genre":"pop"}}\n```\n\n这条 JSON 和参数类型都有效，问题在于 pop 是模型自行补出的。两个例子都来自本轮实际回复。接下来继续原定 5k、10k 比较，观察这种多调用、少询问的倾向是否改变；数据质量和学习率的对照再单独排查，当前不为了让成绩变好而改评分。\n'
+    fivek_analysis=folder/'E09-R10-comparison.json'
+    if fivek_analysis.exists():
+        a=json.loads(fivek_analysis.read_text(encoding='utf-8'));low,high=a['paired_bootstrap']['percentile_interval']
+        note+=f"\n## 增加到5k后，哪些轨迹变了？64条修好，13条退步\n\n和固定提示的原模型相比，5k 这轮有 {a['both_passed']} 条共同通过、{a['both_failed']} 条共同失败；{a['student_only']} 条原来错的轨迹被修好，{a['baseline_only']} 条原来对的轨迹退步，净增加51条。按同一500条轨迹配对重抽10,000次，提升的95%区间为 {low:.1f}—{high:.1f} 个百分点。这次区间没有覆盖零，可以说这份dev上有改善；它仍不能代表最终test，也没有包含不同训练seed的波动。\n"
+        note+='\n变化主要体现在不调用的决策：5k通过342/360，1k只有276/360；调用轮则从474/568变为482/568。模型更能等参数补齐，但并行任务仍只有2/10条轨迹通过。数据量、监督token和更新次数都增加了，暂时不能把原因单独归到某一种训练机制。\n'
+        note+='\n待办任务 glaive-60626 很适合说明这轮的变化。用户只说想加一条待办时，5k模型会先询问内容和优先级，修正了原模型自行猜参数的问题。但在补齐“buy groceries”和“high”后的另一个决策轮，它返回了下面的调用：\n\n```json\n{"name":"make_todo","arguments":{"priority":"high","task":"Buy groceries"}}\n```\n\n标注里的任务内容是小写的“buy groceries”。这次只改了首字母，仍被既定的严格字符串评分判为失败，所以整条轨迹没有通过。这不是缺参数错误，却也不能临时放宽评分把它算对。一个决策改好了，不代表整条轨迹都修好了。这里各轮输入使用标注历史，尚未执行模型自己的连续Agent对话；接着完成原定10k和三个训练seed，再看收益是否稳定。\n'
     diagnosis=ROOT/'experiments/E09/runs/E09-R02.json'
     if diagnosis.exists():
         probe=json.loads(diagnosis.read_text(encoding='utf-8'))

@@ -1,0 +1,7 @@
+{
+  "source_scene_run": "E14-R07",
+  "target_references": 1000,
+  "scope": "冻结清单前1000个训练场景的规则参考逐条本机执行；无模型调用，dev/test不参与",
+  "update_seconds": 600,
+  "encode_after_success": true
+}

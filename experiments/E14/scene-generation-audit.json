@@ -1,0 +1,45 @@
+{
+  "checked": "2026-10-01T13:33:48+08:00",
+  "method": "完整prompt与按路径排序的初始文件文本规范化后计算SHA256；只检测精确场景重复",
+  "runs": [
+    {
+      "run_id": "E14-R05",
+      "status": "failed",
+      "requests": 2000,
+      "unique_scenes": 1979,
+      "extra_exact_duplicates": 21,
+      "duplicate_groups": 18,
+      "families": [
+        "train-duration-unit-migration"
+      ],
+      "diagnostic_sha256": "9ba38af4b1a2d7c2fc690c38771659601ee25a23d738852f2469064f1576235f"
+    },
+    {
+      "run_id": "E14-R06",
+      "status": "failed",
+      "requests": 2000,
+      "unique_scenes": 1993,
+      "extra_exact_duplicates": 7,
+      "duplicate_groups": 7,
+      "families": [
+        "train-unspecified-schedule-zone"
+      ],
+      "diagnostic_sha256": "e1cef28216cea89939024a165c8f29b47a2ed2278c6a09e3005364b2232c489a"
+    },
+    {
+      "run_id": "E14-R07",
+      "status": "training_requests_frozen",
+      "requests": 2000,
+      "unique_scenes": 2000,
+      "extra_exact_duplicates": 0,
+      "duplicate_groups": 0,
+      "requests_sha256": "5f1ec4805523e14efafb236ed3104ff67c69081d96cd0bd9a8c11f1fdb832a35",
+      "scene_hashes_sha256": "1bba26992bdc941ca9dc5e9db15c931a28d3a59b3e212b1e18e7f7bf64086926"
+    }
+  ],
+  "shared_template_families": 16,
+  "split": "train",
+  "dev_tasks": 0,
+  "test_tasks": 0,
+  "scope": "参数变体属于同一训练模板族；冻结请求不计作执行有效轨迹"
+}

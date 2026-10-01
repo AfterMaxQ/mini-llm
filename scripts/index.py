@@ -29,6 +29,9 @@ def main():
             translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测", "data_ready_pending_training": "匹配数据与50条复查完成，正式训练待执行", "reference_pilot_verified": "8类训练任务原型已核验，正式轨迹与迁移训练待执行"}
             translated['pilot_encoding_verified']='8条原型的34个回复单元已核验，正式轨迹与迁移训练待执行'
             translated['reference_extension_verified']='新增8个训练模板已核验，正式轨迹与迁移训练待执行'
+            translated['reference_encoding_verified']='新增参考训练格式已核验，正式轨迹与迁移训练待执行'
+            translated['training_requests_frozen']='2000个训练场景已冻结，逐条参考执行待完成'
+            translated['reference_batch_verified']='1000条规则参考已执行，训练格式与迁移待核对'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
         unfinished = [p for p in sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/config.json"))
                       if not (p.parent / "result.json").exists()]
@@ -44,6 +47,8 @@ def main():
                 state += f"，更新 {data['latest']['step']} 次"
             elif "summary" in data:
                 state += f"，{data['current_prompt']} 已记录 {data['summary']['decision_turns']} 个决策轮"
+            elif config.get('operation')=='pi_reference_batch' and 'completed' in data:
+                state += f"，参考过程 {data['completed']}/{data['target']}，有效 {data['valid']} 条"
             elif (current / 'validation-progress.json').exists():
                 validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
                 state += f"，第 {validation['step']} 步完整 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"

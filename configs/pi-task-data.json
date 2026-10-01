@@ -1,0 +1,9 @@
+{
+  "source_runs": ["E14-R01", "E14-R03"],
+  "seed": 172026,
+  "variant_version": "duration-and-calendar-grid-v3",
+  "training_requests": 2000,
+  "reference_requests": 1000,
+  "split": "train",
+  "policy": "同模板内生成不同实际场景，全部保留原模板族；参考过程必须重新执行，不复制已执行轨迹；dev/test另建模板与仓库族"
+}

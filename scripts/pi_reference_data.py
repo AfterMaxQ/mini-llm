@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import sys
+import subprocess
 from collections import Counter
 
 import torch
@@ -62,6 +63,8 @@ def convert(source, task, tools, config, schema_hash):
             'template_family': task['template_family'], 'repository_family': task['repository_family'],
             'group_id': digest([task['template_family'], task['repository_family']]),
             'source': 'minillm_pi_rules', 'source_run_id': config['source_run'], 'source_id': task['task_id'],
+            'source_revision': config['source_code_snapshot_sha256'], 'license': None,
+            'license_note': '项目自编任务，当前仓库未声明数据许可',
             'messages': messages, 'tools': tools, 'tools_sha256': schema_hash, 'tool_result_metadata': metadata,
             'teacher_run_id': None, 'reference_answer_source': 'executed_rule_reference',
             'validation': {'format': True, 'arguments': True, 'execution': 'reference_passed'},
@@ -73,16 +76,19 @@ def main():
     config = json.loads((ROOT / args.config).read_text(encoding='utf-8'))
     source_run = ROOT / '.local/runs' / config['source_run']
     source_result = json.loads((source_run / 'result.json').read_text(encoding='utf-8'))
-    assert source_result['status'] == 'reference_pilot_verified' and source_result['model_calls'] == 0
+    assert source_result['status'] in {'reference_pilot_verified', 'reference_extension_verified', 'reference_batch_verified'} and source_result['model_calls'] == 0
     assert sha256(source_run / 'records.json') == source_result['records_sha256']
     assert sha256(source_run / 'tasks.json') == source_result['tasks_sha256']
     source = json.loads((source_run / 'records.json').read_text(encoding='utf-8'))
     tasks = json.loads((source_run / 'tasks.json').read_text(encoding='utf-8'))
-    assert len(source) == len(tasks) == 8
+    trajectory_count = source_result['task_count']
+    assert len(source) == len(tasks) == trajectory_count
+    expected_calls = source_result['reference_tool_calls']
+    expected_errors = source_result['reference_error_returns']
     installed = json.loads((ROOT / 'configs/pi-tools.json').read_text(encoding='utf-8'))
     tools = [{'type': 'function', 'function': tool} for tool in installed['tools']]
     schema_hash = digest(tools)
-    config.update({'command': sys.argv, 'operation': 'pi_reference_encoding',
+    config.update({'command': [sys.executable, *sys.argv], 'operation': 'pi_reference_encoding',
                    'source_records_sha256': sha256(source_run / 'records.json'),
                    'source_tasks_sha256': sha256(source_run / 'tasks.json'),
                    'source_result_sha256': sha256(source_run / 'result.json'),
@@ -92,7 +98,7 @@ def main():
     try:
         tokenizer, original, marked = tokenizer_and_template()
         records = [convert(s, t, tools, config, schema_hash) for s, t in zip(source, tasks)]
-        assert len({r['sample_id'] for r in records}) == 8
+        assert len({r['sample_id'] for r in records}) == trajectory_count
         units = []; encoded = []; boundaries = []
         for record in records:
             target_count = 0
@@ -123,25 +129,28 @@ def main():
                         'input_text_sha256': hashlib.sha256(text.encode()).hexdigest(),
                         'target_text': tokenizer.decode([x for x in item['labels'] if x != -100])}
                 units.append(unit); encoded.append({**item, 'sample_id': record['sample_id'], 'message_index': action['target_message_index']})
-                if record['category'] == 'failure_recovery' and action['target_message_index'] == 4:
+                current_index = action['target_message_index']
+                prior = record['messages'][current_index-1] if current_index > 1 else {}
+                errors = {m['call_id'] for m in record['tool_result_metadata'] if m['is_error']}
+                if prior.get('tool_call_id') in errors:
                     tool = action['messages'][-2]
-                    assert tool['role'] == 'tool' and 'Command exited with code 1' in tool['content']
-                    assert "'a- b'" in tool['content'] and tool['content'] in prefix
-                    boundaries.append({'sample_id':record['sample_id'],'message_index':4,'preceding_error':tool['content'],
+                    assert tool['role'] == 'tool' and tool['content'] in prefix
+                    boundaries.append({'sample_id':record['sample_id'],'message_index':current_index,'preceding_error':tool['content'],
                                        'tool_call_id':tool['tool_call_id'],'target_text':unit['target_text'],
                                        'input_tokens':len(item['input_ids']),'target_tokens':targets,'history_supervised_tokens':sum(x!=-100 for x in item['labels'][:start])})
             record['token_count'] = units[-1]['input_tokens']; record['target_token_count'] = target_count
-        assert len(units) == 34 and len(boundaries) == 1
-        assert sum(m['is_error'] for r in records for m in r['tool_result_metadata']) == 2
+        assert len(units) == expected_calls + trajectory_count and len(boundaries) == expected_errors
+        assert sum(m['is_error'] for r in records for m in r['tool_result_metadata']) == expected_errors
         assert not torch.cuda.is_initialized()
         output = ROOT / '.local/data/processed' / run.name; output.mkdir(parents=True, exist_ok=False)
-        raw = output / 'train-pilot.jsonl'
+        raw = output / config.get('output_file', 'train-pilot.jsonl')
         raw.write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in records),encoding='utf-8')
         for name, values in [('units.jsonl', units), ('encoded.jsonl', encoded)]:
             (run / name).write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in values),encoding='utf-8')
         write_json(run / 'mask-examples.json', boundaries)
-        result = {'status':'pilot_encoding_verified','exit_code':0,'operation':'pi_reference_encoding',
-                  'independent_trajectories':8,'assistant_units':len(units),'tool_calls':26,'error_returns':2,
+        status = 'pilot_encoding_verified' if source_result['status']=='reference_pilot_verified' else 'reference_encoding_verified'
+        result = {'status':status,'exit_code':0,'operation':'pi_reference_encoding',
+                  'independent_trajectories':trajectory_count,'assistant_units':len(units),'tool_calls':expected_calls,'error_returns':expected_errors,
                   'input_tokens':sum(u['input_tokens'] for u in units),'supervised_tokens':sum(u['target_tokens'] for u in units),
                   'max_sequence_length':max(u['input_tokens'] for u in units),
                   'length_inspection':{str(n):{'units_over_limit':sum(u['input_tokens']>n for u in units),
@@ -153,10 +162,14 @@ def main():
                   'processed_file':raw.relative_to(ROOT).as_posix(),'processed_sha256':sha256(raw),
                   'units_sha256':sha256(run/'units.jsonl'),'encoded_sha256':sha256(run/'encoded.jsonl'),
                   'mask_examples_sha256':sha256(run/'mask-examples.json'),
-                  'scope':'八个真实训练原型的格式与遮罩核验；未满足正式轨迹规模，未进行Pi训练'}
+                  'scope':config['scope']}
         write_json(output / 'manifest.json', result)
         finish_run(run, result)
         print(json.dumps(result, ensure_ascii=False))
+        if source_result['status']=='reference_batch_verified':
+            for args in (['scripts/notes_pi_tasks.py'],['scripts/notes_sft.py'],['scripts/index.py'],['scripts/report.py','--volume','02']):
+                updated=subprocess.run([sys.executable,*args],cwd=ROOT)
+                if updated.returncode:print(f'文档更新未完成：{args[0]}；已结束的数据转换结果保留',flush=True)
     except Exception:
         import traceback
         finish_run(run, {'status':'failed','exit_code':1,'operation':'pi_reference_encoding','error':traceback.format_exc()})

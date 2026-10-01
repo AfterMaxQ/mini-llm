@@ -1,0 +1,87 @@
+{
+  "status": "reference_encoding_verified",
+  "exit_code": 0,
+  "operation": "pi_reference_encoding",
+  "independent_trajectories": 8,
+  "assistant_units": 37,
+  "tool_calls": 29,
+  "error_returns": 2,
+  "input_tokens": 42666,
+  "supervised_tokens": 1305,
+  "max_sequence_length": 1497,
+  "length_inspection": {
+    "2048": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    },
+    "4096": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    },
+    "8192": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    }
+  },
+  "categories": {
+    "read_locate": 1,
+    "config_change": 1,
+    "function_fix": 1,
+    "multi_file": 1,
+    "failure_recovery": 1,
+    "missing_information": 1,
+    "no_tool": 1,
+    "invalid_path_recovery": 1
+  },
+  "prefix_text_token_mask_checks": 37,
+  "cuda_initialized": false,
+  "truncated_units": 0,
+  "model_calls": 0,
+  "tools_schema_sha256": "2904d9adb8ebfa73e42dc08ac380b8f1727aaae5c6ef045de5af66e87875484d",
+  "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+  "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+  "processed_file": ".local/data/processed/E14-R04/train-extension.jsonl",
+  "processed_sha256": "a04fe16d039b875520f8c839701d97ee2e7954772d9764338f9d594a0ffe7940",
+  "units_sha256": "51b34644445455b298df61712587ca6310fb37c6bb2195dc4aa74925937f2286",
+  "encoded_sha256": "2f6c54f096da515fa1be5f5c2c9cc99e8d853f23af3f70014fdebe63493dbde6",
+  "mask_examples_sha256": "318b7846f76a301f7ea11761d9299ceb2855119e7f77e27740d90d583413aa78",
+  "scope": "新增八个训练模板的完整历史与当前回复监督核验；未满足正式轨迹规模，未进行Pi训练",
+  "run_id": "E14-R04",
+  "finished": "2026-10-01T12:56:55+08:00",
+  "config": {
+    "source_run": "E14-R03",
+    "scope": "新增八个训练模板的完整历史与当前回复监督核验；未满足正式轨迹规模，未进行Pi训练",
+    "output_file": "train-extension.jsonl",
+    "system_prompt": "你是一个在隔离开发项目中工作的助手。使用提供的工具完成用户任务，按照实际返回判断下一步。缺少必要信息时先询问，不擅自修改无关文件。工具路径使用任务工作区内的相对路径。不要声称未执行的操作已经完成。",
+    "enable_thinking": false,
+    "packing": false,
+    "unit_policy": "assistant_action",
+    "context_limit": 8192,
+    "training_lengths_to_inspect": [
+      2048,
+      4096,
+      8192
+    ],
+    "tool_result_policy": "原样保留Pi文本返回和错误；调用id与错误元数据单独保存",
+    "final_answer_source": "已执行规则参考的最终回答，非教师或学生输出",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/pi_reference_data.py",
+      "--config",
+      "configs/pi-reference-extension.json"
+    ],
+    "operation": "pi_reference_encoding",
+    "source_records_sha256": "120fa7d6e845da522c263920689eddae9c199e1d25521680e9648f064ab3df66",
+    "source_tasks_sha256": "2ed8bbd349829bcc16c9511d14095a950cc02170d9e2bb4b0dcef07b2a6b3ac3",
+    "source_result_sha256": "027da974f78598929346c2e13b22b71204c79623151223f4c734548525e11b1e",
+    "pi_tools_file_sha256": "e1364b54809887abb3a7a11109bd17a1c56fd8df0a2edd2b1f3e3a1871844989",
+    "tools_schema_sha256": "2904d9adb8ebfa73e42dc08ac380b8f1727aaae5c6ef045de5af66e87875484d",
+    "source_code_snapshot_sha256": "5a8fd61e8c8875f6a6137a8b226cec6112cafa273e4634ff86ffb4f40dfdf602",
+    "run_id": "E14-R04",
+    "started": "2026-10-01T12:56:54+08:00",
+    "commit": "1bce4f1f8c517566ece811d7154344e9dd32885c",
+    "process_id": 39652,
+    "code_snapshot_sha256": "139879f9e141e040d9f23249b63ee955e426c8ba6ff4547b0b504d727942021f"
+  },
+  "raw_result_sha256": "1a9b2dd44be7c5b65fbe06455d2d391e416077f6e087604f35d173ab0b37f003"
+}
