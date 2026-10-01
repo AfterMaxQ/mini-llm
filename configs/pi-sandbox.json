@@ -1,0 +1,18 @@
+{
+  "image": "node@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8",
+  "image_tag_at_download": "node:24.14.0-bookworm-slim",
+  "pi_version": "0.99.1",
+  "network": "none",
+  "workdir": "/workspace",
+  "user": "1000:1000",
+  "cpus": 2,
+  "memory": "1g",
+  "pids_limit": 128,
+  "workspace_tmpfs": "rw,nosuid,nodev,mode=0700,uid=1000,gid=1000,size=256m",
+  "tmp_tmpfs": "rw,nosuid,nodev,mode=1777,size=64m",
+  "command_timeout_seconds": 60,
+  "task_timeout_seconds": 300,
+  "max_tool_calls": 12,
+  "context_tokens": 8192,
+  "scope": "本机任务工具执行；模型推理另行连接本地服务"
+}

@@ -1,0 +1,136 @@
+{
+  "package": "@earendil-works/pi-coding-agent",
+  "version": "0.99.1",
+  "license": "MIT",
+  "source": [
+    {
+      "file": "package.json",
+      "sha256": "c701ddbf28b5170deb478b8586ee713f9372027c04736946a4ffe82168ece5ba"
+    },
+    {
+      "file": "dist/core/tools/read.js",
+      "sha256": "6be7949968968f42a17ccbe341008db3f061cc1d757b42ff1d269bb0d4cc66f1"
+    },
+    {
+      "file": "dist/core/tools/edit.js",
+      "sha256": "e2e7081b28b170eb11bdd8d4fc295c491d581364cd57ae0670f24031b4057265"
+    },
+    {
+      "file": "dist/core/tools/write.js",
+      "sha256": "0e9daec15a5001cafe651db391aed63a463c346d29b60e6dc91ef09477fd22f5"
+    },
+    {
+      "file": "dist/core/tools/bash.js",
+      "sha256": "03f6f7cbdaa4b7cd4d84a3aa0cc8dc5d87832d5153d3bd90ce67439d1de31819"
+    },
+    {
+      "file": "dist/utils/mime.js",
+      "sha256": "36bdb72fc40d809ab5f69e80ecd54651d4131661e92cf7dcec7b719f139badcf"
+    }
+  ],
+  "tools": [
+    {
+      "name": "read",
+      "description": "Read the contents of a file. Supports text files and images (jpg, png, gif, webp, bmp). Images are sent as attachments. For text files, output is truncated to 2000 lines or 50KB (whichever is hit first). Use offset/limit for large files. When you need the full file, continue with offset until complete.",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to the file to read (relative or absolute)"
+          },
+          "offset": {
+            "type": "number",
+            "description": "Line number to start reading from (1-indexed)"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Maximum number of lines to read"
+          }
+        }
+      }
+    },
+    {
+      "name": "edit",
+      "description": "Edit a single file using exact text replacement. Every edits[].oldText must match a unique, non-overlapping region of the original file. If two changes affect the same block or nearby lines, merge them into one edit instead of emitting overlapping edits. Do not include large unchanged regions just to connect distant changes.",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "path",
+          "edits"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to the file to edit (relative or absolute)"
+          },
+          "edits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "oldText",
+                "newText"
+              ],
+              "properties": {
+                "oldText": {
+                  "type": "string",
+                  "description": "Exact text for one targeted replacement. It must be unique in the original file and must not overlap with any other edits[].oldText in the same call."
+                },
+                "newText": {
+                  "type": "string",
+                  "description": "Replacement text for this targeted edit."
+                }
+              }
+            },
+            "description": "One or more targeted replacements. Each edit is matched against the original file, not incrementally. Do not include overlapping or nested edits. If two changes touch the same block or nearby lines, merge them into one edit instead."
+          }
+        }
+      }
+    },
+    {
+      "name": "write",
+      "description": "Write content to a file. Creates the file if it doesn't exist, overwrites if it does. Automatically creates parent directories.",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "path",
+          "content"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to the file to write (relative or absolute)"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content to write to the file"
+          }
+        }
+      }
+    },
+    {
+      "name": "bash",
+      "description": "Execute a bash command in the current working directory. Returns stdout and stderr. Output is truncated to last 2000 lines or 50KB (whichever is hit first). If truncated, full output is saved to a temp file. Optionally provide a timeout in seconds.",
+      "parameters": {
+        "type": "object",
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "Shell command to execute"
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Timeout in seconds (optional, no default timeout)"
+          }
+        }
+      }
+    }
+  ]
+}

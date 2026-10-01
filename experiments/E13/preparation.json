@@ -1,0 +1,235 @@
+{
+  "status": "tool_chain_verified",
+  "verified_at": "2026-10-01T02:47:22.374Z",
+  "scope": "真实Pi工具与本机容器的执行核验；无模型调用，不是E13 Agent任务成功率",
+  "model_calls": 0,
+  "agent_tasks": 0,
+  "request_count": 20,
+  "normal_returns": 11,
+  "expected_error_returns": 9,
+  "package": "@earendil-works/pi-coding-agent",
+  "pi_version": "0.99.1",
+  "package_license": "MIT",
+  "host_node_version": "v24.14.0",
+  "container_node_version": "v24.14.0",
+  "image": "node@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8",
+  "schema_sha256": "e1364b54809887abb3a7a11109bd17a1c56fd8df0a2edd2b1f3e3a1871844989",
+  "events_sha256": "238809e8e3ab3ed4740a7f904a11caa13acb3c938ca8ba563255bd002762b425",
+  "adapter_sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11",
+  "probe_sha256": "fb83e269119f5aee84e5614ae532cb956197290ce5829859fa7e57e9dcd5cfc9",
+  "config_sha256": "de76b485d96a85430b75a7f58be7d266d324b3680e0cda00c61a2c09358f4425",
+  "actual_isolation": {
+    "network": "none",
+    "readonly_rootfs": true,
+    "user": "1000:1000",
+    "host_bind_or_volume_mounts": 0,
+    "gpu_device_requests": 0,
+    "memory_bytes": 1073741824,
+    "pids_limit": 128,
+    "cap_drop": [
+      "ALL"
+    ]
+  },
+  "formal_budget": {
+    "context_tokens": 8192,
+    "tool_calls": 12,
+    "command_seconds": 60,
+    "task_seconds": 300
+  },
+  "diagnostic_task_seconds": 2,
+  "sum_output": 5,
+  "sum_exit_code": 0,
+  "network_return": "ENETUNREACH",
+  "readonly_write_return": "EROFS",
+  "nonzero_command_exit_code": 7,
+  "command_timeout_seconds_observed": 1.2150217000000012,
+  "task_deadline_seconds_observed": 2.1715455999999995,
+  "image_return_mime": "image/png",
+  "final_files": [
+    {
+      "path": "escape",
+      "kind": "symlink",
+      "target": "/tmp"
+    },
+    {
+      "path": "src/sum.mjs",
+      "bytes": 36,
+      "sha256": "c01a4dda8409c0ac1b53b9223b8700f9be4a9024245cf8ec125ceebf4f7f5709"
+    },
+    {
+      "path": "fixture.png",
+      "bytes": 69,
+      "sha256": "beb4ab03d1c924d8f85d2a7430b4f5f577e69f655691e3926356fb26ec19d3cf"
+    }
+  ],
+  "events": [
+    {
+      "call_id": "probe-1",
+      "tool": "write",
+      "is_error": false,
+      "seconds": 0.565536
+    },
+    {
+      "call_id": "probe-2",
+      "tool": "read",
+      "is_error": false,
+      "seconds": 0.6750373
+    },
+    {
+      "call_id": "probe-3",
+      "tool": "edit",
+      "is_error": false,
+      "seconds": 0.7055300000000002
+    },
+    {
+      "call_id": "probe-4",
+      "tool": "bash",
+      "is_error": false,
+      "seconds": 0.2501741000000002
+    },
+    {
+      "call_id": "probe-5",
+      "tool": "read",
+      "is_error": true,
+      "seconds": 0.22161979999999995
+    },
+    {
+      "call_id": "probe-6",
+      "tool": "edit",
+      "is_error": true,
+      "seconds": 0.4609342999999999
+    },
+    {
+      "call_id": "probe-7",
+      "tool": "read",
+      "is_error": true,
+      "seconds": 4.6299999999973804e-05
+    },
+    {
+      "call_id": "probe-8",
+      "tool": "bash",
+      "is_error": false,
+      "seconds": 0.20197739999999975
+    },
+    {
+      "call_id": "probe-9",
+      "tool": "write",
+      "is_error": true,
+      "seconds": 0.23970910000000004
+    },
+    {
+      "call_id": "probe-10",
+      "tool": "read",
+      "is_error": false,
+      "seconds": 0.7223973000000006
+    },
+    {
+      "call_id": "probe-11",
+      "tool": "read",
+      "is_error": false,
+      "seconds": 0.7242109999999994
+    },
+    {
+      "call_id": "probe-12",
+      "tool": "read",
+      "is_error": false,
+      "seconds": 0.7135491999999994
+    },
+    {
+      "call_id": "probe-13",
+      "tool": "read",
+      "is_error": true,
+      "seconds": 4.979999999977736e-05
+    },
+    {
+      "call_id": "probe-14",
+      "tool": "bash",
+      "is_error": false,
+      "seconds": 0.2785507000000007
+    },
+    {
+      "call_id": "probe-15",
+      "tool": "bash",
+      "is_error": true,
+      "seconds": 0.2697893999999997
+    },
+    {
+      "call_id": "probe-16",
+      "tool": "bash",
+      "is_error": true,
+      "seconds": 0.21028139999999984
+    },
+    {
+      "call_id": "probe-17",
+      "tool": "bash",
+      "is_error": true,
+      "seconds": 1.2150217000000012
+    },
+    {
+      "call_id": "probe-18",
+      "tool": "bash",
+      "is_error": false,
+      "seconds": 0.22249019999999836
+    },
+    {
+      "call_id": "probe-19",
+      "tool": "read",
+      "is_error": false,
+      "seconds": 0.7446247999999996
+    },
+    {
+      "call_id": "probe-20",
+      "tool": "bash",
+      "is_error": true,
+      "seconds": 2.1715455999999995
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": "2026-10-01T02-36-42.775Z",
+      "status": "failed",
+      "request_count": 2,
+      "result_sha256": "1fbe9d1a7ab4456c2d802afda82d93605216b0cb432e188e300cc025d58a68f3",
+      "events_sha256": "90c9786e37ebd8d5969c9ec9cdaf9da63ebda1aca69887318e0ad811a0b3c87f",
+      "adapter_sha256": "bdb78f6e18312d516f20b5ae99d1e927618e02322c3c3165adafc00707b000cb",
+      "probe_sha256": "a26d93dc52edd5ab46017c2bd1e3edf8e8146821e3e2810e246d102dd6456cff",
+      "archive": ".local/archive/preparation/pi-sandbox-2026-10-01T02-36-42.775Z.zip",
+      "archive_sha256": "84d098aad7117303447d1d7817cba2ccad8be7e454cc5d58e4d2826546c0cd78"
+    },
+    {
+      "attempt": "2026-10-01T02-38-41.776Z",
+      "status": "tool_chain_verified",
+      "request_count": 20,
+      "result_sha256": "fb8c345c037ef3d3e3f791a91b445b02b465ad557c50e1ed3f60d2f304d2182d",
+      "events_sha256": "44122696a66a22f7a0de94bc0b005cc60b1fc4975c6725f45f38dc33768f3f45",
+      "adapter_sha256": "42c81823e3b57fcb5025f0107420ad890368a8484ddea7d60af8760fb48fa55a",
+      "probe_sha256": "7b0dc85c884b6cfd6301de4c519ffc5d59ad0a45f9c7f11a9d33254d397b8e16",
+      "archive": ".local/archive/preparation/pi-sandbox-2026-10-01T02-38-41.776Z.zip",
+      "archive_sha256": "b0b5c2d77db358754b78ea4f2ac573d3e7d58b49e20ec0bba19551af8d517e67"
+    },
+    {
+      "attempt": "2026-10-01T02-41-13.371Z",
+      "status": "tool_chain_verified",
+      "request_count": 20,
+      "result_sha256": "9532561a47864b2a9c290fba7315f57d57748856987bf35214fc78a272de9e3a",
+      "events_sha256": "991f9c374938053525504bb43e22fe5384dd540f2b8cc3c679777e80f66e4974",
+      "adapter_sha256": "42c81823e3b57fcb5025f0107420ad890368a8484ddea7d60af8760fb48fa55a",
+      "probe_sha256": "fb83e269119f5aee84e5614ae532cb956197290ce5829859fa7e57e9dcd5cfc9",
+      "archive": ".local/archive/preparation/pi-sandbox-2026-10-01T02-41-13.371Z.zip",
+      "archive_sha256": "22a2c4f646e129d840db96af978d9730137602200625fb03b0f622ce4c0b9cdc"
+    },
+    {
+      "attempt": "2026-10-01T02-47-09.426Z",
+      "status": "tool_chain_verified",
+      "request_count": 20,
+      "result_sha256": "dc39a3829b570b20348e092f101de174b2077bed2d79b2cf7c2b5aa7070bc8f7",
+      "events_sha256": "238809e8e3ab3ed4740a7f904a11caa13acb3c938ca8ba563255bd002762b425",
+      "adapter_sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11",
+      "probe_sha256": "fb83e269119f5aee84e5614ae532cb956197290ce5829859fa7e57e9dcd5cfc9",
+      "archive": ".local/archive/preparation/pi-sandbox-2026-10-01T02-47-09.426Z.zip",
+      "archive_sha256": "12ada1aa73a658b1a543c8c8d41b1dbc3466692efcbac278abeb30da3d1db36f"
+    }
+  ],
+  "original_directory": ".local/preparation/pi-sandbox/2026-10-01T02-47-09.426Z",
+  "notes": "首轮换行比较判据错误已保留；工具返回路径适配改变另开核验。全部调用本机CPU容器，不作为模型Agent成绩。"
+}
