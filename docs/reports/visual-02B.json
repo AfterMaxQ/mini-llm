@@ -1,13 +1,13 @@
 {
-  "word_sha256": "00fa050eb10c6305cc2bb921f57ded6a59942f19cb4b3d874b513c49e3c3063b",
+  "word_sha256": "f9be31f4c24ab44524ab9949eb64e72f4620432ed8dee5ca895984b6c1f55715",
   "visual_checked": true,
-  "updated": "2026-10-02T05:19:01+08:00",
+  "updated": "2026-10-02T05:26:15+08:00",
   "previous_checked": {
-    "word_sha256": "2d2f98362a71fb21e65aad7dc25a5cb869abc88f24961536e8a506afad9c7793",
+    "word_sha256": "00fa050eb10c6305cc2bb921f57ded6a59942f19cb4b3d874b513c49e3c3063b",
     "visual_checked": true,
-    "updated": "2026-10-02T05:06:35+08:00",
-    "pdf_sha256": "80eacc8bde008914a2bab7b5d78d8303dbecf4468d6ba147560ab26249c26935",
-    "checked_at": "2026-10-02T05:08:31+08:00",
+    "updated": "2026-10-02T05:19:01+08:00",
+    "pdf_sha256": "9e7e677db854a61c2a5cf0bd13570e319511389b2542b1f9cc84ba22d6ed4349",
+    "checked_at": "2026-10-02T05:19:01+08:00",
     "checked_pages": [
       1
     ],
@@ -53,7 +53,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "7e701222218156fb5d9c7f43da015c2b1d2c70a07d6683f55ecbe48d2ab7f3e5",
+      "page-01.png": "f423d251ed9e7b6d07eb6bb98401f51ac432c09326d68cd0e1b4bc33a09c152a",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -73,12 +73,12 @@
       "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
     },
     "observations": [
-      "实际查看本轮变化页 [1]：中文、表格与图表显示完整，未见缺字、遮挡、越界或空白页。",
+      "实际查看变化页 [1]：中文、表格、图表与代码示例完整，未见缺字、遮挡、越界或空白页。",
       "其余页面 PNG 哈希与上一份已核验版本一致，沿用原检查结果。"
     ]
   },
-  "pdf_sha256": "9e7e677db854a61c2a5cf0bd13570e319511389b2542b1f9cc84ba22d6ed4349",
-  "checked_at": "2026-10-02T05:19:01+08:00",
+  "pdf_sha256": "643b9281aafdb5dcfdc72cf24b248297c1e19fe1542dd3c53151b24ee98647d2",
+  "checked_at": "2026-10-02T05:26:15+08:00",
   "checked_pages": [
     1
   ],
@@ -124,7 +124,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "f423d251ed9e7b6d07eb6bb98401f51ac432c09326d68cd0e1b4bc33a09c152a",
+    "page-01.png": "1e45112ea2b8a398c0c2fb6b97d4d4e827b886f74df29c1192bb85069b906852",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -145,6 +145,6 @@
   },
   "observations": [
     "实际查看变化页 [1]：中文、表格、图表与代码示例完整，未见缺字、遮挡、越界或空白页。",
-    "其余页面 PNG 哈希与上一份已核验版本一致，沿用原检查结果。"
+    "其余页面与上一份已核验页面逐像素一致；渲染 PNG 的编码哈希会变化，不影响页面内容。"
   ]
 }
