@@ -73,7 +73,7 @@ class RecordCallback(TrainerCallback):
         self.run, self.trainer, self.last_report = run, trainer, 0
 
     def refresh(self):
-        script='scripts/notes_precision.py' if self.run.name.startswith('E10-') else 'scripts/notes_sft.py'
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(self.run.name.split('-')[0],'scripts/notes_sft.py')
         commands=[[sys.executable, script],
                   [sys.executable, 'scripts/report.py', '--volume', '02']]
         for command in commands:
@@ -217,7 +217,7 @@ def main():
         finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc(),
                    'allocated_mib_at_failure':torch.cuda.memory_allocated()/1024**2,
                    'reserved_mib_at_failure':torch.cuda.memory_reserved()/1024**2})
-        script='scripts/notes_precision.py' if args.experiment=='E10' else 'scripts/notes_sft.py'
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(args.experiment,'scripts/notes_sft.py')
         subprocess.run([sys.executable,script],cwd=ROOT,check=True)
         subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)
         raise

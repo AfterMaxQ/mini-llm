@@ -39,9 +39,35 @@ def launch(command,label):
     return log
 
 
+def verify_reference(reference):
+    desired={**read(ROOT/reference['training_config']),'train_size':reference['size'],'seed':reference['seed'],
+             'evaluation_prompt_sha256':sha256(ROOT/'configs/prompt-frozen.json')}
+    matches=[p.parent for p in sorted((ROOT/'.local/runs').glob(reference['experiment']+'-R*/config.json'))
+             if all(read(p).get(k)==v for k,v in desired.items())]
+    if not matches or not (matches[-1]/'result.json').exists():
+        raise RuntimeError('同条件参考训练尚未结束，不能启动对照队列')
+    run=matches[-1];result=read(run/'result.json')
+    assert result['status']=='trained_pending_tool_eval' and not alive(read(run/'config.json'))
+    assert result['train']['independent_trajectories']==reference['size'] and result['dev']['independent_trajectories']==500
+    expected_steps=(result['train']['assistant_units']+desired['gradient_accumulation']-1)//desired['gradient_accumulation']
+    assert result['steps']==expected_steps and desired['epochs']==1
+    adapter_hash=sha256(run/'selected-adapter/adapter_model.safetensors')
+    evaluations=[]
+    for path in (ROOT/'experiments'/reference['experiment']/'runs').glob('*.json'):
+        data=read(path);config=data['config']
+        if (data['status']=='completed' and config.get('kind')=='tool_eval' and config.get('source_train_run')==run.name
+            and config.get('adapter_sha256')==adapter_hash and config.get('frozen_prompt_sha256')==desired['evaluation_prompt_sha256']):
+            summary=data['summaries'][data['selected_prompt']]
+            assert summary['trajectories']==summary['evaluated_trajectories']==500 and summary['decision_turns']==928
+            assert sha256(ROOT/'.local/runs'/data['run_id']/(data['selected_prompt']+'.jsonl'))==summary['rows_sha256']
+            evaluations.append(data['run_id'])
+    if not evaluations:raise RuntimeError('同条件参考尚未完成完整 dev 工具评测')
+    print(json.dumps({'reference_train':run.name,'reference_dev':evaluations,'adapter_sha256':adapter_hash}),flush=True)
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--config',default='configs/scale.json');args=parser.parse_args()
-    plan=read(ROOT/args.config);base=read(ROOT/plan['training_config'])
+    plan=read(ROOT/args.config)
     lock=ROOT/'.local/scale-lock.json'
     if lock.exists():
         previous=read(lock)
@@ -49,7 +75,10 @@ def main():
             raise RuntimeError('规模实验队列已经运行，不能重复启动')
     write_json(lock,{'pid':os.getpid(),'created':psutil.Process().create_time(),'command':sys.argv})
     try:
+        if 'reference' in plan:verify_reference(plan['reference'])
         for job in plan['jobs']:
+            training_config=job.get('training_config',plan['training_config'])
+            base=read(ROOT/training_config)
             desired={**base,'train_size':job['size'],'seed':job['seed'],
                      'evaluation_prompt_sha256':sha256(ROOT/'configs/prompt-frozen.json')}
             candidates=[]
@@ -68,7 +97,7 @@ def main():
                 # result 写入后，训练还会收尾文档；等模型进程真正退出再做生成。
                 while alive(config):time.sleep(5)
             if not run or read(run/'result.json')['status']!='trained_pending_tool_eval':
-                log=launch(['scripts/sft.py','--config',plan['training_config'],'--experiment',plan['experiment'],
+                log=launch(['scripts/sft.py','--config',training_config,'--experiment',plan['experiment'],
                         '--size',str(job['size']),'--seed',str(job['seed'])],f"scale-{job['size']}-{job['seed']}-train")
                 candidates=sorted((ROOT/'.local/runs').glob(plan['experiment']+'-R*/config.json'))
                 run=next(p.parent for p in reversed(candidates) if all(read(p).get(k)==v for k,v in desired.items()))

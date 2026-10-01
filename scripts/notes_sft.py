@@ -80,7 +80,8 @@ def update_summary(completed):
           ('Windows 记录写入排查','experiments/E09/runs/E09-R07.json；experiments/E09/runs/E09-R08.json'),
           ('Pi 工具链准备','experiments/E13/preparation.json；experiments/E13/notes.md'),
           ('Pi 实际工具定义与容器参数','configs/pi-tools.json；configs/pi-sandbox.json'),
-          ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs')]
+          ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs'),
+          ('rank 对照准备','experiments/E11/preparation.json；configs/rank.json；configs/sft-rank8.json；configs/sft-rank32.json')]
     for label,files in rows:
         if (ROOT/files.split('；')[0]).exists() and label not in evidence:
             evidence=evidence.replace('| 后续训练与生成结果 |',f'| {label} | {files} |\n| 后续训练与生成结果 |')
@@ -94,6 +95,8 @@ def update_summary(completed):
         p=json.loads(preparation.read_text(encoding='utf-8'))
         if p['status']=='tool_chain_verified':
             intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据。模型尚未接入，不能把这些请求算成 Agent 任务成绩。\n\n"
+    if (ROOT/'experiments/E11/preparation.json').exists():
+        intro+='rank 对照固定学习率，选定 rank 后再比较学习率。候选参数量来自真实权重形状，训练与工具表现按当前章节分别记录，配置选择只使用 dev。\n\n'
     path.write_text(intro+evidence,encoding='utf-8')
 
 

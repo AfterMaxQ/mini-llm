@@ -203,7 +203,7 @@ def main():
             nonlocal last_report
             write_json(run/"progress.json",{"status":"running","current_prompt":name,"summary":summary,"completed_prompts":summaries})
             if time.monotonic()-last_report>=600:
-                script='scripts/notes_precision.py' if args.experiment=='E10' else 'scripts/notes_sft.py'
+                script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(args.experiment,'scripts/notes_sft.py')
                 note_command=[sys.executable,"scripts/notes_baseline.py","--run",run.name] if args.experiment=="E08" else [sys.executable,script]
                 subprocess.run(note_command,cwd=ROOT,check=True)
                 subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)
@@ -219,7 +219,7 @@ def main():
         if args.experiment=="E08" and config["split"]=="dev" and not args.adapter:
             write_json(ROOT/"configs/prompt-frozen.json",{"source_run":run.name,"selection_split":"dev","selected_prompt":selected,
                       "suffix":prompts[selected],"source_sha256":result["prompt_candidates_sha256"],"tie_break":"zero_shot"})
-        script='scripts/notes_precision.py' if args.experiment=='E10' else 'scripts/notes_sft.py'
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(args.experiment,'scripts/notes_sft.py')
         note_command=[sys.executable,"scripts/notes_baseline.py","--run",run.name] if args.experiment=="E08" else [sys.executable,script]
         subprocess.run(note_command,cwd=ROOT,check=True)
         subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)

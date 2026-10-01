@@ -1,0 +1,35 @@
+{
+  "experiment": "E11",
+  "training_config": "configs/sft.json",
+  "reference": {
+    "experiment": "E09",
+    "training_config": "configs/sft.json",
+    "size": 5000,
+    "seed": 17
+  },
+  "jobs": [
+    {
+      "size": 5000,
+      "seed": 17,
+      "training_config": "configs/sft-rank8.json"
+    },
+    {
+      "size": 5000,
+      "seed": 17,
+      "training_config": "configs/sft-rank32.json"
+    }
+  ],
+  "selection": {
+    "metric": "trajectory_passed",
+    "denominator": 500,
+    "tie_breaker": "smaller_rank",
+    "learning_rate_candidates": [
+      5e-05,
+      0.0001,
+      0.0002
+    ],
+    "learning_rate_rank": "rank阶段选定后冻结",
+    "learning_rate_tie_breaker": "lower_learning_rate"
+  },
+  "purpose": "先固定学习率比较rank；复用同条件rank16参考；选择后再执行学习率阶段"
+}

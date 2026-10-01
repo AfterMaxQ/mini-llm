@@ -58,7 +58,8 @@ def styles(document, title):
     footer._p.append(field)
 
 
-def add_markdown(document, path):
+def add_markdown(document, path, page_break_before=False):
+    first_paragraph = len(document.paragraphs)
     lines = path.read_text(encoding="utf-8").splitlines()
     index = 0
     while index < len(lines):
@@ -122,6 +123,9 @@ def add_markdown(document, path):
         else:
             text(document.add_paragraph(), line)
         index += 1
+    # 标题随正文一起换页，避免独立分页段落被挤出一张空白页。
+    if page_break_before and len(document.paragraphs) > first_paragraph:
+        document.paragraphs[first_paragraph].paragraph_format.page_break_before = True
 
 
 def render(path, directory):
@@ -181,9 +185,7 @@ def main():
     document.add_heading(f"MiniLLM 实验册 {args.volume}：{title}", 0)
     document.add_paragraph(f"更新：{now()}。本册按实际实验整理，原始运行记录单独保存。")
     for index, note in enumerate(notes):
-        if index:
-            document.add_page_break()
-        add_markdown(document, note)
+        add_markdown(document, note, page_break_before=bool(index))
     summary = ROOT / f"docs/reports/summaries/{args.volume}.md"
     if summary.exists():
         add_markdown(document, summary)

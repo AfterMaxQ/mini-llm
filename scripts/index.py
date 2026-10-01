@@ -22,6 +22,8 @@ def main():
             prepared = json.loads(preparation.read_text(encoding='utf-8'))
             if prepared.get('status') == 'tool_chain_verified':
                 state = '工具链准备已核验，模型 Agent 接入待执行'
+            elif prepared.get('status') == 'configuration_verified':
+                state = '配置与参数量已核验，正式 GPU 对照待执行'
         if runs:
             data = json.loads(runs[-1].read_text(encoding="utf-8"))
             translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测"}

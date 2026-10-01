@@ -1,0 +1,116 @@
+{
+  "status": "configuration_verified",
+  "checked": "2026-10-01T11:14:57+08:00",
+  "scope": "只读模型权重元数据及配置；无模型前向、反向或E11 GPU训练",
+  "command": [
+    "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+    "work/prepare_rank.py"
+  ],
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "projection_count": 196,
+  "lora_tensors_expected": 392,
+  "rank_conditions": [
+    {
+      "rank": 8,
+      "alpha": 32,
+      "alpha_over_rank": 4.0,
+      "projected_adapter_parameters": 8716288
+    },
+    {
+      "rank": 16,
+      "alpha": 32,
+      "alpha_over_rank": 2.0,
+      "projected_adapter_parameters": 17432576
+    },
+    {
+      "rank": 32,
+      "alpha": 32,
+      "alpha_over_rank": 1.0,
+      "projected_adapter_parameters": 34865152
+    }
+  ],
+  "formal_train_trajectories": 5000,
+  "formal_optimizer_steps": 1813,
+  "formal_train_units": 14502,
+  "formal_supervised_tokens": 638598,
+  "dev_trajectories": 500,
+  "dev_units": 1484,
+  "dev_target_tokens": 66664,
+  "rank16_count_matched_to": "E09-R09",
+  "reference_status": "同条件参考训练尚未结束，不能启动对照队列",
+  "cuda_initialized": false,
+  "e11_gpu_runs": 0,
+  "train_source_sha256": "07e4abe73d4e479008be6356e087bd8beab9ac49ce2bc20e1d78310dd612970c",
+  "dev_source_sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+  "model_index_sha256": "0d660e94b165eb912669a5249dff44b83188c4777a07ddb9611fb78d91b0578d",
+  "weight_files": [
+    {
+      "file": "model-00001-of-00002.safetensors",
+      "sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5"
+    },
+    {
+      "file": "model-00002-of-00002.safetensors",
+      "sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9"
+    }
+  ],
+  "code_and_configs": [
+    {
+      "file": "configs/sft.json",
+      "sha256": "0f91a48960f29542e3fac06e565b7c9c2c51af02966182f0036d0c88d4139aaa"
+    },
+    {
+      "file": "configs/sft-rank8.json",
+      "sha256": "f5464a81535ab3f30e447c35f9f1bf6f226a96339e068485fdf1e1d3ac5d13ca"
+    },
+    {
+      "file": "configs/sft-rank32.json",
+      "sha256": "7ca5315a025bfd1965a742db21afaca4d4459ce7115f9f39c4f1175fc80a853b"
+    },
+    {
+      "file": "configs/rank.json",
+      "sha256": "af9510f12b72767f9a7d7965de9dd46e9da6d143ece503ddf2962dc56853414c"
+    },
+    {
+      "file": "scripts/scale.py",
+      "sha256": "8b8f5b14b709f28216c2e5a0fe198607b629726dcec9086e2e7be739a317284e"
+    }
+  ],
+  "selection": {
+    "metric": "trajectory_passed",
+    "denominator": 500,
+    "tie_breaker": "smaller_rank",
+    "learning_rate_candidates": [
+      5e-05,
+      0.0001,
+      0.0002
+    ],
+    "learning_rate_rank": "rank阶段选定后冻结",
+    "learning_rate_tie_breaker": "lower_learning_rate"
+  },
+  "original_directory": ".local/preparation/rank/2026-10-01T11-14-56+08-00",
+  "archive": ".local/archive/preparation/rank-2026-10-01T11-14-56+08-00.zip",
+  "archive_sha256": "62f80b7ae66055d50e28a429e4a3151fcaa569cfb76e5f16baad5a4ec6a58492",
+  "previous_checks": [
+    {
+      "checked": "2026-10-01T11:10:53+08:00",
+      "archive": ".local/archive/preparation/rank-2026-10-01T11-10-51+08-00.zip",
+      "archive_sha256": "43fe2506e000bb108548aa48b9b3f1c5f63152ed8ccc281544430d4ad9f7dc21"
+    }
+  ],
+  "entry_verification": {
+    "checked": "2026-10-01T11:15:01+08:00",
+    "source_sha256": "8b8f5b14b709f28216c2e5a0fe198607b629726dcec9086e2e7be739a317284e",
+    "positive": {
+      "reference_train": "E09-R05",
+      "reference_dev": [
+        "E09-R06"
+      ],
+      "adapter_sha256": "6bc688812386da2875049e4fd68306058c8021976ec07b54ce9a9ab9c47a1687"
+    },
+    "blocked_formal_reference": "同条件参考训练尚未结束，不能启动对照队列",
+    "scope": "只校验参考入口；1k用于已结束分支检查，不替代E11的5k正式参考；未创建队列、未使用GPU",
+    "scale_lock_unchanged": true,
+    "archive": ".local/archive/preparation/rank-entry-2026-10-01T11-15-01+08-00.zip",
+    "archive_sha256": "5fd018e1c5448e3ec6cfec5463893bf99e1924df93425d6919b4e4fd6507a6ec"
+  }
+}
