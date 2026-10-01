@@ -1,13 +1,13 @@
 {
-  "word_sha256": "7ab9fdaa6ae2643f6cedf0e3207e608d2f9b08c956be384cafa6ada645da50bb",
+  "word_sha256": "5a6a22e1c0ff4c6510e620e7139f25dbb43b06be4de6ce0afbb2155853420cec",
   "visual_checked": true,
-  "updated": "2026-10-02T06:52:26+08:00",
+  "updated": "2026-10-02T07:08:46+08:00",
   "previous_checked": {
-    "word_sha256": "3031eeba91d1c5917dd8c9bba83b415b06fcae357532f15e2259f8dcb5580b09",
+    "word_sha256": "a66b4be254eba0bc421c288d4678f18050cb7f947f64904f90ff4eeac0ba54dd",
     "visual_checked": true,
-    "updated": "2026-10-02T06:44:55+08:00",
-    "pdf_sha256": "d64f0970722c8a1ccc893b7e249e40e6845d1e9078bb72980e0674ceec72428b",
-    "checked_at": "2026-10-02T06:44:55+08:00",
+    "updated": "2026-10-02T07:05:52+08:00",
+    "pdf_sha256": "d3e1ae337586faafa13551b1fce97478457c3c1daebd37e6e170417515a38c83",
+    "checked_at": "2026-10-02T07:05:52+08:00",
     "checked_pages": [
       1,
       5,
@@ -47,12 +47,12 @@
       15
     ],
     "page_sha256": {
-      "page-01.png": "c06e0cf04f608b3ccf5c7aa7db83f848bda1aa818d1d310b2e044517127f73ce",
+      "page-01.png": "4d553072aa1673c2f689f3b6d55f1b0374dd0f4de323e02da5428bdc70c08dca",
       "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
       "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
       "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-      "page-05.png": "97d003758f37811e1c7898065acca68eb1c1830f662440a6be9613fbf53c4a30",
-      "page-06.png": "188710ca70327ad8372f737a77e4d1cf4a1852385b66a19813614f2e0a0e521b",
+      "page-05.png": "aafec19ce9ea35e669b867ad26d920800c37e3b1d6207486753988966c51e16f",
+      "page-06.png": "990799fca9780bc647963baebb633feeaebee0ae0f73c80cfee9225f6546f690",
       "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
       "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
       "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -64,11 +64,11 @@
       "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
     },
     "observations": [
-      "上一版已实际查看，中文和版式清晰。"
+      "已查看封面、更新后的 E09-R15 结果表和 loss 曲线：中文清楚，表格与图例可读，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
     ]
   },
-  "pdf_sha256": "d6fc9e15882d418818660069da45eeaee7e80792950733036d3d90d246a93d3a",
-  "checked_at": "2026-10-02T06:52:26+08:00",
+  "pdf_sha256": "3232cfe280acda3b8634801556f17658c77c1a425c1ca6de9d77d391c1bcb026",
+  "checked_at": "2026-10-02T07:08:46+08:00",
   "checked_pages": [
     1,
     5,
@@ -108,12 +108,12 @@
     15
   ],
   "page_sha256": {
-    "page-01.png": "6e22e70c56368ee000fd55965c00c22a17069ae5d8beca840d12b484aef37c87",
+    "page-01.png": "270350a8554b2f880ad0371dbad650dc61f852e38bd3549e955d670748ff2ab3",
     "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
     "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
     "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-    "page-05.png": "9cea355a2917230ff30b8dd5426155018ae835c3006eb321346481c9cab2e94a",
-    "page-06.png": "2b648e8e4a365f1464ee84700ce32c6340b0fd529ce3bddafa104f8b90baa811",
+    "page-05.png": "e721d7d17150ecc67d7822a8f0ebca6291ae112848e4d38cfdd23772e8d75805",
+    "page-06.png": "4078ce8593632814dadf81663ba3e4cdb36ee3975dacddebc9e0415658a223fd",
     "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
     "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
     "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -125,6 +125,6 @@
     "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
   },
   "observations": [
-    "已实际查看变更页：中文清晰，表格、图表和段落排版正常，没有缺字、遮挡、越界或空白页；其余页面与上一版像素一致。"
+    "已查看封面、更新后的 E09-R15 结果表和 loss 曲线：中文清楚，表格与图例可读，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
   ]
 }

@@ -1,13 +1,13 @@
 {
-  "word_sha256": "0177cf61cd3b83ed3e60a028db42424293f437b3a710b6c1a1956caa5be33bd8",
+  "word_sha256": "063e30fbeb08560a9a4045c868af321f0b05497033a45548e337e3e01dbc37af",
   "visual_checked": true,
-  "updated": "2026-10-02T06:52:26+08:00",
+  "updated": "2026-10-02T07:08:46+08:00",
   "previous_checked": {
-    "word_sha256": "56c21c2b069f6680e70a578832936b55e5f6ea42df91d00e21ec06da4f244c33",
+    "word_sha256": "9c8f6015c9ed86e27df295e9fb7e47ddcbeb1fc09b4a3f3035c96a274e583939",
     "visual_checked": true,
-    "updated": "2026-10-02T06:44:55+08:00",
-    "pdf_sha256": "e1aa8c5096328e79aa98463f0cd5c1f6c0c5a8dabf49f5d34ec218b0ac7ef728",
-    "checked_at": "2026-10-02T06:44:55+08:00",
+    "updated": "2026-10-02T07:05:52+08:00",
+    "pdf_sha256": "7c3fb3f4998394ac8afea46b0cf539498e2df23ff485fa2e26147038aa2f65eb",
+    "checked_at": "2026-10-02T07:05:52+08:00",
     "checked_pages": [
       1
     ],
@@ -53,7 +53,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "5f911ce16b28a42ba760a759ea00d1688c1d2a9251a889c9612be4983fe02a30",
+      "page-01.png": "e8228f0e34774c131166731bfa42a943d712dd40313959a10dc458111e114443",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -73,11 +73,11 @@
       "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
     },
     "observations": [
-      "上一版已实际查看，中文和版式清晰。"
+      "已查看封面：中文清楚，标题、摘要和页码正常；其余页面与上一版逐像素一致。"
     ]
   },
-  "pdf_sha256": "39674bbf59f911bcd981a7a655dcf13444c3fcbf113d351e2d8c7022748f238d",
-  "checked_at": "2026-10-02T06:52:26+08:00",
+  "pdf_sha256": "7f7ff03bf63aafa83eaff68f86dd753db731171b9cb13c23524d8c9d38711bc3",
+  "checked_at": "2026-10-02T07:08:46+08:00",
   "checked_pages": [
     1
   ],
@@ -123,7 +123,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "73729bd5ae5271caec347e9da6ca853cafe9a5af4f92dd612a7a142f093178d5",
+    "page-01.png": "36e424e412399aac9214dc04f4255a889d449150cc234681393b96e9cf96fede",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -143,6 +143,6 @@
     "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
   },
   "observations": [
-    "已实际查看变更页：中文清晰，表格、图表和段落排版正常，没有缺字、遮挡、越界或空白页；其余页面与上一版像素一致。"
+    "已查看封面：中文清楚，标题、摘要和页码正常；其余页面与上一版逐像素一致。"
   ]
 }
