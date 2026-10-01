@@ -1,0 +1,19 @@
+{
+  "run_id": "E09-R15",
+  "plot_version": 2,
+  "source_file": "E09-R15-metrics.csv",
+  "source_sha256": "f6256a9482b0a725c770da87c2d24e937a3bf2acc7afd79d7495ccd07eead47f",
+  "raw_metrics_prefix_sha256": "8dc96821f0e90b35215f19c3247badd2a82521f89c223dc6366b7c100c4046ae",
+  "image_sha256": "55f84a03576fbe018b78eb6336a6a29960e4bfc857de28cdfb7657cc1f29cff0",
+  "train_points": 100,
+  "train_segments": [
+    {
+      "start_step": 1,
+      "end_step": 100,
+      "points": 100
+    }
+  ],
+  "resume_checkpoint": null,
+  "validation_points": 2,
+  "smoothing": null
+}
