@@ -1,7 +1,67 @@
 {
-  "word_sha256": "440d7a73a45cdc868a1e1495583d565b5789a1c667292722c96875cb530e40d1",
-  "visual_checked": false,
-  "updated": "2026-10-02T02:28:48+08:00",
+  "word_sha256": "612b4811debd206eea60814316ee3577a23b98be7f8e7a967205c3cbb73c76b1",
+  "pdf_sha256": "e043c76832b00c825b51d8237e55c090b29a3a8fce77eecb14ed22e9d31f9b96",
+  "visual_checked": true,
+  "updated": "2026-10-02T02:38:54+08:00",
+  "checked_at": "2026-10-02T02:38:54+08:00",
+  "checked_pages": [
+    1,
+    5,
+    6
+  ],
+  "newly_viewed_pages": [
+    1,
+    5,
+    6
+  ],
+  "unchanged_pages": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "identical_pages_inherited": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "page_sha256": {
+    "page-01.png": "b3e1de2c286c4749f6bd56657bfbdc8fbe957b635a9e7381b19751ca60019696",
+    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+    "page-05.png": "93df7534fe9212a12b8868640ae25824703d104391374ca41841bcb155123775",
+    "page-06.png": "ac38107caeed8b9d1a959141133482443148b5e69f4fe23efdaa2271df0971ac",
+    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+  },
+  "observations": [
+    "实际查看第1、5、6页：E09-R13 更新到第2600步，完整 dev loss 0.10128 与状态表清楚；loss 曲线、跨页命令、中文和页码正常，无缺字或越界。"
+  ],
   "previous_checked": {
     "word_sha256": "612fdcea6e7dcee8b5893fafa99cda123dc3f89d06caf70359ad31ec2b4a5b36",
     "pdf_sha256": "4c38b724e57f2c4a996a0e489fa4163f65d5321a6df48f6cfe653d74ff395a70",
