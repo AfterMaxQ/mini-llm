@@ -86,7 +86,8 @@ def update_summary(completed):
           ('数据质量对照入口','scripts/data_quality.py；configs/quality.json；configs/sft-quality.json'),
           ('筛选失败与重新冻结','experiments/E12/runs/E12-R01.json；experiments/E12/runs/E12-R02.json'),
           ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
-          ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs')]
+          ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs'),
+          ('Pi 多轮训练格式与监督检查','configs/pi-reference-data.json；scripts/pi_reference_data.py；experiments/E14/runs/E14-R02.json；experiments/E14/current-reply-mask.csv')]
     for label,files in rows:
         if (ROOT/files.split('；')[0]).exists():
             row=f'| {label} | {files} |'

@@ -1,0 +1,83 @@
+{
+  "status": "pilot_encoding_verified",
+  "exit_code": 0,
+  "operation": "pi_reference_encoding",
+  "independent_trajectories": 8,
+  "assistant_units": 34,
+  "tool_calls": 26,
+  "error_returns": 2,
+  "input_tokens": 37984,
+  "supervised_tokens": 1258,
+  "max_sequence_length": 1432,
+  "length_inspection": {
+    "2048": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    },
+    "4096": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    },
+    "8192": {
+      "units_over_limit": 0,
+      "trajectories_over_limit": 0
+    }
+  },
+  "categories": {
+    "read_locate": 1,
+    "config_change": 1,
+    "function_fix": 1,
+    "multi_file": 1,
+    "failure_recovery": 1,
+    "missing_information": 1,
+    "no_tool": 1,
+    "invalid_path_recovery": 1
+  },
+  "prefix_text_token_mask_checks": 34,
+  "cuda_initialized": false,
+  "truncated_units": 0,
+  "model_calls": 0,
+  "tools_schema_sha256": "2904d9adb8ebfa73e42dc08ac380b8f1727aaae5c6ef045de5af66e87875484d",
+  "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+  "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+  "processed_file": ".local/data/processed/E14-R02/train-pilot.jsonl",
+  "processed_sha256": "96f6e3d63d44ea7b3e0a0bb9f9fa9f182b1963d3312cf0c3c3a16df3f522f032",
+  "units_sha256": "5ed70403fd2d37f3c290b1b9151523d11db50ee8943e18f999de6a1e083efe02",
+  "encoded_sha256": "98a08aa3a88a2c840608e5aaca0eceffe2b6792df708c3c863b944975005f54f",
+  "mask_examples_sha256": "e98eb7d812334361d897a400884aac9708f45bbd9275d7a14c7a7427b94dc95f",
+  "scope": "八个真实训练原型的格式与遮罩核验；未满足正式轨迹规模，未进行Pi训练",
+  "run_id": "E14-R02",
+  "finished": "2026-10-01T12:23:20+08:00",
+  "config": {
+    "source_run": "E14-R01",
+    "scope": "八个已核验训练原型的格式与监督检查；不计为正式1000条数据完成",
+    "system_prompt": "你是一个在隔离开发项目中工作的助手。使用提供的工具完成用户任务，按照实际返回判断下一步。缺少必要信息时先询问，不擅自修改无关文件。工具路径使用任务工作区内的相对路径。不要声称未执行的操作已经完成。",
+    "enable_thinking": false,
+    "packing": false,
+    "unit_policy": "assistant_action",
+    "context_limit": 8192,
+    "training_lengths_to_inspect": [
+      2048,
+      4096,
+      8192
+    ],
+    "tool_result_policy": "原样保留Pi文本返回；execute抛出的错误保留实际错误文本；调用id和错误元数据另外保存",
+    "final_answer_source": "已执行规则参考的最终回答，非教师或学生输出",
+    "command": [
+      "scripts/pi_reference_data.py"
+    ],
+    "operation": "pi_reference_encoding",
+    "source_records_sha256": "f44c4d270efbce7420790f13fa9fc8767905cae8b7fb6c4b1a86ca9ddb3ecebe",
+    "source_tasks_sha256": "84430e5e07e458a8b4fb10945c200ffc68febc139a5af09e2ec3c8242fad4ed4",
+    "source_result_sha256": "35491e3daa85c3feb7190c2bf630df08a791ada6aafbee5251a24025f984a679",
+    "pi_tools_file_sha256": "e1364b54809887abb3a7a11109bd17a1c56fd8df0a2edd2b1f3e3a1871844989",
+    "tools_schema_sha256": "2904d9adb8ebfa73e42dc08ac380b8f1727aaae5c6ef045de5af66e87875484d",
+    "source_code_snapshot_sha256": "5972a2dded8da5eb534a0061375d5f95e653394eab7b2d20df6029c707b09e44",
+    "run_id": "E14-R02",
+    "started": "2026-10-01T12:23:20+08:00",
+    "commit": "05a3add4801968301a8b2ab64c68bd843a37bcaa",
+    "process_id": 5100,
+    "code_snapshot_sha256": "af05e57349ed2c0cf9efe73122d85ff0569def9dead86cb970ade0bfc3076965"
+  },
+  "raw_result_sha256": "b543e678e01bc911ef3c9cf6a4b8245ec429649ae1ddf6daaa44b59eb8a7ab72"
+}

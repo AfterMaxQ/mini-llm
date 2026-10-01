@@ -5,6 +5,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
+from matplotlib.colors import ListedColormap
+from matplotlib.patches import Patch
 from matplotlib.ticker import MaxNLocator
 from lab import ROOT, sha256, write_json
 
@@ -13,6 +15,75 @@ LABELS = {'read_locate': '读取定位', 'config_change': '配置修改', 'funct
           'multi_file': '多文件一致性', 'failure_recovery': '失败恢复',
           'missing_information': '缺参数询问', 'no_tool': '无需工具回答',
           'invalid_path_recovery': '无效路径恢复'}
+
+
+def encoding_note(folder, source_run):
+    completed = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((folder/'runs').glob('*.json'))]
+    matching = [r for r in completed if r.get('status')=='pilot_encoding_verified' and r['config']['source_run']==source_run]
+    if not matching: return ''
+    result = matching[-1]; run = ROOT/'.local/runs'/result['run_id']
+    assert sha256(run/'units.jsonl')==result['units_sha256']
+    assert sha256(run/'encoded.jsonl')==result['encoded_sha256']
+    units = [json.loads(line) for line in (run/'units.jsonl').read_text(encoding='utf-8').splitlines()]
+    encoded = [json.loads(line) for line in (run/'encoded.jsonl').read_text(encoding='utf-8').splitlines()]
+    assert len(units)==result['assistant_units']==34
+    example = next(e for e in encoded if e['sample_id']=='pilot-failure_recovery' and e['message_index']==4)
+    meta = next(u for u in units if u['sample_id']==example['sample_id'] and u['message_index']==4)
+    mask = [int(x!=-100) for x in example['labels']]
+    assert sum(mask)==meta['target_tokens'] and not any(mask[:meta['target_start_token']])
+    data = folder/'current-reply-mask.csv'
+    with data.open('w',encoding='utf-8',newline='') as handle:
+        writer=csv.writer(handle);writer.writerow(['token_position','supervised'])
+        writer.writerows(enumerate(mask))
+    font=FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
+    fig,axes=plt.subplots(3,1,figsize=(6.4,3.0),gridspec_kw={'height_ratios':[1,1,.35]},layout='constrained')
+    colors=ListedColormap(['#D1D5DB','#059669'])
+    for axis,start,label in zip(axes[:2],[0,len(mask)-64],['完整单元','末尾64个token']):
+        axis.imshow([mask[start:]],extent=[start,len(mask),0,1],aspect='auto',interpolation='nearest',cmap=colors,vmin=0,vmax=1)
+        axis.set_yticks([.5],[label],fontproperties=font);axis.tick_params(axis='y',length=0)
+    axes[0].set_title(f'失败返回后的下一步：输入{len(mask)}个token，只监督当前{sum(mask)}个',fontproperties=font)
+    axes[1].set_xlabel('token位置（下图放大末尾区间）',fontproperties=font)
+    axes[2].axis('off')
+    axes[2].legend(handles=[Patch(color='#D1D5DB',label='历史与工具返回：忽略'),Patch(color='#059669',label='当前回复：监督')],
+                   prop=font,frameon=False,loc='center',ncol=2)
+    image=folder/'figures/current-reply-mask.png';fig.savefig(image,dpi=300);plt.close(fig)
+    write_json(image.with_suffix('.source.json'),{'source_file':data.name,'source_sha256':sha256(data),
+                'image_sha256':sha256(image),'run_id':result['run_id'],'encoded_sha256':result['encoded_sha256'],
+                'sample_id':meta['sample_id'],'message_index':4,'input_tokens':len(mask),'target_tokens':sum(mask),
+                'scope':'真实训练单元的监督遮罩；不是模型表现'})
+    table=[]
+    for category,label in LABELS.items():
+        group=[u for u in units if u['category']==category]
+        table.append(f"| {label} | {len(group)} | {max(u['input_tokens'] for u in group)} | {sum(u['target_tokens'] for u in group)} |")
+    return f"""
+## 工具轨迹怎么变成训练样本？保留历史，每次只学当前回复
+
+{result['run_id']} 把这八条参考过程转换成了 {result['assistant_units']} 个回复单元，共 {result['supervised_tokens']:,} 个监督 token。一次工具调用是一个 assistant 回复，轨迹结束时的总结或询问又是一个回复；所以“八条轨迹”并不等于“八个训练单元”。这些答案和步骤仍来自已执行的任务规则，没有混入教师生成。
+
+转换时逐个保留调用 id、工具名、参数和真实文本返回，两次错误也没有丢掉。官方 Qwen3 模板在文本中呈现工具名和参数，不把本轮 Pi 的调用 id 当作模型要生成的内容；数据里仍保存 id，便于核对请求与返回是否对应。34 个单元逐个检查了模板文本、token、推理前缀和监督位置，带监督标记的模板与官方模板渲染一致。
+
+| 任务类别 | 回复单元（个） | 最长输入（token） | 监督量（token） |
+| --- | --- | --- | --- |
+{chr(10).join(table)}
+
+这里的输入长度包含工具定义和完整历史。最长单元为 {result['max_sequence_length']} token，34 个单元都在 2048 以内，没有截断。这只是八个短项目的实测长度，后续扩展任务仍要逐条检查，不能据此认定所有领域轨迹都适合 2048。
+
+## 前面报错了，会不会连报错文本也一起训练？这次没有
+
+字符串修复中，第一次命令失败后，下一步应读回函数。这个真实单元有 {meta['input_tokens']} 个输入 token，监督位置只有当前回复的 {meta['target_tokens']} 个 token；此前的调用、错误返回和问题都被遮掉，只作为上下文。监督量包含官方模板在 assistant 分支中的标记和结束 token，不能把它全当成普通答案文字的长度。
+
+![图 E14-2：{result['run_id']} 的一个真实单元；上图显示完整输入，下图放大末尾64个token，灰色位置的label为-100。](figures/current-reply-mask.png)
+
+错误返回留在输入里，模型有机会根据它决定下一步；loss 的目标仍是当前回复。这次全部 34 个单元的历史监督量都为零，图中选的是明确经历过命令失败的单元。检查通过说明数据表示与遮罩对应，还不能说明模型训练后学会了恢复。
+
+该单元的目标里实际包含下面这次调用：
+
+```json
+{{"name": "read", "arguments": {{"path": "src/slug.mjs"}}}}
+```
+
+已经得到可追溯的原型训练格式，正式 1,000 条有效轨迹和领域训练还要继续完成。本轮只调用 tokenizer，未初始化 CUDA，也未进行模型前向或更新参数。
+"""
 
 
 def main():
@@ -130,7 +201,7 @@ value.trim().replace(/\\s+/g, '-').toLowerCase();
 
 复习时可以先看两个问题。为什么命令输出正确还可能失败？因为检查文件或不该动的配置也可能被改过，输出只是成功条件的一部分。为什么参考操作 8/8 不能写成 Agent 成功率 100%？因为步骤由规则预先给定，还没有让模型自己选择工具、读取错误并决定下一步。
 """
-    (folder / 'notes.md').write_text(note, encoding='utf-8')
+    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id']), encoding='utf-8')
 
 
 if __name__ == '__main__':
