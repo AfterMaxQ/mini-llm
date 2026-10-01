@@ -1,0 +1,409 @@
+{
+  "status": "benchmark_preparation_verified",
+  "operation": "bfcl_preparation",
+  "dataset_version": "BFCL_v4",
+  "categories": [
+    {
+      "category": "simple_python",
+      "questions": 400,
+      "answers": 400,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "82dd63ba502eb2520c6b5d1d9a5c4b590e03ff261565175561f6228a367d1991",
+      "answer_sha256": "90cd5bc653690ee8e459b5b3f3fc9458606f7f3fcbf795bb51b7dc581f8c86dc",
+      "ids_sha256": "efd988f4cb48f378b14f1875411f0e528385332a3a0cedcdd512de4b538515be"
+    },
+    {
+      "category": "simple_java",
+      "questions": 100,
+      "answers": 100,
+      "checker": "AST",
+      "language": "java",
+      "question_sha256": "13d2303a125b08754f0e41995b9273b5005fa8ed8ebfaa24ef53b4d83c4b5c6e",
+      "answer_sha256": "78f25616084044fa05bbfcee68e03f6ececb222bdd5cb3b7783a675fb3366e35",
+      "ids_sha256": "1edad59234178d380d079940993a674045c2032761fe3ed9f05e286ed7811ed5"
+    },
+    {
+      "category": "simple_javascript",
+      "questions": 50,
+      "answers": 50,
+      "checker": "AST",
+      "language": "javascript",
+      "question_sha256": "329e67fedf79a6243d93dbda4b388d12bd2d31f1f2163d92cb6ef676d1764f44",
+      "answer_sha256": "e2f9f2e51d88e0c8056ffbf1a3dd3d02eb032532d2b5d98c9cc9003385bdd56b",
+      "ids_sha256": "addb08e3b6f190d7a35b2b22a2fa13229403fe50559f64a28224371abacd1509"
+    },
+    {
+      "category": "multiple",
+      "questions": 200,
+      "answers": 200,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "aef168155ebd74b7ac2401198b201343bc7d16d7a3d7e0d4e6d8ee82c6969b2a",
+      "answer_sha256": "244e00ce9395df948bcafc7bee64e8f9c87ef70887587d83cae45b13699f3047",
+      "ids_sha256": "6525901d57e4a544f56e75974db5c038cb2bdbf0419968ee5f8fc2193a85b49e"
+    },
+    {
+      "category": "parallel",
+      "questions": 200,
+      "answers": 200,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "19f51a82eff42e5d62541aa500115a056eb78f437c2ba1f10415fd7c8e5dda84",
+      "answer_sha256": "8a6aa19c1adddc6a5a2f7e40f9dbf30cc7e95815e7b830c90589ab318229e0f0",
+      "ids_sha256": "6761de770c33b064a49e820b579c6cccf84310390083cda2b5157fc95c38ae09"
+    },
+    {
+      "category": "parallel_multiple",
+      "questions": 200,
+      "answers": 200,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "8863ea8433239f55c5f016154cf0830853c89f693c6ea270396a2fa121960579",
+      "answer_sha256": "5ebf24f458c1f16300c05505d83d6f0a1b68b79be273a033febd0d4f840507e3",
+      "ids_sha256": "ec9b9455b2d454158840a6e50682d93d58b9f69fe3cccae75b478d029984446c"
+    },
+    {
+      "category": "irrelevance",
+      "questions": 240,
+      "answers": 0,
+      "checker": "relevance",
+      "language": "python",
+      "question_sha256": "2b6ed4c2e992cdcf5f1678a701851f944bef7550ee026ed1ddb89efed5be01a6",
+      "answer_sha256": "",
+      "ids_sha256": "da6dc72a225dd88ea71238cf9fb25d0968d1668c02e181dcdccb085b7a672590"
+    },
+    {
+      "category": "live_simple",
+      "questions": 258,
+      "answers": 258,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "1af2ac87dca47556db7b7e37e51e28b459a38b594e3c7b3c792b4903598ca0c4",
+      "answer_sha256": "fec9cfa9744a936f9126981e85a2023da1e63e273eafebc81923a1162fad70ce",
+      "ids_sha256": "e5fee9ff02729574dedd1c639caf9c935b8bce13a499fba895ff0038ffbbd251"
+    },
+    {
+      "category": "live_multiple",
+      "questions": 1053,
+      "answers": 1053,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "fd8ccfad4d911420d0e3341dbe2fff77d1d341da934248b9bb2bda24ab3a10c8",
+      "answer_sha256": "97e90d59c5bd76c55a2920ce93e5566e9046307d3f558578f085f9d3a56c3084",
+      "ids_sha256": "43acdb750d5475e29fc5612ed7f3414433fc6ace3ec4db7aea1867c438e443c6"
+    },
+    {
+      "category": "live_parallel",
+      "questions": 16,
+      "answers": 16,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "6c26e9fdc3350cf596e6d1ea9c179cbff834761bccf562f4141ed29a839ca421",
+      "answer_sha256": "8a9f189ff0e832ebbbbdade1fd95a7dbcc67406e9177df3f0aad76f59ab00350",
+      "ids_sha256": "5d58491e83e3ed1bb572d2e745f05ccec76d622b14a720e28793199fdab8aba5"
+    },
+    {
+      "category": "live_parallel_multiple",
+      "questions": 24,
+      "answers": 24,
+      "checker": "AST",
+      "language": "python",
+      "question_sha256": "21d4b9319c1faac431e22757b367ea28917fe467364c3a4b17f16ec06d4f6e79",
+      "answer_sha256": "f5b5f360556c5feb51db46fb9f56ee4b304f4b45b161599bbb14161c98a2873f",
+      "ids_sha256": "fe308184441b602e5076c883f5e7473f6e0528e9032bdea14b55821deb4cb0a9"
+    },
+    {
+      "category": "live_irrelevance",
+      "questions": 884,
+      "answers": 0,
+      "checker": "relevance",
+      "language": "python",
+      "question_sha256": "6559fda2beaceb609a2cd2e504c65b4a56cb448e1ef88fddfd199e163d163349",
+      "answer_sha256": "",
+      "ids_sha256": "bcc1481212cbb89f36867ae2a4df96705ea776f548c03b396242d7bad86d85c2"
+    },
+    {
+      "category": "live_relevance",
+      "questions": 16,
+      "answers": 0,
+      "checker": "relevance",
+      "language": "python",
+      "question_sha256": "e03f9e241657a137cba48a89ee12f47bf3fcb7e4f6274263e9c699a0c974203a",
+      "answer_sha256": "",
+      "ids_sha256": "ed58d418514d25273260285967610459acfe364eef10942a9ecd43637fc10b5b"
+    }
+  ],
+  "total_questions": 3641,
+  "unique_ids": 3641,
+  "ast_questions": 2501,
+  "relevance_questions": 1140,
+  "source_modules": 108,
+  "checker_sources_sha256": "a3420a8622672b971290e5fe57b2a9972ecced224b91ee3ce1c906d03fe00a95",
+  "samples_sha256": "3d778a4407725506ebd672b5d653f06420234277776ebf4563c08a9b79220cb1",
+  "categories_csv_sha256": "8fe7c15fa564c8b64582107a783a7a852abde803d16efa8bbdc9ec20d1f2588f",
+  "interface_probes_sha256": "1d34d2fbe8984c7d382b3946eab13a3f9006a90a3ca123a2de379a2b8a394261",
+  "interface_probes": [
+    {
+      "id": "python-correct",
+      "category": "simple_python",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "python-wrong-value",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "value_error:others"
+    },
+    {
+      "id": "python-wrong-type",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "type_error:simple"
+    },
+    {
+      "id": "python-missing-required",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "simple_function_checker:missing_required"
+    },
+    {
+      "id": "python-extra-parameter",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "simple_function_checker:unexpected_param"
+    },
+    {
+      "id": "python-wrong-function",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "simple_function_checker:wrong_func_name"
+    },
+    {
+      "id": "python-bool-integer",
+      "category": "simple_python",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "type_error:simple"
+    },
+    {
+      "id": "python-string-normalization",
+      "category": "simple_python",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "java-native-json",
+      "category": "simple_java",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "type_error:java"
+    },
+    {
+      "id": "java-source-literals",
+      "category": "simple_java",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "javascript-native-json",
+      "category": "simple_javascript",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "type_error:js"
+    },
+    {
+      "id": "javascript-source-literals",
+      "category": "simple_javascript",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "multiple-selection",
+      "category": "multiple",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "parallel-reversed",
+      "category": "parallel",
+      "valid": true,
+      "decoded_calls": 2,
+      "error_type": ""
+    },
+    {
+      "id": "parallel-missing-call",
+      "category": "parallel",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "parallel_function_checker_no_order:wrong_count"
+    },
+    {
+      "id": "parallel-multiple-reversed",
+      "category": "parallel_multiple",
+      "valid": true,
+      "decoded_calls": 2,
+      "error_type": ""
+    },
+    {
+      "id": "irrelevance-empty",
+      "category": "irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "irrelevance-prose",
+      "category": "irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "irrelevance-valid-call",
+      "category": "irrelevance",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "irrelevance_error:decoder_success"
+    },
+    {
+      "id": "irrelevance-malformed-call",
+      "category": "irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "live_irrelevance-empty",
+      "category": "live_irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "live_irrelevance-prose",
+      "category": "live_irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "live_irrelevance-valid-call",
+      "category": "live_irrelevance",
+      "valid": false,
+      "decoded_calls": 1,
+      "error_type": "irrelevance_error:decoder_success"
+    },
+    {
+      "id": "live_irrelevance-malformed-call",
+      "category": "live_irrelevance",
+      "valid": true,
+      "decoded_calls": 0,
+      "error_type": ""
+    },
+    {
+      "id": "live_relevance-empty",
+      "category": "live_relevance",
+      "valid": false,
+      "decoded_calls": 0,
+      "error_type": "relevance_error:decoder_failed"
+    },
+    {
+      "id": "live_relevance-prose",
+      "category": "live_relevance",
+      "valid": false,
+      "decoded_calls": 0,
+      "error_type": "relevance_error:decoder_failed"
+    },
+    {
+      "id": "live_relevance-valid-call",
+      "category": "live_relevance",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    },
+    {
+      "id": "live_relevance-malformed-call",
+      "category": "live_relevance",
+      "valid": false,
+      "decoded_calls": 0,
+      "error_type": "relevance_error:decoder_failed"
+    },
+    {
+      "id": "mixed-valid-malformed",
+      "category": "simple_python",
+      "valid": true,
+      "decoded_calls": 1,
+      "error_type": ""
+    }
+  ],
+  "network_attempts": 0,
+  "model_inference": false,
+  "model_scores": null,
+  "exit_code": 0,
+  "run_id": "E22-R03",
+  "finished": "2026-10-01T17:09:05+08:00",
+  "config": {
+    "package_version": "2025.12.17",
+    "test_group": "single_turn",
+    "categories": [
+      "simple_python",
+      "simple_java",
+      "simple_javascript",
+      "multiple",
+      "parallel",
+      "parallel_multiple",
+      "irrelevance",
+      "live_simple",
+      "live_multiple",
+      "live_parallel",
+      "live_parallel_multiple",
+      "live_irrelevance",
+      "live_relevance"
+    ],
+    "registry_name": "Qwen/Qwen3-1.7B-FC",
+    "mode": "FC",
+    "format_conversion": "原始响应直接进入官方 QwenFCHandler.decode_ast；不修复 JSON、参数类型、函数名或漏掉的调用",
+    "enable_thinking": false,
+    "do_sample": false,
+    "final_partial_eval": false,
+    "training_use": false,
+    "scope_name": "BFCL 指定类别成绩",
+    "prepare_command": [
+      ".local/venv-bfcl/Scripts/python.exe",
+      "scripts/bfcl_prepare.py",
+      "--config",
+      "configs/bfcl.json"
+    ],
+    "official_sources": [
+      "https://github.com/ShishirPatil/gorilla/blob/main/berkeley-function-call-leaderboard/TEST_CATEGORIES.md",
+      "https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html"
+    ],
+    "operation": "bfcl_preparation",
+    "package_version_actual": "2025.12.17",
+    "environment_lock_sha256": "888db43128d63971d67f7078e65de4706dd4efb8f1ede5dcf64bbf9e19813c4c",
+    "command": [
+      "scripts/bfcl_prepare.py",
+      "--config",
+      "configs/bfcl.json"
+    ],
+    "model_inference": false,
+    "run_id": "E22-R03",
+    "started": "2026-10-01T17:09:01+08:00",
+    "commit": "ee9e5d4ef1250337764ea2c8d53f1f30534f49cc",
+    "process_id": 19352,
+    "code_snapshot_sha256": "a7606a1996a149fb5cf01f8984775d2ef401bca2d2089e44c25d5a57a3b9d143"
+  },
+  "raw_result_sha256": "ed9f629bc37567157c93351596876900b3cabd5793bf81fa4564d3f6d0c47835"
+}

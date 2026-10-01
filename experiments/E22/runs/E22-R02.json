@@ -1,0 +1,62 @@
+{
+  "status": "failed",
+  "operation": "bfcl_preparation",
+  "error": "KeyError('int')",
+  "model_inference": false,
+  "network_attempts": 0,
+  "exit_code": 1,
+  "run_id": "E22-R02",
+  "finished": "2026-10-01T17:08:27+08:00",
+  "config": {
+    "package_version": "2025.12.17",
+    "test_group": "single_turn",
+    "categories": [
+      "simple_python",
+      "simple_java",
+      "simple_javascript",
+      "multiple",
+      "parallel",
+      "parallel_multiple",
+      "irrelevance",
+      "live_simple",
+      "live_multiple",
+      "live_parallel",
+      "live_parallel_multiple",
+      "live_irrelevance",
+      "live_relevance"
+    ],
+    "registry_name": "Qwen/Qwen3-1.7B-FC",
+    "mode": "FC",
+    "format_conversion": "原始响应直接进入官方 QwenFCHandler.decode_ast；不修复 JSON、参数类型、函数名或漏掉的调用",
+    "enable_thinking": false,
+    "do_sample": false,
+    "final_partial_eval": false,
+    "training_use": false,
+    "scope_name": "BFCL 指定类别成绩",
+    "prepare_command": [
+      ".local/venv-bfcl/Scripts/python.exe",
+      "scripts/bfcl_prepare.py",
+      "--config",
+      "configs/bfcl.json"
+    ],
+    "official_sources": [
+      "https://github.com/ShishirPatil/gorilla/blob/main/berkeley-function-call-leaderboard/TEST_CATEGORIES.md",
+      "https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html"
+    ],
+    "operation": "bfcl_preparation",
+    "package_version_actual": "2025.12.17",
+    "environment_lock_sha256": "888db43128d63971d67f7078e65de4706dd4efb8f1ede5dcf64bbf9e19813c4c",
+    "command": [
+      "scripts/bfcl_prepare.py",
+      "--config",
+      "configs/bfcl.json"
+    ],
+    "model_inference": false,
+    "run_id": "E22-R02",
+    "started": "2026-10-01T17:08:19+08:00",
+    "commit": "ee9e5d4ef1250337764ea2c8d53f1f30534f49cc",
+    "process_id": 52068,
+    "code_snapshot_sha256": "5dabff2372030804c2ec58f20afab03fb9b261d87b0f5de14481901071ac83dc"
+  },
+  "raw_result_sha256": "52a25f72400b9eeed29552b772df672a7c12599efc7e23c4559ca21d2388c270"
+}

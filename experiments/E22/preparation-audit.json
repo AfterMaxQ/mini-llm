@@ -1,0 +1,30 @@
+{
+  "source_run": "E22-R03",
+  "checked": "2026-10-01T17:19:41+08:00",
+  "categories": 13,
+  "questions": 3641,
+  "ast_questions": 2501,
+  "relevance_questions": 1140,
+  "unique_ids": 3641,
+  "probes": 29,
+  "source_modules": 108,
+  "categories_csv_sha256": "8fe7c15fa564c8b64582107a783a7a852abde803d16efa8bbdc9ec20d1f2588f",
+  "benchmark_archive_sha256": "9c291990d27bce507484172b866792c22cfeb842e6970232ceebe7a32d5f85e5",
+  "archived_files": 135,
+  "run_archives": [
+    {
+      "run_id": "E22-R01",
+      "archive_sha256": "6d7789bde90c9432fcc2dd81034ff3157e7451a5c22ba3f509690f3988479b4a"
+    },
+    {
+      "run_id": "E22-R02",
+      "archive_sha256": "bbc3aa975b1eee76d37f6c6b15e64de3025dcb2e5e0b164914dbb4e551ef56c2"
+    },
+    {
+      "run_id": "E22-R03",
+      "archive_sha256": "ccb6e6372a1395b8bed68c3083bd0068c6eaa0ab7b81a5dc1ede204ac07b7eb5"
+    }
+  ],
+  "model_inference": false,
+  "model_scores": null
+}

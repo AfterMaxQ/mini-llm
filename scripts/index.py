@@ -39,6 +39,7 @@ def main():
             translated['test_reference_verified']='100个test场景参考与判据已核验，模型评测待执行'
             translated['test_lengths_verified']='100个test参考历史长度已核验，模型评测待执行'
             translated['test_split_inspection_verified']='train/dev/test划分筛查完成，模型迁移与最终评测待执行'
+            translated['benchmark_preparation_verified']='13类BFCL清单与判分接口已核验，模型成绩待测'
             if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
                 translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
@@ -81,7 +82,11 @@ def main():
     books=subprocess.check_output(['git','ls-files','-z','--','docs/reports/*.docx'],cwd=ROOT).decode('utf-8').split('\0')
     if any(books):
         lines += ['', '## 实验册', '']
-        lines += [f"- [{file.rsplit('/',1)[-1].removesuffix('.docx')}]({file.removeprefix('docs/')})" for file in books if file]
+        for file in filter(None, books):
+            target = file.removeprefix('docs/')
+            if ' ' in target:
+                target = '<'+target+'>'
+            lines.append(f"- [{file.rsplit('/',1)[-1].removesuffix('.docx')}]({target})")
     (ROOT / "docs/实验索引.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

@@ -1,0 +1,15 @@
+{
+  "package_version": "2025.12.17",
+  "test_group": "single_turn",
+  "categories": ["simple_python", "simple_java", "simple_javascript", "multiple", "parallel", "parallel_multiple", "irrelevance", "live_simple", "live_multiple", "live_parallel", "live_parallel_multiple", "live_irrelevance", "live_relevance"],
+  "registry_name": "Qwen/Qwen3-1.7B-FC",
+  "mode": "FC",
+  "format_conversion": "原始响应直接进入官方 QwenFCHandler.decode_ast；不修复 JSON、参数类型、函数名或漏掉的调用",
+  "enable_thinking": false,
+  "do_sample": false,
+  "final_partial_eval": false,
+  "training_use": false,
+  "scope_name": "BFCL 指定类别成绩",
+  "prepare_command": [".local/venv-bfcl/Scripts/python.exe", "scripts/bfcl_prepare.py", "--config", "configs/bfcl.json"],
+  "official_sources": ["https://github.com/ShishirPatil/gorilla/blob/main/berkeley-function-call-leaderboard/TEST_CATEGORIES.md", "https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html"]
+}
