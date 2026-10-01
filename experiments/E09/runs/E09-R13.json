@@ -1,0 +1,243 @@
+{
+  "status": "trained_pending_tool_eval",
+  "exit_code": 0,
+  "train_size": 10000,
+  "seed": 42,
+  "steps": 3634,
+  "train": {
+    "data_run": "E02-R02",
+    "data_file": "train-10000.jsonl",
+    "source_sha256": "e9165867997bf5435b53e4404fac60d4ee9b279a6f5481b6503f17bc3a1821ae",
+    "independent_trajectories": 10000,
+    "assistant_units": 29073,
+    "input_tokens": 11806775,
+    "supervised_tokens": 1282656,
+    "max_sequence_length": 2040,
+    "max_target_length": 744,
+    "categories": {
+      "single_call": 5392,
+      "no_call": 1656,
+      "multi_turn": 2708,
+      "parallel": 244
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 29073,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "5b1e981cb8fb50f48abc67e9e0f34d39261b4a0fdc6a840c8a7da4908e1574bf"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "d47b7928e0fcd3aedb03999087d9520a988249296bcf0e4e3d15602beed76b2f"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "7baed6b8426085dd1b0bdbce9ff7f5449f702788b6c88a4617a9b723c6702ec4"
+      }
+    ]
+  },
+  "dev": {
+    "data_run": "E02-R02",
+    "data_file": "dev.jsonl",
+    "source_sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+    "independent_trajectories": 500,
+    "assistant_units": 1484,
+    "input_tokens": 615718,
+    "supervised_tokens": 66664,
+    "max_sequence_length": 2735,
+    "max_target_length": 610,
+    "categories": {
+      "multi_turn": 147,
+      "single_call": 257,
+      "no_call": 86,
+      "parallel": 10
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 1484,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "4469e045fbe371a2052ac4c983e993158c0f25cb4e4b812016bf5cc3bb1e7071"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "ae90b2242890689c664b1fdd5cd909bc00bb934cf364c88ade5cd32346ab9707"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "eb0db524be25b47b2a880425a0330faafa495d5b5ccd154912ad9594b93caa46"
+      }
+    ]
+  },
+  "selected_checkpoint": "checkpoint-3600",
+  "selected_dev_loss": 0.09616334093730881,
+  "train_metrics": {
+    "train_runtime": 21833.233,
+    "train_samples_per_second": 1.332,
+    "train_steps_per_second": 0.166,
+    "train_loss": 0.083943153577965,
+    "epoch": 0.9999656038248547
+  },
+  "resume_history": [
+    {
+      "time": "2026-10-01T22:03:19+08:00",
+      "started": "2026-10-01T22:03:19+08:00",
+      "process_id": 18936,
+      "command": [
+        "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+        "scripts/sft.py",
+        "--config",
+        "configs/sft.json",
+        "--experiment",
+        "E09",
+        "--size",
+        "10000",
+        "--seed",
+        "42",
+        "--resume-run",
+        "E09-R13"
+      ],
+      "checkpoint": "checkpoint-400",
+      "commit": "90b389c207d36cac9c4205ca38ca9d63ad716ed9",
+      "interruption": {
+        "run_id": "E09-R13",
+        "interrupted_at": "2026-10-01T21:11:27+08:00",
+        "reason": "Windows 系统重启导致训练子进程被终止；没有训练代码或 CUDA 异常栈",
+        "process_exit": {
+          "decimal": 1073807364,
+          "hex": "0x40010004",
+          "status": "DBG_TERMINATE_PROCESS"
+        },
+        "windows_events": [
+          {
+            "id": 1074,
+            "provider": "User32",
+            "time": "2026-10-01T21:11:27+08:00",
+            "process": "C:\\WINDOWS\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+            "user": "DESKTOP-ETHAN-R\\ray",
+            "reason": "其他(计划外)",
+            "reason_code": "0x0",
+            "shutdown_type": "Restart"
+          },
+          {
+            "id": 6006,
+            "provider": "EventLog",
+            "time": "2026-10-01T21:11:44+08:00",
+            "message": "事件日志服务已停止"
+          },
+          {
+            "id": 13,
+            "provider": "Microsoft-Windows-Kernel-General",
+            "time": "2026-10-01T21:11:50+08:00",
+            "message": "操作系统正在关闭"
+          },
+          {
+            "id": 12,
+            "provider": "Microsoft-Windows-Kernel-General",
+            "time": "2026-10-01T21:12:09+08:00",
+            "message": "操作系统已启动"
+          }
+        ],
+        "training": {
+          "size": 10000,
+          "seed": 42,
+          "latest_step": 489,
+          "latest_metric_time": "2026-10-01T21:11:25+08:00",
+          "latest_train_loss": 0.1518,
+          "best_dev_loss": 0.1434716101928287,
+          "last_completed_validation_step": 400
+        },
+        "checkpoint": {
+          "directory": "checkpoint-400",
+          "step": 400,
+          "manifest_sha256": "799eddd636c12dced4a799981bb9585dc694c0427b51c546b2498c721dde805b",
+          "verified_files": 16,
+          "hash_mismatches": 0
+        },
+        "config_matches_frozen_run": true,
+        "logs": {
+          "training_log": ".local/logs/scale-10000-42-train-1790857955655777000.log",
+          "training_log_sha256": "4785e4ad0d7455d66c83292cfef00745e2c500e5da254e1b73933337f0671178",
+          "queue_log": ".local/logs/scale-queue-R09.log",
+          "queue_log_sha256": "4b0dfbffb90ec7f9aab84a6ec8500ad3241d813d2dcbd1a8ffff7729ca6864df"
+        },
+        "queue_state": {
+          "status": "failed",
+          "time": "2026-10-01T21:11:27+08:00",
+          "error": "scale-10000-42-train 退出码 1073807364，先保留失败证据并排错"
+        },
+        "next_action": "使用原配置和 seed 42，从通过 manifest 与 SHA-256 核验的 checkpoint-400 恢复；恢复后再完成同一 500 条 dev 工具评测",
+        "scope": "这次重启未更改模型、数据、评测分母或训练参数。"
+      }
+    }
+  ],
+  "metrics_sha256": "4da2ba392722c9dc55534707c6f125d190e078b27f00a4b0c25554190d983784",
+  "scope": "完成一个epoch及完整dev loss选择；工具泛化指标必须由独立生成评估补齐",
+  "run_id": "E09-R13",
+  "finished": "2026-10-02T04:07:18+08:00",
+  "config": {
+    "data_run": "E02-R02",
+    "train_size": 10000,
+    "seed": 42,
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "epochs": 1,
+    "micro_batch": 1,
+    "gradient_accumulation": 8,
+    "max_sequence_length": 2048,
+    "eval_steps": 100,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "lr_scheduler_type": "linear",
+    "packing": false,
+    "assistant_only_loss": true,
+    "unit_policy": "assistant_action",
+    "enable_thinking": false,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "training_prompt": "冻结数据中的通用系统提示；不加入少样本示例",
+    "precision": "NF4 double quant, BF16 mixed precision",
+    "validation_loss": "完整500条dev的全部当前回复单元；按实际监督token加权的交叉熵",
+    "checkpoint_selection": "最低完整dev loss；并列保留较早checkpoint",
+    "optimizer": "torch AdamW",
+    "empty_cuda_cache_each_step": true,
+    "empty_cuda_cache_each_validation_unit": true,
+    "evaluation_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/sft.py",
+      "--config",
+      "configs/sft.json",
+      "--experiment",
+      "E09",
+      "--size",
+      "10000",
+      "--seed",
+      "42"
+    ],
+    "run_id": "E09-R13",
+    "started": "2026-10-01T20:32:40+08:00",
+    "commit": "f6a5839c853374cf6fff7c3cb04efdc3ace9c9d8",
+    "process_id": 43984,
+    "code_snapshot_sha256": "4ee95da389dddaa8581f4cf6460cf22060ba8b2d7e314afb3c6bb74511861d6d"
+  },
+  "raw_result_sha256": "ddfa0de6f9bbd31b08a94e282b1baa05ce4a7a61355724a7c4cc6938757d057d"
+}
