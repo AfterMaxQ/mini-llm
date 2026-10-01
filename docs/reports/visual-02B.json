@@ -1,9 +1,9 @@
 {
-  "word_sha256": "530b3ad170e72263c8ba608f570611cba03847a6e2520ba882aa1b86175d39d1",
-  "pdf_sha256": "f6039d3a73eb2575b67989901c6304016e7ad20ca21902fab26924773dcc2dea",
+  "word_sha256": "0fcfb3abf90be1160914900ab7f32734e780458dcd12d4fa901936fbb85253a1",
+  "pdf_sha256": "f148da87faa8f7e218e3a648ec3663bff2088a993431c3710566094512624528",
   "visual_checked": true,
-  "updated": "2026-10-02T01:13:34+08:00",
-  "checked_at": "2026-10-02T01:13:34+08:00",
+  "updated": "2026-10-02T01:33:37+08:00",
+  "checked_at": "2026-10-02T01:33:37+08:00",
   "checked_pages": [
     1
   ],
@@ -49,7 +49,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "7018d63b83322bf6d859a8a9bb910f9b68b1e1dc3f625a431e8d4905006b4566",
+    "page-01.png": "fef90787af8b6573c4b372978f82c1299d778b52e32f9ed4922c39e56029402f",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -72,11 +72,11 @@
     "实际查看第1页；Pi 工具与任务数据摘要、中文和更新时间清晰，没有缺字或溢出。"
   ],
   "previous_checked": {
-    "word_sha256": "d14abf27b1d7baa9d9de00d8feea3410e9c5f35bef405ef759c856bbec4a1a25",
-    "pdf_sha256": "8c10358ee662f36dc7106718e9462aeb416c8a5893704df118fbee6f54497a3c",
+    "word_sha256": "530b3ad170e72263c8ba608f570611cba03847a6e2520ba882aa1b86175d39d1",
+    "pdf_sha256": "f6039d3a73eb2575b67989901c6304016e7ad20ca21902fab26924773dcc2dea",
     "visual_checked": true,
-    "updated": "2026-10-02T00:58:03+08:00",
-    "checked_at": "2026-10-02T00:58:03+08:00",
+    "updated": "2026-10-02T01:13:34+08:00",
+    "checked_at": "2026-10-02T01:13:34+08:00",
     "checked_pages": [
       1
     ],
@@ -122,7 +122,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "e6b0be0b7951cd7eeb7353c02f6029e381d86bc5504dd0a6fb425d8538bc76fd",
+      "page-01.png": "7018d63b83322bf6d859a8a9bb910f9b68b1e1dc3f625a431e8d4905006b4566",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -145,11 +145,11 @@
       "实际查看第1页；Pi 工具与任务数据摘要、中文和更新时间清晰，没有缺字或溢出。"
     ],
     "previous_checked": {
-      "word_sha256": "df82a090366baa50513989e137f3b2daddb09235acd723a507c0a876e5270600",
-      "pdf_sha256": "544f43539a48d905fdfaaba32478e439c16d29d93fdf98c16b00c2cd4f10dc6b",
+      "word_sha256": "d14abf27b1d7baa9d9de00d8feea3410e9c5f35bef405ef759c856bbec4a1a25",
+      "pdf_sha256": "8c10358ee662f36dc7106718e9462aeb416c8a5893704df118fbee6f54497a3c",
       "visual_checked": true,
-      "updated": "2026-10-02T00:54:46+08:00",
-      "checked_at": "2026-10-02T00:54:46+08:00",
+      "updated": "2026-10-02T00:58:03+08:00",
+      "checked_at": "2026-10-02T00:58:03+08:00",
       "checked_pages": [
         1
       ],
@@ -195,7 +195,7 @@
         18
       ],
       "page_sha256": {
-        "page-01.png": "d235f977e22efd8a1807de3396c405d4ab1cb20f97160926a17a70048623589b",
+        "page-01.png": "e6b0be0b7951cd7eeb7353c02f6029e381d86bc5504dd0a6fb425d8538bc76fd",
         "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
         "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
         "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -218,1038 +218,11 @@
         "实际查看第1页；Pi 工具与任务数据摘要、中文和更新时间清晰，没有缺字或溢出。"
       ],
       "previous_checked": {
-        "word_sha256": "4c8db76db712a3f5eb275c231a1a197d47f7b63e858b26a5b3c63e4d6f915689",
+        "word_sha256": "df82a090366baa50513989e137f3b2daddb09235acd723a507c0a876e5270600",
+        "pdf_sha256": "544f43539a48d905fdfaaba32478e439c16d29d93fdf98c16b00c2cd4f10dc6b",
         "visual_checked": true,
-        "updated": "2026-10-02T00:36:59+08:00",
-        "previous_checked": {
-          "word_sha256": "35a750e1c087d316d8ba957fb25e901fa642e207ae5750513ea5bb020771d261",
-          "visual_checked": true,
-          "updated": "2026-10-02T00:27:47+08:00",
-          "previous_checked": {
-            "word_sha256": "ffec9f832681ac370a3560529a29afd0650e4d58d27ce5df2b28297b8ef43a1c",
-            "pdf_sha256": "b7a384bb3f2ea246b149c5297b3fb9124a44f556f209b51ce4814165eda5e4e1",
-            "visual_checked": true,
-            "updated": "2026-10-02T00:06:49+08:00",
-            "checked_at": "2026-10-02T00:06:49+08:00",
-            "checked_pages": [
-              1
-            ],
-            "newly_viewed_pages": [
-              1
-            ],
-            "unchanged_pages": [
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18
-            ],
-            "identical_pages_inherited": [
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18
-            ],
-            "page_sha256": {
-              "page-01.png": "cf48dcc7dc4893b53c984ca5167a4f623212e7e38310e3a9eb6c01b19c6afa24",
-              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-            },
-            "observations": [
-              "实际查看第1页；更新时间与 Pi 工具摘要清楚，其余页哈希与上一版相同。",
-              "其余页面 PNG 哈希与上一版视觉核验相同。"
-            ],
-            "previous_checked": {
-              "word_sha256": "16f365597c70647f379baf2aaa0a61343760cb5ba9a80873408ccd91adc6d2c6",
-              "pdf_sha256": "0f730a031fc4c6dd89ae142b4ec128947c05ad305329c41f31620b5712146800",
-              "visual_checked": true,
-              "updated": "2026-10-01T23:55:56+08:00",
-              "checked_at": "2026-10-01T23:55:56+08:00",
-              "checked_pages": [
-                1
-              ],
-              "newly_viewed_pages": [
-                1
-              ],
-              "unchanged_pages": [
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15,
-                16,
-                17,
-                18
-              ],
-              "identical_pages_inherited": [
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14,
-                15,
-                16,
-                17,
-                18
-              ],
-              "page_sha256": {
-                "page-01.png": "3aa376595544f088365f25e982c68ef2c9903144b7103a0576b95722475406d4",
-                "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-              },
-              "observations": [
-                "实际查看第1页；更新日期和 Pi 工具摘要清楚，其余页哈希与上一版相同。",
-                "其余页面 PNG 哈希与上一版视觉核验相同。"
-              ],
-              "previous_checked": {
-                "word_sha256": "fe40c918755fb82691d92c667f40333dc3b7d205e1e76c27fc480a2e7357586d",
-                "pdf_sha256": "837f3d978c7938d5a68fbe15f09fb0c917b12afb6e6d38352763297b761b4d7e",
-                "visual_checked": true,
-                "updated": "2026-10-01T23:42:04+08:00",
-                "checked_at": "2026-10-01T23:42:04+08:00",
-                "checked_pages": [
-                  1
-                ],
-                "newly_viewed_pages": [
-                  1
-                ],
-                "unchanged_pages": [
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11,
-                  12,
-                  13,
-                  14,
-                  15,
-                  16,
-                  17,
-                  18
-                ],
-                "identical_pages_inherited": [
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11,
-                  12,
-                  13,
-                  14,
-                  15,
-                  16,
-                  17,
-                  18
-                ],
-                "page_sha256": {
-                  "page-01.png": "8dff75b132e0916e624396b2f736d18ee143f939586cc0b955db8c105407efc1",
-                  "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                  "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                  "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                  "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                  "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                  "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                  "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                  "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                  "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                  "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                  "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                  "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                  "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                  "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                  "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                  "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                  "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                },
-                "observations": [
-                  "实际查看第1页；更新时间与 Pi 工具摘要清楚，其余页图哈希与上一版相同。",
-                  "其余页面 PNG 哈希与上一版视觉核验相同。"
-                ],
-                "previous_checked": {
-                  "word_sha256": "3add54b4fb8755536e9100dd9ce747049317f909feb595c496a98dcf495393a6",
-                  "pdf_sha256": "e1ba197f0c13905dc0dddd2c88c466ca0e445f2f897037988400c77b9b5357d9",
-                  "visual_checked": true,
-                  "updated": "2026-10-01T23:36:51+08:00",
-                  "checked_at": "2026-10-01T23:36:51+08:00",
-                  "checked_pages": [
-                    1
-                  ],
-                  "newly_viewed_pages": [
-                    1
-                  ],
-                  "unchanged_pages": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                    14,
-                    15,
-                    16,
-                    17,
-                    18
-                  ],
-                  "identical_pages_inherited": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11,
-                    12,
-                    13,
-                    14,
-                    15,
-                    16,
-                    17,
-                    18
-                  ],
-                  "page_sha256": {
-                    "page-01.png": "254276868a41a8114cd5ef15e34f4f23ab41d0148cc687428cc18104f16ca85b",
-                    "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                    "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                    "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                    "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                    "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                    "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                    "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                    "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                    "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                    "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                    "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                    "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                    "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                    "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                    "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                    "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                    "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                  },
-                  "observations": [
-                    "实际查看第1页；更新日期与 Pi 工具摘要清晰，其余页图哈希与上一版相同。",
-                    "其余页面 PNG 哈希与上一版视觉核验相同。"
-                  ],
-                  "previous_checked": {
-                    "word_sha256": "2b9a91426446612ff805978977e282f165d89091a0721780b178bc7fbcb1dede",
-                    "pdf_sha256": "a453bd1478703b1966b35cbe3d7a6c1c1782539481897d27b9b33ef41e71954b",
-                    "visual_checked": true,
-                    "updated": "2026-10-01T23:32:00+08:00",
-                    "checked_at": "2026-10-01T23:32:00+08:00",
-                    "checked_pages": [
-                      1
-                    ],
-                    "newly_viewed_pages": [
-                      1
-                    ],
-                    "unchanged_pages": [
-                      2,
-                      3,
-                      4,
-                      5,
-                      6,
-                      7,
-                      8,
-                      9,
-                      10,
-                      11,
-                      12,
-                      13,
-                      14,
-                      15,
-                      16,
-                      17,
-                      18
-                    ],
-                    "identical_pages_inherited": [
-                      2,
-                      3,
-                      4,
-                      5,
-                      6,
-                      7,
-                      8,
-                      9,
-                      10,
-                      11,
-                      12,
-                      13,
-                      14,
-                      15,
-                      16,
-                      17,
-                      18
-                    ],
-                    "page_sha256": {
-                      "page-01.png": "acf904965e12f970a7f7ad6b973dfb32f624c002cee58b2a741835c6763a0453",
-                      "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                      "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                      "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                      "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                      "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                      "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                      "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                      "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                      "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                      "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                      "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                      "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                      "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                      "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                      "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                      "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                      "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                    },
-                    "observations": [
-                      "实际查看第1页；封面更新时间与 Pi 工具数据摘要清楚，其余页图哈希与上一版核验一致。",
-                      "其余页面图像哈希与上一版视觉核验相同。"
-                    ],
-                    "previous_checked": {
-                      "word_sha256": "d0bdc854419ba6b6c4955bb310f078d2c186d99641e211364eea1b69d0e63932",
-                      "visual_checked": true,
-                      "updated": "2026-10-01T23:10:45+08:00",
-                      "previous_checked": {
-                        "word_sha256": "77a5ff93522aaff01f90f5fcee839705664096b23f3685497cc21ce7e93a4f0f",
-                        "visual_checked": true,
-                        "updated": "2026-10-01T23:03:09+08:00",
-                        "previous_checked": {
-                          "word_sha256": "5c384fa8946aef72a1cc350a0722d07de9f112c7653bf72a46ffe0fb0a4da033",
-                          "visual_checked": true,
-                          "updated": "2026-10-01T22:55:42+08:00",
-                          "previous_checked": {
-                            "word_sha256": "de804705d3033eef5aef127efe444557a040c1950fcbb4bed351ca88cb86eec3",
-                            "visual_checked": true,
-                            "updated": "2026-10-01T22:46:45+08:00",
-                            "previous_checked": {
-                              "word_sha256": "826a3aba4c194603a361b6ab51898ed82a0dfa98abd416d25c984366e3ea7ac1",
-                              "pdf_sha256": "a09ef1dac8b6eb2088e91367cf850e8e0d2f581f2382fd6e141bec9966770c79",
-                              "visual_checked": true,
-                              "checked_at": "2026-10-01T22:40:54+08:00",
-                              "checked_pages": [
-                                1
-                              ],
-                              "newly_viewed_pages": [
-                                1
-                              ],
-                              "unchanged_pages": [
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10,
-                                11,
-                                12,
-                                13,
-                                14,
-                                15,
-                                16,
-                                17,
-                                18
-                              ],
-                              "identical_pages_inherited": [
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10,
-                                11,
-                                12,
-                                13,
-                                14,
-                                15,
-                                16,
-                                17,
-                                18
-                              ],
-                              "page_sha256": {
-                                "page-01.png": "724711aceda2b32e6a075fec090a499c0361fd6bcebfc137b9919bf4951b7dea",
-                                "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                                "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                                "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                                "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                                "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                                "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                                "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                                "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                                "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                                "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                                "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                                "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                                "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                                "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                                "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                                "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                                "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                              },
-                              "observations": [
-                                "实际查看第1页；标题、日期、中文和版面可读。",
-                                "其余17页的PNG哈希与上一份已核验版本一致。"
-                              ],
-                              "previous_checked": {
-                                "word_sha256": "6dfd99539566ef7c6e1c921498f7c92dea6cee522202bb766431e673aadfdb33",
-                                "pdf_sha256": "f3f23ebd4d749ab98682bf09afc437c80732dacb0fd25107daa3b6151396b5a7",
-                                "visual_checked": true,
-                                "checked_at": "2026-10-01T22:35:23+08:00",
-                                "checked_pages": [
-                                  1
-                                ],
-                                "newly_viewed_pages": [
-                                  1
-                                ],
-                                "unchanged_pages": [
-                                  2,
-                                  3,
-                                  4,
-                                  5,
-                                  6,
-                                  7,
-                                  8,
-                                  9,
-                                  10,
-                                  11,
-                                  12,
-                                  13,
-                                  14,
-                                  15,
-                                  16,
-                                  17,
-                                  18
-                                ],
-                                "identical_pages_inherited": [
-                                  2,
-                                  3,
-                                  4,
-                                  5,
-                                  6,
-                                  7,
-                                  8,
-                                  9,
-                                  10,
-                                  11,
-                                  12,
-                                  13,
-                                  14,
-                                  15,
-                                  16,
-                                  17,
-                                  18
-                                ],
-                                "page_sha256": {
-                                  "page-01.png": "842a27026dd995435f004ed8885429406cf0d415ae63953a9596abc78d05aca7",
-                                  "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                                  "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                                  "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                                  "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                                  "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                                  "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                                  "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                                  "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                                  "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                                  "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                                  "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                                  "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                                  "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                                  "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                                  "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                                  "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                                  "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                                },
-                                "observations": [
-                                  "实际查看第1页；标题、日期、中文和版面可读。",
-                                  "其余17页的PNG哈希与上一份已核验版本一致。"
-                                ],
-                                "previous_checked": {
-                                  "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
-                                  "pdf_sha256": "68693db33abc59111ee33e983eacdd6d5f2eb46cb924450441d8b23087b9d67a",
-                                  "visual_checked": true,
-                                  "checked_at": "2026-10-01T22:00:28+08:00",
-                                  "checked_pages": [
-                                    1
-                                  ],
-                                  "unchanged_pages": [
-                                    2,
-                                    3,
-                                    4,
-                                    5,
-                                    6,
-                                    7,
-                                    8,
-                                    9,
-                                    10,
-                                    11,
-                                    12,
-                                    13,
-                                    14,
-                                    15,
-                                    16,
-                                    17,
-                                    18
-                                  ],
-                                  "page_sha256": {
-                                    "page-01.png": "e6cea6240e81835909e4fca62bb9a0926dd53a13e89db7e1814a539099bf51e0",
-                                    "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                                    "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                                    "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                                    "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                                    "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                                    "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                                    "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                                    "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                                    "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                                    "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                                    "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                                    "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                                    "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                                    "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                                    "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                                    "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                                    "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                                  },
-                                  "observations": [
-                                    "实际查看修改页：1。中文、代码、图表、表格边界和图注均可读。",
-                                    "其余 17 页与上一份已核验版本的页面图像哈希一致。",
-                                    "本册区分已核验的 Pi 工具链与尚未执行的模型 Agent 成绩。"
-                                  ],
-                                  "previous_checked": {
-                                    "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
-                                    "visual_checked": false,
-                                    "updated": "2026-10-01T21:57:45+08:00",
-                                    "previous_checked": {
-                                      "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
-                                      "pdf_sha256": "674d310e01f940a42ad7c2f4c20de5f8ea2e1770f0cd425a8619c7ebaad5bcd6",
-                                      "visual_checked": true,
-                                      "checked_at": "2026-10-01T21:55:16+08:00",
-                                      "checked_pages": [
-                                        1
-                                      ],
-                                      "unchanged_pages": [
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10,
-                                        11,
-                                        12,
-                                        13,
-                                        14,
-                                        15,
-                                        16,
-                                        17,
-                                        18
-                                      ],
-                                      "page_sha256": {
-                                        "page-01.png": "a18109e9819f5217d32d2ef827cfb811e3b8eb58ffcae3024d4a3c37462d4135",
-                                        "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                                        "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                                        "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                                        "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                                        "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                                        "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                                        "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                                        "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                                        "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                                        "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                                        "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                                        "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                                        "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                                        "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                                        "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                                        "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                                        "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                                      },
-                                      "observations": [
-                                        "实际查看修改页：1。中文、图例、坐标、表格边界和图注均可读。",
-                                        "其余 17 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
-                                        "本册仍区分已核验的 Pi 工具链和未执行的模型 Agent 成绩。"
-                                      ],
-                                      "previous_checked": {
-                                        "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
-                                        "visual_checked": false,
-                                        "updated": "2026-10-01T21:52:56+08:00",
-                                        "previous_checked": {
-                                          "word_sha256": "cbca5c206b3aa2054f5d03468713f80a8afa506dbfa3eed988f7f07d43216ebe",
-                                          "pdf_sha256": "ee713bbc00579574958429b6155c0b780a50822522298b85c87705a513f5228e",
-                                          "visual_checked": true,
-                                          "checked_at": "2026-10-01T19:00:02+08:00",
-                                          "checked_pages": [
-                                            1,
-                                            17,
-                                            18
-                                          ],
-                                          "unchanged_pages": [
-                                            2,
-                                            3,
-                                            4,
-                                            5,
-                                            6,
-                                            7,
-                                            8,
-                                            9,
-                                            10,
-                                            11,
-                                            12,
-                                            13,
-                                            14,
-                                            15,
-                                            16
-                                          ],
-                                          "page_sha256": {
-                                            "page-01.png": "02c2c5e7ca84d023590e404567757aca1f01337979b3fbd37200017a22550f35",
-                                            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                                            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                                            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                                            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                                            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                                            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                                            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                                            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                                            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                                            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                                            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                                            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                                            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                                            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                                            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                                            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                                            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                                          },
-                                          "observations": [
-                                            "第1页更新日期及本册任务数量说明可读。",
-                                            "第17—18页 Pi 训练与 test 证据索引接续完整，重复表头与结论段位置正常。",
-                                            "其余15页与上一份已核验版本的页面 PNG 哈希相同。",
-                                            "代码缩进、中文、表格边界、页码正常，未见空白页。"
-                                          ],
-                                          "previous_checked": {
-                                            "word_sha256": "7c14271f22034a4b74c63e2e551a12a6a00317cb28320bcacd428fe04bcc3e59",
-                                            "pdf_sha256": "38015fb1263fe45671c7ebfd1f3fc59d254e419ef4080ddb0482fc9a8efb7aa2",
-                                            "visual_checked": true,
-                                            "checked_at": "2026-10-01T16:50:34+08:00",
-                                            "checked_pages": [
-                                              1,
-                                              2,
-                                              3,
-                                              4,
-                                              5,
-                                              6,
-                                              7,
-                                              8,
-                                              9,
-                                              10,
-                                              11,
-                                              12,
-                                              13,
-                                              14,
-                                              15,
-                                              16,
-                                              17,
-                                              18
-                                            ],
-                                            "observations": [
-                                              "实际查看 Word 导出的页面，代码缩进和中文可读",
-                                              "图例、坐标与图注清楚，表格未越界，无空白页",
-                                              "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
-                                              "代码和内嵌图片另与同版 Markdown、源图核对",
-                                              "实际查看全部修改页；其余页在120dpi逐像素与已核验上一版一致；概述在册首，证据索引在实验正文之后"
-                                            ],
-                                            "newly_viewed_pages": [
-                                              1,
-                                              5,
-                                              12,
-                                              13,
-                                              14,
-                                              15,
-                                              16,
-                                              17,
-                                              18
-                                            ],
-                                            "identical_pages_inherited": [
-                                              2,
-                                              3,
-                                              4,
-                                              6,
-                                              7,
-                                              8,
-                                              9,
-                                              10,
-                                              11
-                                            ],
-                                            "previous_pdf_sha256": "fd43a30b4df854dcd1fa2224b2576b84c11cf699be962ca5d02d1c7e16b5f306"
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            "checked_at": "2026-10-01T22:51:21+08:00",
-                            "checked_pages": [
-                              1
-                            ],
-                            "unchanged_pages": [
-                              2,
-                              3,
-                              4,
-                              5,
-                              6,
-                              7,
-                              8,
-                              9,
-                              10,
-                              11,
-                              12,
-                              13,
-                              14,
-                              15,
-                              16,
-                              17,
-                              18
-                            ],
-                            "page_sha256": {
-                              "page-01.png": "82fa80fbec51456420f496049b1caf73f6bde638643f8c2cc7c1772a4627ca45",
-                              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                            },
-                            "observations": [
-                              "实际查看封面；本轮只有页眉更新时间发生变化，其余页面图像哈希未变。"
-                            ]
-                          },
-                          "checked_at": "2026-10-01T22:58:36+08:00",
-                          "checked_pages": [
-                            1
-                          ],
-                          "unchanged_pages": [
-                            2,
-                            3,
-                            4,
-                            5,
-                            6,
-                            7,
-                            8,
-                            9,
-                            10,
-                            11,
-                            12,
-                            13,
-                            14,
-                            15,
-                            16,
-                            17,
-                            18
-                          ],
-                          "page_sha256": {
-                            "page-01.png": "8dbd1a4d9447874e9a2555b6ddf1190f82edd172310379317be0584b3964c511",
-                            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                          },
-                          "observations": [
-                            "实际查看封面；其余页面 PNG 哈希与上一份已核验版本一致。"
-                          ]
-                        },
-                        "checked_at": "2026-10-01T23:06:20+08:00",
-                        "checked_pages": [
-                          1
-                        ],
-                        "unchanged_pages": [
-                          2,
-                          3,
-                          4,
-                          5,
-                          6,
-                          7,
-                          8,
-                          9,
-                          10,
-                          11,
-                          12,
-                          13,
-                          14,
-                          15,
-                          16,
-                          17,
-                          18
-                        ],
-                        "page_sha256": {
-                          "page-01.png": "c941aa4ba695914699a06915efe78a581f1f88ed1eea2ba0d97b8c2d53bde004",
-                          "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                          "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                          "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                          "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                          "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                          "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                          "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                          "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                          "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                          "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                          "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                          "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                          "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                          "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                          "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                          "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                          "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                        },
-                        "observations": [
-                          "实际查看封面；其余页面与上一份已核验版本的 PNG 哈希一致。"
-                        ]
-                      },
-                      "checked_at": "2026-10-01T23:16:08+08:00",
-                      "checked_pages": [
-                        1
-                      ],
-                      "unchanged_pages": [
-                        2,
-                        3,
-                        4,
-                        5,
-                        6,
-                        7,
-                        8,
-                        9,
-                        10,
-                        11,
-                        12,
-                        13,
-                        14,
-                        15,
-                        16,
-                        17,
-                        18
-                      ],
-                      "page_sha256": {
-                        "page-01.png": "c5c099834e53a955b3c3d284a910d620cea2c377fb3bb544ff963d2f7884296d",
-                        "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-                        "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-                        "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-                        "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-                        "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-                        "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-                        "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-                        "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-                        "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-                        "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-                        "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-                        "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-                        "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-                        "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-                        "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-                        "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-                        "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-                      },
-                      "observations": [
-                        "实际查看封面；其余页面与上一份已核验版本的 PNG 哈希一致。"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "pdf_sha256": "157d82cabd6c2f71ef4eb50d4ed08df2a2080473756eb08f5621b2ffb6751504",
-          "checked_at": "2026-10-02T00:27:47+08:00",
-          "checked_pages": [
-            1
-          ],
-          "newly_viewed_pages": [
-            1
-          ],
-          "unchanged_pages": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18
-          ],
-          "identical_pages_inherited": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18
-          ],
-          "page_sha256": {
-            "page-01.png": "a0831cf3df8a33998fced5394fba833ae4562ebcba93201d676e70bdcd95852c",
-            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-          },
-          "observations": [
-            "实际查看第1页；中文摘要、Pi 工具验证结论与更新时间清晰，未发现缺字或溢出。"
-          ]
-        },
-        "pdf_sha256": "bb1718ea81863ffbc094af4cab3497ea96fcbec9a8db3f253331bf7d0e8d3200",
-        "checked_at": "2026-10-02T00:36:59+08:00",
+        "updated": "2026-10-02T00:54:46+08:00",
+        "checked_at": "2026-10-02T00:54:46+08:00",
         "checked_pages": [
           1
         ],
@@ -1295,7 +268,7 @@
           18
         ],
         "page_sha256": {
-          "page-01.png": "e7afc152daa334631eceee576dcd5e9950fe8b2ce22b3e4020ac47be7f687871",
+          "page-01.png": "d235f977e22efd8a1807de3396c405d4ab1cb20f97160926a17a70048623589b",
           "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
           "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
           "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -1315,8 +288,1109 @@
           "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
         },
         "observations": [
-          "实际查看第1页；Pi 工具阶段摘要、中文与更新时间清晰，没有缺字或溢出。"
-        ]
+          "实际查看第1页；Pi 工具与任务数据摘要、中文和更新时间清晰，没有缺字或溢出。"
+        ],
+        "previous_checked": {
+          "word_sha256": "4c8db76db712a3f5eb275c231a1a197d47f7b63e858b26a5b3c63e4d6f915689",
+          "visual_checked": true,
+          "updated": "2026-10-02T00:36:59+08:00",
+          "previous_checked": {
+            "word_sha256": "35a750e1c087d316d8ba957fb25e901fa642e207ae5750513ea5bb020771d261",
+            "visual_checked": true,
+            "updated": "2026-10-02T00:27:47+08:00",
+            "previous_checked": {
+              "word_sha256": "ffec9f832681ac370a3560529a29afd0650e4d58d27ce5df2b28297b8ef43a1c",
+              "pdf_sha256": "b7a384bb3f2ea246b149c5297b3fb9124a44f556f209b51ce4814165eda5e4e1",
+              "visual_checked": true,
+              "updated": "2026-10-02T00:06:49+08:00",
+              "checked_at": "2026-10-02T00:06:49+08:00",
+              "checked_pages": [
+                1
+              ],
+              "newly_viewed_pages": [
+                1
+              ],
+              "unchanged_pages": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18
+              ],
+              "identical_pages_inherited": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18
+              ],
+              "page_sha256": {
+                "page-01.png": "cf48dcc7dc4893b53c984ca5167a4f623212e7e38310e3a9eb6c01b19c6afa24",
+                "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+              },
+              "observations": [
+                "实际查看第1页；更新时间与 Pi 工具摘要清楚，其余页哈希与上一版相同。",
+                "其余页面 PNG 哈希与上一版视觉核验相同。"
+              ],
+              "previous_checked": {
+                "word_sha256": "16f365597c70647f379baf2aaa0a61343760cb5ba9a80873408ccd91adc6d2c6",
+                "pdf_sha256": "0f730a031fc4c6dd89ae142b4ec128947c05ad305329c41f31620b5712146800",
+                "visual_checked": true,
+                "updated": "2026-10-01T23:55:56+08:00",
+                "checked_at": "2026-10-01T23:55:56+08:00",
+                "checked_pages": [
+                  1
+                ],
+                "newly_viewed_pages": [
+                  1
+                ],
+                "unchanged_pages": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "identical_pages_inherited": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "page_sha256": {
+                  "page-01.png": "3aa376595544f088365f25e982c68ef2c9903144b7103a0576b95722475406d4",
+                  "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                  "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                  "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                  "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                  "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                  "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                  "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                  "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                  "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                  "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                  "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                  "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                  "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                  "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                  "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                  "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                  "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                },
+                "observations": [
+                  "实际查看第1页；更新日期和 Pi 工具摘要清楚，其余页哈希与上一版相同。",
+                  "其余页面 PNG 哈希与上一版视觉核验相同。"
+                ],
+                "previous_checked": {
+                  "word_sha256": "fe40c918755fb82691d92c667f40333dc3b7d205e1e76c27fc480a2e7357586d",
+                  "pdf_sha256": "837f3d978c7938d5a68fbe15f09fb0c917b12afb6e6d38352763297b761b4d7e",
+                  "visual_checked": true,
+                  "updated": "2026-10-01T23:42:04+08:00",
+                  "checked_at": "2026-10-01T23:42:04+08:00",
+                  "checked_pages": [
+                    1
+                  ],
+                  "newly_viewed_pages": [
+                    1
+                  ],
+                  "unchanged_pages": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "identical_pages_inherited": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "page_sha256": {
+                    "page-01.png": "8dff75b132e0916e624396b2f736d18ee143f939586cc0b955db8c105407efc1",
+                    "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                    "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                    "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                    "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                    "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                    "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                    "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                    "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                    "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                    "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                    "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                    "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                    "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                    "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                    "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                    "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                    "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                  },
+                  "observations": [
+                    "实际查看第1页；更新时间与 Pi 工具摘要清楚，其余页图哈希与上一版相同。",
+                    "其余页面 PNG 哈希与上一版视觉核验相同。"
+                  ],
+                  "previous_checked": {
+                    "word_sha256": "3add54b4fb8755536e9100dd9ce747049317f909feb595c496a98dcf495393a6",
+                    "pdf_sha256": "e1ba197f0c13905dc0dddd2c88c466ca0e445f2f897037988400c77b9b5357d9",
+                    "visual_checked": true,
+                    "updated": "2026-10-01T23:36:51+08:00",
+                    "checked_at": "2026-10-01T23:36:51+08:00",
+                    "checked_pages": [
+                      1
+                    ],
+                    "newly_viewed_pages": [
+                      1
+                    ],
+                    "unchanged_pages": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8,
+                      9,
+                      10,
+                      11,
+                      12,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18
+                    ],
+                    "identical_pages_inherited": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8,
+                      9,
+                      10,
+                      11,
+                      12,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18
+                    ],
+                    "page_sha256": {
+                      "page-01.png": "254276868a41a8114cd5ef15e34f4f23ab41d0148cc687428cc18104f16ca85b",
+                      "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                      "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                      "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                      "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                      "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                      "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                      "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                      "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                      "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                      "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                      "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                      "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                      "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                      "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                      "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                      "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                      "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                    },
+                    "observations": [
+                      "实际查看第1页；更新日期与 Pi 工具摘要清晰，其余页图哈希与上一版相同。",
+                      "其余页面 PNG 哈希与上一版视觉核验相同。"
+                    ],
+                    "previous_checked": {
+                      "word_sha256": "2b9a91426446612ff805978977e282f165d89091a0721780b178bc7fbcb1dede",
+                      "pdf_sha256": "a453bd1478703b1966b35cbe3d7a6c1c1782539481897d27b9b33ef41e71954b",
+                      "visual_checked": true,
+                      "updated": "2026-10-01T23:32:00+08:00",
+                      "checked_at": "2026-10-01T23:32:00+08:00",
+                      "checked_pages": [
+                        1
+                      ],
+                      "newly_viewed_pages": [
+                        1
+                      ],
+                      "unchanged_pages": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                      ],
+                      "identical_pages_inherited": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                      ],
+                      "page_sha256": {
+                        "page-01.png": "acf904965e12f970a7f7ad6b973dfb32f624c002cee58b2a741835c6763a0453",
+                        "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                        "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                        "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                        "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                        "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                        "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                        "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                        "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                        "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                        "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                        "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                        "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                        "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                        "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                        "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                        "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                        "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                      },
+                      "observations": [
+                        "实际查看第1页；封面更新时间与 Pi 工具数据摘要清楚，其余页图哈希与上一版核验一致。",
+                        "其余页面图像哈希与上一版视觉核验相同。"
+                      ],
+                      "previous_checked": {
+                        "word_sha256": "d0bdc854419ba6b6c4955bb310f078d2c186d99641e211364eea1b69d0e63932",
+                        "visual_checked": true,
+                        "updated": "2026-10-01T23:10:45+08:00",
+                        "previous_checked": {
+                          "word_sha256": "77a5ff93522aaff01f90f5fcee839705664096b23f3685497cc21ce7e93a4f0f",
+                          "visual_checked": true,
+                          "updated": "2026-10-01T23:03:09+08:00",
+                          "previous_checked": {
+                            "word_sha256": "5c384fa8946aef72a1cc350a0722d07de9f112c7653bf72a46ffe0fb0a4da033",
+                            "visual_checked": true,
+                            "updated": "2026-10-01T22:55:42+08:00",
+                            "previous_checked": {
+                              "word_sha256": "de804705d3033eef5aef127efe444557a040c1950fcbb4bed351ca88cb86eec3",
+                              "visual_checked": true,
+                              "updated": "2026-10-01T22:46:45+08:00",
+                              "previous_checked": {
+                                "word_sha256": "826a3aba4c194603a361b6ab51898ed82a0dfa98abd416d25c984366e3ea7ac1",
+                                "pdf_sha256": "a09ef1dac8b6eb2088e91367cf850e8e0d2f581f2382fd6e141bec9966770c79",
+                                "visual_checked": true,
+                                "checked_at": "2026-10-01T22:40:54+08:00",
+                                "checked_pages": [
+                                  1
+                                ],
+                                "newly_viewed_pages": [
+                                  1
+                                ],
+                                "unchanged_pages": [
+                                  2,
+                                  3,
+                                  4,
+                                  5,
+                                  6,
+                                  7,
+                                  8,
+                                  9,
+                                  10,
+                                  11,
+                                  12,
+                                  13,
+                                  14,
+                                  15,
+                                  16,
+                                  17,
+                                  18
+                                ],
+                                "identical_pages_inherited": [
+                                  2,
+                                  3,
+                                  4,
+                                  5,
+                                  6,
+                                  7,
+                                  8,
+                                  9,
+                                  10,
+                                  11,
+                                  12,
+                                  13,
+                                  14,
+                                  15,
+                                  16,
+                                  17,
+                                  18
+                                ],
+                                "page_sha256": {
+                                  "page-01.png": "724711aceda2b32e6a075fec090a499c0361fd6bcebfc137b9919bf4951b7dea",
+                                  "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                  "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                  "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                  "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                  "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                  "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                  "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                  "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                  "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                  "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                  "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                  "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                  "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                  "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                  "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                  "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                  "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                                },
+                                "observations": [
+                                  "实际查看第1页；标题、日期、中文和版面可读。",
+                                  "其余17页的PNG哈希与上一份已核验版本一致。"
+                                ],
+                                "previous_checked": {
+                                  "word_sha256": "6dfd99539566ef7c6e1c921498f7c92dea6cee522202bb766431e673aadfdb33",
+                                  "pdf_sha256": "f3f23ebd4d749ab98682bf09afc437c80732dacb0fd25107daa3b6151396b5a7",
+                                  "visual_checked": true,
+                                  "checked_at": "2026-10-01T22:35:23+08:00",
+                                  "checked_pages": [
+                                    1
+                                  ],
+                                  "newly_viewed_pages": [
+                                    1
+                                  ],
+                                  "unchanged_pages": [
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15,
+                                    16,
+                                    17,
+                                    18
+                                  ],
+                                  "identical_pages_inherited": [
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15,
+                                    16,
+                                    17,
+                                    18
+                                  ],
+                                  "page_sha256": {
+                                    "page-01.png": "842a27026dd995435f004ed8885429406cf0d415ae63953a9596abc78d05aca7",
+                                    "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                    "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                    "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                    "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                    "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                    "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                    "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                    "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                    "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                    "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                    "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                    "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                    "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                    "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                    "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                    "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                    "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                                  },
+                                  "observations": [
+                                    "实际查看第1页；标题、日期、中文和版面可读。",
+                                    "其余17页的PNG哈希与上一份已核验版本一致。"
+                                  ],
+                                  "previous_checked": {
+                                    "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
+                                    "pdf_sha256": "68693db33abc59111ee33e983eacdd6d5f2eb46cb924450441d8b23087b9d67a",
+                                    "visual_checked": true,
+                                    "checked_at": "2026-10-01T22:00:28+08:00",
+                                    "checked_pages": [
+                                      1
+                                    ],
+                                    "unchanged_pages": [
+                                      2,
+                                      3,
+                                      4,
+                                      5,
+                                      6,
+                                      7,
+                                      8,
+                                      9,
+                                      10,
+                                      11,
+                                      12,
+                                      13,
+                                      14,
+                                      15,
+                                      16,
+                                      17,
+                                      18
+                                    ],
+                                    "page_sha256": {
+                                      "page-01.png": "e6cea6240e81835909e4fca62bb9a0926dd53a13e89db7e1814a539099bf51e0",
+                                      "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                      "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                      "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                      "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                      "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                      "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                      "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                      "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                      "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                      "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                      "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                      "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                      "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                      "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                      "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                      "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                      "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                                    },
+                                    "observations": [
+                                      "实际查看修改页：1。中文、代码、图表、表格边界和图注均可读。",
+                                      "其余 17 页与上一份已核验版本的页面图像哈希一致。",
+                                      "本册区分已核验的 Pi 工具链与尚未执行的模型 Agent 成绩。"
+                                    ],
+                                    "previous_checked": {
+                                      "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
+                                      "visual_checked": false,
+                                      "updated": "2026-10-01T21:57:45+08:00",
+                                      "previous_checked": {
+                                        "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
+                                        "pdf_sha256": "674d310e01f940a42ad7c2f4c20de5f8ea2e1770f0cd425a8619c7ebaad5bcd6",
+                                        "visual_checked": true,
+                                        "checked_at": "2026-10-01T21:55:16+08:00",
+                                        "checked_pages": [
+                                          1
+                                        ],
+                                        "unchanged_pages": [
+                                          2,
+                                          3,
+                                          4,
+                                          5,
+                                          6,
+                                          7,
+                                          8,
+                                          9,
+                                          10,
+                                          11,
+                                          12,
+                                          13,
+                                          14,
+                                          15,
+                                          16,
+                                          17,
+                                          18
+                                        ],
+                                        "page_sha256": {
+                                          "page-01.png": "a18109e9819f5217d32d2ef827cfb811e3b8eb58ffcae3024d4a3c37462d4135",
+                                          "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                          "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                          "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                          "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                          "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                          "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                          "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                          "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                          "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                          "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                          "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                          "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                          "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                          "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                          "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                          "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                          "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                                        },
+                                        "observations": [
+                                          "实际查看修改页：1。中文、图例、坐标、表格边界和图注均可读。",
+                                          "其余 17 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
+                                          "本册仍区分已核验的 Pi 工具链和未执行的模型 Agent 成绩。"
+                                        ],
+                                        "previous_checked": {
+                                          "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
+                                          "visual_checked": false,
+                                          "updated": "2026-10-01T21:52:56+08:00",
+                                          "previous_checked": {
+                                            "word_sha256": "cbca5c206b3aa2054f5d03468713f80a8afa506dbfa3eed988f7f07d43216ebe",
+                                            "pdf_sha256": "ee713bbc00579574958429b6155c0b780a50822522298b85c87705a513f5228e",
+                                            "visual_checked": true,
+                                            "checked_at": "2026-10-01T19:00:02+08:00",
+                                            "checked_pages": [
+                                              1,
+                                              17,
+                                              18
+                                            ],
+                                            "unchanged_pages": [
+                                              2,
+                                              3,
+                                              4,
+                                              5,
+                                              6,
+                                              7,
+                                              8,
+                                              9,
+                                              10,
+                                              11,
+                                              12,
+                                              13,
+                                              14,
+                                              15,
+                                              16
+                                            ],
+                                            "page_sha256": {
+                                              "page-01.png": "02c2c5e7ca84d023590e404567757aca1f01337979b3fbd37200017a22550f35",
+                                              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                                            },
+                                            "observations": [
+                                              "第1页更新日期及本册任务数量说明可读。",
+                                              "第17—18页 Pi 训练与 test 证据索引接续完整，重复表头与结论段位置正常。",
+                                              "其余15页与上一份已核验版本的页面 PNG 哈希相同。",
+                                              "代码缩进、中文、表格边界、页码正常，未见空白页。"
+                                            ],
+                                            "previous_checked": {
+                                              "word_sha256": "7c14271f22034a4b74c63e2e551a12a6a00317cb28320bcacd428fe04bcc3e59",
+                                              "pdf_sha256": "38015fb1263fe45671c7ebfd1f3fc59d254e419ef4080ddb0482fc9a8efb7aa2",
+                                              "visual_checked": true,
+                                              "checked_at": "2026-10-01T16:50:34+08:00",
+                                              "checked_pages": [
+                                                1,
+                                                2,
+                                                3,
+                                                4,
+                                                5,
+                                                6,
+                                                7,
+                                                8,
+                                                9,
+                                                10,
+                                                11,
+                                                12,
+                                                13,
+                                                14,
+                                                15,
+                                                16,
+                                                17,
+                                                18
+                                              ],
+                                              "observations": [
+                                                "实际查看 Word 导出的页面，代码缩进和中文可读",
+                                                "图例、坐标与图注清楚，表格未越界，无空白页",
+                                                "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
+                                                "代码和内嵌图片另与同版 Markdown、源图核对",
+                                                "实际查看全部修改页；其余页在120dpi逐像素与已核验上一版一致；概述在册首，证据索引在实验正文之后"
+                                              ],
+                                              "newly_viewed_pages": [
+                                                1,
+                                                5,
+                                                12,
+                                                13,
+                                                14,
+                                                15,
+                                                16,
+                                                17,
+                                                18
+                                              ],
+                                              "identical_pages_inherited": [
+                                                2,
+                                                3,
+                                                4,
+                                                6,
+                                                7,
+                                                8,
+                                                9,
+                                                10,
+                                                11
+                                              ],
+                                              "previous_pdf_sha256": "fd43a30b4df854dcd1fa2224b2576b84c11cf699be962ca5d02d1c7e16b5f306"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "checked_at": "2026-10-01T22:51:21+08:00",
+                              "checked_pages": [
+                                1
+                              ],
+                              "unchanged_pages": [
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9,
+                                10,
+                                11,
+                                12,
+                                13,
+                                14,
+                                15,
+                                16,
+                                17,
+                                18
+                              ],
+                              "page_sha256": {
+                                "page-01.png": "82fa80fbec51456420f496049b1caf73f6bde638643f8c2cc7c1772a4627ca45",
+                                "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                                "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                                "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                                "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                                "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                                "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                                "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                                "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                                "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                                "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                                "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                                "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                                "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                                "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                                "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                                "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                                "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                              },
+                              "observations": [
+                                "实际查看封面；本轮只有页眉更新时间发生变化，其余页面图像哈希未变。"
+                              ]
+                            },
+                            "checked_at": "2026-10-01T22:58:36+08:00",
+                            "checked_pages": [
+                              1
+                            ],
+                            "unchanged_pages": [
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16,
+                              17,
+                              18
+                            ],
+                            "page_sha256": {
+                              "page-01.png": "8dbd1a4d9447874e9a2555b6ddf1190f82edd172310379317be0584b3964c511",
+                              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                            },
+                            "observations": [
+                              "实际查看封面；其余页面 PNG 哈希与上一份已核验版本一致。"
+                            ]
+                          },
+                          "checked_at": "2026-10-01T23:06:20+08:00",
+                          "checked_pages": [
+                            1
+                          ],
+                          "unchanged_pages": [
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            17,
+                            18
+                          ],
+                          "page_sha256": {
+                            "page-01.png": "c941aa4ba695914699a06915efe78a581f1f88ed1eea2ba0d97b8c2d53bde004",
+                            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                          },
+                          "observations": [
+                            "实际查看封面；其余页面与上一份已核验版本的 PNG 哈希一致。"
+                          ]
+                        },
+                        "checked_at": "2026-10-01T23:16:08+08:00",
+                        "checked_pages": [
+                          1
+                        ],
+                        "unchanged_pages": [
+                          2,
+                          3,
+                          4,
+                          5,
+                          6,
+                          7,
+                          8,
+                          9,
+                          10,
+                          11,
+                          12,
+                          13,
+                          14,
+                          15,
+                          16,
+                          17,
+                          18
+                        ],
+                        "page_sha256": {
+                          "page-01.png": "c5c099834e53a955b3c3d284a910d620cea2c377fb3bb544ff963d2f7884296d",
+                          "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                          "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                          "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                          "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                          "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                          "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                          "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                          "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                          "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                          "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                          "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                          "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                          "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                          "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                          "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                          "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                          "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                        },
+                        "observations": [
+                          "实际查看封面；其余页面与上一份已核验版本的 PNG 哈希一致。"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "pdf_sha256": "157d82cabd6c2f71ef4eb50d4ed08df2a2080473756eb08f5621b2ffb6751504",
+            "checked_at": "2026-10-02T00:27:47+08:00",
+            "checked_pages": [
+              1
+            ],
+            "newly_viewed_pages": [
+              1
+            ],
+            "unchanged_pages": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "identical_pages_inherited": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "page_sha256": {
+              "page-01.png": "a0831cf3df8a33998fced5394fba833ae4562ebcba93201d676e70bdcd95852c",
+              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+            },
+            "observations": [
+              "实际查看第1页；中文摘要、Pi 工具验证结论与更新时间清晰，未发现缺字或溢出。"
+            ]
+          },
+          "pdf_sha256": "bb1718ea81863ffbc094af4cab3497ea96fcbec9a8db3f253331bf7d0e8d3200",
+          "checked_at": "2026-10-02T00:36:59+08:00",
+          "checked_pages": [
+            1
+          ],
+          "newly_viewed_pages": [
+            1
+          ],
+          "unchanged_pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "identical_pages_inherited": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "page_sha256": {
+            "page-01.png": "e7afc152daa334631eceee576dcd5e9950fe8b2ce22b3e4020ac47be7f687871",
+            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+          },
+          "observations": [
+            "实际查看第1页；Pi 工具阶段摘要、中文与更新时间清晰，没有缺字或溢出。"
+          ]
+        }
       }
     }
   }
