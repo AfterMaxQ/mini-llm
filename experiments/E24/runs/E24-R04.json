@@ -1,0 +1,35 @@
+{
+  "status": "preparation_failed",
+  "exit_code": 1,
+  "error_type": "DependencyResolutionError",
+  "error": "uv selected the PyPI torch index entry before the PyTorch CUDA index and reported no solution for torch==2.8.0+cu128; no packages were installed.",
+  "scope": "评测环境依赖尚未安装；未加载模型、未使用 GPU、未生成 ARC 分数",
+  "run_id": "E24-R04",
+  "finished": "2026-10-01T18:37:34+08:00",
+  "config": {
+    "operation": "arc_eval_environment_install",
+    "environment": ".local/venv-arc-eval",
+    "harness_commit": "d6de81643928d653435c431bae19945d41d32520",
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      ".local/venv-arc-eval/Scripts/python.exe",
+      "--index-url",
+      "https://download.pytorch.org/whl/cu128",
+      "--extra-index-url",
+      "https://pypi.org/simple",
+      "-r",
+      "configs/environment-train.lock.txt",
+      "lm-eval @ git+https://github.com/EleutherAI/lm-evaluation-harness.git@d6de81643928d653435c431bae19945d41d32520"
+    ],
+    "result": "dependency resolution failed: uv first-index selection did not resolve torch 2.8.0+cu128 from official PyTorch index",
+    "run_id": "E24-R04",
+    "started": "2026-10-01T18:37:34+08:00",
+    "commit": "f6a5839c853374cf6fff7c3cb04efdc3ace9c9d8",
+    "process_id": 40732,
+    "code_snapshot_sha256": "884c0b27cadc571cafeb53a2d1c1e4c595e33092bd1092207fc52b3fbd13d0e5"
+  },
+  "raw_result_sha256": "574b9e7da19c62ab07519dd9c0b936cb0152c563fe3f33dc2c7800776a605c10"
+}

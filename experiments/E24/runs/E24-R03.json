@@ -1,0 +1,36 @@
+{
+  "status": "preparation_failed",
+  "exit_code": 1,
+  "error_type": "TLSCertificateError",
+  "error": "uv failed to verify the GitHub archive TLS peer certificate: invalid peer certificate: UnknownIssuer",
+  "scope": "评测环境依赖尚未安装；未加载模型、未使用 GPU、未生成 ARC 分数",
+  "run_id": "E24-R03",
+  "finished": "2026-10-01T18:36:30+08:00",
+  "config": {
+    "operation": "arc_eval_environment_install",
+    "environment": ".local/venv-arc-eval",
+    "harness_commit": "d6de81643928d653435c431bae19945d41d32520",
+    "package_source": "pinned GitHub commit archive",
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      ".local/venv-arc-eval/Scripts/python.exe",
+      "--index-url",
+      "https://download.pytorch.org/whl/cu128",
+      "--extra-index-url",
+      "https://pypi.org/simple",
+      "-r",
+      "configs/environment-train.lock.txt",
+      "lm-eval@https://github.com/EleutherAI/lm-evaluation-harness/archive/d6de81643928d653435c431bae19945d41d32520.zip"
+    ],
+    "result": "TLS certificate validation failed before package installation; no TLS bypass was used",
+    "run_id": "E24-R03",
+    "started": "2026-10-01T18:36:30+08:00",
+    "commit": "f6a5839c853374cf6fff7c3cb04efdc3ace9c9d8",
+    "process_id": 51472,
+    "code_snapshot_sha256": "884c0b27cadc571cafeb53a2d1c1e4c595e33092bd1092207fc52b3fbd13d0e5"
+  },
+  "raw_result_sha256": "c2b69de4dfb5558ed713940d274d259aea227906367e1f555a1509552ec8cd19"
+}

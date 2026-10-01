@@ -1,23 +1,61 @@
 {
-  "word_sha256": "dde5660b6b06dacffcb8df1a9b2cd2f89fc89c5597de6e32f68437f25a53661d",
-  "pdf_sha256": "843e937ecdf76087f63c6ead9856a25b7d75ea63fb3445eacdaa9bb4683e3ac2",
+  "word_sha256": "45052cf1c3d187ec582e5d93d0c04c98902d3f9769db15e6c196f5f2f8263751",
+  "pdf_sha256": "40fdd1c10c2973565c43d27c1963063d082407512d10ee871e4e38dafc077c0f",
   "visual_checked": true,
-  "checked_at": "2026-10-01T18:12:57+08:00",
+  "checked_at": "2026-10-01T18:50:42+08:00",
   "checked_pages": [
     1,
+    7,
+    8,
+    9,
+    10
+  ],
+  "unchanged_pages": [
     2,
     3,
     4,
     5,
-    6,
-    7,
-    8,
-    9
+    6
   ],
+  "page_sha256": {
+    "page-01.png": "9611ea9f4efe6559435160e05631fff4b67b79270ec053dbdb9c1af3ef293567",
+    "page-02.png": "6cd3963a27667495417311bbbe8352ff84c74124c2c06e78b79d2acc57fed4e9",
+    "page-03.png": "27c12094a9be41d9f04e555b1052ccb21b64211ce1c079f092e279149186dd4c",
+    "page-04.png": "c683fb61c4c97c298140ddfe773792539e68bb6e3828d12504f01e860a799afb",
+    "page-05.png": "54f3c330966a7e981c4ace604ca66b09a1ee5efebdab57954dbe8d45c6f86419",
+    "page-06.png": "7c9e51d0d190f0366e0c042994640265095c722f9f9a4a94299ede8bf56b8c14",
+    "page-07.png": "fe09e628fe4418983fc0d3dc8959f10db5d722ce97031ed887ec1c2dd19fad4a",
+    "page-08.png": "d0a6aea7a59f02220b86c2ca988b9fcc7ff669edcb73fb3c47ec8a249a3de24d",
+    "page-09.png": "b79b273101113f52683e8c87765681cf65e567bbf5c2db15a27c6fb1a6b430fa",
+    "page-10.png": "5a0ed5c12e05509fc3f9ec1e787d8139bc95d8fbe636ca0287c70c25bd2d43c8"
+  },
   "observations": [
-    "实际查看 Word 导出的全部9页；中文、段落与页码清楚。",
-    "ARC 结构图已内嵌，轴名、单位、计数与图注可读，和源图一致。",
-    "代码块和题目结论位置清楚；完整记录路径集中在末尾证据索引。",
-    "检查并修正了裸 Markdown 加粗符号与证据索引列宽，再次导出复核。"
-  ]
+    "Word 实际导出为10页 PDF；第1页更新时间已核对。",
+    "第7—10页实际查看，ARC 评分环境说明、数据图、结论和证据索引完整可读；末页不再只挂一条来源链接。",
+    "第2—6页与上一份已核验 PDF 的页面 PNG 哈希完全相同。",
+    "未见中文缺字、表格越界、图例或坐标遮挡、空白页。"
+  ],
+  "previous_checked": {
+    "word_sha256": "dde5660b6b06dacffcb8df1a9b2cd2f89fc89c5597de6e32f68437f25a53661d",
+    "pdf_sha256": "843e937ecdf76087f63c6ead9856a25b7d75ea63fb3445eacdaa9bb4683e3ac2",
+    "visual_checked": true,
+    "checked_at": "2026-10-01T18:12:57+08:00",
+    "checked_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "observations": [
+      "实际查看 Word 导出的全部9页；中文、段落与页码清楚。",
+      "ARC 结构图已内嵌，轴名、单位、计数与图注可读，和源图一致。",
+      "代码块和题目结论位置清楚；完整记录路径集中在末尾证据索引。",
+      "检查并修正了裸 Markdown 加粗符号与证据索引列宽，再次导出复核。"
+    ]
+  }
 }

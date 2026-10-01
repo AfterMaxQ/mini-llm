@@ -1,0 +1,52 @@
+{
+  "status": "evaluation_environment_verified_not_scored",
+  "exit_code": 0,
+  "scope": "锁定版 harness、PyTorch CUDA 构建与 HF/PEFT 依赖已安装并导入；未加载模型、未使用 GPU、未生成 ARC 分数",
+  "versions": "{'lm-eval': '0.4.14.dev0', 'transformers': '4.56.2', 'datasets': '4.0.0', 'peft': '0.17.1', 'accelerate': '1.10.1'}\n{'torch': '2.8.0+cu128', 'torch_cuda_build': '12.8'}",
+  "lock_file": "configs/environment-arc-eval.lock.txt",
+  "lock_sha256": "7cfd566d42d4e519bbd19a7053b4801e939358ca0ddb6a34c087883eb94f6d01",
+  "logs": {
+    "install_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "install_stderr_sha256": "88062cebbf8ceb661b482ed716f54406f0f297287af5f8e8f7d7071bfe5b0bb9",
+    "environment_check_stdout_sha256": "31fb6e8b53e3e3a9c718c19ac7e7e0f26f1cc9f8431eb96582649dbbf99aaaa3"
+  },
+  "run_id": "E24-R05",
+  "finished": "2026-10-01T18:41:48+08:00",
+  "config": {
+    "operation": "arc_eval_environment_install",
+    "environment": ".local/venv-arc-eval",
+    "harness_commit": "d6de81643928d653435c431bae19945d41d32520",
+    "requirements_source": ".local/arc-eval-requirements.txt",
+    "requirements_sha256": "52d311ec2e86b90319e8dc51c46aea0c1dccfcea273e33e88cb0862899cb3cfb",
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      ".local/venv-arc-eval/Scripts/python.exe",
+      "--index-url",
+      "https://pypi.org/simple",
+      "-r",
+      ".local/arc-eval-requirements.txt"
+    ],
+    "system_certificate_store": true,
+    "torch_bootstrap_command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      ".local/venv-arc-eval/Scripts/python.exe",
+      "--index-url",
+      "https://download.pytorch.org/whl/cu128",
+      "--no-deps",
+      "torch==2.8.0+cu128"
+    ],
+    "torch_bootstrap_exit_code": 0,
+    "run_id": "E24-R05",
+    "started": "2026-10-01T18:41:12+08:00",
+    "commit": "f6a5839c853374cf6fff7c3cb04efdc3ace9c9d8",
+    "process_id": 27468,
+    "code_snapshot_sha256": "884c0b27cadc571cafeb53a2d1c1e4c595e33092bd1092207fc52b3fbd13d0e5"
+  },
+  "raw_result_sha256": "07b01319c76ce04a0858530b339a51d1c2be40835e1089ac75de4ed115714194"
+}

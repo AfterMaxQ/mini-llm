@@ -42,6 +42,7 @@ def main():
             translated['benchmark_preparation_verified']='13类BFCL清单与判分接口已核验，模型成绩待测'
             translated['preparation_verified_not_scored']='ARC-Challenge官方test与全量评分请求已核验，模型评测待执行'
             translated['preparation_failed']='准备失败，错误证据保留'
+            translated['evaluation_environment_verified_not_scored']='ARC-Challenge评分环境已锁定，模型评测待执行'
             if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
                 translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
