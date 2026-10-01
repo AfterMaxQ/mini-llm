@@ -2,10 +2,10 @@
   "run_id": "E09-R13",
   "plot_version": 3,
   "source_file": "E09-R13-metrics.csv",
-  "source_sha256": "67b76400cb536fd45f949861a84deb324c8a3b851be17efaa8e7a97467a42e5c",
-  "raw_metrics_prefix_sha256": "bee4bed9f65293d4e41d877cd6b7d8cd0985b40abd4dafcc61ca0684225affc9",
-  "image_sha256": "e4bb3c1c7a483af0cd4f4be306358cc74157dc07c5437db9f392ed797fd60035",
-  "train_points": 2689,
+  "source_sha256": "993185f1a101baa88b274e1b8160a3acb6b0ba8fc32e505770382d75d48fce3a",
+  "raw_metrics_prefix_sha256": "d003c2ed17625a1929e0b33e0b84912ffe2357843d65120cf11eea4f4520ca74",
+  "image_sha256": "5b2cfa0a668450f13b6d05a298a490c70d3927b73b7367a3837373803cf7bd25",
+  "train_points": 2789,
   "train_segments": [
     {
       "start_step": 1,
@@ -14,11 +14,11 @@
     },
     {
       "start_step": 401,
-      "end_step": 2600,
-      "points": 2200
+      "end_step": 2700,
+      "points": 2300
     }
   ],
   "resume_checkpoint": "checkpoint-400",
-  "validation_points": 27,
+  "validation_points": 28,
   "smoothing": null
 }
