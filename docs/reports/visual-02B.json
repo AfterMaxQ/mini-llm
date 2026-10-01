@@ -1,13 +1,13 @@
 {
-  "word_sha256": "56c21c2b069f6680e70a578832936b55e5f6ea42df91d00e21ec06da4f244c33",
+  "word_sha256": "0177cf61cd3b83ed3e60a028db42424293f437b3a710b6c1a1956caa5be33bd8",
   "visual_checked": true,
-  "updated": "2026-10-02T06:44:55+08:00",
+  "updated": "2026-10-02T06:52:26+08:00",
   "previous_checked": {
-    "word_sha256": "bf6145489cf3d0f4b46ec40ef05ea573772c60ba5b115847e3ee0d95f12b975f",
+    "word_sha256": "56c21c2b069f6680e70a578832936b55e5f6ea42df91d00e21ec06da4f244c33",
     "visual_checked": true,
-    "updated": "2026-10-02T06:40:31+08:00",
-    "pdf_sha256": "e547670e7b0881f445ca3d1e5bfbed79af231b53eb6d639877157a1c2121b85d",
-    "checked_at": "2026-10-02T06:40:31+08:00",
+    "updated": "2026-10-02T06:44:55+08:00",
+    "pdf_sha256": "e1aa8c5096328e79aa98463f0cd5c1f6c0c5a8dabf49f5d34ec218b0ac7ef728",
+    "checked_at": "2026-10-02T06:44:55+08:00",
     "checked_pages": [
       1
     ],
@@ -53,7 +53,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "1dd7b10eaa77ff716773151a5888e6a4f93d1e8ccba73ec300a43b1d09f9bf53",
+      "page-01.png": "5f911ce16b28a42ba760a759ea00d1688c1d2a9251a889c9612be4983fe02a30",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -76,8 +76,8 @@
       "上一版已实际查看，中文和版式清晰。"
     ]
   },
-  "pdf_sha256": "e1aa8c5096328e79aa98463f0cd5c1f6c0c5a8dabf49f5d34ec218b0ac7ef728",
-  "checked_at": "2026-10-02T06:44:55+08:00",
+  "pdf_sha256": "39674bbf59f911bcd981a7a655dcf13444c3fcbf113d351e2d8c7022748f238d",
+  "checked_at": "2026-10-02T06:52:26+08:00",
   "checked_pages": [
     1
   ],
@@ -123,7 +123,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "5f911ce16b28a42ba760a759ea00d1688c1d2a9251a889c9612be4983fe02a30",
+    "page-01.png": "73729bd5ae5271caec347e9da6ca853cafe9a5af4f92dd612a7a142f093178d5",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
