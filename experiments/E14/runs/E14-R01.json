@@ -1,0 +1,212 @@
+{
+  "status": "reference_pilot_verified",
+  "exit_code": 0,
+  "operation": "reference_task_probe",
+  "duration_seconds": 41.2280736,
+  "task_count": 8,
+  "reference_passed": 8,
+  "initial_rejected": 8,
+  "negative_rejected": 8,
+  "reference_tool_calls": 26,
+  "reference_error_returns": 2,
+  "diagnostic_tool_calls": 7,
+  "records_sha256": "f44c4d270efbce7420790f13fa9fc8767905cae8b7fb6c4b1a86ca9ddb3ecebe",
+  "tasks_sha256": "84430e5e07e458a8b4fb10945c200ffc68febc139a5af09e2ec3c8242fad4ed4",
+  "sources": [
+    {
+      "file": "scripts/pi_tasks.mjs",
+      "sha256": "e164c91b805166076cac261cfbf4885a512f523187d14be133197fc73623c313"
+    },
+    {
+      "file": "scripts/pi_task_probe.mjs",
+      "sha256": "2a0537e59373e033828fc8f0186f2801cd8f0cdc8bca176cfa3cedb7a1c8c7a1"
+    },
+    {
+      "file": "scripts/pi_sandbox.mjs",
+      "sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11"
+    },
+    {
+      "file": "configs/pi-task-catalog.json",
+      "sha256": "3e60a8df75733b1523f4ee24c2860bd9a78b9bac1b709888e83ede01e146db52"
+    },
+    {
+      "file": "configs/pi-tools.json",
+      "sha256": "e1364b54809887abb3a7a11109bd17a1c56fd8df0a2edd2b1f3e3a1871844989"
+    },
+    {
+      "file": "configs/pi-sandbox.json",
+      "sha256": "de76b485d96a85430b75a7f58be7d266d324b3680e0cda00c61a2c09358f4425"
+    }
+  ],
+  "model_calls": 0,
+  "dev_tasks": 0,
+  "test_tasks": 0,
+  "valid_reference_trajectories": 8,
+  "per_task": [
+    {
+      "task_id": "pilot-read_locate",
+      "category": "read_locate",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "answer_mismatch"
+      ],
+      "reference_calls": 3,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-config_change",
+      "category": "config_change",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "json_state_mismatch"
+      ],
+      "reference_calls": 3,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-function_fix",
+      "category": "function_fix",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:checks.mjs"
+      ],
+      "reference_calls": 4,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-multi_file",
+      "category": "multi_file",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:checks.mjs",
+        "json_state_mismatch"
+      ],
+      "reference_calls": 7,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-failure_recovery",
+      "category": "failure_recovery",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:checks.mjs",
+        "expected_error_not_observed"
+      ],
+      "reference_calls": 4,
+      "error_returns": 1
+    },
+    {
+      "task_id": "pilot-missing_information",
+      "category": "missing_information",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:upload.json"
+      ],
+      "reference_calls": 1,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-no_tool",
+      "category": "no_tool",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "unnecessary_tool_call"
+      ],
+      "reference_calls": 0,
+      "error_returns": 0
+    },
+    {
+      "task_id": "pilot-invalid_path_recovery",
+      "category": "invalid_path_recovery",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "unexpected_file:data/inventory.csv",
+        "expected_error_not_observed"
+      ],
+      "reference_calls": 4,
+      "error_returns": 1
+    }
+  ],
+  "scope": "八个训练区原型的真实规则执行；不是模型Agent成功率，不满足1000条正式轨迹规模",
+  "run_id": "E14-R01",
+  "finished": "2026-10-01T12:00:30+08:00",
+  "config": {
+    "operation": "reference_task_probe",
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_task_probe.mjs"
+    ],
+    "catalog": {
+      "version": "reference_pilot_v1",
+      "pilot_split": "train",
+      "pilot_tasks": 8,
+      "train_valid_trajectory_target": 1000,
+      "teacher_train_request_target": 2000,
+      "dev_task_target": 40,
+      "test_task_target": 100,
+      "test_category_counts": {
+        "read_locate": 10,
+        "config_change": 10,
+        "function_fix": 15,
+        "multi_file": 15,
+        "failure_recovery": 15,
+        "missing_information": 10,
+        "no_tool": 10,
+        "invalid_path_recovery": 15
+      },
+      "split_policy": "模板族与仓库族不跨train/dev/test；参数变体不能冒充新的独立模板",
+      "reference_policy": "主Agent编写任务规则与参考操作，实际Pi工具执行验证；不调用教师或学生模型",
+      "judge_policy": "最终文件与执行结果；检查脚本及无关文件哈希固定；必要时检查回复和调用次数"
+    },
+    "sandbox": {
+      "image": "node@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8",
+      "image_tag_at_download": "node:24.14.0-bookworm-slim",
+      "pi_version": "0.99.1",
+      "network": "none",
+      "workdir": "/workspace",
+      "user": "1000:1000",
+      "cpus": 2,
+      "memory": "1g",
+      "pids_limit": 128,
+      "workspace_tmpfs": "rw,nosuid,nodev,mode=0700,uid=1000,gid=1000,size=256m",
+      "tmp_tmpfs": "rw,nosuid,nodev,mode=1777,size=64m",
+      "command_timeout_seconds": 60,
+      "task_timeout_seconds": 300,
+      "max_tool_calls": 12,
+      "context_tokens": 8192,
+      "scope": "本机任务工具执行；模型推理另行连接本地服务"
+    },
+    "model": null,
+    "scope": "八个训练区任务的规则参考与判据核验；无模型调用，不满足正式E14规模",
+    "run_id": "E14-R01",
+    "started": "2026-10-01T11:59:49+08:00",
+    "commit": "de3b3e48218a1a3971ab1d6174cf94691350bb48",
+    "process_id": 49112,
+    "code_snapshot_sha256": "5972a2dded8da5eb534a0061375d5f95e653394eab7b2d20df6029c707b09e44"
+  },
+  "raw_result_sha256": "35491e3daa85c3feb7190c2bf630df08a791ada6aafbee5251a24025f984a679"
+}

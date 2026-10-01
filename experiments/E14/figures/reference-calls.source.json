@@ -1,0 +1,10 @@
+{
+  "source_file": "reference-calls.csv",
+  "source_sha256": "ee53ab71e4c27772c8cfb6261e7648e9104ddaa3a71a6519bfb589b11e1d54ce",
+  "image_sha256": "f31b46b4a9bea6515a4df718e84473e486e660ea139b5dfc09f603730a2fa0d6",
+  "raw_records_sha256": "f44c4d270efbce7420790f13fa9fc8767905cae8b7fb6c4b1a86ca9ddb3ecebe",
+  "run_id": "E14-R01",
+  "tasks": 8,
+  "model_calls": 0,
+  "scope": "训练区原型的规则参考操作；不表示模型Agent表现"
+}

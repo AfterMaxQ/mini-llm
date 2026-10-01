@@ -1,0 +1,9 @@
+task_id,category,split,reference_calls,normal_returns,error_returns,reference_passed,initial_rejected,negative_rejected
+pilot-read_locate,read_locate,train,3,3,0,True,True,True
+pilot-config_change,config_change,train,3,3,0,True,True,True
+pilot-function_fix,function_fix,train,4,4,0,True,True,True
+pilot-multi_file,multi_file,train,7,7,0,True,True,True
+pilot-failure_recovery,failure_recovery,train,4,3,1,True,True,True
+pilot-missing_information,missing_information,train,1,1,0,True,True,True
+pilot-no_tool,no_tool,train,0,0,0,True,True,True
+pilot-invalid_path_recovery,invalid_path_recovery,train,4,3,1,True,True,True

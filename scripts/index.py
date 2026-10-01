@@ -26,7 +26,7 @@ def main():
                 state = '配置与参数量已核验，正式 GPU 对照待执行'
         if runs:
             data = json.loads(runs[-1].read_text(encoding="utf-8"))
-            translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测", "data_ready_pending_training": "匹配数据与50条复查完成，正式训练待执行"}
+            translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测", "data_ready_pending_training": "匹配数据与50条复查完成，正式训练待执行", "reference_pilot_verified": "8类训练任务原型已核验，正式轨迹与迁移训练待执行"}
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
         unfinished = [p for p in sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/config.json"))
                       if not (p.parent / "result.json").exists()]

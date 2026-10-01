@@ -1,0 +1,22 @@
+{
+  "version": "reference_pilot_v1",
+  "pilot_split": "train",
+  "pilot_tasks": 8,
+  "train_valid_trajectory_target": 1000,
+  "teacher_train_request_target": 2000,
+  "dev_task_target": 40,
+  "test_task_target": 100,
+  "test_category_counts": {
+    "read_locate": 10,
+    "config_change": 10,
+    "function_fix": 15,
+    "multi_file": 15,
+    "failure_recovery": 15,
+    "missing_information": 10,
+    "no_tool": 10,
+    "invalid_path_recovery": 15
+  },
+  "split_policy": "模板族与仓库族不跨train/dev/test；参数变体不能冒充新的独立模板",
+  "reference_policy": "主Agent编写任务规则与参考操作，实际Pi工具执行验证；不调用教师或学生模型",
+  "judge_policy": "最终文件与执行结果；检查脚本及无关文件哈希固定；必要时检查回复和调用次数"
+}

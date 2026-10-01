@@ -84,10 +84,15 @@ def update_summary(completed):
           ('rank 对照准备','experiments/E11/preparation.json；configs/rank.json；configs/sft-rank8.json；configs/sft-rank32.json'),
           ('等量数据筛选与复查','configs/data-quality.json；configs/data-quality-frozen.json；experiments/E12/sample-review.json；experiments/E12/data-comparison.csv'),
           ('数据质量对照入口','scripts/data_quality.py；configs/quality.json；configs/sft-quality.json'),
-          ('筛选失败与重新冻结','experiments/E12/runs/E12-R01.json；experiments/E12/runs/E12-R02.json')]
+          ('筛选失败与重新冻结','experiments/E12/runs/E12-R01.json；experiments/E12/runs/E12-R02.json'),
+          ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
+          ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs')]
     for label,files in rows:
-        if (ROOT/files.split('；')[0]).exists() and label not in evidence:
-            evidence=evidence.replace('| 后续训练与生成结果 |',f'| {label} | {files} |\n| 后续训练与生成结果 |')
+        if (ROOT/files.split('；')[0]).exists():
+            row=f'| {label} | {files} |'
+            previous=next((line for line in evidence.splitlines() if line.startswith(f'| {label} |')),None)
+            if previous:evidence=evidence.replace(previous,row)
+            else:evidence=evidence.replace('| 后续训练与生成结果 |',row+'\n| 后续训练与生成结果 |')
     intro='# 从提示词基线走向正式微调\n\n原模型在相同完整 dev 上，零样本通过 268/500，加入三条固定示例后通过 355/500。少样本提示提高了调用轮表现，也增加了本该询问或不调用时的误调用。后续模型都沿用这个已冻结的提示。\n\n'
     if completed:
         r=completed[-1];s=r['summary']
@@ -102,6 +107,8 @@ def update_summary(completed):
         intro+='rank 对照固定学习率，选定 rank 后再比较学习率。候选参数量来自真实权重形状，训练与工具表现按当前章节分别记录，配置选择只使用 dev。\n\n'
     if (ROOT/'configs/data-quality-frozen.json').exists():
         intro+='数据质量对照按来源和类别匹配两份 5k 数据，逐条复查也保留了规则误删和漏检。筛选成本、监督量与后续模型表现分开记录，效果不能由“通过筛选”直接推出。\n\n'
+    if (ROOT/'experiments/E14/notes.md').exists():
+        intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
     path.write_text(intro+evidence,encoding='utf-8')
 
 
