@@ -1,0 +1,9 @@
+task_id,category,template_family,split,reference_calls,error_returns,initial_rejected,negative_rejected,reference_passed
+structure-read_locate,read_locate,train-selected-storage-registry,train,3,0,True,True,True
+structure-config_change,config_change,train-layered-environment-override,train,4,0,True,True,True
+structure-function_fix,function_fix,train-last-occurrence-order,train,4,0,True,True,True
+structure-multi_file,multi_file,train-duration-unit-migration,train,7,0,True,True,True
+structure-failure_recovery,failure_recovery,train-moved-module-import,train,5,1,True,True,True
+structure-missing_information,missing_information,train-unspecified-schedule-zone,train,1,0,True,True,True
+structure-no_tool,no_tool,train-given-rate-budget-calculation,train,0,0,True,True,True
+structure-invalid_path_recovery,invalid_path_recovery,train-current-stock-active-join,train,5,1,True,True,True

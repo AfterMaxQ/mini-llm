@@ -86,6 +86,51 @@ def encoding_note(folder, source_run):
 """
 
 
+def extension_note(folder):
+    runs = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((folder/'runs').glob('*.json'))]
+    matching = [r for r in runs if r.get('status') == 'reference_extension_verified']
+    if not matching: return ''
+    result = matching[-1]; run = ROOT/'.local/runs'/result['run_id']
+    assert sha256(run/'records.json') == result['records_sha256']
+    assert sha256(run/'tasks.json') == result['tasks_sha256']
+    assert result['task_count'] == result['reference_passed'] == result['initial_rejected'] == result['negative_rejected'] == 8
+    assert result['model_calls'] == result['dev_tasks'] == result['test_tasks'] == 0
+    details = ['按配置从注册表选择存储实现', '只加 staging 覆盖，保留生产默认值',
+               '去重后按最后出现的位置排序', '毫秒改秒，保持真实延时', '模块移动后的相对导入修复',
+               '提醒时间没有给时区，先询问', '根据已知速率计算窗口预算', '按商品状态联表统计库存']
+    rows = [f"| {LABELS[r['category']]} | {description} | {r['reference_calls']} |"
+            for r,description in zip(result['per_task'],details)]
+    return f'''
+## 再加八个模板，解题过程变在哪里？
+
+{result['run_id']} 新增了八个训练模板族。参考操作8/8通过，初始错误和八个明确构造的错误方案全部被拒绝。新增参考共调用工具{result['reference_tool_calls']}次，包含{result['reference_error_returns']}次真实错误返回；错误方案另用了{result['diagnostic_tool_calls']}次工具。容器执行与记录耗时{result['duration_seconds']:.1f}秒，这个时间不含任务编写与文档整理。
+
+| 类别 | 新模板需要处理什么 | 参考调用（次） |
+| --- | --- | --- |
+{chr(10).join(rows)}
+
+这次改变了数据结构或错误原因。原来的配置任务直接修改一个值，新任务要区分默认值和环境覆盖；原来迁移指标字段，新任务还要做单位换算；路径恢复从单文件求和变成两份数据联表，并排除停售和未知商品。
+
+## 字段改好了，为什么仍然判失败？实际延时没有保持
+
+时间单位迁移的错误方案把refreshMs改成refreshSeconds，却保留2500这个数，读取函数也直接返回它。最终输出看似仍是2500毫秒，但新配置的含义已变成2500秒，而且其他秒数无法正确换算。判据同时核对配置值与读取函数：2500毫秒应写成2.5秒，0.125秒应读成125毫秒。错误方案的配置检查与执行检查都失败，规则参考保留了实际延时。
+
+参考修复中的这行是真实执行过的代码：
+
+```javascript
+export const delay = config => config.refreshSeconds * 1000;
+```
+
+## 倒序去重能保留最后对象，为什么也失败？顺序和输入都要检查
+
+新去重任务要求a、b、a返回b、a。错误方案先反转输入数组再去重，虽然能留下最后一个a，却改变了输入，也没有遵守输出顺序。现有检查比较独立的筛选结果，并在调用前后核对输入序列；本轮执行了42组样例，其中40组由固定seed=73生成。42组函数样例仍属于一个任务，不能算成42条领域轨迹。
+
+移动模块的恢复任务也保留了第一次命令的真实导入错误。参考步骤根据迁移说明修正相对导入，再跑原检查；错误方案补回旧路径文件，被新增文件和执行检查拒绝。故障原因与上一批的空白正则错误不同。
+
+目前两批共16个训练模板族，各有一条已验证参考过程。所有任务仍在train；新增八条尚未完成训练格式转换，正式1,000条有效训练记录、独立dev/test和模型迁移评测继续分别验收。参考步骤由规则给定，没有模型自主选择工具；这16条不能写成模型成功率。判据仍有有限样例和询问语义只查必要词的局限，后续模型结果要保留逐条复查。
+'''
+
+
 def main():
     folder = ROOT / 'experiments/E14'
     runs = sorted((folder / 'runs').glob('*.json'))
@@ -201,7 +246,7 @@ value.trim().replace(/\\s+/g, '-').toLowerCase();
 
 复习时可以先看两个问题。为什么命令输出正确还可能失败？因为检查文件或不该动的配置也可能被改过，输出只是成功条件的一部分。为什么参考操作 8/8 不能写成 Agent 成功率 100%？因为步骤由规则预先给定，还没有让模型自己选择工具、读取错误并决定下一步。
 """
-    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id']), encoding='utf-8')
+    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder), encoding='utf-8')
 
 
 if __name__ == '__main__':

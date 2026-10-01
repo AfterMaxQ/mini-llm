@@ -1,0 +1,221 @@
+{
+  "status": "reference_extension_verified",
+  "exit_code": 0,
+  "operation": "reference_task_probe",
+  "suite": "structural_extension",
+  "duration_seconds": 43.5118417,
+  "task_count": 8,
+  "reference_passed": 8,
+  "initial_rejected": 8,
+  "negative_rejected": 8,
+  "reference_tool_calls": 29,
+  "reference_error_returns": 2,
+  "diagnostic_tool_calls": 9,
+  "records_sha256": "120fa7d6e845da522c263920689eddae9c199e1d25521680e9648f064ab3df66",
+  "tasks_sha256": "2ed8bbd349829bcc16c9511d14095a950cc02170d9e2bb4b0dcef07b2a6b3ac3",
+  "sources": [
+    {
+      "file": "scripts/pi_tasks.mjs",
+      "sha256": "e164c91b805166076cac261cfbf4885a512f523187d14be133197fc73623c313"
+    },
+    {
+      "file": "scripts/pi_tasks_extended.mjs",
+      "sha256": "ec9154b88f36f2989bb458bbc88fc9efe95eb1596da9b5b2c5ab2f6eed716869"
+    },
+    {
+      "file": "scripts/pi_task_probe.mjs",
+      "sha256": "cc8094b8a160a932670676001eaabd1f7c3d1e21672ae3541bc70ff444b3d6b8"
+    },
+    {
+      "file": "scripts/pi_sandbox.mjs",
+      "sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11"
+    },
+    {
+      "file": "configs/pi-task-catalog.json",
+      "sha256": "3e60a8df75733b1523f4ee24c2860bd9a78b9bac1b709888e83ede01e146db52"
+    },
+    {
+      "file": "configs/pi-tools.json",
+      "sha256": "e1364b54809887abb3a7a11109bd17a1c56fd8df0a2edd2b1f3e3a1871844989"
+    },
+    {
+      "file": "configs/pi-sandbox.json",
+      "sha256": "de76b485d96a85430b75a7f58be7d266d324b3680e0cda00c61a2c09358f4425"
+    }
+  ],
+  "model_calls": 0,
+  "dev_tasks": 0,
+  "test_tasks": 0,
+  "valid_reference_trajectories": 8,
+  "per_task": [
+    {
+      "task_id": "structure-read_locate",
+      "category": "read_locate",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "answer_mismatch"
+      ],
+      "reference_calls": 3,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-config_change",
+      "category": "config_change",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:defaults.json",
+        "json_state_mismatch",
+        "execution_check_failed"
+      ],
+      "reference_calls": 4,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-function_fix",
+      "category": "function_fix",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "execution_check_failed"
+      ],
+      "reference_calls": 4,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-multi_file",
+      "category": "multi_file",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "json_state_mismatch",
+        "execution_check_failed"
+      ],
+      "reference_calls": 7,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-failure_recovery",
+      "category": "failure_recovery",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "unexpected_file:src/fees.mjs",
+        "execution_check_failed",
+        "expected_error_not_observed"
+      ],
+      "reference_calls": 5,
+      "error_returns": 1
+    },
+    {
+      "task_id": "structure-missing_information",
+      "category": "missing_information",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "protected_file_changed:schedule.json"
+      ],
+      "reference_calls": 1,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-no_tool",
+      "category": "no_tool",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "unnecessary_tool_call"
+      ],
+      "reference_calls": 0,
+      "error_returns": 0
+    },
+    {
+      "task_id": "structure-invalid_path_recovery",
+      "category": "invalid_path_recovery",
+      "split": "train",
+      "reference_passed": true,
+      "initial_rejected": true,
+      "negative_rejected": true,
+      "negative_reasons": [
+        "answer_mismatch"
+      ],
+      "reference_calls": 5,
+      "error_returns": 1
+    }
+  ],
+  "scope": "八个新增训练模板族的真实规则执行与判据核验；无模型调用，未满足正式轨迹规模",
+  "run_id": "E14-R03",
+  "finished": "2026-10-01T12:45:51+08:00",
+  "config": {
+    "operation": "reference_task_probe",
+    "suite": "structural_extension",
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_task_probe.mjs",
+      "--extended"
+    ],
+    "catalog": {
+      "version": "reference_pilot_v1",
+      "pilot_split": "train",
+      "pilot_tasks": 8,
+      "train_valid_trajectory_target": 1000,
+      "teacher_train_request_target": 2000,
+      "dev_task_target": 40,
+      "test_task_target": 100,
+      "test_category_counts": {
+        "read_locate": 10,
+        "config_change": 10,
+        "function_fix": 15,
+        "multi_file": 15,
+        "failure_recovery": 15,
+        "missing_information": 10,
+        "no_tool": 10,
+        "invalid_path_recovery": 15
+      },
+      "split_policy": "模板族与仓库族不跨train/dev/test；参数变体不能冒充新的独立模板",
+      "reference_policy": "主Agent编写任务规则与参考操作，实际Pi工具执行验证；不调用教师或学生模型",
+      "judge_policy": "最终文件与执行结果；检查脚本及无关文件哈希固定；必要时检查回复和调用次数"
+    },
+    "sandbox": {
+      "image": "node@sha256:d8e448a56fc63242f70026718378bd4b00f8c82e78d20eefb199224a4d8e33d8",
+      "image_tag_at_download": "node:24.14.0-bookworm-slim",
+      "pi_version": "0.99.1",
+      "network": "none",
+      "workdir": "/workspace",
+      "user": "1000:1000",
+      "cpus": 2,
+      "memory": "1g",
+      "pids_limit": 128,
+      "workspace_tmpfs": "rw,nosuid,nodev,mode=0700,uid=1000,gid=1000,size=256m",
+      "tmp_tmpfs": "rw,nosuid,nodev,mode=1777,size=64m",
+      "command_timeout_seconds": 60,
+      "task_timeout_seconds": 300,
+      "max_tool_calls": 12,
+      "context_tokens": 8192,
+      "scope": "本机任务工具执行；模型推理另行连接本地服务"
+    },
+    "model": null,
+    "scope": "八个新增训练模板族的真实规则执行与判据核验；无模型调用，未满足正式轨迹规模",
+    "run_id": "E14-R03",
+    "started": "2026-10-01T12:45:07+08:00",
+    "commit": "f01e97c400c5793331d4315d643841571ef0fbe4",
+    "process_id": 49552,
+    "code_snapshot_sha256": "5a8fd61e8c8875f6a6137a8b226cec6112cafa273e4634ff86ffb4f40dfdf602"
+  },
+  "raw_result_sha256": "027da974f78598929346c2e13b22b71204c79623151223f4c734548525e11b1e"
+}

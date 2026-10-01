@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createSandbox, root, policy } from './pi_sandbox.mjs';
 import { pilotTasks, seed, judge, executeReference, digest } from './pi_tasks.mjs';
+import { extendedTasks } from './pi_tasks_extended.mjs';
 
 const python = path.join(root, '.local/venv-train/Scripts/python.exe');
 function recordPython(code, value) {
@@ -13,15 +14,19 @@ function recordPython(code, value) {
 }
 const catalog = JSON.parse(await readFile(path.join(root, 'configs/pi-task-catalog.json'), 'utf8'));
 assert.equal(catalog.pilot_split, 'train');
-const tasks = pilotTasks();
+const suite = process.argv.includes('--extended') ? 'structural_extension' : 'pilot';
+const tasks = suite === 'pilot' ? pilotTasks() : extendedTasks();
+assert.equal(tasks.length, 8);
+assert(tasks.every(t => t.split === 'train'));
+const scope = suite === 'pilot' ? '八个训练区任务的规则参考与判据核验；无模型调用，不满足正式E14规模'
+  : '八个新增训练模板族的真实规则执行与判据核验；无模型调用，未满足正式轨迹规模';
 const directory = recordPython("print(start_run('E14',json.load(sys.stdin)))", {
-  operation: 'reference_task_probe', command: process.argv, catalog, sandbox: policy,
-  model: null, scope: '八个训练区任务的规则参考与判据核验；无模型调用，不满足正式E14规模' });
+  operation: 'reference_task_probe', suite, command: process.argv, catalog, sandbox: policy, model: null, scope });
 const runId = path.basename(directory);
 const save = (name, value) => writeFile(path.join(directory, name), JSON.stringify(value, null, 2), 'utf8');
 const config = JSON.parse(await readFile(path.join(directory, 'config.json'), 'utf8'));
 config.process_id = process.pid; await save('config.json', config);
-const sourceFiles = ['scripts/pi_tasks.mjs', 'scripts/pi_task_probe.mjs', 'scripts/pi_sandbox.mjs', 'configs/pi-task-catalog.json', 'configs/pi-tools.json', 'configs/pi-sandbox.json'];
+const sourceFiles = ['scripts/pi_tasks.mjs', 'scripts/pi_tasks_extended.mjs', 'scripts/pi_task_probe.mjs', 'scripts/pi_sandbox.mjs', 'configs/pi-task-catalog.json', 'configs/pi-tools.json', 'configs/pi-sandbox.json'];
 const sources = [];
 for (const file of sourceFiles) sources.push({ file, sha256: digest(await readFile(path.join(root, file))) });
 await save('sources.json', sources); await save('tasks.json', tasks);
@@ -55,7 +60,10 @@ try {
     assert.equal(entry.initial.passed, false, task.task_id + '：初始错误候选被误判成功');
     const controlEvents = [];
     let wrongAnswer = task.wrong_answer;
-    if (task.expected.check_output) {
+    if (task.negative) {
+      for (const action of task.negative.actions) await call(control, controlEvents, action.tool, action.input);
+      wrongAnswer = task.negative.answer;
+    } else if (task.expected.check_output) {
       // 只改检查文件让它输出成功，不应骗过最终判据。
       await call(control, controlEvents, 'write', { path: 'checks.mjs', content: `console.log(${JSON.stringify(task.expected.check_output)});\n` });
     } else if (task.category === 'config_change') {
@@ -94,8 +102,8 @@ try {
 finally {
   for (const value of live) { try { await dispose(value); } catch (error) { await save('cleanup-error.json', { error: error.stack }); } }
   await save('records.json', records);
-  const result = { status: failure ? 'failed' : 'reference_pilot_verified', exit_code: failure ? 1 : 0,
-    operation: 'reference_task_probe', error: failure, duration_seconds: (performance.now() - started) / 1000,
+  const result = { status: failure ? 'failed' : suite === 'pilot' ? 'reference_pilot_verified' : 'reference_extension_verified', exit_code: failure ? 1 : 0,
+    operation: 'reference_task_probe', suite, error: failure, duration_seconds: (performance.now() - started) / 1000,
     task_count: records.length, reference_passed: records.filter(x => x.reference?.passed).length,
     initial_rejected: records.filter(x => x.initial && !x.initial.passed).length,
     negative_rejected: records.filter(x => x.negative && !x.negative.passed).length,
@@ -109,7 +117,7 @@ finally {
       reference_passed: Boolean(x.reference?.passed), initial_rejected: Boolean(x.initial && !x.initial.passed),
       negative_rejected: Boolean(x.negative && !x.negative.passed), negative_reasons: x.negative?.reasons,
       reference_calls: x.reference_events?.length ?? 0, error_returns: x.reference_events?.filter(e => e.is_error).length ?? 0 })),
-    scope: '八个训练区原型的真实规则执行；不是模型Agent成功率，不满足1000条正式轨迹规模' };
+    scope };
   const response = recordPython("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['run_id'],v['result']),ensure_ascii=False))", { run_id: runId, result });
   console.log(response); if (failure) process.exitCode = 1;
 }

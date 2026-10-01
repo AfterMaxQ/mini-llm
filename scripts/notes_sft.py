@@ -110,6 +110,11 @@ def update_summary(completed):
         intro+='数据质量对照按来源和类别匹配两份 5k 数据，逐条复查也保留了规则误删和漏检。筛选成本、监督量与后续模型表现分开记录，效果不能由“通过筛选”直接推出。\n\n'
     if (ROOT/'experiments/E14/notes.md').exists():
         intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
+    extension=ROOT/'experiments/E14/runs/E14-R03.json'
+    if extension.exists() and json.loads(extension.read_text(encoding='utf-8'))['status']=='reference_extension_verified':
+        intro+='新增八个训练模板改变了配置层级、单位换算、去重顺序和故障原因，两批共16个训练模板族。参考步骤由规则给定，逐条执行不等于模型自主完成任务。\n\n'
+        row='| Pi 新增模板与错误方案 | scripts/pi_tasks_extended.mjs；experiments/E14/runs/E14-R03.json；experiments/E14/extension-calls.csv；experiments/E14/extension-events.jsonl |'
+        if row not in evidence:evidence=evidence.replace('| 后续训练与生成结果 |',row+'\n| 后续训练与生成结果 |')
     path.write_text(intro+evidence,encoding='utf-8')
 
 
@@ -231,6 +236,10 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
     if first and first[2] and first[2]['status']=='trained_pending_tool_eval':
         r=first[2];initial=curves[first[0]]['dev'][0]['eval_loss']
         note+=f"\n已完成的 1k 主运行共有 {r['train']['assistant_units']:,} 个回复单元、{r['train']['supervised_tokens']:,} 个监督 token，更新 {r['steps']} 次。完整 dev loss 从 {initial:.5f} 降到 {r['selected_dev_loss']:.5f}，选择了 {r['selected_checkpoint']}。下面的生成结果才用来检查，这种对标注文本的拟合是否变成了更可靠的决策。\n"
+    fivek=next((entry for entry in reversed(entries) if entry[1]['train_size']==5000 and entry[2] and entry[2]['status']=='trained_pending_tool_eval'),None)
+    if fivek:
+        r=fivek[2]
+        note+=f"\n5k 的 {fivek[0]} 也完成了一个epoch，{r['train']['assistant_units']:,} 个回复单元共有 {r['train']['supervised_tokens']:,} 个监督 token，实际更新 {r['steps']:,} 次。最低完整 dev loss 为 {r['selected_dev_loss']:.5f}，选择 {r['selected_checkpoint']}；参数训练耗时 {r['train_metrics']['train_runtime']/3600:.2f} 小时，包含中途完整验证与保存。选中适配器随后单独做同一500条dev的工具生成评测，结果完整后再讨论规模变化。\n"
     note+='\n这一步要观察两条线：训练 loss 是否继续下降，完整 dev loss 是否也下降。只有两条线和工具结果放在一起，才有依据区分记住训练内容与适应新任务。\n'
     if active:
         note+='\n## 生成评测进行到哪一步？\n\n'

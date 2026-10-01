@@ -1,8 +1,8 @@
 {
-  "word_sha256": "5617a0bb1a35ccf15c9e995415d25d7e88afb43420076faf759cdcae041f90af",
-  "pdf_sha256": "47e348f47eae39f112bf99b587034a4c62fc8b99062a67929e79fa7cb7aad99f",
+  "word_sha256": "8eda02f14092147ca1bf7be873cbb36177112e8f7f1c0c712b88a06aee47b154",
+  "pdf_sha256": "591066d5dd6825635d393bd25e82f1121f82eb6063e4164b5d50a672f6eed735",
   "visual_checked": true,
-  "checked_at": "2026-10-01T12:32:34+08:00",
+  "checked_at": "2026-10-01T12:51:25+08:00",
   "checked_pages": [
     1,
     2,
@@ -25,7 +25,8 @@
     19,
     20,
     21,
-    22
+    22,
+    23
   ],
   "observations": [
     "实际查看 Word 导出的页面，代码缩进和中文可读",
@@ -37,20 +38,20 @@
   "newly_viewed_pages": [
     1,
     4,
-    19,
-    20,
-    21,
-    22
-  ],
-  "identical_to_previous_checked_pages": [
-    2,
-    3,
     5,
     6,
     7,
     8,
-    9,
     10,
+    20,
+    21,
+    22,
+    23
+  ],
+  "identical_to_previous_checked_pages": [
+    2,
+    3,
+    9,
     11,
     12,
     13,
@@ -58,7 +59,8 @@
     15,
     16,
     17,
-    18
+    18,
+    19
   ],
-  "previous_checked_pdf_sha256": "0bdafe617dd601b875968143879f921acbff7e59bd14f5fca3337d13428c7c91"
+  "previous_checked_pdf_sha256": "47e348f47eae39f112bf99b587034a4c62fc8b99062a67929e79fa7cb7aad99f"
 }
