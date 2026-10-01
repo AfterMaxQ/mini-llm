@@ -209,20 +209,42 @@ def draw_curve(run_id):
     figures=folder/'figures';figures.mkdir(exist_ok=True)
     path=figures/(run_id+'-loss.png');source=path.with_suffix('.source.json')
     saved=json.loads(source.read_text(encoding='utf-8')) if source.exists() else {}
-    if saved.get('source_sha256')!=sha256(csv_path) or saved.get('plot_version')!=2:
+    segments=[]
+    for row in train:
+        if segments and int(row['step']) < int(segments[-1][-1]['step']):
+            segments.append([])
+        if not segments:segments.append([])
+        segments[-1].append(row)
+    needs_resume_plot = len(segments)>1 and saved.get('plot_version')!=3
+    if saved.get('source_sha256')!=sha256(csv_path) or needs_resume_plot:
         font=FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
         fig,axis=plt.subplots(figsize=(6.4,3.5),layout='constrained')
-        axis.plot([r['step'] for r in train],[r['loss'] for r in train],color='#059669',linewidth=1.0,label='训练：每次更新')
+        resume_files=sorted((ROOT/'.local/runs'/run_id).glob('resume-*.json'))
+        resume=json.loads(resume_files[-1].read_text(encoding='utf-8')) if resume_files else {}
+        for index,segment in enumerate(segments):
+            if len(segments)==1:
+                label='训练：每次更新';color='#059669';style='-'
+            elif index==0:
+                label='首次运行（含未保存尾段）';color='#94A3B8';style='--'
+            else:
+                checkpoint=resume.get('checkpoint','未知 checkpoint')
+                label=f'{checkpoint} 恢复' if index==1 else f'后续恢复段 {index}'
+                color='#059669' if index==1 else '#2563EB';style='-'
+            axis.plot([r['step'] for r in segment],[r['loss'] for r in segment],
+                      color=color,linestyle=style,linewidth=1.0,label=label)
         if dev:axis.plot([r['step'] for r in dev],[r['eval_loss'] for r in dev],color='#059669',linestyle='None',marker='o',label='完整 dev：实测点，token 加权')
         axis.set_xlabel('optimizer step',fontproperties=font);axis.set_ylabel('assistant-only 交叉熵',fontproperties=font)
         axis.set_title(run_id+'：真实训练与验证 loss，未平滑',fontproperties=font)
         axis.legend(prop=font,frameon=False);axis.yaxis.grid(True,color='#E5E7EB');axis.set_axisbelow(True)
         for side in ['top','right']:axis.spines[side].set_visible(False)
         fig.savefig(path,dpi=300);plt.close(fig)
-        write_json(source,{'run_id':run_id,'plot_version':2,'source_file':csv_path.name,'source_sha256':sha256(csv_path),
+        write_json(source,{'run_id':run_id,'plot_version':3 if len(segments)>1 else saved.get('plot_version',2),
+                   'source_file':csv_path.name,'source_sha256':sha256(csv_path),
                    'raw_metrics_prefix_sha256':hashlib.sha256(raw).hexdigest(),'image_sha256':sha256(path),
-                   'train_points':len(train),'validation_points':len(dev),'smoothing':None})
-    return {'rows':rows,'train':train,'dev':dev,'path':path}
+                   'train_points':len(train),'train_segments':[{'start_step':int(s[0]['step']),
+                       'end_step':int(s[-1]['step']),'points':len(s)} for s in segments],
+                   'resume_checkpoint':resume.get('checkpoint'),'validation_points':len(dev),'smoothing':None})
+    return {'rows':rows,'train':train,'train_segments':segments,'dev':dev,'path':path}
 
 
 def main():
@@ -323,8 +345,14 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
         candidates=[name for name,curve in curves.items() if curve and curve['train']]
         if candidates:curve_name=candidates[-1];current_curve=curves[curve_name]
     if current_curve and current_curve['train']:
-        note+=f"\n![图 E09-1：{curve_name}，训练 {len(current_curve['train'])} 个点、完整 dev {len(current_curve['dev'])} 个点；保留原始波动。](figures/{current_curve['path'].name})\n"
+        note+=f"\n![图 E09-1：{curve_name}，逐步训练 loss 与完整 dev 测量点。](figures/{current_curve['path'].name})\n"
         note+='\n训练点是 TRL 每次参数更新的 loss，验证点来自完整 dev 的监督 token 加权交叉熵。它们的聚合窗口不同，先观察各自趋势，再结合工具生成结果判断；不能把一两个低点当成能力改善。\n'
+        if len(current_curve['train_segments'])>1:
+            first_end=int(current_curve['train_segments'][0][-1]['step'])
+            resume=current_curve['path'].with_suffix('.source.json')
+            source=json.loads(resume.read_text(encoding='utf-8'))
+            checkpoint=source.get('resume_checkpoint','未知 checkpoint')
+            note+=f"\nE09-R13 的训练日志跨过一次断点：首次运行记录到第 {first_end} 步，但最后可恢复权重只到 `{checkpoint}`；恢复后的 loss 从下一段单独绘制。图里保留了重启前未保存的尾段记录，也保留恢复后的实际曲线，没有把两次进程的 loss 连成一条连续训练轨迹。\n"
     first=next((entry for entry in entries if entry[0]=='E09-R05'),None)
     if first and first[2] and first[2]['status']=='trained_pending_tool_eval':
         r=first[2];initial=curves[first[0]]['dev'][0]['eval_loss']

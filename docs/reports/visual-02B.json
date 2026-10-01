@@ -1,8 +1,382 @@
 {
-  "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
-  "pdf_sha256": "68693db33abc59111ee33e983eacdd6d5f2eb46cb924450441d8b23087b9d67a",
+  "word_sha256": "de804705d3033eef5aef127efe444557a040c1950fcbb4bed351ca88cb86eec3",
   "visual_checked": true,
-  "checked_at": "2026-10-01T22:00:28+08:00",
+  "updated": "2026-10-01T22:46:45+08:00",
+  "previous_checked": {
+    "word_sha256": "826a3aba4c194603a361b6ab51898ed82a0dfa98abd416d25c984366e3ea7ac1",
+    "pdf_sha256": "a09ef1dac8b6eb2088e91367cf850e8e0d2f581f2382fd6e141bec9966770c79",
+    "visual_checked": true,
+    "checked_at": "2026-10-01T22:40:54+08:00",
+    "checked_pages": [
+      1
+    ],
+    "newly_viewed_pages": [
+      1
+    ],
+    "unchanged_pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "identical_pages_inherited": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "page_sha256": {
+      "page-01.png": "724711aceda2b32e6a075fec090a499c0361fd6bcebfc137b9919bf4951b7dea",
+      "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+      "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+      "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+      "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+      "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+      "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+      "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+      "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+      "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+      "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+      "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+      "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+      "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+      "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+      "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+      "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+      "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+    },
+    "observations": [
+      "实际查看第1页；标题、日期、中文和版面可读。",
+      "其余17页的PNG哈希与上一份已核验版本一致。"
+    ],
+    "previous_checked": {
+      "word_sha256": "6dfd99539566ef7c6e1c921498f7c92dea6cee522202bb766431e673aadfdb33",
+      "pdf_sha256": "f3f23ebd4d749ab98682bf09afc437c80732dacb0fd25107daa3b6151396b5a7",
+      "visual_checked": true,
+      "checked_at": "2026-10-01T22:35:23+08:00",
+      "checked_pages": [
+        1
+      ],
+      "newly_viewed_pages": [
+        1
+      ],
+      "unchanged_pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "identical_pages_inherited": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "page_sha256": {
+        "page-01.png": "842a27026dd995435f004ed8885429406cf0d415ae63953a9596abc78d05aca7",
+        "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+        "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+        "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+        "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+        "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+        "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+        "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+        "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+        "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+        "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+        "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+        "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+        "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+        "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+        "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+        "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+        "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+      },
+      "observations": [
+        "实际查看第1页；标题、日期、中文和版面可读。",
+        "其余17页的PNG哈希与上一份已核验版本一致。"
+      ],
+      "previous_checked": {
+        "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
+        "pdf_sha256": "68693db33abc59111ee33e983eacdd6d5f2eb46cb924450441d8b23087b9d67a",
+        "visual_checked": true,
+        "checked_at": "2026-10-01T22:00:28+08:00",
+        "checked_pages": [
+          1
+        ],
+        "unchanged_pages": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "page_sha256": {
+          "page-01.png": "e6cea6240e81835909e4fca62bb9a0926dd53a13e89db7e1814a539099bf51e0",
+          "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+          "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+          "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+          "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+          "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+          "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+          "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+          "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+          "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+          "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+          "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+          "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+          "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+          "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+          "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+          "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+          "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+        },
+        "observations": [
+          "实际查看修改页：1。中文、代码、图表、表格边界和图注均可读。",
+          "其余 17 页与上一份已核验版本的页面图像哈希一致。",
+          "本册区分已核验的 Pi 工具链与尚未执行的模型 Agent 成绩。"
+        ],
+        "previous_checked": {
+          "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
+          "visual_checked": false,
+          "updated": "2026-10-01T21:57:45+08:00",
+          "previous_checked": {
+            "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
+            "pdf_sha256": "674d310e01f940a42ad7c2f4c20de5f8ea2e1770f0cd425a8619c7ebaad5bcd6",
+            "visual_checked": true,
+            "checked_at": "2026-10-01T21:55:16+08:00",
+            "checked_pages": [
+              1
+            ],
+            "unchanged_pages": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "page_sha256": {
+              "page-01.png": "a18109e9819f5217d32d2ef827cfb811e3b8eb58ffcae3024d4a3c37462d4135",
+              "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+              "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+              "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+              "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+              "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+              "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+              "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+              "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+              "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+              "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+              "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+              "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+              "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+              "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+              "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+              "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+              "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+            },
+            "observations": [
+              "实际查看修改页：1。中文、图例、坐标、表格边界和图注均可读。",
+              "其余 17 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
+              "本册仍区分已核验的 Pi 工具链和未执行的模型 Agent 成绩。"
+            ],
+            "previous_checked": {
+              "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
+              "visual_checked": false,
+              "updated": "2026-10-01T21:52:56+08:00",
+              "previous_checked": {
+                "word_sha256": "cbca5c206b3aa2054f5d03468713f80a8afa506dbfa3eed988f7f07d43216ebe",
+                "pdf_sha256": "ee713bbc00579574958429b6155c0b780a50822522298b85c87705a513f5228e",
+                "visual_checked": true,
+                "checked_at": "2026-10-01T19:00:02+08:00",
+                "checked_pages": [
+                  1,
+                  17,
+                  18
+                ],
+                "unchanged_pages": [
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16
+                ],
+                "page_sha256": {
+                  "page-01.png": "02c2c5e7ca84d023590e404567757aca1f01337979b3fbd37200017a22550f35",
+                  "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+                  "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+                  "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+                  "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+                  "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+                  "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+                  "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+                  "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+                  "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+                  "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+                  "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+                  "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+                  "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+                  "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+                  "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+                  "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+                  "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+                },
+                "observations": [
+                  "第1页更新日期及本册任务数量说明可读。",
+                  "第17—18页 Pi 训练与 test 证据索引接续完整，重复表头与结论段位置正常。",
+                  "其余15页与上一份已核验版本的页面 PNG 哈希相同。",
+                  "代码缩进、中文、表格边界、页码正常，未见空白页。"
+                ],
+                "previous_checked": {
+                  "word_sha256": "7c14271f22034a4b74c63e2e551a12a6a00317cb28320bcacd428fe04bcc3e59",
+                  "pdf_sha256": "38015fb1263fe45671c7ebfd1f3fc59d254e419ef4080ddb0482fc9a8efb7aa2",
+                  "visual_checked": true,
+                  "checked_at": "2026-10-01T16:50:34+08:00",
+                  "checked_pages": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "observations": [
+                    "实际查看 Word 导出的页面，代码缩进和中文可读",
+                    "图例、坐标与图注清楚，表格未越界，无空白页",
+                    "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
+                    "代码和内嵌图片另与同版 Markdown、源图核对",
+                    "实际查看全部修改页；其余页在120dpi逐像素与已核验上一版一致；概述在册首，证据索引在实验正文之后"
+                  ],
+                  "newly_viewed_pages": [
+                    1,
+                    5,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18
+                  ],
+                  "identical_pages_inherited": [
+                    2,
+                    3,
+                    4,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "previous_pdf_sha256": "fd43a30b4df854dcd1fa2224b2576b84c11cf699be962ca5d02d1c7e16b5f306"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "checked_at": "2026-10-01T22:51:21+08:00",
   "checked_pages": [
     1
   ],
@@ -26,7 +400,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "e6cea6240e81835909e4fca62bb9a0926dd53a13e89db7e1814a539099bf51e0",
+    "page-01.png": "82fa80fbec51456420f496049b1caf73f6bde638643f8c2cc7c1772a4627ca45",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -46,181 +420,6 @@
     "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
   },
   "observations": [
-    "实际查看修改页：1。中文、代码、图表、表格边界和图注均可读。",
-    "其余 17 页与上一份已核验版本的页面图像哈希一致。",
-    "本册区分已核验的 Pi 工具链与尚未执行的模型 Agent 成绩。"
-  ],
-  "previous_checked": {
-    "word_sha256": "cb2a1ea3defdc95fa6d345f427dbde9cb9f1923fd95537f449f057f34695f803",
-    "visual_checked": false,
-    "updated": "2026-10-01T21:57:45+08:00",
-    "previous_checked": {
-      "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
-      "pdf_sha256": "674d310e01f940a42ad7c2f4c20de5f8ea2e1770f0cd425a8619c7ebaad5bcd6",
-      "visual_checked": true,
-      "checked_at": "2026-10-01T21:55:16+08:00",
-      "checked_pages": [
-        1
-      ],
-      "unchanged_pages": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "page_sha256": {
-        "page-01.png": "a18109e9819f5217d32d2ef827cfb811e3b8eb58ffcae3024d4a3c37462d4135",
-        "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-        "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-        "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-        "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-        "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-        "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-        "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-        "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-        "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-        "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-        "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-        "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-        "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-        "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-        "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-        "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-        "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-      },
-      "observations": [
-        "实际查看修改页：1。中文、图例、坐标、表格边界和图注均可读。",
-        "其余 17 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
-        "本册仍区分已核验的 Pi 工具链和未执行的模型 Agent 成绩。"
-      ],
-      "previous_checked": {
-        "word_sha256": "210dd4d27934aa33535d156e30447b6a8452fa458774c1823b9c234ff8650167",
-        "visual_checked": false,
-        "updated": "2026-10-01T21:52:56+08:00",
-        "previous_checked": {
-          "word_sha256": "cbca5c206b3aa2054f5d03468713f80a8afa506dbfa3eed988f7f07d43216ebe",
-          "pdf_sha256": "ee713bbc00579574958429b6155c0b780a50822522298b85c87705a513f5228e",
-          "visual_checked": true,
-          "checked_at": "2026-10-01T19:00:02+08:00",
-          "checked_pages": [
-            1,
-            17,
-            18
-          ],
-          "unchanged_pages": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15,
-            16
-          ],
-          "page_sha256": {
-            "page-01.png": "02c2c5e7ca84d023590e404567757aca1f01337979b3fbd37200017a22550f35",
-            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
-            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
-            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
-          },
-          "observations": [
-            "第1页更新日期及本册任务数量说明可读。",
-            "第17—18页 Pi 训练与 test 证据索引接续完整，重复表头与结论段位置正常。",
-            "其余15页与上一份已核验版本的页面 PNG 哈希相同。",
-            "代码缩进、中文、表格边界、页码正常，未见空白页。"
-          ],
-          "previous_checked": {
-            "word_sha256": "7c14271f22034a4b74c63e2e551a12a6a00317cb28320bcacd428fe04bcc3e59",
-            "pdf_sha256": "38015fb1263fe45671c7ebfd1f3fc59d254e419ef4080ddb0482fc9a8efb7aa2",
-            "visual_checked": true,
-            "checked_at": "2026-10-01T16:50:34+08:00",
-            "checked_pages": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18
-            ],
-            "observations": [
-              "实际查看 Word 导出的页面，代码缩进和中文可读",
-              "图例、坐标与图注清楚，表格未越界，无空白页",
-              "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
-              "代码和内嵌图片另与同版 Markdown、源图核对",
-              "实际查看全部修改页；其余页在120dpi逐像素与已核验上一版一致；概述在册首，证据索引在实验正文之后"
-            ],
-            "newly_viewed_pages": [
-              1,
-              5,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18
-            ],
-            "identical_pages_inherited": [
-              2,
-              3,
-              4,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11
-            ],
-            "previous_pdf_sha256": "fd43a30b4df854dcd1fa2224b2576b84c11cf699be962ca5d02d1c7e16b5f306"
-          }
-        }
-      }
-    }
-  }
+    "实际查看封面；本轮只有页眉更新时间发生变化，其余页面图像哈希未变。"
+  ]
 }
