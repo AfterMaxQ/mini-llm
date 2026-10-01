@@ -1,13 +1,13 @@
 {
-  "word_sha256": "418c48c0673271f79d21dd3fd8c833eb5598d5b48accd920945716889ca14a2c",
+  "word_sha256": "2548b274dc37ffaaee8c12202c93aae133afec3cb220192a4ad87b7c532809a1",
   "visual_checked": true,
-  "updated": "2026-10-02T05:32:04+08:00",
+  "updated": "2026-10-02T05:46:25+08:00",
   "previous_checked": {
-    "word_sha256": "e545c9f2a0b5eaafba3fe1ec3593e8a136f590d75c08dbf1e3d897408d6838e3",
+    "word_sha256": "6d94500a0b4c373b1e336a06b838fc33ff802ec63acea2ba7663a5fec843a02d",
     "visual_checked": true,
-    "updated": "2026-10-02T05:26:14+08:00",
-    "pdf_sha256": "72a51c06ca6f1bba40025db3363760933db83cb45fced0422042b3ea3651ccf0",
-    "checked_at": "2026-10-02T05:26:14+08:00",
+    "updated": "2026-10-02T05:38:27+08:00",
+    "pdf_sha256": "47a6daa20e425480bd2a3d3ab404c096140b1ffa0b0d61c1afb0b83f46a3f67b",
+    "checked_at": "2026-10-02T05:45:45+08:00",
     "checked_pages": [
       1,
       5,
@@ -47,12 +47,12 @@
       15
     ],
     "page_sha256": {
-      "page-01.png": "fb8f75bed7ebc054646235d7fde8551386b9f85c01242091bd168054358b0f87",
+      "page-01.png": "3208cdfe7595a513b224ec3e1b7c6091b2d2fae7dfb09fe0eda1c76759ae4dbb",
       "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
       "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
       "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-      "page-05.png": "1b0d256cc53614d46aed519e377abb0fe90714737962a4650ad930b0fd681ef0",
-      "page-06.png": "e45f3e8aad3d0a8f264b7cd75a34b16c25c5dc285929062ad23fe3011e6c262a",
+      "page-05.png": "d4bb69450069edcbbc5befd9049a30b87320c33ac770f53ec1a1477de64e64c4",
+      "page-06.png": "26b81ae8b7d8badefa11a8888876b04b5c69718b43d2e3b13f084bb90b871345",
       "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
       "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
       "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -64,12 +64,11 @@
       "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
     },
     "observations": [
-      "实际查看变化页 [1, 5, 6]：中文、表格、图表与代码示例完整，未见缺字、遮挡、越界或空白页。",
-      "其余页面与上一份已核验页面逐像素一致；渲染 PNG 的编码哈希会变化，不影响页面内容。"
+      "实际查看变化页 [1, 5, 6]：中文、表格、图表与代码块清晰完整，未见缺字、遮挡、越界或空白页。 其余页面与上一份已核验页面逐像素一致。"
     ]
   },
-  "pdf_sha256": "c81c66bc8e4528ab13af57d8dc3bd7db05d0bc6b450a4ebce48e5482af6a110c",
-  "checked_at": "2026-10-02T05:32:04+08:00",
+  "pdf_sha256": "fb9d9d18638188b78ec5f5b9dd23410ad405c841c380ae4612551a756d5a5869",
+  "checked_at": "2026-10-02T05:49:25+08:00",
   "checked_pages": [
     1,
     5,
@@ -109,12 +108,12 @@
     15
   ],
   "page_sha256": {
-    "page-01.png": "8ef9cd2f4d339abcbdd3c49a182851af1bf68fbf5887491d85946a91dad05ffb",
+    "page-01.png": "22ddeb385c8ece241258fe34e4f38bdf5393e9f763b43d4939c6466cdd33490f",
     "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
     "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
     "page-04.png": "cd8f14361f5710ac2b6ddbfcc7ff953fe8382ecf5918ec103199625775f02f24",
-    "page-05.png": "78beb7201c892e494ba927ffeed79a0e68d66ebe3c5190432f29dcc764ce69c1",
-    "page-06.png": "edb9f8408933ba6f89d64a6e245088fef2c31aed5d4d0234aa53246a889172d7",
+    "page-05.png": "b53b31e9ed7ff439775d5f98f2ee2a7bb6fc79bcf3ce2cbe339d80c751c837d5",
+    "page-06.png": "e398974994d86f89656d7f4ec0e9cb06405fa0263495b6408c1d6b007e365acc",
     "page-07.png": "0614c4c64f194f32fcb1718af5d7ff2e06b4f0cd158a433642f509cf7f8ea151",
     "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
     "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -126,7 +125,6 @@
     "page-15.png": "0fad7cc64e56dfc5ffbb9a34a93ee8e6b567cdeaf427494de82ba337e540b95c"
   },
   "observations": [
-    "实际查看变化页 [1, 5, 6]：中文、表格、图表与代码示例完整，未见缺字、遮挡、越界或空白页。",
-    "其余页面与上一份已核验页面逐像素一致；PNG 编码哈希变化不代表页面内容变化。"
+    "实际查看变化页 [1, 5, 6]：中文、表格、图表与代码块清晰完整，未见缺字、遮挡、越界或空白页。 其余页面与上一份已核验页面逐像素一致。"
   ]
 }
