@@ -1,9 +1,9 @@
 {
-  "word_sha256": "29ebab9dec2a475cffbc6dcf0f49c0f0f78866fb4e6dcf248ea2b145cc09794e",
-  "pdf_sha256": "3bfb69bbf9ae7852fa50ce627fe8216e02d4f7951d0fe6d2c65d8aa38e9534be",
+  "word_sha256": "c24c179d55e0a570a513061d3835d50a0f7d54ca3bd2af869c656318e987af80",
+  "pdf_sha256": "c5fbf9116a9e1844230f76b45f4c51a6c39034471c57e279350425272b0b976f",
   "visual_checked": true,
-  "updated": "2026-10-02T03:43:56+08:00",
-  "checked_at": "2026-10-02T03:43:56+08:00",
+  "updated": "2026-10-02T03:55:23+08:00",
+  "checked_at": "2026-10-02T03:55:23+08:00",
   "checked_pages": [
     1,
     5,
@@ -43,12 +43,12 @@
     15
   ],
   "page_sha256": {
-    "page-01.png": "9848c91a6f4f0d7e6f64acdb6343a3cf9162ed449170502f6f90f487777666ff",
+    "page-01.png": "21429606db0cfa3b8d3d24b7aa331850fc813a8bd57fe483efc3920442e1249e",
     "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
     "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
     "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-    "page-05.png": "ae68a9c97c48085923f41256fdffe623ec318d13bf527abb2d6345099bd270b2",
-    "page-06.png": "127bd9877d6b75f0f8f977eeb49dee1b19de9deb72ab69209d5d7e2222cc9f9f",
+    "page-05.png": "96025c2cfacc9bf0222cd81d200ae255af427dc511894b641a17965e29097cb0",
+    "page-06.png": "2814d92d3a3c70b0544f0e10de868f8f1b8103bf09c72750d8a3b335b8275cab",
     "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
     "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
     "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -60,14 +60,15 @@
     "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
   },
   "observations": [
-    "实际查看第1、5、6页：E09-R13 更新到第3300步，完整 dev loss 0.09702 并刷新最佳值；表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
+    "实际查看第1、5、6页：E09-R13 更新到第3400步，完整 dev loss 0.09658 并刷新最佳值；表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。",
+    "其余页面与上一份已核验版本的 PNG 哈希一致。"
   ],
   "previous_checked": {
-    "word_sha256": "2ce318780079eefd3492547550c5d0cb08e4921e6eb34bedd9e2b66e07875830",
-    "pdf_sha256": "1faf42ea83324754b4cac550483473061e6f901d98168694c40cd7e904214af8",
+    "word_sha256": "29ebab9dec2a475cffbc6dcf0f49c0f0f78866fb4e6dcf248ea2b145cc09794e",
+    "pdf_sha256": "3bfb69bbf9ae7852fa50ce627fe8216e02d4f7951d0fe6d2c65d8aa38e9534be",
     "visual_checked": true,
-    "updated": "2026-10-02T03:35:27+08:00",
-    "checked_at": "2026-10-02T03:35:27+08:00",
+    "updated": "2026-10-02T03:43:56+08:00",
+    "checked_at": "2026-10-02T03:43:56+08:00",
     "checked_pages": [
       1,
       5,
@@ -107,12 +108,12 @@
       15
     ],
     "page_sha256": {
-      "page-01.png": "b5e2be18d02966e037bd5561de7ee74b5c028c4b90740248e0e0da933bc12a02",
+      "page-01.png": "9848c91a6f4f0d7e6f64acdb6343a3cf9162ed449170502f6f90f487777666ff",
       "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
       "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
       "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-      "page-05.png": "c80084ba88e6933156c7d5271ec14f71d823fcefd05aeb6541cd2d0a15dfaee5",
-      "page-06.png": "dbe15930222df9731459a290ae1c184ab6f2af9d488243bcef2c9a425be1f7c6",
+      "page-05.png": "ae68a9c97c48085923f41256fdffe623ec318d13bf527abb2d6345099bd270b2",
+      "page-06.png": "127bd9877d6b75f0f8f977eeb49dee1b19de9deb72ab69209d5d7e2222cc9f9f",
       "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
       "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
       "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -124,14 +125,14 @@
       "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
     },
     "observations": [
-      "实际查看第1、5、6页：E09-R13 更新到第3200步，完整 dev loss 0.09753 并刷新最佳值；表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
+      "实际查看第1、5、6页：E09-R13 更新到第3300步，完整 dev loss 0.09702 并刷新最佳值；表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
     ],
     "previous_checked": {
-      "word_sha256": "8d1fb7442bb4d47648dd1724d9431638d39302a4688799d550c39a151b4e2897",
-      "pdf_sha256": "efa047940b445b9d9571ee232ecb7054b272d5cf2285c90714ce1da8816b3398",
+      "word_sha256": "2ce318780079eefd3492547550c5d0cb08e4921e6eb34bedd9e2b66e07875830",
+      "pdf_sha256": "1faf42ea83324754b4cac550483473061e6f901d98168694c40cd7e904214af8",
       "visual_checked": true,
-      "updated": "2026-10-02T03:23:59+08:00",
-      "checked_at": "2026-10-02T03:23:59+08:00",
+      "updated": "2026-10-02T03:35:27+08:00",
+      "checked_at": "2026-10-02T03:35:27+08:00",
       "checked_pages": [
         1,
         5,
@@ -171,12 +172,12 @@
         15
       ],
       "page_sha256": {
-        "page-01.png": "bd7d8747c5c677e525f695a1473f1e790475ca879c80ce863829f4b5f19a3ad3",
+        "page-01.png": "b5e2be18d02966e037bd5561de7ee74b5c028c4b90740248e0e0da933bc12a02",
         "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
         "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
         "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-        "page-05.png": "a88d8d07fed9388dad615d2d53851e277ab8526d2c16285fe43afc0cf2cfae8f",
-        "page-06.png": "0b589473a95aa0cac69a1bcf70f56e097ab457c23639ef727446ef6a05874d63",
+        "page-05.png": "c80084ba88e6933156c7d5271ec14f71d823fcefd05aeb6541cd2d0a15dfaee5",
+        "page-06.png": "dbe15930222df9731459a290ae1c184ab6f2af9d488243bcef2c9a425be1f7c6",
         "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
         "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
         "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -188,14 +189,14 @@
         "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
       },
       "observations": [
-        "实际查看第1、5、6页：E09-R13 更新到第3000步；完整 dev loss 为0.09863，当前最佳仍是2900步的0.09848。表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
+        "实际查看第1、5、6页：E09-R13 更新到第3200步，完整 dev loss 0.09753 并刷新最佳值；表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
       ],
       "previous_checked": {
-        "word_sha256": "8ed994371b5e250f987b5fe8c03bba23852550429a56ce8d8c6d7374fa2d2403",
-        "pdf_sha256": "bfe466d304627fd567527c6c7a81562824fde965613874ffd71fa8dfff3a5139",
+        "word_sha256": "8d1fb7442bb4d47648dd1724d9431638d39302a4688799d550c39a151b4e2897",
+        "pdf_sha256": "efa047940b445b9d9571ee232ecb7054b272d5cf2285c90714ce1da8816b3398",
         "visual_checked": true,
-        "updated": "2026-10-02T03:14:14+08:00",
-        "checked_at": "2026-10-02T03:14:14+08:00",
+        "updated": "2026-10-02T03:23:59+08:00",
+        "checked_at": "2026-10-02T03:23:59+08:00",
         "checked_pages": [
           1,
           5,
@@ -235,12 +236,12 @@
           15
         ],
         "page_sha256": {
-          "page-01.png": "8ee59b611be5ec4fc9f1091ad3460e7165175d3fecfd2372e4d3734e4c6f95a1",
+          "page-01.png": "bd7d8747c5c677e525f695a1473f1e790475ca879c80ce863829f4b5f19a3ad3",
           "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
           "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
           "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-          "page-05.png": "6252f71b183b064ed446553913495ca73279cf8da02f9de24719ded0d1c2a0e3",
-          "page-06.png": "fb894654c5fc3761ee96e96c88b23f7fb74b4d8470dc1216d0e162a0b7a8e6fd",
+          "page-05.png": "a88d8d07fed9388dad615d2d53851e277ab8526d2c16285fe43afc0cf2cfae8f",
+          "page-06.png": "0b589473a95aa0cac69a1bcf70f56e097ab457c23639ef727446ef6a05874d63",
           "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
           "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
           "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -252,14 +253,14 @@
           "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
         },
         "observations": [
-          "实际查看第1、5、6页：E09-R13 更新到第2900步，完整 dev loss 0.09848 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
+          "实际查看第1、5、6页：E09-R13 更新到第3000步；完整 dev loss 为0.09863，当前最佳仍是2900步的0.09848。表格、曲线、代码块与中文清楚，无缺字、遮挡或越界。"
         ],
         "previous_checked": {
-          "word_sha256": "31fd139af69a9698e128c04b4a68529936458b67778f0298817f7aed1ca7a651",
-          "pdf_sha256": "b3bdfb4972bf0a5feb526449adc4da1de380793bf1f9e9aa41ce47f21ce68776",
+          "word_sha256": "8ed994371b5e250f987b5fe8c03bba23852550429a56ce8d8c6d7374fa2d2403",
+          "pdf_sha256": "bfe466d304627fd567527c6c7a81562824fde965613874ffd71fa8dfff3a5139",
           "visual_checked": true,
-          "updated": "2026-10-02T03:04:30+08:00",
-          "checked_at": "2026-10-02T03:04:30+08:00",
+          "updated": "2026-10-02T03:14:14+08:00",
+          "checked_at": "2026-10-02T03:14:14+08:00",
           "checked_pages": [
             1,
             5,
@@ -299,12 +300,12 @@
             15
           ],
           "page_sha256": {
-            "page-01.png": "6836c638d8bd7ed4b6ca15c958bf7f8e98980880feaf069017ca19c5ff442169",
+            "page-01.png": "8ee59b611be5ec4fc9f1091ad3460e7165175d3fecfd2372e4d3734e4c6f95a1",
             "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
             "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
             "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-            "page-05.png": "133178b759f19407cdb2727f15435f7f787bbaf3ab291e01ef671d18d2b315d0",
-            "page-06.png": "ea90556894bb254ba849ccc4a76c140c63929b55c6b2403b717659824d8de65b",
+            "page-05.png": "6252f71b183b064ed446553913495ca73279cf8da02f9de24719ded0d1c2a0e3",
+            "page-06.png": "fb894654c5fc3761ee96e96c88b23f7fb74b4d8470dc1216d0e162a0b7a8e6fd",
             "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
             "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
             "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -316,14 +317,14 @@
             "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
           },
           "observations": [
-            "实际查看第1、5、6页：E09-R13 更新到第2800步，完整 dev loss 0.09976 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
+            "实际查看第1、5、6页：E09-R13 更新到第2900步，完整 dev loss 0.09848 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
           ],
           "previous_checked": {
-            "word_sha256": "a29e1186d5dbb1d4da0d20618fd01af4cdc8e367b2f8288ebb9f47118b0295d2",
-            "pdf_sha256": "31dfc27e8ea56113f7a0be6407b7a1bdafbe0f33d5854581ebaba23e8b554a50",
+            "word_sha256": "31fd139af69a9698e128c04b4a68529936458b67778f0298817f7aed1ca7a651",
+            "pdf_sha256": "b3bdfb4972bf0a5feb526449adc4da1de380793bf1f9e9aa41ce47f21ce68776",
             "visual_checked": true,
-            "updated": "2026-10-02T02:56:56+08:00",
-            "checked_at": "2026-10-02T02:56:56+08:00",
+            "updated": "2026-10-02T03:04:30+08:00",
+            "checked_at": "2026-10-02T03:04:30+08:00",
             "checked_pages": [
               1,
               5,
@@ -363,12 +364,12 @@
               15
             ],
             "page_sha256": {
-              "page-01.png": "05d03ab216524f627957924c7b1efcb5bd0510e96bfa90687788b94d1f3f595e",
+              "page-01.png": "6836c638d8bd7ed4b6ca15c958bf7f8e98980880feaf069017ca19c5ff442169",
               "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
               "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
               "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-              "page-05.png": "30cf669c79f1cda2fc6e750e595e7fcec72eac3b4bc8e392d5a7d9045155fe5b",
-              "page-06.png": "938d67d2ae25c05db68935ea3f11c04074e2d452f093d7aa609148ce9e246cc6",
+              "page-05.png": "133178b759f19407cdb2727f15435f7f787bbaf3ab291e01ef671d18d2b315d0",
+              "page-06.png": "ea90556894bb254ba849ccc4a76c140c63929b55c6b2403b717659824d8de65b",
               "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
               "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
               "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -380,14 +381,14 @@
               "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
             },
             "observations": [
-              "实际查看第1、5、6页：E09-R13 更新到第2700步，dev loss 0.10068 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
+              "实际查看第1、5、6页：E09-R13 更新到第2800步，完整 dev loss 0.09976 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
             ],
             "previous_checked": {
-              "word_sha256": "612b4811debd206eea60814316ee3577a23b98be7f8e7a967205c3cbb73c76b1",
-              "pdf_sha256": "e043c76832b00c825b51d8237e55c090b29a3a8fce77eecb14ed22e9d31f9b96",
+              "word_sha256": "a29e1186d5dbb1d4da0d20618fd01af4cdc8e367b2f8288ebb9f47118b0295d2",
+              "pdf_sha256": "31dfc27e8ea56113f7a0be6407b7a1bdafbe0f33d5854581ebaba23e8b554a50",
               "visual_checked": true,
-              "updated": "2026-10-02T02:38:54+08:00",
-              "checked_at": "2026-10-02T02:38:54+08:00",
+              "updated": "2026-10-02T02:56:56+08:00",
+              "checked_at": "2026-10-02T02:56:56+08:00",
               "checked_pages": [
                 1,
                 5,
@@ -427,12 +428,12 @@
                 15
               ],
               "page_sha256": {
-                "page-01.png": "b3e1de2c286c4749f6bd56657bfbdc8fbe957b635a9e7381b19751ca60019696",
+                "page-01.png": "05d03ab216524f627957924c7b1efcb5bd0510e96bfa90687788b94d1f3f595e",
                 "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                 "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                 "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                "page-05.png": "93df7534fe9212a12b8868640ae25824703d104391374ca41841bcb155123775",
-                "page-06.png": "ac38107caeed8b9d1a959141133482443148b5e69f4fe23efdaa2271df0971ac",
+                "page-05.png": "30cf669c79f1cda2fc6e750e595e7fcec72eac3b4bc8e392d5a7d9045155fe5b",
+                "page-06.png": "938d67d2ae25c05db68935ea3f11c04074e2d452f093d7aa609148ce9e246cc6",
                 "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                 "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                 "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -444,14 +445,14 @@
                 "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
               },
               "observations": [
-                "实际查看第1、5、6页：E09-R13 更新到第2600步，完整 dev loss 0.10128 与状态表清楚；loss 曲线、跨页命令、中文和页码正常，无缺字或越界。"
+                "实际查看第1、5、6页：E09-R13 更新到第2700步，dev loss 0.10068 与状态表清楚；loss 曲线、代码块和中文正常，无缺字、遮挡或越界。"
               ],
               "previous_checked": {
-                "word_sha256": "612fdcea6e7dcee8b5893fafa99cda123dc3f89d06caf70359ad31ec2b4a5b36",
-                "pdf_sha256": "4c38b724e57f2c4a996a0e489fa4163f65d5321a6df48f6cfe653d74ff395a70",
+                "word_sha256": "612b4811debd206eea60814316ee3577a23b98be7f8e7a967205c3cbb73c76b1",
+                "pdf_sha256": "e043c76832b00c825b51d8237e55c090b29a3a8fce77eecb14ed22e9d31f9b96",
                 "visual_checked": true,
-                "updated": "2026-10-02T02:27:47+08:00",
-                "checked_at": "2026-10-02T02:27:47+08:00",
+                "updated": "2026-10-02T02:38:54+08:00",
+                "checked_at": "2026-10-02T02:38:54+08:00",
                 "checked_pages": [
                   1,
                   5,
@@ -491,12 +492,12 @@
                   15
                 ],
                 "page_sha256": {
-                  "page-01.png": "4d644f43a7277cce6832dc60692c7d24dca38d6fcc86a87390679f74349f5552",
+                  "page-01.png": "b3e1de2c286c4749f6bd56657bfbdc8fbe957b635a9e7381b19751ca60019696",
                   "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                   "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                   "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                  "page-05.png": "d18dc29327fead1eb883fa5a5fb81d4859bed69052b6db0871d7344f992e1886",
-                  "page-06.png": "7fee0f57eff60adee1454874b9f46fed02dd894e6133eed6be35258bb95de766",
+                  "page-05.png": "93df7534fe9212a12b8868640ae25824703d104391374ca41841bcb155123775",
+                  "page-06.png": "ac38107caeed8b9d1a959141133482443148b5e69f4fe23efdaa2271df0971ac",
                   "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                   "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                   "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -508,14 +509,14 @@
                   "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                 },
                 "observations": [
-                  "实际查看第1、5、6页：E09-R13 更新到第2500步，完整 dev loss 和状态表准确清楚；loss 曲线、跨页命令、中文与页码正常，无缺字或越界。"
+                  "实际查看第1、5、6页：E09-R13 更新到第2600步，完整 dev loss 0.10128 与状态表清楚；loss 曲线、跨页命令、中文和页码正常，无缺字或越界。"
                 ],
                 "previous_checked": {
-                  "word_sha256": "0ce52a88c252797e21cce3099b4cf7a3dfdde157c721c72511bff46a2a287baf",
-                  "pdf_sha256": "e64f9f1a3d79a9e572223915cf70f602a4bff233b3bfd10327493eb8f1f1c0c0",
+                  "word_sha256": "612fdcea6e7dcee8b5893fafa99cda123dc3f89d06caf70359ad31ec2b4a5b36",
+                  "pdf_sha256": "4c38b724e57f2c4a996a0e489fa4163f65d5321a6df48f6cfe653d74ff395a70",
                   "visual_checked": true,
-                  "updated": "2026-10-02T02:14:21+08:00",
-                  "checked_at": "2026-10-02T02:14:21+08:00",
+                  "updated": "2026-10-02T02:27:47+08:00",
+                  "checked_at": "2026-10-02T02:27:47+08:00",
                   "checked_pages": [
                     1,
                     5,
@@ -555,12 +556,12 @@
                     15
                   ],
                   "page_sha256": {
-                    "page-01.png": "3dfb90f1789bb08ab27a69a714f4c3edab4ea46760365a1a3bcc76dad7aa8c9f",
+                    "page-01.png": "4d644f43a7277cce6832dc60692c7d24dca38d6fcc86a87390679f74349f5552",
                     "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                     "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                     "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                    "page-05.png": "428ef2ce79f9ff329a221f26e43eadcdd5d00655552b35bdcac8980251c1f0b7",
-                    "page-06.png": "9ba5626b37451e32e730782dc4c9b1069c308ec3dbe4dc3f13d0d378f9e97ec3",
+                    "page-05.png": "d18dc29327fead1eb883fa5a5fb81d4859bed69052b6db0871d7344f992e1886",
+                    "page-06.png": "7fee0f57eff60adee1454874b9f46fed02dd894e6133eed6be35258bb95de766",
                     "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                     "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                     "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -572,14 +573,14 @@
                     "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                   },
                   "observations": [
-                    "实际查看第1、5、6页：更新到 E09-R13 第2489步，最佳 dev loss 与状态表清楚；曲线和跨页代码块完整，中文、页码和边界正常。"
+                    "实际查看第1、5、6页：E09-R13 更新到第2500步，完整 dev loss 和状态表准确清楚；loss 曲线、跨页命令、中文与页码正常，无缺字或越界。"
                   ],
                   "previous_checked": {
-                    "word_sha256": "68e9bde042c6d9390f2f3bfd7769478623de168f08e7d3653f8412c43c96e30e",
-                    "pdf_sha256": "57ade6192f0b34637809f13331a1ea60801ec2b330447f595ddf4d2454ca3464",
+                    "word_sha256": "0ce52a88c252797e21cce3099b4cf7a3dfdde157c721c72511bff46a2a287baf",
+                    "pdf_sha256": "e64f9f1a3d79a9e572223915cf70f602a4bff233b3bfd10327493eb8f1f1c0c0",
                     "visual_checked": true,
-                    "updated": "2026-10-02T02:05:59+08:00",
-                    "checked_at": "2026-10-02T02:05:59+08:00",
+                    "updated": "2026-10-02T02:14:21+08:00",
+                    "checked_at": "2026-10-02T02:14:21+08:00",
                     "checked_pages": [
                       1,
                       5,
@@ -619,12 +620,12 @@
                       15
                     ],
                     "page_sha256": {
-                      "page-01.png": "73ddc2d3b5190b87295a4c7082e5a0217140a6fbadf033360c6c0e4abfd8f109",
+                      "page-01.png": "3dfb90f1789bb08ab27a69a714f4c3edab4ea46760365a1a3bcc76dad7aa8c9f",
                       "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                       "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                       "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                      "page-05.png": "ac27bce2a8e0e72bd266f0a136b3a9fb2e697a09eb6a54f1dd1a17bcd5affc4e",
-                      "page-06.png": "fca8238199161a3387066701b7fafc9ee06c2475dd7f3ada918d137d6d822f52",
+                      "page-05.png": "428ef2ce79f9ff329a221f26e43eadcdd5d00655552b35bdcac8980251c1f0b7",
+                      "page-06.png": "9ba5626b37451e32e730782dc4c9b1069c308ec3dbe4dc3f13d0d378f9e97ec3",
                       "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                       "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                       "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -636,14 +637,14 @@
                       "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                     },
                     "observations": [
-                      "实际查看第1、5、6页：首页总结可读，E09-R13 2400步验证数值与表格清楚，跨页代码块完整，训练/验证曲线与中文说明无缺字、越界或遮挡。"
+                      "实际查看第1、5、6页：更新到 E09-R13 第2489步，最佳 dev loss 与状态表清楚；曲线和跨页代码块完整，中文、页码和边界正常。"
                     ],
                     "previous_checked": {
-                      "word_sha256": "2e01c9283e9091b1b1d133ddbc41f1edb87ffa0543c33f449792e39ddbc359a5",
-                      "pdf_sha256": "c69ae46dd11f4066e885fd851d695842f3f50abf7211d62ca85311a58d0ca134",
+                      "word_sha256": "68e9bde042c6d9390f2f3bfd7769478623de168f08e7d3653f8412c43c96e30e",
+                      "pdf_sha256": "57ade6192f0b34637809f13331a1ea60801ec2b330447f595ddf4d2454ca3464",
                       "visual_checked": true,
-                      "updated": "2026-10-02T01:46:58+08:00",
-                      "checked_at": "2026-10-02T01:46:58+08:00",
+                      "updated": "2026-10-02T02:05:59+08:00",
+                      "checked_at": "2026-10-02T02:05:59+08:00",
                       "checked_pages": [
                         1,
                         5,
@@ -683,12 +684,12 @@
                         15
                       ],
                       "page_sha256": {
-                        "page-01.png": "ffed5b2108078808531f3a2ebc26ab232f00675cd554b2db8916cd501f6cee0e",
+                        "page-01.png": "73ddc2d3b5190b87295a4c7082e5a0217140a6fbadf033360c6c0e4abfd8f109",
                         "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                         "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                         "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                        "page-05.png": "bd6ae374c769df842cec1208da0063a1305fe86617f41955cfad19eae7196106",
-                        "page-06.png": "fa8ff4ca558320794db2e2a16ebc3f5a869d687e927b4f70fd75506cf44dacdc",
+                        "page-05.png": "ac27bce2a8e0e72bd266f0a136b3a9fb2e697a09eb6a54f1dd1a17bcd5affc4e",
+                        "page-06.png": "fca8238199161a3387066701b7fafc9ee06c2475dd7f3ada918d137d6d822f52",
                         "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                         "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                         "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -700,14 +701,14 @@
                         "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                       },
                       "observations": [
-                        "实际查看第1、5、6页；E09-R13 2300步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
+                        "实际查看第1、5、6页：首页总结可读，E09-R13 2400步验证数值与表格清楚，跨页代码块完整，训练/验证曲线与中文说明无缺字、越界或遮挡。"
                       ],
                       "previous_checked": {
-                        "word_sha256": "a5ff94d1cd6a9d716496e3d0da16c20b8f052e95424745aaa013b25405116c12",
-                        "pdf_sha256": "58ddd3f31bf07bc1207d70d1a701b2a82e3d258038ac76006a1ccae37060b113",
+                        "word_sha256": "2e01c9283e9091b1b1d133ddbc41f1edb87ffa0543c33f449792e39ddbc359a5",
+                        "pdf_sha256": "c69ae46dd11f4066e885fd851d695842f3f50abf7211d62ca85311a58d0ca134",
                         "visual_checked": true,
-                        "updated": "2026-10-02T01:33:37+08:00",
-                        "checked_at": "2026-10-02T01:33:37+08:00",
+                        "updated": "2026-10-02T01:46:58+08:00",
+                        "checked_at": "2026-10-02T01:46:58+08:00",
                         "checked_pages": [
                           1,
                           5,
@@ -747,12 +748,12 @@
                           15
                         ],
                         "page_sha256": {
-                          "page-01.png": "a36fff3371f1fd89da58737e14cea73099e5b30700540030efedd0190021c4d9",
+                          "page-01.png": "ffed5b2108078808531f3a2ebc26ab232f00675cd554b2db8916cd501f6cee0e",
                           "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                           "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                           "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                          "page-05.png": "32901ca77ce343dcb22cd93a4d6a768c4f5ac3810403eeea5c203b92d6bf122b",
-                          "page-06.png": "4c3310c6287d6f45b4f4a84106b2ea8079bec7a8f3585906e1d7ac22fb91890c",
+                          "page-05.png": "bd6ae374c769df842cec1208da0063a1305fe86617f41955cfad19eae7196106",
+                          "page-06.png": "fa8ff4ca558320794db2e2a16ebc3f5a869d687e927b4f70fd75506cf44dacdc",
                           "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                           "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                           "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -764,14 +765,14 @@
                           "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                         },
                         "observations": [
-                          "实际查看第1、5、6页；E09-R13 2200步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
+                          "实际查看第1、5、6页；E09-R13 2300步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
                         ],
                         "previous_checked": {
-                          "word_sha256": "2b1eae1c9237f9d350d049a0793c13204beb96ac14a8edccf22c0a925c0d833f",
-                          "pdf_sha256": "cdaca8aa4df85dd1d8917121371d56dde5490a56aaed0b976c17654b77ac4cf9",
+                          "word_sha256": "a5ff94d1cd6a9d716496e3d0da16c20b8f052e95424745aaa013b25405116c12",
+                          "pdf_sha256": "58ddd3f31bf07bc1207d70d1a701b2a82e3d258038ac76006a1ccae37060b113",
                           "visual_checked": true,
-                          "updated": "2026-10-02T01:13:34+08:00",
-                          "checked_at": "2026-10-02T01:13:34+08:00",
+                          "updated": "2026-10-02T01:33:37+08:00",
+                          "checked_at": "2026-10-02T01:33:37+08:00",
                           "checked_pages": [
                             1,
                             5,
@@ -811,12 +812,12 @@
                             15
                           ],
                           "page_sha256": {
-                            "page-01.png": "e358e28ee1cad1a893cf1c3c7c4176356988b27b368b7e19cb4de3b718ea49c2",
+                            "page-01.png": "a36fff3371f1fd89da58737e14cea73099e5b30700540030efedd0190021c4d9",
                             "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                             "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                             "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                            "page-05.png": "e21f1c36c787ec8f1c999995e39e1b3880bd7b93db7a9fe8399674532df06b48",
-                            "page-06.png": "d8e5a18c98abd0fb85517ff230643751acc52322371707e4ff906180e7fb5391",
+                            "page-05.png": "32901ca77ce343dcb22cd93a4d6a768c4f5ac3810403eeea5c203b92d6bf122b",
+                            "page-06.png": "4c3310c6287d6f45b4f4a84106b2ea8079bec7a8f3585906e1d7ac22fb91890c",
                             "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                             "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                             "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -828,14 +829,14 @@
                             "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                           },
                           "observations": [
-                            "实际查看第1、5、6页；E09-R13 2100步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
+                            "实际查看第1、5、6页；E09-R13 2200步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
                           ],
                           "previous_checked": {
-                            "word_sha256": "ea2a9c72e4c70bab659e6a0cfb56200505978bd208367f16438983b96da7304a",
-                            "pdf_sha256": "0240cd270a8e9fec2c8997016b4e08b907fe26dad03667d78c76451201dfbb71",
+                            "word_sha256": "2b1eae1c9237f9d350d049a0793c13204beb96ac14a8edccf22c0a925c0d833f",
+                            "pdf_sha256": "cdaca8aa4df85dd1d8917121371d56dde5490a56aaed0b976c17654b77ac4cf9",
                             "visual_checked": true,
-                            "updated": "2026-10-02T00:58:03+08:00",
-                            "checked_at": "2026-10-02T00:58:03+08:00",
+                            "updated": "2026-10-02T01:13:34+08:00",
+                            "checked_at": "2026-10-02T01:13:34+08:00",
                             "checked_pages": [
                               1,
                               5,
@@ -875,12 +876,12 @@
                               15
                             ],
                             "page_sha256": {
-                              "page-01.png": "66474645f2c2120fa0f46f3150fd82f037f1208c111f355e47cc832f3e5807e4",
+                              "page-01.png": "e358e28ee1cad1a893cf1c3c7c4176356988b27b368b7e19cb4de3b718ea49c2",
                               "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                               "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                               "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                              "page-05.png": "a2ae637c4c82543bbd4cd2988271e4c24492a352d42b06b221f23da12980673f",
-                              "page-06.png": "0a0ebadc531db6e1a62ec8e2405748abc656e8f30d13d76bbd67f90c0ca5dd3e",
+                              "page-05.png": "e21f1c36c787ec8f1c999995e39e1b3880bd7b93db7a9fe8399674532df06b48",
+                              "page-06.png": "d8e5a18c98abd0fb85517ff230643751acc52322371707e4ff906180e7fb5391",
                               "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                               "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                               "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -892,14 +893,14 @@
                               "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                             },
                             "observations": [
-                              "实际查看第1、5、6页；摘要、E09-R13 当前步数与最佳 dev loss 表、真实训练/验证曲线和代码示例清晰，中文、图例与分页可读。"
+                              "实际查看第1、5、6页；E09-R13 2100步状态与 dev loss 表、训练/验证曲线、中文和示例代码清晰，没有越界。"
                             ],
                             "previous_checked": {
-                              "word_sha256": "04c7274b8412ce2a211335334a4e5bc99ec3e8ffa955d9c506712fcebbe3b093",
-                              "pdf_sha256": "8ae7fcc39cc38af188cb7bf496b781d86879750f6e6ef029d53bde94904f92ce",
+                              "word_sha256": "ea2a9c72e4c70bab659e6a0cfb56200505978bd208367f16438983b96da7304a",
+                              "pdf_sha256": "0240cd270a8e9fec2c8997016b4e08b907fe26dad03667d78c76451201dfbb71",
                               "visual_checked": true,
-                              "updated": "2026-10-02T00:54:46+08:00",
-                              "checked_at": "2026-10-02T00:54:46+08:00",
+                              "updated": "2026-10-02T00:58:03+08:00",
+                              "checked_at": "2026-10-02T00:58:03+08:00",
                               "checked_pages": [
                                 1,
                                 5,
@@ -939,12 +940,12 @@
                                 15
                               ],
                               "page_sha256": {
-                                "page-01.png": "76afbe82fe0a43ab164998fd4fa15e20073c1ba3551dab6e09824d38df63643b",
+                                "page-01.png": "66474645f2c2120fa0f46f3150fd82f037f1208c111f355e47cc832f3e5807e4",
                                 "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                                 "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                                 "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                "page-05.png": "c359a4437e039a8b8a5ee0d8791e932f3132ab7a47bd2b37cab681543eadba8a",
-                                "page-06.png": "d57241f7a08922699511f9db225d0b6203265146be16141dfc8ba8e3722c5db8",
+                                "page-05.png": "a2ae637c4c82543bbd4cd2988271e4c24492a352d42b06b221f23da12980673f",
+                                "page-06.png": "0a0ebadc531db6e1a62ec8e2405748abc656e8f30d13d76bbd67f90c0ca5dd3e",
                                 "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                                 "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                                 "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -959,899 +960,11 @@
                                 "实际查看第1、5、6页；摘要、E09-R13 当前步数与最佳 dev loss 表、真实训练/验证曲线和代码示例清晰，中文、图例与分页可读。"
                               ],
                               "previous_checked": {
-                                "word_sha256": "7c1126b8c8f3dac18328dd908db07944edb0bd0997292a4c25946d05cb1512ed",
+                                "word_sha256": "04c7274b8412ce2a211335334a4e5bc99ec3e8ffa955d9c506712fcebbe3b093",
+                                "pdf_sha256": "8ae7fcc39cc38af188cb7bf496b781d86879750f6e6ef029d53bde94904f92ce",
                                 "visual_checked": true,
-                                "updated": "2026-10-02T00:36:59+08:00",
-                                "previous_checked": {
-                                  "word_sha256": "313c17a89bb21eac70bc114c378142b6644f4cd346f2c361c86514d7d351f8f4",
-                                  "visual_checked": true,
-                                  "updated": "2026-10-02T00:27:47+08:00",
-                                  "previous_checked": {
-                                    "word_sha256": "611cc9cb7263bf8ffa0d292c4d779f834be31c6a3cba2f83dd72ac67ed864774",
-                                    "pdf_sha256": "2c2dbfcd98d06f092720895beb3a2bf4274dd99ec322bfc0e3de1b2fd30e924e",
-                                    "visual_checked": true,
-                                    "updated": "2026-10-02T00:06:49+08:00",
-                                    "checked_at": "2026-10-02T00:06:49+08:00",
-                                    "checked_pages": [
-                                      1,
-                                      5,
-                                      6
-                                    ],
-                                    "newly_viewed_pages": [
-                                      1,
-                                      5,
-                                      6
-                                    ],
-                                    "unchanged_pages": [
-                                      2,
-                                      3,
-                                      4,
-                                      7,
-                                      8,
-                                      9,
-                                      10,
-                                      11,
-                                      12,
-                                      13,
-                                      14,
-                                      15
-                                    ],
-                                    "identical_pages_inherited": [
-                                      2,
-                                      3,
-                                      4,
-                                      7,
-                                      8,
-                                      9,
-                                      10,
-                                      11,
-                                      12,
-                                      13,
-                                      14,
-                                      15
-                                    ],
-                                    "page_sha256": {
-                                      "page-01.png": "f7f4d7c5ad906accf0aa7016059f6db25c176598d3edb20069b8fdcb6c42a9d5",
-                                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                      "page-05.png": "a366d9da8a97ebf061997fa13ed0b6b9482d2aea4ef5b50fde8896bc8d893f50",
-                                      "page-06.png": "660cf1b096da66476094150d1d89489698537840835c0e590fadb4ee49527949",
-                                      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                    },
-                                    "observations": [
-                                      "实际查看第1、5、6页；step 1700 状态表、当前最佳 dev loss、续训曲线和代码清晰。",
-                                      "其余页面 PNG 哈希与上一版视觉核验相同。"
-                                    ],
-                                    "previous_checked": {
-                                      "word_sha256": "e65894ba58554868b9886f484d2c63d987d9d3d604ad30787457a0d0eecffc5e",
-                                      "pdf_sha256": "2aa18604972bc9e78711c0fad3597abbd40a066b2c83c4d54ebfba3f0a8ee3a8",
-                                      "visual_checked": true,
-                                      "updated": "2026-10-01T23:55:56+08:00",
-                                      "checked_at": "2026-10-01T23:55:56+08:00",
-                                      "checked_pages": [
-                                        1,
-                                        5,
-                                        6
-                                      ],
-                                      "newly_viewed_pages": [
-                                        1,
-                                        5,
-                                        6
-                                      ],
-                                      "unchanged_pages": [
-                                        2,
-                                        3,
-                                        4,
-                                        7,
-                                        8,
-                                        9,
-                                        10,
-                                        11,
-                                        12,
-                                        13,
-                                        14,
-                                        15
-                                      ],
-                                      "identical_pages_inherited": [
-                                        2,
-                                        3,
-                                        4,
-                                        7,
-                                        8,
-                                        9,
-                                        10,
-                                        11,
-                                        12,
-                                        13,
-                                        14,
-                                        15
-                                      ],
-                                      "page_sha256": {
-                                        "page-01.png": "7d3cdf31d06c4b5812ffdd9912e56bc87aa3257f07436e1d37dc3857aaac7b3e",
-                                        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                        "page-05.png": "bf0dda4c782f893a06356e9c5256f9b261142c941ce79be858420f321d388170",
-                                        "page-06.png": "f7301616143d7ad70187b126fba6cc38479f0feb3536aea4f45ae02241f51ce8",
-                                        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                      },
-                                      "observations": [
-                                        "实际查看第1、5、6页；step 1600 状态表、最佳 dev loss 和恢复曲线均清晰。",
-                                        "其余页面 PNG 哈希与上一版视觉核验相同。"
-                                      ],
-                                      "previous_checked": {
-                                        "word_sha256": "d7f8c9c0d4ed00edde4c45a903432d38c5aec3f82bb745c55f12e21497bac2a6",
-                                        "pdf_sha256": "3385e1dc5f6153d9d2122d44df71ff58333b4a40eb31194cd14ad088ee15bc4e",
-                                        "visual_checked": true,
-                                        "updated": "2026-10-01T23:42:04+08:00",
-                                        "checked_at": "2026-10-01T23:42:04+08:00",
-                                        "checked_pages": [
-                                          1,
-                                          5,
-                                          6
-                                        ],
-                                        "newly_viewed_pages": [
-                                          1,
-                                          5,
-                                          6
-                                        ],
-                                        "unchanged_pages": [
-                                          2,
-                                          3,
-                                          4,
-                                          7,
-                                          8,
-                                          9,
-                                          10,
-                                          11,
-                                          12,
-                                          13,
-                                          14,
-                                          15
-                                        ],
-                                        "identical_pages_inherited": [
-                                          2,
-                                          3,
-                                          4,
-                                          7,
-                                          8,
-                                          9,
-                                          10,
-                                          11,
-                                          12,
-                                          13,
-                                          14,
-                                          15
-                                        ],
-                                        "page_sha256": {
-                                          "page-01.png": "e3620a965a1f448c3633821026bfe845cd6974375615a7afb5978041439ea0d1",
-                                          "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                          "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                          "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                          "page-05.png": "2df651ccd28475496630a59fecf46260234cdc5d112e3531d163566200988940",
-                                          "page-06.png": "6aff82d1128dd5d2a0f29785b1035d4d512fabf52ace37bf1fa3e9cf80e7cd3f",
-                                          "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                          "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                          "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                          "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                          "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                          "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                          "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                          "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                          "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                        },
-                                        "observations": [
-                                          "实际查看第1、5、6页；step 1500 运行状态、step 1400 最佳 dev、曲线与代码块清晰。",
-                                          "其余页面 PNG 哈希与上一版视觉核验相同。"
-                                        ],
-                                        "previous_checked": {
-                                          "word_sha256": "66395fcd5b58f8e2f9d4d9a50bcae98613c7c0ae3f6dbe3ed90fda48fb1bd395",
-                                          "pdf_sha256": "9e5e75d108e3ddb5ccf40fac18d26a1e05cabfaa41ae53b91c80e2f3ecccbc7e",
-                                          "visual_checked": true,
-                                          "updated": "2026-10-01T23:36:51+08:00",
-                                          "checked_at": "2026-10-01T23:36:51+08:00",
-                                          "checked_pages": [
-                                            1,
-                                            5,
-                                            6
-                                          ],
-                                          "newly_viewed_pages": [
-                                            1,
-                                            5,
-                                            6
-                                          ],
-                                          "unchanged_pages": [
-                                            2,
-                                            3,
-                                            4,
-                                            7,
-                                            8,
-                                            9,
-                                            10,
-                                            11,
-                                            12,
-                                            13,
-                                            14,
-                                            15
-                                          ],
-                                          "identical_pages_inherited": [
-                                            2,
-                                            3,
-                                            4,
-                                            7,
-                                            8,
-                                            9,
-                                            10,
-                                            11,
-                                            12,
-                                            13,
-                                            14,
-                                            15
-                                          ],
-                                          "page_sha256": {
-                                            "page-01.png": "745c168730249e6258be953b44af626b82eddef50627302561cacb161b8be222",
-                                            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                            "page-05.png": "54fb3362f3226ceb7336ac911e6fad61a5811ad4e9b0e7bfd4aaaba2473e2cee",
-                                            "page-06.png": "618f402a406181ba9e36d7b948439f813c1780f4a4e7627c809270b8df7713b0",
-                                            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                          },
-                                          "observations": [
-                                            "实际查看第1、5、6页；step 1400 状态表、断点恢复曲线、中文和代码块均清楚。",
-                                            "其余页面 PNG 哈希与上一版视觉核验相同。"
-                                          ],
-                                          "previous_checked": {
-                                            "word_sha256": "39b5e7c3aae2fab152e5b30ca6a3b52847d787003211c7f023722970d3c2f633",
-                                            "pdf_sha256": "4c93ddd97cd5bf68acb1e8174965ab168c33f5924399e384686e85db66626ba9",
-                                            "visual_checked": true,
-                                            "updated": "2026-10-01T23:32:00+08:00",
-                                            "checked_at": "2026-10-01T23:32:00+08:00",
-                                            "checked_pages": [
-                                              1,
-                                              5,
-                                              6
-                                            ],
-                                            "newly_viewed_pages": [
-                                              1,
-                                              5,
-                                              6
-                                            ],
-                                            "unchanged_pages": [
-                                              2,
-                                              3,
-                                              4,
-                                              7,
-                                              8,
-                                              9,
-                                              10,
-                                              11,
-                                              12,
-                                              13,
-                                              14,
-                                              15
-                                            ],
-                                            "identical_pages_inherited": [
-                                              2,
-                                              3,
-                                              4,
-                                              7,
-                                              8,
-                                              9,
-                                              10,
-                                              11,
-                                              12,
-                                              13,
-                                              14,
-                                              15
-                                            ],
-                                            "page_sha256": {
-                                              "page-01.png": "13d712b08704b6f291a0e2c3e51e839987d344c10aed7dd3a76ff1e07c52c8d6",
-                                              "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                              "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                              "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                              "page-05.png": "1ffa21cf29f5568756b26035e1c41a400328df1869897a3e5fe4adc12715bf75",
-                                              "page-06.png": "6366e3df356f9874c4f8dc7fb2e12d0f5fed00df25b3653bf190ccd52e9b942d",
-                                              "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                              "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                              "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                              "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                              "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                              "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                              "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                              "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                              "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                            },
-                                            "observations": [
-                                              "实际查看第1、5、6页；中文摘要、表格、代码与断点续训曲线清楚，内容对应 E09-R13 checkpoint-1300。",
-                                              "其余页面图像哈希与上一版视觉核验相同。"
-                                            ],
-                                            "previous_checked": {
-                                              "word_sha256": "cdd17a64d5af950051d2775c720c75bd5166aa61227ab8a1893a1c2e390666dc",
-                                              "visual_checked": true,
-                                              "updated": "2026-10-01T23:10:45+08:00",
-                                              "previous_checked": {
-                                                "word_sha256": "babe2ed1e5f443505129fc5a67db4cc4bf1c5e1c1db9e9d05c0d3bf76f25f117",
-                                                "visual_checked": true,
-                                                "updated": "2026-10-01T23:03:09+08:00",
-                                                "previous_checked": {
-                                                  "word_sha256": "108abb432a12435859a50993062ccc5d06921bfdb7e238897b7e442610293ae4",
-                                                  "visual_checked": true,
-                                                  "updated": "2026-10-01T22:55:42+08:00",
-                                                  "previous_checked": {
-                                                    "word_sha256": "3de5081ec865a5b5a0cdddf57f198a38d7c1c436654cc1af4b34ded57bd46cb6",
-                                                    "visual_checked": true,
-                                                    "updated": "2026-10-01T22:46:44+08:00",
-                                                    "previous_checked": {
-                                                      "word_sha256": "26394090ee8532715dc2cb2b2d5bdf2e19bd7aea5aae5e61d0eab54030efdd14",
-                                                      "pdf_sha256": "61b1171ab7c2de57677b58b767edd9684d3e1877faf87b3b0ce9c03c18c97e61",
-                                                      "visual_checked": true,
-                                                      "checked_at": "2026-10-01T22:40:54+08:00",
-                                                      "checked_pages": [
-                                                        1,
-                                                        5,
-                                                        6
-                                                      ],
-                                                      "newly_viewed_pages": [
-                                                        1,
-                                                        5,
-                                                        6
-                                                      ],
-                                                      "unchanged_pages": [
-                                                        2,
-                                                        3,
-                                                        4,
-                                                        7,
-                                                        8,
-                                                        9,
-                                                        10,
-                                                        11,
-                                                        12,
-                                                        13,
-                                                        14,
-                                                        15
-                                                      ],
-                                                      "identical_pages_inherited": [
-                                                        2,
-                                                        3,
-                                                        4,
-                                                        7,
-                                                        8,
-                                                        9,
-                                                        10,
-                                                        11,
-                                                        12,
-                                                        13,
-                                                        14,
-                                                        15
-                                                      ],
-                                                      "page_sha256": {
-                                                        "page-01.png": "4d5c31c2239b1cb205b982828f97328d55bde44fc6269a21a9b8035655eaad90",
-                                                        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                        "page-05.png": "57a010e6063fb700b1090fbeb3e20d7ab5a34073453d2bdd329ad77a203ac1b1",
-                                                        "page-06.png": "9b7d8f6d8026e1c8df5e8ae4ea3229966e4bf66668e7313ff93d00f47535cdb8",
-                                                        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                      },
-                                                      "observations": [
-                                                        "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
-                                                        "其余12页的PNG哈希与上一份已核验版本一致。"
-                                                      ],
-                                                      "previous_checked": {
-                                                        "word_sha256": "1af5a1ab8cf38bef1babd94756872d94c428c7e27ea70f4888127bc56763bbea",
-                                                        "pdf_sha256": "df2e010fed9aa2e6ff95130635c7a2898c778f67757a1601d79194c8518f36eb",
-                                                        "visual_checked": true,
-                                                        "checked_at": "2026-10-01T22:35:23+08:00",
-                                                        "checked_pages": [
-                                                          1,
-                                                          5,
-                                                          6
-                                                        ],
-                                                        "newly_viewed_pages": [
-                                                          1,
-                                                          5,
-                                                          6
-                                                        ],
-                                                        "unchanged_pages": [
-                                                          2,
-                                                          3,
-                                                          4,
-                                                          7,
-                                                          8,
-                                                          9,
-                                                          10,
-                                                          11,
-                                                          12,
-                                                          13,
-                                                          14,
-                                                          15
-                                                        ],
-                                                        "identical_pages_inherited": [
-                                                          2,
-                                                          3,
-                                                          4,
-                                                          7,
-                                                          8,
-                                                          9,
-                                                          10,
-                                                          11,
-                                                          12,
-                                                          13,
-                                                          14,
-                                                          15
-                                                        ],
-                                                        "page_sha256": {
-                                                          "page-01.png": "8a564e6af8ad6b96f446798386f048947903b5ca4a77da0881f1607a6c653c5e",
-                                                          "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                          "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                          "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                          "page-05.png": "dc3e75a284b6c726f83f518c147efef61ee34cf0765d13baca638d03bb458af7",
-                                                          "page-06.png": "f2fadc1cc3a360203c1edf8688cb3d7140d47844cd40495c5753c997f9f975ef",
-                                                          "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                          "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                          "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                          "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                          "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                          "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                          "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                          "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                          "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                        },
-                                                        "observations": [
-                                                          "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
-                                                          "其余12页的PNG哈希与上一份已核验版本一致。"
-                                                        ],
-                                                        "previous_checked": {
-                                                          "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
-                                                          "pdf_sha256": "137f262bcbbbb1c368a9ec82aac6c04db5505b3bd04ce3b3705a358cd1b10e07",
-                                                          "visual_checked": true,
-                                                          "checked_at": "2026-10-01T22:00:28+08:00",
-                                                          "checked_pages": [
-                                                            1,
-                                                            15
-                                                          ],
-                                                          "unchanged_pages": [
-                                                            2,
-                                                            3,
-                                                            4,
-                                                            5,
-                                                            6,
-                                                            7,
-                                                            8,
-                                                            9,
-                                                            10,
-                                                            11,
-                                                            12,
-                                                            13,
-                                                            14
-                                                          ],
-                                                          "page_sha256": {
-                                                            "page-01.png": "89041cafc2d70b7c5e0f6f1b728301f877708dbb18e50e980c3fb81e9396d519",
-                                                            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                            "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
-                                                            "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
-                                                            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                          },
-                                                          "observations": [
-                                                            "实际查看修改页：1, 15。中文、代码、图表、表格边界和图注均可读。",
-                                                            "其余 13 页与上一份已核验版本的页面图像哈希一致。",
-                                                            "E09-R13 当前仍按系统重启后断点恢复处理，未把未完成训练写成最终结果。"
-                                                          ],
-                                                          "previous_checked": {
-                                                            "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
-                                                            "visual_checked": false,
-                                                            "updated": "2026-10-01T21:57:38+08:00",
-                                                            "previous_checked": {
-                                                              "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
-                                                              "pdf_sha256": "0b62875e252e557d5b3995f2978a68bd9b6698c8e8dcf671917306315676f45a",
-                                                              "visual_checked": true,
-                                                              "checked_at": "2026-10-01T21:55:16+08:00",
-                                                              "checked_pages": [
-                                                                1,
-                                                                4,
-                                                                5,
-                                                                6,
-                                                                7,
-                                                                8,
-                                                                9,
-                                                                10,
-                                                                15
-                                                              ],
-                                                              "unchanged_pages": [
-                                                                2,
-                                                                3,
-                                                                11,
-                                                                12,
-                                                                13,
-                                                                14
-                                                              ],
-                                                              "page_sha256": {
-                                                                "page-01.png": "86baf1cc00fb1d36f229e6b43ec6692f28cfc802a5c8d0d732449bc0c2ffb92c",
-                                                                "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                                "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                                "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                                "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
-                                                                "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
-                                                                "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                                "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                                "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                                "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                                "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                                "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                                "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                                "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                                "page-15.png": "f9c4f52d2e6033be661ea250b5ffa84a0da9e3347fecdb636218d9f6d644da76"
-                                                              },
-                                                              "observations": [
-                                                                "实际查看修改页：1, 4, 5, 6, 7, 8, 9, 10, 15。中文、图例、坐标、表格边界和图注均可读。",
-                                                                "其余 6 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
-                                                                "文档中的 E09-R13 状态仍是重启中断、待断点恢复；没有把未完成训练写成最终结果。"
-                                                              ],
-                                                              "previous_checked": {
-                                                                "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
-                                                                "visual_checked": false,
-                                                                "updated": "2026-10-01T21:52:51+08:00",
-                                                                "previous_checked": {
-                                                                  "word_sha256": "96bf201d99656ee12733af49b6bda9fdbeafa2b3255aea22803004c623bf7ab1",
-                                                                  "pdf_sha256": "ff82e9e0261a89411cace5d844f128b797c913c0182f14be470b1957f8b3fef4",
-                                                                  "visual_checked": true,
-                                                                  "checked_at": "2026-10-01T18:28:27+08:00",
-                                                                  "checked_pages": [
-                                                                    1,
-                                                                    5
-                                                                  ],
-                                                                  "unchanged_pages": [
-                                                                    2,
-                                                                    3,
-                                                                    4,
-                                                                    6,
-                                                                    7,
-                                                                    8,
-                                                                    9,
-                                                                    10,
-                                                                    11,
-                                                                    12,
-                                                                    13,
-                                                                    14,
-                                                                    15
-                                                                  ],
-                                                                  "page_sha256": {
-                                                                    "page-01.png": "988438397330d7416be30630c5ff74d416a4a8e15a50056b58adb98b6d785568",
-                                                                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                                    "page-04.png": "c091ee43002e009b0bab13d6c0d1d9e09bcb2d2046a752cc86e5ae4af24417ad",
-                                                                    "page-05.png": "aace71c2c78a36ff5cde1ee1c697ea2a01187745cf138a2fb5a4b2a38dc7e05d",
-                                                                    "page-06.png": "f6c97803beb7847efb9ae79030d257077aaecf4a4df20d410d060bb38df40faf",
-                                                                    "page-07.png": "6d26b428dc95ccc547d322c0eefd081e42354776eca728ca9437bbfdbb949176",
-                                                                    "page-08.png": "e7aa34d4b538b5dbc1fd23c51f4bcf6af5f51b1fb10935a301bb8178985466e9",
-                                                                    "page-09.png": "f14bb574ae83da80d383f9e188f9e9b766cfa71c1d86537bf25932da87333930",
-                                                                    "page-10.png": "a4eca08d64b6b32197971e96db45ac553c58b26348d0caac83241d4ecba7dea5",
-                                                                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                                    "page-15.png": "84b7a98a762021b9eb7c79d66a6d23c7d3b9a5ddf7d915facad2aeddb62f975b"
-                                                                  },
-                                                                  "observations": [
-                                                                    "本次仅第1页的生成时间和第5页的E09-R11 step2200表格及loss曲线发生变化；两页已实际查看。",
-                                                                    "其余13页页面图像与上一份已核验版本逐像素一致。",
-                                                                    "标题、中文、表格边界、图例、坐标、图注、页码和证据索引清楚。"
-                                                                  ],
-                                                                  "previous_checked": {
-                                                                    "word_sha256": "0ea2707681a0d404bf8fa82ed8503101d895af87b78b69178780dac097e9c0a3",
-                                                                    "pdf_sha256": "eeab7f17333e965e89c6eb39870e44a02175d3accbf9eb5959fd0c747a922a3a",
-                                                                    "visual_checked": true,
-                                                                    "checked_at": "2026-10-01T18:22:18+08:00",
-                                                                    "checked_pages": [
-                                                                      1,
-                                                                      2,
-                                                                      3,
-                                                                      4,
-                                                                      5,
-                                                                      6,
-                                                                      7,
-                                                                      8,
-                                                                      9,
-                                                                      10,
-                                                                      11,
-                                                                      12,
-                                                                      13,
-                                                                      14,
-                                                                      15
-                                                                    ],
-                                                                    "observations": [
-                                                                      "实际查看本次 Word 导出的全部15页，中文、代码和页码清楚。",
-                                                                      "训练曲线、dev 对照图与正文结论可读；曲线截至 step 2100，与图注和实验记录一致。",
-                                                                      "数据质量图、表格和末尾证据索引均在页面内，未见越界、缺字或空白页。"
-                                                                    ]
-                                                                  }
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    },
-                                                    "checked_at": "2026-10-01T22:51:21+08:00",
-                                                    "checked_pages": [
-                                                      1,
-                                                      5,
-                                                      6
-                                                    ],
-                                                    "unchanged_pages": [
-                                                      2,
-                                                      3,
-                                                      4,
-                                                      7,
-                                                      8,
-                                                      9,
-                                                      10,
-                                                      11,
-                                                      12,
-                                                      13,
-                                                      14,
-                                                      15
-                                                    ],
-                                                    "page_sha256": {
-                                                      "page-01.png": "e53dbf9de06a2221e4ecf467d0a1a5c39579a2c587c93d9b376153f31173fd3f",
-                                                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                      "page-05.png": "84489a44ca1891c3be8e01c406ac125783a8a11908c4b22f2b8d9d6d5c8d1be7",
-                                                      "page-06.png": "901d624ae36b25fc21cda9f090e9a2c0804431f785820cc050d167121db4cad9",
-                                                      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                    },
-                                                    "observations": [
-                                                      "实际查看封面、运行进度表和 E09-R13 Loss 页；中文、表格、代码块和图例可读。",
-                                                      "其余页面图像哈希与上一份已核验版本一致。"
-                                                    ]
-                                                  },
-                                                  "checked_at": "2026-10-01T22:58:36+08:00",
-                                                  "checked_pages": [
-                                                    1,
-                                                    5,
-                                                    6
-                                                  ],
-                                                  "unchanged_pages": [
-                                                    2,
-                                                    3,
-                                                    4,
-                                                    7,
-                                                    8,
-                                                    9,
-                                                    10,
-                                                    11,
-                                                    12,
-                                                    13,
-                                                    14,
-                                                    15
-                                                  ],
-                                                  "page_sha256": {
-                                                    "page-01.png": "cce936f4ea46f321973443f1600d8bff5e3a34c89db511767dff6ed7367dc9b4",
-                                                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                    "page-05.png": "3c39c44dd63954583561caca9c76e1b5056664da715ac292d173df2d5185d08f",
-                                                    "page-06.png": "374be4a6fe7a9eac9ce3f8e533add983d6ec152942c7e5402b63014113ebd5f0",
-                                                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                  },
-                                                  "observations": [
-                                                    "实际查看封面、当前训练进度表和 E09-R13 Loss 曲线页；中文、表格、图例与代码块可读。",
-                                                    "其余页面 PNG 哈希与上一份已核验版本一致。"
-                                                  ]
-                                                },
-                                                "checked_at": "2026-10-01T23:06:20+08:00",
-                                                "checked_pages": [
-                                                  1,
-                                                  5,
-                                                  6
-                                                ],
-                                                "unchanged_pages": [
-                                                  2,
-                                                  3,
-                                                  4,
-                                                  7,
-                                                  8,
-                                                  9,
-                                                  10,
-                                                  11,
-                                                  12,
-                                                  13,
-                                                  14,
-                                                  15
-                                                ],
-                                                "page_sha256": {
-                                                  "page-01.png": "821a74598e0341d1d8973e1b44bbbb5a0d0734e0dec54b67910d9a3ac175c7eb",
-                                                  "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                  "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                  "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                  "page-05.png": "773ec34fed63e45ead305c95ade7e7482ee9eb9b479f6f136edee98821458a64",
-                                                  "page-06.png": "abb9eb6a023c4715ada71b83168423f1538ddc89abfaccb7f13de43834f1a8a9",
-                                                  "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                  "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                  "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                  "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                  "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                  "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                  "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                  "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                  "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                                },
-                                                "observations": [
-                                                  "实际查看封面、训练进度表和 E09-R13 Loss 页；当前步数、dev loss、分段曲线、中文和分页正常。",
-                                                  "其余页面与上一份已核验版本的 PNG 哈希一致。"
-                                                ]
-                                              },
-                                              "checked_at": "2026-10-01T23:16:08+08:00",
-                                              "checked_pages": [
-                                                1,
-                                                5,
-                                                6
-                                              ],
-                                              "unchanged_pages": [
-                                                2,
-                                                3,
-                                                4,
-                                                7,
-                                                8,
-                                                9,
-                                                10,
-                                                11,
-                                                12,
-                                                13,
-                                                14,
-                                                15
-                                              ],
-                                              "page_sha256": {
-                                                "page-01.png": "a54f4517851494505ef65737da8d76fd156d5c621d3ecbe4a01998aada3f602c",
-                                                "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                                "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                                "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                                "page-05.png": "7b03835d20101cde063c51b6be0451c7f6b53e4e99197802bddfe4391d557dc6",
-                                                "page-06.png": "3acf164d6143471598418bea9a8b37254d983088917e127a1200d2c212705b4b",
-                                                "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                                "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                                "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                                "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                                "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                                "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                                "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                                "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                                "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                              },
-                                              "observations": [
-                                                "实际查看封面、运行进度表和 E09-R13 Loss 页；step 1100 与 dev loss 0.11937 已呈现，中文、图表和分页正常。",
-                                                "其余页面与上一份已核验版本的 PNG 哈希一致。"
-                                              ]
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  },
-                                  "pdf_sha256": "6c7d6d5b559c0170b71ed1ddfc4222129b7b182aa6d9dacd6509e05bbae38dbe",
-                                  "checked_at": "2026-10-02T00:27:47+08:00",
-                                  "checked_pages": [
-                                    1,
-                                    5,
-                                    6
-                                  ],
-                                  "newly_viewed_pages": [
-                                    1,
-                                    5,
-                                    6
-                                  ],
-                                  "unchanged_pages": [
-                                    2,
-                                    3,
-                                    4,
-                                    7,
-                                    8,
-                                    9,
-                                    10,
-                                    11,
-                                    12,
-                                    13,
-                                    14,
-                                    15
-                                  ],
-                                  "identical_pages_inherited": [
-                                    2,
-                                    3,
-                                    4,
-                                    7,
-                                    8,
-                                    9,
-                                    10,
-                                    11,
-                                    12,
-                                    13,
-                                    14,
-                                    15
-                                  ],
-                                  "page_sha256": {
-                                    "page-01.png": "ce59054654a6678959eaf3f5a66deb0ac6bcabb9c2e24a728926527ee70dad0a",
-                                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                    "page-05.png": "01baede508aaa03e2d3f6b3ae61bb3c710eddf33bb77f64d6dac7a45e46cdf8f",
-                                    "page-06.png": "89b60cb6b6c87f26c329048188025139227c1a3e01cdee3ec03eb27f7a85476f",
-                                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                                    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-                                  },
-                                  "observations": [
-                                    "实际查看第1、5、6页；摘要、E09-R13 checkpoint-1800 状态表与真实 loss 曲线清晰，表格未越界，代码和图例可读。"
-                                  ]
-                                },
-                                "pdf_sha256": "185de36560eeefce76ad9fa366a71fb294ce96300bdfae9e485d1b432ee8f154",
-                                "checked_at": "2026-10-02T00:36:59+08:00",
+                                "updated": "2026-10-02T00:54:46+08:00",
+                                "checked_at": "2026-10-02T00:54:46+08:00",
                                 "checked_pages": [
                                   1,
                                   5,
@@ -1891,12 +1004,12 @@
                                   15
                                 ],
                                 "page_sha256": {
-                                  "page-01.png": "ed30a94bb06cc3a8b8e8a47d68fc05f83918614703052db1bf4722776caadab5",
+                                  "page-01.png": "76afbe82fe0a43ab164998fd4fa15e20073c1ba3551dab6e09824d38df63643b",
                                   "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
                                   "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
                                   "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                                  "page-05.png": "39b288a4ed6650266a3e21176a101dbc9389e07238e323d513b448c227bf38ce",
-                                  "page-06.png": "95fc8b9d1a0783411360340547dc4126fdcf461323225d14e45af5873d63cb6f",
+                                  "page-05.png": "c359a4437e039a8b8a5ee0d8791e932f3132ab7a47bd2b37cab681543eadba8a",
+                                  "page-06.png": "d57241f7a08922699511f9db225d0b6203265146be16141dfc8ba8e3722c5db8",
                                   "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
                                   "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
                                   "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -1908,8 +1021,961 @@
                                   "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
                                 },
                                 "observations": [
-                                  "实际查看第1、5、6页；摘要、第1889步运行状态与当前真实 loss 曲线清晰，中文、表格、代码和图例可读。"
-                                ]
+                                  "实际查看第1、5、6页；摘要、E09-R13 当前步数与最佳 dev loss 表、真实训练/验证曲线和代码示例清晰，中文、图例与分页可读。"
+                                ],
+                                "previous_checked": {
+                                  "word_sha256": "7c1126b8c8f3dac18328dd908db07944edb0bd0997292a4c25946d05cb1512ed",
+                                  "visual_checked": true,
+                                  "updated": "2026-10-02T00:36:59+08:00",
+                                  "previous_checked": {
+                                    "word_sha256": "313c17a89bb21eac70bc114c378142b6644f4cd346f2c361c86514d7d351f8f4",
+                                    "visual_checked": true,
+                                    "updated": "2026-10-02T00:27:47+08:00",
+                                    "previous_checked": {
+                                      "word_sha256": "611cc9cb7263bf8ffa0d292c4d779f834be31c6a3cba2f83dd72ac67ed864774",
+                                      "pdf_sha256": "2c2dbfcd98d06f092720895beb3a2bf4274dd99ec322bfc0e3de1b2fd30e924e",
+                                      "visual_checked": true,
+                                      "updated": "2026-10-02T00:06:49+08:00",
+                                      "checked_at": "2026-10-02T00:06:49+08:00",
+                                      "checked_pages": [
+                                        1,
+                                        5,
+                                        6
+                                      ],
+                                      "newly_viewed_pages": [
+                                        1,
+                                        5,
+                                        6
+                                      ],
+                                      "unchanged_pages": [
+                                        2,
+                                        3,
+                                        4,
+                                        7,
+                                        8,
+                                        9,
+                                        10,
+                                        11,
+                                        12,
+                                        13,
+                                        14,
+                                        15
+                                      ],
+                                      "identical_pages_inherited": [
+                                        2,
+                                        3,
+                                        4,
+                                        7,
+                                        8,
+                                        9,
+                                        10,
+                                        11,
+                                        12,
+                                        13,
+                                        14,
+                                        15
+                                      ],
+                                      "page_sha256": {
+                                        "page-01.png": "f7f4d7c5ad906accf0aa7016059f6db25c176598d3edb20069b8fdcb6c42a9d5",
+                                        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                        "page-05.png": "a366d9da8a97ebf061997fa13ed0b6b9482d2aea4ef5b50fde8896bc8d893f50",
+                                        "page-06.png": "660cf1b096da66476094150d1d89489698537840835c0e590fadb4ee49527949",
+                                        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                      },
+                                      "observations": [
+                                        "实际查看第1、5、6页；step 1700 状态表、当前最佳 dev loss、续训曲线和代码清晰。",
+                                        "其余页面 PNG 哈希与上一版视觉核验相同。"
+                                      ],
+                                      "previous_checked": {
+                                        "word_sha256": "e65894ba58554868b9886f484d2c63d987d9d3d604ad30787457a0d0eecffc5e",
+                                        "pdf_sha256": "2aa18604972bc9e78711c0fad3597abbd40a066b2c83c4d54ebfba3f0a8ee3a8",
+                                        "visual_checked": true,
+                                        "updated": "2026-10-01T23:55:56+08:00",
+                                        "checked_at": "2026-10-01T23:55:56+08:00",
+                                        "checked_pages": [
+                                          1,
+                                          5,
+                                          6
+                                        ],
+                                        "newly_viewed_pages": [
+                                          1,
+                                          5,
+                                          6
+                                        ],
+                                        "unchanged_pages": [
+                                          2,
+                                          3,
+                                          4,
+                                          7,
+                                          8,
+                                          9,
+                                          10,
+                                          11,
+                                          12,
+                                          13,
+                                          14,
+                                          15
+                                        ],
+                                        "identical_pages_inherited": [
+                                          2,
+                                          3,
+                                          4,
+                                          7,
+                                          8,
+                                          9,
+                                          10,
+                                          11,
+                                          12,
+                                          13,
+                                          14,
+                                          15
+                                        ],
+                                        "page_sha256": {
+                                          "page-01.png": "7d3cdf31d06c4b5812ffdd9912e56bc87aa3257f07436e1d37dc3857aaac7b3e",
+                                          "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                          "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                          "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                          "page-05.png": "bf0dda4c782f893a06356e9c5256f9b261142c941ce79be858420f321d388170",
+                                          "page-06.png": "f7301616143d7ad70187b126fba6cc38479f0feb3536aea4f45ae02241f51ce8",
+                                          "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                          "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                          "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                          "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                          "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                          "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                          "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                          "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                          "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                        },
+                                        "observations": [
+                                          "实际查看第1、5、6页；step 1600 状态表、最佳 dev loss 和恢复曲线均清晰。",
+                                          "其余页面 PNG 哈希与上一版视觉核验相同。"
+                                        ],
+                                        "previous_checked": {
+                                          "word_sha256": "d7f8c9c0d4ed00edde4c45a903432d38c5aec3f82bb745c55f12e21497bac2a6",
+                                          "pdf_sha256": "3385e1dc5f6153d9d2122d44df71ff58333b4a40eb31194cd14ad088ee15bc4e",
+                                          "visual_checked": true,
+                                          "updated": "2026-10-01T23:42:04+08:00",
+                                          "checked_at": "2026-10-01T23:42:04+08:00",
+                                          "checked_pages": [
+                                            1,
+                                            5,
+                                            6
+                                          ],
+                                          "newly_viewed_pages": [
+                                            1,
+                                            5,
+                                            6
+                                          ],
+                                          "unchanged_pages": [
+                                            2,
+                                            3,
+                                            4,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15
+                                          ],
+                                          "identical_pages_inherited": [
+                                            2,
+                                            3,
+                                            4,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15
+                                          ],
+                                          "page_sha256": {
+                                            "page-01.png": "e3620a965a1f448c3633821026bfe845cd6974375615a7afb5978041439ea0d1",
+                                            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                            "page-05.png": "2df651ccd28475496630a59fecf46260234cdc5d112e3531d163566200988940",
+                                            "page-06.png": "6aff82d1128dd5d2a0f29785b1035d4d512fabf52ace37bf1fa3e9cf80e7cd3f",
+                                            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                          },
+                                          "observations": [
+                                            "实际查看第1、5、6页；step 1500 运行状态、step 1400 最佳 dev、曲线与代码块清晰。",
+                                            "其余页面 PNG 哈希与上一版视觉核验相同。"
+                                          ],
+                                          "previous_checked": {
+                                            "word_sha256": "66395fcd5b58f8e2f9d4d9a50bcae98613c7c0ae3f6dbe3ed90fda48fb1bd395",
+                                            "pdf_sha256": "9e5e75d108e3ddb5ccf40fac18d26a1e05cabfaa41ae53b91c80e2f3ecccbc7e",
+                                            "visual_checked": true,
+                                            "updated": "2026-10-01T23:36:51+08:00",
+                                            "checked_at": "2026-10-01T23:36:51+08:00",
+                                            "checked_pages": [
+                                              1,
+                                              5,
+                                              6
+                                            ],
+                                            "newly_viewed_pages": [
+                                              1,
+                                              5,
+                                              6
+                                            ],
+                                            "unchanged_pages": [
+                                              2,
+                                              3,
+                                              4,
+                                              7,
+                                              8,
+                                              9,
+                                              10,
+                                              11,
+                                              12,
+                                              13,
+                                              14,
+                                              15
+                                            ],
+                                            "identical_pages_inherited": [
+                                              2,
+                                              3,
+                                              4,
+                                              7,
+                                              8,
+                                              9,
+                                              10,
+                                              11,
+                                              12,
+                                              13,
+                                              14,
+                                              15
+                                            ],
+                                            "page_sha256": {
+                                              "page-01.png": "745c168730249e6258be953b44af626b82eddef50627302561cacb161b8be222",
+                                              "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                              "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                              "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                              "page-05.png": "54fb3362f3226ceb7336ac911e6fad61a5811ad4e9b0e7bfd4aaaba2473e2cee",
+                                              "page-06.png": "618f402a406181ba9e36d7b948439f813c1780f4a4e7627c809270b8df7713b0",
+                                              "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                              "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                              "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                              "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                              "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                              "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                              "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                              "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                              "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                            },
+                                            "observations": [
+                                              "实际查看第1、5、6页；step 1400 状态表、断点恢复曲线、中文和代码块均清楚。",
+                                              "其余页面 PNG 哈希与上一版视觉核验相同。"
+                                            ],
+                                            "previous_checked": {
+                                              "word_sha256": "39b5e7c3aae2fab152e5b30ca6a3b52847d787003211c7f023722970d3c2f633",
+                                              "pdf_sha256": "4c93ddd97cd5bf68acb1e8174965ab168c33f5924399e384686e85db66626ba9",
+                                              "visual_checked": true,
+                                              "updated": "2026-10-01T23:32:00+08:00",
+                                              "checked_at": "2026-10-01T23:32:00+08:00",
+                                              "checked_pages": [
+                                                1,
+                                                5,
+                                                6
+                                              ],
+                                              "newly_viewed_pages": [
+                                                1,
+                                                5,
+                                                6
+                                              ],
+                                              "unchanged_pages": [
+                                                2,
+                                                3,
+                                                4,
+                                                7,
+                                                8,
+                                                9,
+                                                10,
+                                                11,
+                                                12,
+                                                13,
+                                                14,
+                                                15
+                                              ],
+                                              "identical_pages_inherited": [
+                                                2,
+                                                3,
+                                                4,
+                                                7,
+                                                8,
+                                                9,
+                                                10,
+                                                11,
+                                                12,
+                                                13,
+                                                14,
+                                                15
+                                              ],
+                                              "page_sha256": {
+                                                "page-01.png": "13d712b08704b6f291a0e2c3e51e839987d344c10aed7dd3a76ff1e07c52c8d6",
+                                                "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                "page-05.png": "1ffa21cf29f5568756b26035e1c41a400328df1869897a3e5fe4adc12715bf75",
+                                                "page-06.png": "6366e3df356f9874c4f8dc7fb2e12d0f5fed00df25b3653bf190ccd52e9b942d",
+                                                "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                              },
+                                              "observations": [
+                                                "实际查看第1、5、6页；中文摘要、表格、代码与断点续训曲线清楚，内容对应 E09-R13 checkpoint-1300。",
+                                                "其余页面图像哈希与上一版视觉核验相同。"
+                                              ],
+                                              "previous_checked": {
+                                                "word_sha256": "cdd17a64d5af950051d2775c720c75bd5166aa61227ab8a1893a1c2e390666dc",
+                                                "visual_checked": true,
+                                                "updated": "2026-10-01T23:10:45+08:00",
+                                                "previous_checked": {
+                                                  "word_sha256": "babe2ed1e5f443505129fc5a67db4cc4bf1c5e1c1db9e9d05c0d3bf76f25f117",
+                                                  "visual_checked": true,
+                                                  "updated": "2026-10-01T23:03:09+08:00",
+                                                  "previous_checked": {
+                                                    "word_sha256": "108abb432a12435859a50993062ccc5d06921bfdb7e238897b7e442610293ae4",
+                                                    "visual_checked": true,
+                                                    "updated": "2026-10-01T22:55:42+08:00",
+                                                    "previous_checked": {
+                                                      "word_sha256": "3de5081ec865a5b5a0cdddf57f198a38d7c1c436654cc1af4b34ded57bd46cb6",
+                                                      "visual_checked": true,
+                                                      "updated": "2026-10-01T22:46:44+08:00",
+                                                      "previous_checked": {
+                                                        "word_sha256": "26394090ee8532715dc2cb2b2d5bdf2e19bd7aea5aae5e61d0eab54030efdd14",
+                                                        "pdf_sha256": "61b1171ab7c2de57677b58b767edd9684d3e1877faf87b3b0ce9c03c18c97e61",
+                                                        "visual_checked": true,
+                                                        "checked_at": "2026-10-01T22:40:54+08:00",
+                                                        "checked_pages": [
+                                                          1,
+                                                          5,
+                                                          6
+                                                        ],
+                                                        "newly_viewed_pages": [
+                                                          1,
+                                                          5,
+                                                          6
+                                                        ],
+                                                        "unchanged_pages": [
+                                                          2,
+                                                          3,
+                                                          4,
+                                                          7,
+                                                          8,
+                                                          9,
+                                                          10,
+                                                          11,
+                                                          12,
+                                                          13,
+                                                          14,
+                                                          15
+                                                        ],
+                                                        "identical_pages_inherited": [
+                                                          2,
+                                                          3,
+                                                          4,
+                                                          7,
+                                                          8,
+                                                          9,
+                                                          10,
+                                                          11,
+                                                          12,
+                                                          13,
+                                                          14,
+                                                          15
+                                                        ],
+                                                        "page_sha256": {
+                                                          "page-01.png": "4d5c31c2239b1cb205b982828f97328d55bde44fc6269a21a9b8035655eaad90",
+                                                          "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                          "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                          "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                          "page-05.png": "57a010e6063fb700b1090fbeb3e20d7ab5a34073453d2bdd329ad77a203ac1b1",
+                                                          "page-06.png": "9b7d8f6d8026e1c8df5e8ae4ea3229966e4bf66668e7313ff93d00f47535cdb8",
+                                                          "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                          "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                          "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                          "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                          "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                          "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                          "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                          "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                          "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                        },
+                                                        "observations": [
+                                                          "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
+                                                          "其余12页的PNG哈希与上一份已核验版本一致。"
+                                                        ],
+                                                        "previous_checked": {
+                                                          "word_sha256": "1af5a1ab8cf38bef1babd94756872d94c428c7e27ea70f4888127bc56763bbea",
+                                                          "pdf_sha256": "df2e010fed9aa2e6ff95130635c7a2898c778f67757a1601d79194c8518f36eb",
+                                                          "visual_checked": true,
+                                                          "checked_at": "2026-10-01T22:35:23+08:00",
+                                                          "checked_pages": [
+                                                            1,
+                                                            5,
+                                                            6
+                                                          ],
+                                                          "newly_viewed_pages": [
+                                                            1,
+                                                            5,
+                                                            6
+                                                          ],
+                                                          "unchanged_pages": [
+                                                            2,
+                                                            3,
+                                                            4,
+                                                            7,
+                                                            8,
+                                                            9,
+                                                            10,
+                                                            11,
+                                                            12,
+                                                            13,
+                                                            14,
+                                                            15
+                                                          ],
+                                                          "identical_pages_inherited": [
+                                                            2,
+                                                            3,
+                                                            4,
+                                                            7,
+                                                            8,
+                                                            9,
+                                                            10,
+                                                            11,
+                                                            12,
+                                                            13,
+                                                            14,
+                                                            15
+                                                          ],
+                                                          "page_sha256": {
+                                                            "page-01.png": "8a564e6af8ad6b96f446798386f048947903b5ca4a77da0881f1607a6c653c5e",
+                                                            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                            "page-05.png": "dc3e75a284b6c726f83f518c147efef61ee34cf0765d13baca638d03bb458af7",
+                                                            "page-06.png": "f2fadc1cc3a360203c1edf8688cb3d7140d47844cd40495c5753c997f9f975ef",
+                                                            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                          },
+                                                          "observations": [
+                                                            "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
+                                                            "其余12页的PNG哈希与上一份已核验版本一致。"
+                                                          ],
+                                                          "previous_checked": {
+                                                            "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
+                                                            "pdf_sha256": "137f262bcbbbb1c368a9ec82aac6c04db5505b3bd04ce3b3705a358cd1b10e07",
+                                                            "visual_checked": true,
+                                                            "checked_at": "2026-10-01T22:00:28+08:00",
+                                                            "checked_pages": [
+                                                              1,
+                                                              15
+                                                            ],
+                                                            "unchanged_pages": [
+                                                              2,
+                                                              3,
+                                                              4,
+                                                              5,
+                                                              6,
+                                                              7,
+                                                              8,
+                                                              9,
+                                                              10,
+                                                              11,
+                                                              12,
+                                                              13,
+                                                              14
+                                                            ],
+                                                            "page_sha256": {
+                                                              "page-01.png": "89041cafc2d70b7c5e0f6f1b728301f877708dbb18e50e980c3fb81e9396d519",
+                                                              "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                              "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                              "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                              "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
+                                                              "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
+                                                              "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                              "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                              "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                              "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                              "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                              "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                              "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                              "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                              "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                            },
+                                                            "observations": [
+                                                              "实际查看修改页：1, 15。中文、代码、图表、表格边界和图注均可读。",
+                                                              "其余 13 页与上一份已核验版本的页面图像哈希一致。",
+                                                              "E09-R13 当前仍按系统重启后断点恢复处理，未把未完成训练写成最终结果。"
+                                                            ],
+                                                            "previous_checked": {
+                                                              "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
+                                                              "visual_checked": false,
+                                                              "updated": "2026-10-01T21:57:38+08:00",
+                                                              "previous_checked": {
+                                                                "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
+                                                                "pdf_sha256": "0b62875e252e557d5b3995f2978a68bd9b6698c8e8dcf671917306315676f45a",
+                                                                "visual_checked": true,
+                                                                "checked_at": "2026-10-01T21:55:16+08:00",
+                                                                "checked_pages": [
+                                                                  1,
+                                                                  4,
+                                                                  5,
+                                                                  6,
+                                                                  7,
+                                                                  8,
+                                                                  9,
+                                                                  10,
+                                                                  15
+                                                                ],
+                                                                "unchanged_pages": [
+                                                                  2,
+                                                                  3,
+                                                                  11,
+                                                                  12,
+                                                                  13,
+                                                                  14
+                                                                ],
+                                                                "page_sha256": {
+                                                                  "page-01.png": "86baf1cc00fb1d36f229e6b43ec6692f28cfc802a5c8d0d732449bc0c2ffb92c",
+                                                                  "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                                  "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                                  "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                                  "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
+                                                                  "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
+                                                                  "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                                  "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                                  "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                                  "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                                  "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                                  "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                                  "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                                  "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                                  "page-15.png": "f9c4f52d2e6033be661ea250b5ffa84a0da9e3347fecdb636218d9f6d644da76"
+                                                                },
+                                                                "observations": [
+                                                                  "实际查看修改页：1, 4, 5, 6, 7, 8, 9, 10, 15。中文、图例、坐标、表格边界和图注均可读。",
+                                                                  "其余 6 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
+                                                                  "文档中的 E09-R13 状态仍是重启中断、待断点恢复；没有把未完成训练写成最终结果。"
+                                                                ],
+                                                                "previous_checked": {
+                                                                  "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
+                                                                  "visual_checked": false,
+                                                                  "updated": "2026-10-01T21:52:51+08:00",
+                                                                  "previous_checked": {
+                                                                    "word_sha256": "96bf201d99656ee12733af49b6bda9fdbeafa2b3255aea22803004c623bf7ab1",
+                                                                    "pdf_sha256": "ff82e9e0261a89411cace5d844f128b797c913c0182f14be470b1957f8b3fef4",
+                                                                    "visual_checked": true,
+                                                                    "checked_at": "2026-10-01T18:28:27+08:00",
+                                                                    "checked_pages": [
+                                                                      1,
+                                                                      5
+                                                                    ],
+                                                                    "unchanged_pages": [
+                                                                      2,
+                                                                      3,
+                                                                      4,
+                                                                      6,
+                                                                      7,
+                                                                      8,
+                                                                      9,
+                                                                      10,
+                                                                      11,
+                                                                      12,
+                                                                      13,
+                                                                      14,
+                                                                      15
+                                                                    ],
+                                                                    "page_sha256": {
+                                                                      "page-01.png": "988438397330d7416be30630c5ff74d416a4a8e15a50056b58adb98b6d785568",
+                                                                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                                      "page-04.png": "c091ee43002e009b0bab13d6c0d1d9e09bcb2d2046a752cc86e5ae4af24417ad",
+                                                                      "page-05.png": "aace71c2c78a36ff5cde1ee1c697ea2a01187745cf138a2fb5a4b2a38dc7e05d",
+                                                                      "page-06.png": "f6c97803beb7847efb9ae79030d257077aaecf4a4df20d410d060bb38df40faf",
+                                                                      "page-07.png": "6d26b428dc95ccc547d322c0eefd081e42354776eca728ca9437bbfdbb949176",
+                                                                      "page-08.png": "e7aa34d4b538b5dbc1fd23c51f4bcf6af5f51b1fb10935a301bb8178985466e9",
+                                                                      "page-09.png": "f14bb574ae83da80d383f9e188f9e9b766cfa71c1d86537bf25932da87333930",
+                                                                      "page-10.png": "a4eca08d64b6b32197971e96db45ac553c58b26348d0caac83241d4ecba7dea5",
+                                                                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                                      "page-15.png": "84b7a98a762021b9eb7c79d66a6d23c7d3b9a5ddf7d915facad2aeddb62f975b"
+                                                                    },
+                                                                    "observations": [
+                                                                      "本次仅第1页的生成时间和第5页的E09-R11 step2200表格及loss曲线发生变化；两页已实际查看。",
+                                                                      "其余13页页面图像与上一份已核验版本逐像素一致。",
+                                                                      "标题、中文、表格边界、图例、坐标、图注、页码和证据索引清楚。"
+                                                                    ],
+                                                                    "previous_checked": {
+                                                                      "word_sha256": "0ea2707681a0d404bf8fa82ed8503101d895af87b78b69178780dac097e9c0a3",
+                                                                      "pdf_sha256": "eeab7f17333e965e89c6eb39870e44a02175d3accbf9eb5959fd0c747a922a3a",
+                                                                      "visual_checked": true,
+                                                                      "checked_at": "2026-10-01T18:22:18+08:00",
+                                                                      "checked_pages": [
+                                                                        1,
+                                                                        2,
+                                                                        3,
+                                                                        4,
+                                                                        5,
+                                                                        6,
+                                                                        7,
+                                                                        8,
+                                                                        9,
+                                                                        10,
+                                                                        11,
+                                                                        12,
+                                                                        13,
+                                                                        14,
+                                                                        15
+                                                                      ],
+                                                                      "observations": [
+                                                                        "实际查看本次 Word 导出的全部15页，中文、代码和页码清楚。",
+                                                                        "训练曲线、dev 对照图与正文结论可读；曲线截至 step 2100，与图注和实验记录一致。",
+                                                                        "数据质量图、表格和末尾证据索引均在页面内，未见越界、缺字或空白页。"
+                                                                      ]
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      "checked_at": "2026-10-01T22:51:21+08:00",
+                                                      "checked_pages": [
+                                                        1,
+                                                        5,
+                                                        6
+                                                      ],
+                                                      "unchanged_pages": [
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15
+                                                      ],
+                                                      "page_sha256": {
+                                                        "page-01.png": "e53dbf9de06a2221e4ecf467d0a1a5c39579a2c587c93d9b376153f31173fd3f",
+                                                        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                        "page-05.png": "84489a44ca1891c3be8e01c406ac125783a8a11908c4b22f2b8d9d6d5c8d1be7",
+                                                        "page-06.png": "901d624ae36b25fc21cda9f090e9a2c0804431f785820cc050d167121db4cad9",
+                                                        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                      },
+                                                      "observations": [
+                                                        "实际查看封面、运行进度表和 E09-R13 Loss 页；中文、表格、代码块和图例可读。",
+                                                        "其余页面图像哈希与上一份已核验版本一致。"
+                                                      ]
+                                                    },
+                                                    "checked_at": "2026-10-01T22:58:36+08:00",
+                                                    "checked_pages": [
+                                                      1,
+                                                      5,
+                                                      6
+                                                    ],
+                                                    "unchanged_pages": [
+                                                      2,
+                                                      3,
+                                                      4,
+                                                      7,
+                                                      8,
+                                                      9,
+                                                      10,
+                                                      11,
+                                                      12,
+                                                      13,
+                                                      14,
+                                                      15
+                                                    ],
+                                                    "page_sha256": {
+                                                      "page-01.png": "cce936f4ea46f321973443f1600d8bff5e3a34c89db511767dff6ed7367dc9b4",
+                                                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                      "page-05.png": "3c39c44dd63954583561caca9c76e1b5056664da715ac292d173df2d5185d08f",
+                                                      "page-06.png": "374be4a6fe7a9eac9ce3f8e533add983d6ec152942c7e5402b63014113ebd5f0",
+                                                      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                    },
+                                                    "observations": [
+                                                      "实际查看封面、当前训练进度表和 E09-R13 Loss 曲线页；中文、表格、图例与代码块可读。",
+                                                      "其余页面 PNG 哈希与上一份已核验版本一致。"
+                                                    ]
+                                                  },
+                                                  "checked_at": "2026-10-01T23:06:20+08:00",
+                                                  "checked_pages": [
+                                                    1,
+                                                    5,
+                                                    6
+                                                  ],
+                                                  "unchanged_pages": [
+                                                    2,
+                                                    3,
+                                                    4,
+                                                    7,
+                                                    8,
+                                                    9,
+                                                    10,
+                                                    11,
+                                                    12,
+                                                    13,
+                                                    14,
+                                                    15
+                                                  ],
+                                                  "page_sha256": {
+                                                    "page-01.png": "821a74598e0341d1d8973e1b44bbbb5a0d0734e0dec54b67910d9a3ac175c7eb",
+                                                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                    "page-05.png": "773ec34fed63e45ead305c95ade7e7482ee9eb9b479f6f136edee98821458a64",
+                                                    "page-06.png": "abb9eb6a023c4715ada71b83168423f1538ddc89abfaccb7f13de43834f1a8a9",
+                                                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                  },
+                                                  "observations": [
+                                                    "实际查看封面、训练进度表和 E09-R13 Loss 页；当前步数、dev loss、分段曲线、中文和分页正常。",
+                                                    "其余页面与上一份已核验版本的 PNG 哈希一致。"
+                                                  ]
+                                                },
+                                                "checked_at": "2026-10-01T23:16:08+08:00",
+                                                "checked_pages": [
+                                                  1,
+                                                  5,
+                                                  6
+                                                ],
+                                                "unchanged_pages": [
+                                                  2,
+                                                  3,
+                                                  4,
+                                                  7,
+                                                  8,
+                                                  9,
+                                                  10,
+                                                  11,
+                                                  12,
+                                                  13,
+                                                  14,
+                                                  15
+                                                ],
+                                                "page_sha256": {
+                                                  "page-01.png": "a54f4517851494505ef65737da8d76fd156d5c621d3ecbe4a01998aada3f602c",
+                                                  "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                                  "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                                  "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                                  "page-05.png": "7b03835d20101cde063c51b6be0451c7f6b53e4e99197802bddfe4391d557dc6",
+                                                  "page-06.png": "3acf164d6143471598418bea9a8b37254d983088917e127a1200d2c212705b4b",
+                                                  "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                                  "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                                  "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                                  "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                                  "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                                  "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                                  "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                                  "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                                  "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                                },
+                                                "observations": [
+                                                  "实际查看封面、运行进度表和 E09-R13 Loss 页；step 1100 与 dev loss 0.11937 已呈现，中文、图表和分页正常。",
+                                                  "其余页面与上一份已核验版本的 PNG 哈希一致。"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "pdf_sha256": "6c7d6d5b559c0170b71ed1ddfc4222129b7b182aa6d9dacd6509e05bbae38dbe",
+                                    "checked_at": "2026-10-02T00:27:47+08:00",
+                                    "checked_pages": [
+                                      1,
+                                      5,
+                                      6
+                                    ],
+                                    "newly_viewed_pages": [
+                                      1,
+                                      5,
+                                      6
+                                    ],
+                                    "unchanged_pages": [
+                                      2,
+                                      3,
+                                      4,
+                                      7,
+                                      8,
+                                      9,
+                                      10,
+                                      11,
+                                      12,
+                                      13,
+                                      14,
+                                      15
+                                    ],
+                                    "identical_pages_inherited": [
+                                      2,
+                                      3,
+                                      4,
+                                      7,
+                                      8,
+                                      9,
+                                      10,
+                                      11,
+                                      12,
+                                      13,
+                                      14,
+                                      15
+                                    ],
+                                    "page_sha256": {
+                                      "page-01.png": "ce59054654a6678959eaf3f5a66deb0ac6bcabb9c2e24a728926527ee70dad0a",
+                                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                      "page-05.png": "01baede508aaa03e2d3f6b3ae61bb3c710eddf33bb77f64d6dac7a45e46cdf8f",
+                                      "page-06.png": "89b60cb6b6c87f26c329048188025139227c1a3e01cdee3ec03eb27f7a85476f",
+                                      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                    },
+                                    "observations": [
+                                      "实际查看第1、5、6页；摘要、E09-R13 checkpoint-1800 状态表与真实 loss 曲线清晰，表格未越界，代码和图例可读。"
+                                    ]
+                                  },
+                                  "pdf_sha256": "185de36560eeefce76ad9fa366a71fb294ce96300bdfae9e485d1b432ee8f154",
+                                  "checked_at": "2026-10-02T00:36:59+08:00",
+                                  "checked_pages": [
+                                    1,
+                                    5,
+                                    6
+                                  ],
+                                  "newly_viewed_pages": [
+                                    1,
+                                    5,
+                                    6
+                                  ],
+                                  "unchanged_pages": [
+                                    2,
+                                    3,
+                                    4,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15
+                                  ],
+                                  "identical_pages_inherited": [
+                                    2,
+                                    3,
+                                    4,
+                                    7,
+                                    8,
+                                    9,
+                                    10,
+                                    11,
+                                    12,
+                                    13,
+                                    14,
+                                    15
+                                  ],
+                                  "page_sha256": {
+                                    "page-01.png": "ed30a94bb06cc3a8b8e8a47d68fc05f83918614703052db1bf4722776caadab5",
+                                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                                    "page-05.png": "39b288a4ed6650266a3e21176a101dbc9389e07238e323d513b448c227bf38ce",
+                                    "page-06.png": "95fc8b9d1a0783411360340547dc4126fdcf461323225d14e45af5873d63cb6f",
+                                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                                    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                                  },
+                                  "observations": [
+                                    "实际查看第1、5、6页；摘要、第1889步运行状态与当前真实 loss 曲线清晰，中文、表格、代码和图例可读。"
+                                  ]
+                                }
                               }
                             }
                           }
