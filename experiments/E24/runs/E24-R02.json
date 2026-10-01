@@ -1,0 +1,125 @@
+{
+  "status": "preparation_verified_not_scored",
+  "exit_code": 0,
+  "scope": "官方 test 数据、task 模板与全量评分请求已核对；未加载模型，未计算模型指标",
+  "dataset": {
+    "repo_id": "allenai/ai2_arc",
+    "revision": "210d026faf9955653af8916fad021475a3f00453",
+    "config": "ARC-Challenge",
+    "split": "test",
+    "file": "ARC-Challenge/test-00000-of-00001.parquet",
+    "local_file": ".local/data/arc-challenge/test-00000-of-00001.parquet",
+    "file_bytes": 203808,
+    "file_sha256": "62f03257e737aed263f55c6abf87c7bb0028a44a6bdd2a26eb1279eb42c1d1e9",
+    "documents": 1172,
+    "unique_ids": 1172,
+    "ids_sha256": "cc2c022df6224f1ddc29f6f762b68802a42de8dbfee01377647a04b35d7c792a",
+    "fields": [
+      "answerKey",
+      "choices",
+      "id",
+      "question"
+    ],
+    "choice_count_distribution": {
+      "3": 4,
+      "4": 1165,
+      "5": 3
+    },
+    "question_character_count": {
+      "min": 13,
+      "median": 112.0,
+      "max": 831
+    }
+  },
+  "harness": {
+    "repository": "https://github.com/EleutherAI/lm-evaluation-harness.git",
+    "commit": "d6de81643928d653435c431bae19945d41d32520",
+    "version": "0.4.14.dev0",
+    "task": "arc_challenge",
+    "task_yaml": "lm_eval/tasks/arc/arc_challenge.yaml",
+    "base_yaml": "lm_eval/tasks/arc/arc_easy.yaml",
+    "repository_commit": "d6de81643928d653435c431bae19945d41d32520",
+    "task_yaml_sha256": "61492ac448808032ad18761ec4c45e8385acfb2b92931a27e75df17c46d92eda",
+    "base_yaml_sha256": "c8fb340f3cc7179b135885c880677ac043aeac59c4cbbe41a2c3d49c3c0fe7dd",
+    "installed_task_yaml_sha256": "61492ac448808032ad18761ec4c45e8385acfb2b92931a27e75df17c46d92eda",
+    "installed_base_yaml_sha256": "c8fb340f3cc7179b135885c880677ac043aeac59c4cbbe41a2c3d49c3c0fe7dd",
+    "num_fewshot": 0,
+    "prompt_template": "Question: {{question}}\nAnswer:",
+    "choice_template": "{{choices.text}}",
+    "target_template": "{{choices.label.index(answerKey)}}",
+    "prompt_template_sha256": "4c7872e2372ccd4e77eb5d3538d65de796d5c097aba88bb3c7565c2a5eff2cc6",
+    "rendered_prompts_sha256": "986044630ef057445664d4f43e2f3d95a55bb4a3094a76c7ecb5fb5dda7f49a6",
+    "apply_chat_template": false,
+    "limit": null,
+    "scoring_backend": "lm_eval.models.huggingface.HFLM",
+    "metrics": [
+      "acc",
+      "acc_norm"
+    ],
+    "dataset_loader": "parquet with the fixed local test file; train/validation split disabled"
+  },
+  "scoring_requests": {
+    "documents": 1172,
+    "choices": 4687,
+    "request_types": {
+      "loglikelihood": 4687
+    }
+  },
+  "model_inference": {
+    "performed": false,
+    "scores": null
+  },
+  "chart": {
+    "file": "experiments/E24/figures/arc-test-structure.png",
+    "source": "experiments/E24/figures/arc-test-structure.source.json",
+    "sha256": "c581a5103ccadadc854887b36adfec89f4caeff8000c22ccfb36cf96f20f2799",
+    "source_json_sha256": "1c9416fe601354062ac5cb8623dd1c4efda47e0e3bbb5de1338834d7d955de1e"
+  },
+  "run_id": "E24-R02",
+  "finished": "2026-10-01T17:52:23+08:00",
+  "config": {
+    "dataset": {
+      "repo_id": "allenai/ai2_arc",
+      "revision": "210d026faf9955653af8916fad021475a3f00453",
+      "config": "ARC-Challenge",
+      "test_file": "ARC-Challenge/test-00000-of-00001.parquet",
+      "test_file_bytes": 203808,
+      "test_file_sha256": "62f03257e737aed263f55c6abf87c7bb0028a44a6bdd2a26eb1279eb42c1d1e9"
+    },
+    "harness": {
+      "repository": "https://github.com/EleutherAI/lm-evaluation-harness.git",
+      "commit": "d6de81643928d653435c431bae19945d41d32520",
+      "version": "0.4.14.dev0",
+      "task": "arc_challenge",
+      "task_yaml": "lm_eval/tasks/arc/arc_challenge.yaml",
+      "base_yaml": "lm_eval/tasks/arc/arc_easy.yaml"
+    },
+    "evaluation": {
+      "split": "test",
+      "num_fewshot": 0,
+      "apply_chat_template": false,
+      "limit": null,
+      "output_type": "multiple_choice",
+      "prompt_template": "Question: {{question}}\nAnswer:",
+      "choice_template": "{{choices.text}}",
+      "target_template": "{{choices.label.index(answerKey)}}",
+      "metrics": [
+        "acc",
+        "acc_norm"
+      ],
+      "aggregation": "mean",
+      "scoring_backend": "lm_eval.models.huggingface.HFLM",
+      "prepare_command": [
+        ".local/venv-harness/Scripts/python.exe",
+        "scripts/arc_prepare.py"
+      ],
+      "inference": "not run during preparation"
+    },
+    "run_id": "E24-R02",
+    "started": "2026-10-01T17:52:08+08:00",
+    "commit": "0ac7078df12a3d7fe5d1a1d8920c5a9df04e6936",
+    "process_id": 38856,
+    "code_snapshot_sha256": "dfae075f81622a9b76175e48e387edb038035079bd6d8345206f3538ba1d5a73"
+  },
+  "raw_result_sha256": "e4672f412e8ce5af1a886e9ce0635d8684a149f032c93f2eef8250a12d2d6f9c"
+}

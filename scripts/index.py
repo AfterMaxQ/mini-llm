@@ -40,6 +40,8 @@ def main():
             translated['test_lengths_verified']='100个test参考历史长度已核验，模型评测待执行'
             translated['test_split_inspection_verified']='train/dev/test划分筛查完成，模型迁移与最终评测待执行'
             translated['benchmark_preparation_verified']='13类BFCL清单与判分接口已核验，模型成绩待测'
+            translated['preparation_verified_not_scored']='ARC-Challenge官方test与全量评分请求已核验，模型评测待执行'
+            translated['preparation_failed']='准备失败，错误证据保留'
             if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
                 translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"

@@ -1,0 +1,17 @@
+{
+  "source_file_sha256": "62f03257e737aed263f55c6abf87c7bb0028a44a6bdd2a26eb1279eb42c1d1e9",
+  "dataset_revision": "210d026faf9955653af8916fad021475a3f00453",
+  "documents": 1172,
+  "choice_count_distribution": {
+    "3": 4,
+    "4": 1165,
+    "5": 3
+  },
+  "question_character_count": {
+    "min": 13,
+    "median": 112.0,
+    "max": 831
+  },
+  "figure_sha256": "c581a5103ccadadc854887b36adfec89f4caeff8000c22ccfb36cf96f20f2799",
+  "note": "汇总题干长度与选项数，不使用 test 答案分布。"
+}

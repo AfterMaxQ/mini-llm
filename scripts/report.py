@@ -105,6 +105,18 @@ def add_markdown(document, path, page_break_before=False, content=None):
                         cell._tc.get_or_add_tcPr().append(shade)
                         for run in cell.paragraphs[0].runs:
                             run.bold = True
+            if rows[0] == ["内容", "对应记录"]:
+                # 证据索引的标签列保持可读，避免 Word 自动挤压成竖排文字。
+                table.autofit = False
+                widths = [Cm(4.2), Cm(12.7)]
+                layout = OxmlElement("w:tblLayout")
+                layout.set(qn("w:type"), "fixed")
+                table._tbl.tblPr.append(layout)
+                for grid_column, width in zip(table._tbl.tblGrid.gridCol_lst, widths):
+                    grid_column.w = width
+                for row in table.rows:
+                    for cell, width in zip(row.cells, widths):
+                        cell.width = width
             continue
         picture = re.fullmatch(r"!\[([^]]*)\]\(([^)]+)\)", line)
         if picture:

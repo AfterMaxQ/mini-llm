@@ -1,0 +1,54 @@
+{
+  "status": "preparation_failed",
+  "exit_code": 1,
+  "error_type": "LocalEntryNotFoundError",
+  "error": "An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.",
+  "scope": "评测器与测试集准备失败；没有加载模型或计算分数",
+  "run_id": "E24-R01",
+  "finished": "2026-10-01T17:45:15+08:00",
+  "config": {
+    "dataset": {
+      "repo_id": "allenai/ai2_arc",
+      "revision": "210d026faf9955653af8916fad021475a3f00453",
+      "config": "ARC-Challenge",
+      "test_file": "ARC-Challenge/test-00000-of-00001.parquet",
+      "test_file_bytes": 203808,
+      "test_file_sha256": "62f03257e737aed263f55c6abf87c7bb0028a44a6bdd2a26eb1279eb42c1d1e9"
+    },
+    "harness": {
+      "repository": "https://github.com/EleutherAI/lm-evaluation-harness.git",
+      "commit": "d6de81643928d653435c431bae19945d41d32520",
+      "version": "0.4.14.dev0",
+      "task": "arc_challenge",
+      "task_yaml": "lm_eval/tasks/arc/arc_challenge.yaml",
+      "base_yaml": "lm_eval/tasks/arc/arc_easy.yaml"
+    },
+    "evaluation": {
+      "split": "test",
+      "num_fewshot": 0,
+      "apply_chat_template": false,
+      "limit": null,
+      "output_type": "multiple_choice",
+      "prompt_template": "Question: {{question}}\nAnswer:",
+      "choice_template": "{{choices.text}}",
+      "target_template": "{{choices.label.index(answerKey)}}",
+      "metrics": [
+        "acc",
+        "acc_norm"
+      ],
+      "aggregation": "mean",
+      "scoring_backend": "lm_eval.models.huggingface.HFLM",
+      "prepare_command": [
+        ".local/venv-harness/Scripts/python.exe",
+        "scripts/arc_prepare.py"
+      ],
+      "inference": "not run during preparation"
+    },
+    "run_id": "E24-R01",
+    "started": "2026-10-01T17:45:13+08:00",
+    "commit": "0ac7078df12a3d7fe5d1a1d8920c5a9df04e6936",
+    "process_id": 47444,
+    "code_snapshot_sha256": "7a60f9090414330e9ae290a5e08f66fbd60b9c75bf4b439edec9b3c69652edce"
+  },
+  "raw_result_sha256": "bdbd863d8d6d42552952e7313ce1e910dc6dfe10359dfbb9e4e73a89089577f9"
+}

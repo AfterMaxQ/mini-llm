@@ -1,8 +1,8 @@
 {
-  "word_sha256": "67c217cdf2bae3c777c5b06c666c97fb89cb5c255bfcec93ba559bc9aef11f70",
-  "pdf_sha256": "29a9746bd33c04ec263d825136e1c41840791baffa546bc34a1cd5aaf14528e3",
+  "word_sha256": "dde5660b6b06dacffcb8df1a9b2cd2f89fc89c5597de6e32f68437f25a53661d",
+  "pdf_sha256": "843e937ecdf76087f63c6ead9856a25b7d75ea63fb3445eacdaa9bb4683e3ac2",
   "visual_checked": true,
-  "checked_at": "2026-10-01T17:18:01+08:00",
+  "checked_at": "2026-10-01T18:12:57+08:00",
   "checked_pages": [
     1,
     2,
@@ -10,52 +10,14 @@
     4,
     5,
     6,
-    7
-  ],
-  "newly_viewed_pages": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
-  ],
-  "pages": [
-    {
-      "page": 1,
-      "png_sha256": "25a431fd51b269a5d2b168affeda91a764b3706abdd4442f014f23863d86ddcc"
-    },
-    {
-      "page": 2,
-      "png_sha256": "6cd3963a27667495417311bbbe8352ff84c74124c2c06e78b79d2acc57fed4e9"
-    },
-    {
-      "page": 3,
-      "png_sha256": "27c12094a9be41d9f04e555b1052ccb21b64211ce1c079f092e279149186dd4c"
-    },
-    {
-      "page": 4,
-      "png_sha256": "c683fb61c4c97c298140ddfe773792539e68bb6e3828d12504f01e860a799afb"
-    },
-    {
-      "page": 5,
-      "png_sha256": "54f3c330966a7e981c4ace604ca66b09a1ee5efebdab57954dbe8d45c6f86419"
-    },
-    {
-      "page": 6,
-      "png_sha256": "7c9e51d0d190f0366e0c042994640265095c722f9f9a4a94299ede8bf56b8c14"
-    },
-    {
-      "page": 7,
-      "png_sha256": "ff6b63c6d3e85555911c9c658f836cef8cfc3b84cd2f2011da7c10339ab620f6"
-    }
+    7,
+    8,
+    9
   ],
   "observations": [
-    "实际查看 Word 导出的全部7页以及独立数量图，中文、数字和代码块可读",
-    "图的横轴从零开始，13类数值与冻结清单一致，图注明确表示题目数量",
-    "跨页表格重复表头，表格和图未越界，没有空白页",
-    "问题标题带实际结论，记录位置集中在末尾证据索引",
-    "3个代码块及内嵌图片与同版Markdown和源图逐一核对"
+    "实际查看 Word 导出的全部9页；中文、段落与页码清楚。",
+    "ARC 结构图已内嵌，轴名、单位、计数与图注可读，和源图一致。",
+    "代码块和题目结论位置清楚；完整记录路径集中在末尾证据索引。",
+    "检查并修正了裸 Markdown 加粗符号与证据索引列宽，再次导出复核。"
   ]
 }
