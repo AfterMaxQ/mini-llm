@@ -1,13 +1,13 @@
 {
-  "word_sha256": "4d0262f49b17afb6070502f94d75dd3cf3e6f0b2d5d13317d12fb83b307cfab6",
+  "word_sha256": "5281a6f2869b72ca102d01118c925236e58e8978b7ca4a0e135ac9db132ba864",
   "visual_checked": true,
-  "updated": "2026-10-02T07:33:42+08:00",
+  "updated": "2026-10-02T07:41:00+08:00",
   "previous_checked": {
-    "word_sha256": "9e666ff6616edfe34013118428670509ac77c078f8fa948eaade6249cb1af1d8",
+    "word_sha256": "4d0262f49b17afb6070502f94d75dd3cf3e6f0b2d5d13317d12fb83b307cfab6",
     "visual_checked": true,
-    "updated": "2026-10-02T07:28:27+08:00",
-    "pdf_sha256": "74a09906c7fb01cd9de58490ebff636a96abee7b27045bfc7538e7768301cdbb",
-    "checked_at": "2026-10-02T07:28:27+08:00",
+    "updated": "2026-10-02T07:33:42+08:00",
+    "pdf_sha256": "d72dcf6b808ee51ac2015beb81ce92bd061aaca4628536342b1c0343a766a43d",
+    "checked_at": "2026-10-02T07:33:42+08:00",
     "checked_pages": [
       1
     ],
@@ -53,7 +53,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "98dd7d667acb66f53fabfa7bccb214da7b5d9435832cace6bea3dc0e847e17c1",
+      "page-01.png": "464fb88e7daa5ae9092d3757299729420dd39cd478d741204da1a8b004116d11",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -76,8 +76,8 @@
       "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
     ]
   },
-  "pdf_sha256": "d72dcf6b808ee51ac2015beb81ce92bd061aaca4628536342b1c0343a766a43d",
-  "checked_at": "2026-10-02T07:33:42+08:00",
+  "pdf_sha256": "8af72f50e91d04a84e60e4235c6fb804e7a152b911e2038280d1529a64786d23",
+  "checked_at": "2026-10-02T07:41:00+08:00",
   "checked_pages": [
     1
   ],
@@ -123,7 +123,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "464fb88e7daa5ae9092d3757299729420dd39cd478d741204da1a8b004116d11",
+    "page-01.png": "17dfa4b07985da8e5f0e5b76c88b8f10c5c2e1193d1a5e3137519240eb80d648",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
