@@ -105,6 +105,12 @@ def update_summary(completed):
           ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
           ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs'),
           ('Pi 多轮训练格式与监督检查','configs/pi-reference-data.json；scripts/pi_reference_data.py；experiments/E14/runs/E14-R02.json；experiments/E14/current-reply-mask.csv')]
+    interruption=ROOT/'.local/runs/E09-R13/interruption-20261001T211127+08.json'
+    if interruption.exists():
+        run_record=ROOT/'experiments/E09/runs/E09-R13.json'
+        interruption_evidence='experiments/E09/notes.md；.local/runs/E09-R13'
+        if run_record.exists():interruption_evidence='experiments/E09/notes.md；experiments/E09/runs/E09-R13.json；.local/archive/E09/E09-R13.zip'
+        rows.append(('E09-R13 重启中断与断点恢复',interruption_evidence))
     rows.append(('Pi 场景去重与失败记录','experiments/E14/scene-generation-audit.json；experiments/E14/runs/E14-R05.json；experiments/E14/runs/E14-R06.json；experiments/E14/runs/E14-R07.json'))
     for label,files in rows:
         if (ROOT/files.split('；')[0]).exists():
@@ -281,11 +287,21 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
 """
     for name,c,r,p,d in entries:
         last=p.get('latest',{});best=r.get('selected_dev_loss') if r else p.get('best_metric')
+        interruption_files=sorted((ROOT/'.local/runs'/name).glob('interruption-*.json'))
+        interruption=json.loads(interruption_files[-1].read_text(encoding='utf-8')) if interruption_files else None
+        resume_files=sorted((ROOT/'.local/runs'/name).glob('resume-*.json'))
         if not r or r['status']!='trained_pending_tool_eval':
             states=sorted((ROOT/'.local/runs'/name).glob('checkpoint-*/trainer_state.json'),key=lambda x:int(x.parent.name.split('-')[-1]))
             if states:best=json.loads(states[-1].read_text(encoding='utf-8'))['best_metric']
         status={'trained_pending_tool_eval':'训练完成，待工具评测','failed':'失败，保留记录','interrupted_for_memory_pressure':'显存压力，停止并保留记录'}.get(r['status'],r['status']) if r else '运行中'
+        if interruption and not r and p.get('status')=='interrupted':
+            status=f"Windows 重启中断；待从 {interruption['checkpoint']['directory']} 恢复"
+        elif interruption and not r and resume_files and p.get('status')=='running':
+            status=f"从 {interruption['checkpoint']['directory']} 恢复训练中"
+        elif interruption and r and r['status']=='trained_pending_tool_eval':
+            status=f"从 {interruption['checkpoint']['directory']} 恢复后训练完成，待工具评测"
         if name in evaluated:status='训练与完整 dev 工具评测结束'
+        if name in evaluated and interruption:status='断点恢复后训练与完整 dev 工具评测结束'
         note+=f"| {name} | {c['train_size']} | {c['seed']} | {r.get('steps',last.get('step',0)) if r else last.get('step',0)} | {f'{best:.5f}' if best is not None else '尚未保存'} | {status} |\n"
     if data:
         note+=f"\n当前运行展开 {data['train']['assistant_units']:,} 个回复单元，共 {data['train']['supervised_tokens']:,} 个监督 token；最长 {data['train']['max_sequence_length']} token。全部单元已检查官方渲染、非思考前缀和监督位置，没有截断调用。\n"
@@ -293,6 +309,12 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
         error=result['error'].splitlines()[-1]
         if 'WinError 5' in error:error='PermissionError: [WinError 5]，Windows 拒绝替换进度记录'
         note+=f"\n这次运行失败，原配置和错误已保存。直接原因是：{error}。调整条件后需要新的运行号，不能把失败覆盖掉。\n"
+    for name,c,r,p,d in entries:
+        interruption_files=sorted((ROOT/'.local/runs'/name).glob('interruption-*.json'))
+        if not interruption_files:continue
+        event=json.loads(interruption_files[-1].read_text(encoding='utf-8'))
+        checkpoint=event['checkpoint']['directory'];step=event['training']['latest_step']
+        note+=f"\n## 10k seed 42 这一轮为什么停在半路？\n\n{name} 跑到第 {step} 次参数更新时，训练日志没有 Python traceback 或 CUDA OOM 记录。Windows 在同一秒留下了重启事件：由 StartMenuExperienceHost 发出重启请求，训练子进程随后以 `0x40010004` 结束。系统事件与训练日志的时间能对上。\n\n最后一次完整 dev 检查在第 400 步，loss 为 {event['training']['best_dev_loss']:.5f}。保存的 `{checkpoint}` 有 {event['checkpoint']['verified_files']} 个文件，清单里的 SHA-256 都已复核；第 401—{step} 步没有 checkpoint，不能算进已保存训练量。恢复时沿用这份 10k、seed 42 配置和同一运行号：\n\n```powershell\npython scripts/sft.py --config configs/sft.json --experiment E09 --size 10000 --seed 42 --resume-run {name}\n```\n\n这次只是系统重启后的断点续训，不是换参数重跑。重启原因、最后日志、队列报错和 checkpoint 校验结果均保留在本地运行档案。\n"
     folder=ROOT/'experiments/E09';folder.mkdir(parents=True,exist_ok=True);(folder/'notes.md').write_text(note,encoding='utf-8')
     curves={entry[0]:draw_curve(entry[0]) for entry in entries}
     curve_name=entries[-1][0]

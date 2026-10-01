@@ -51,8 +51,15 @@ def main():
         if unfinished:
             current = unfinished[-1].parent
             config = json.loads(unfinished[-1].read_text(encoding="utf-8"))
-            state = f"{current.name}：进行中" if alive(config) else f"{current.name}：进程已结束，待核对结束记录"
+            resumes=sorted(current.glob('resume-*.json'))
+            if resumes:
+                resumed=json.loads(resumes[-1].read_text(encoding='utf-8'))
+                if {'process_id','started','command'}<=resumed.keys():config=resumed
+            running=alive(config)
+            state = f"{current.name}：进行中" if running else f"{current.name}：进程已结束，待核对结束记录"
             data = json.loads((current / 'progress.json').read_text(encoding='utf-8')) if (current / 'progress.json').exists() else {}
+            if not running and data.get('status')=='interrupted':
+                state=f"{current.name}：Windows 重启中断，保留断点待恢复"
             if number == 6:
                 if 'latest' in data:
                     state += f"，更新 {data['latest']['step']} 次；最近检查 {data['latest_eval']['passed']}/32"

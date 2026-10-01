@@ -1,11 +1,13 @@
 """TRL 正式微调；完整验证、逐步指标和可恢复 checkpoint 都来自真实运行。"""
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
 import traceback
 from collections import Counter
+from pathlib import Path
 
 import torch
 from datasets import load_from_disk
@@ -17,6 +19,26 @@ from lab import ROOT, finish_run, now, sha256, start_run, write_json
 from model_utils import batch, load_model
 from prepare_sft import prepare
 from templates import resolve_data_run, tokenizer_and_template
+
+
+def valid_checkpoints(run):
+    valid=[]
+    for checkpoint in sorted(run.glob('checkpoint-*'),key=lambda p:int(p.name.split('-')[-1])):
+        manifest_path=checkpoint/'manifest.json'
+        state_path=checkpoint/'trainer_state.json'
+        if not manifest_path.exists() or not state_path.exists():continue
+        try:
+            manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+            state=json.loads(state_path.read_text(encoding='utf-8'))
+            step=int(checkpoint.name.split('-')[-1])
+            files=manifest['files']
+            intact=(manifest['step']==step and int(state['global_step'])==step and bool(files)
+                    and all(Path(item['file']).name==item['file'] and (checkpoint/item['file']).is_file()
+                            and sha256(checkpoint/item['file'])==item['sha256'] for item in files))
+        except (OSError,KeyError,ValueError,TypeError,json.JSONDecodeError):
+            continue
+        if intact:valid.append(checkpoint)
+    return valid
 
 
 class RecordedTrainer(SFTTrainer):
@@ -152,10 +174,16 @@ def main():
     if args.resume_run:
         saved=json.loads((run/"config.json").read_text(encoding="utf-8"))
         assert all(config[k]==saved[k] for k in config if k!="command")
-        checkpoints=sorted(run.glob("checkpoint-*"),key=lambda p:int(p.name.split('-')[1]))
-        if not checkpoints: raise FileNotFoundError("该运行没有可恢复 checkpoint，保留失败后另开运行")
+        checkpoints=valid_checkpoints(run)
+        if not checkpoints: raise FileNotFoundError("该运行没有通过文件哈希核验的 checkpoint，保留失败证据，不覆盖原运行")
         resume=checkpoints[-1]
-        write_json(run/f"resume-{time.time_ns()}.json",{"time":now(),"command":config["command"],"checkpoint":resume.name})
+        interruptions=sorted(run.glob('interruption-*.json'))
+        history=json.loads(interruptions[-1].read_text(encoding='utf-8')) if interruptions else None
+        started=now()
+        write_json(run/f"resume-{time.time_ns()}.json",{"time":started,"started":started,"process_id":os.getpid(),
+                   "command":config["command"],"checkpoint":resume.name,
+                   "commit":subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+                   "interruption":history})
     try:
         set_seed(config["seed"])
         for name, expected_hash in config.get("data_file_hashes", {}).items():
@@ -211,6 +239,7 @@ def main():
                   "steps":trainer.state.global_step,"train":train_manifest,"dev":dev_manifest,
                   "selected_checkpoint":str(__import__('pathlib').Path(trainer.state.best_model_checkpoint).relative_to(run)),
                   "selected_dev_loss":trainer.state.best_metric,"train_metrics":trained.metrics,
+                  "resume_history":[json.loads(p.read_text(encoding='utf-8')) for p in sorted(run.glob('resume-*.json'))],
                   "metrics_sha256":sha256(run/"metrics.jsonl"),
                   "scope":"完成一个epoch及完整dev loss选择；工具泛化指标必须由独立生成评估补齐"})
         callback.refresh();print(json.dumps(result,ensure_ascii=False),flush=True)

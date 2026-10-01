@@ -1,0 +1,11 @@
+{
+  "run_id": "E09-R13",
+  "plot_version": 2,
+  "source_file": "E09-R13-metrics.csv",
+  "source_sha256": "51538b9f864fdd984cb5d5f7c30304cecaf615860ebe7034c3cc03f2f8d4cc5d",
+  "raw_metrics_prefix_sha256": "d09aae9d815c7677ff6f46b9ad8c625415f9e21464f7d29a800af48b5b4bb9fc",
+  "image_sha256": "f5b8a4003c0361b26935632fd6bfe762289e00d4995c890dee0b95078b0561c5",
+  "train_points": 489,
+  "validation_points": 5,
+  "smoothing": null
+}

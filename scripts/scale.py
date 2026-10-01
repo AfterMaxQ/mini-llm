@@ -28,9 +28,19 @@ def alive(config):
         return False
 
 
-def launch(command,label):
-    log=ROOT/'.local/logs'/(label+'-'+str(time.time_ns())+'.log')
-    write_json(ROOT/'.local/scale-state.json',{'status':'running','time':now(),'command':command,'log':log.name})
+def active_run_config(run):
+    resumes=sorted(run.glob('resume-*.json'))
+    if resumes:
+        config=read(resumes[-1])
+        if {'process_id','started','command'}<=config.keys():return config
+    return read(run/'config.json')
+
+
+def launch(command,label,log_directory=None):
+    log_directory=log_directory or ROOT/'.local/logs'
+    log_directory.mkdir(parents=True,exist_ok=True)
+    log=log_directory/(label+'-'+str(time.time_ns())+'.log')
+    write_json(ROOT/'.local/scale-state.json',{'status':'running','time':now(),'command':command,'log':log.relative_to(ROOT).as_posix()})
     with log.open('a',encoding='utf-8') as handle:
         handle.write('\n启动：'+now()+'\n');handle.flush()
         result=subprocess.run([sys.executable,*command],cwd=ROOT,stdout=handle,stderr=subprocess.STDOUT)
@@ -87,13 +97,20 @@ def main():
                 if all(config.get(k)==v for k,v in desired.items()):candidates.append(path.parent)
             run=candidates[-1] if candidates else None
             if run and not (run/'result.json').exists():
-                config=read(run/'config.json')
-                print('等待已开始的训练：'+run.name,flush=True)
+                config=active_run_config(run)
+                if alive(config):print('等待已开始的训练：'+run.name,flush=True)
                 while not (run/'result.json').exists() and alive(config):
                     write_json(ROOT/'.local/scale-state.json',{'status':'waiting_existing','time':now(),'run_id':run.name,'job':job})
                     time.sleep(20)
                 if not (run/'result.json').exists():
-                    raise RuntimeError(f'{run.name} 进程已结束但结果缺失，需先核对断点和日志')
+                    checkpoints=sorted((p for p in run.glob('checkpoint-*/manifest.json')
+                                        if (p.parent/'trainer_state.json').exists()),
+                                       key=lambda p:int(p.parent.name.split('-')[-1]))
+                    if not checkpoints:
+                        raise RuntimeError(f'{run.name} 进程已结束且没有可恢复 checkpoint；保留失败证据，不另起同条件训练')
+                    resume=['scripts/sft.py','--config',training_config,'--experiment',plan['experiment'],
+                            '--size',str(job['size']),'--seed',str(job['seed']),'--resume-run',run.name]
+                    launch(resume,f"scale-{job['size']}-{job['seed']}-resume",run)
                 # result 写入后，训练还会收尾文档；等模型进程真正退出再做生成。
                 while alive(config):time.sleep(5)
             if not run or read(run/'result.json')['status']!='trained_pending_tool_eval':
