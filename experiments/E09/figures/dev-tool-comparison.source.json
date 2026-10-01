@@ -1,7 +1,7 @@
 {
   "source_file": "dev-tool-comparison.csv",
-  "source_sha256": "5cca801f6c26690ed5fc96124d5bc47f38f2ae60b3faee7780c18d6bd2227df6",
-  "image_sha256": "9ac51b60c79ea4ee2e38ed6bd89a289c65c7a18123c57bcedd9dd80de034a274",
+  "source_sha256": "74c48608d2c2f53031e565caa7c2bcca9ec6db8eaa75385d5344d5039e4bfc5b",
+  "image_sha256": "6cf599f44f011c1e3005eaa0f3baf20d651de63d5380cf62fbbf18345b65f96c",
   "denominator": 500,
   "rows": [
     {
@@ -39,6 +39,15 @@
       "passed": 409,
       "denominator": 500,
       "raw_rows_sha256": "4f24294ee238eb2ddd05f90a7856206a8e5adca8db799300249d22bbec3fb4e6"
+    },
+    {
+      "train_run": "E09-R13",
+      "eval_run": "E09-R14",
+      "size": 10000,
+      "seed": 42,
+      "passed": 410,
+      "denominator": 500,
+      "raw_rows_sha256": "c20c66272dd1a82a0bbb7214395534814cc9183b639e0c1bf7df191857f802c0"
     }
   ],
   "scope": "同一dev与固定提示；训练seed分别保留，不作为独立任务样本合并"
