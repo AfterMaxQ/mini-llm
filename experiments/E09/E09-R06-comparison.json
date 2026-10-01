@@ -1,0 +1,53 @@
+{
+  "eval_run": "E09-R06",
+  "train_run": "E09-R05",
+  "trajectories": 500,
+  "baseline_passed": 355,
+  "student_passed": 350,
+  "both_passed": 317,
+  "baseline_only": 38,
+  "student_only": 33,
+  "both_failed": 112,
+  "decision_improvements": 47,
+  "decision_regressions": 52,
+  "difference_percentage_points": -1.0,
+  "paired_bootstrap": {
+    "repeats": 10000,
+    "seed": 2026,
+    "generator": "NumPy PCG64",
+    "interval_percent": 95,
+    "percentile_interval": [
+      -4.3999999999999995,
+      2.1999999999999997
+    ],
+    "unit": "一条完整dev轨迹；配对百分比差值，不含训练seed波动"
+  },
+  "paired_csv_sha256": "3d9bc67c308f43b12fc01a5feb2e3a447eea82b4c9b533164bb30d1dccb02f0d",
+  "source_rows_sha256": [
+    "d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f",
+    "8158e15a448a02f5a348b33ccd22fa81297a54c02afb6dda0de4e00a458cf877"
+  ],
+  "analysis_code_sha256": "165a2f41ecb7a11b60bfffdd45925f843a1a09e0117931720921a811ab45660f",
+  "cases": [
+    {
+      "sample_id": "glaive-60626",
+      "message_index": 2,
+      "user": "I need to add a task to my todo list.",
+      "expected": [],
+      "baseline": "<tool_call>\n{\"name\": \"make_todo\", \"arguments\": {\"task\": \"I need to add a task to my todo list.\", \"priority\": \"medium\"}}\n</tool_call>",
+      "student": "Sure, I can help with that. Could you please provide me with the task and the priority level you want to assign to it?",
+      "baseline_passed": false,
+      "student_passed": true
+    },
+    {
+      "sample_id": "glaive-19711",
+      "message_index": 2,
+      "user": "I want to listen to some music. Can you play something for me?",
+      "expected": [],
+      "baseline": "Sure! What genre of music would you like to listen to?",
+      "student": "<tool_call>\n{\"name\":\"play_music\",\"arguments\":{\"genre\":\"pop\"}}\n</tool_call>",
+      "baseline_passed": true,
+      "student_passed": false
+    }
+  ]
+}

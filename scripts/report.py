@@ -109,6 +109,7 @@ def add_markdown(document, path):
             image = (path.parent / picture.group(2)).resolve()
             paragraph = document.add_paragraph()
             paragraph.alignment = 1
+            paragraph.paragraph_format.space_before = Pt(6)
             paragraph.paragraph_format.keep_with_next = True
             paragraph.add_run().add_picture(str(image), width=Cm(15))
             caption = document.add_paragraph(picture.group(1))

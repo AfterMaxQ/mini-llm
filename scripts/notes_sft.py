@@ -53,9 +53,9 @@ def draw_comparison(completed):
         writer=csv.DictWriter(handle,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
     font=FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
     fig,axis=plt.subplots(figsize=(6.4,3.5),layout='constrained')
-    labels=['原模型\n少样本提示']+[f"{r['size']//1000}k / seed {r['seed']}\n{r['train_run']}" for r in completed]
+    labels=['提示词基线\n原模型 + 三例']+[f"{r['size']//1000}k / seed {r['seed']}\n{r['train_run']}" for r in completed]
     rates=[100*r['passed']/500 for r in rows]
-    bars=axis.bar(range(len(rows)),rates,color=['#6B7280']+['#059669']*len(completed))
+    bars=axis.bar(range(len(rows)),rates,color=['#2563EB']+['#059669']*len(completed))
     axis.set_xticks(range(len(rows)),labels,fontproperties=font)
     axis.set_ylim(0,105);axis.set_ylabel('整条轨迹通过率（%）',fontproperties=font)
     axis.set_title('相同固定提示与完整 dev；各训练 seed 单独显示',fontproperties=font)
@@ -69,6 +69,24 @@ def draw_comparison(completed):
                'image_sha256':sha256(path),'denominator':500,'rows':rows,
                'scope':'同一dev与固定提示；训练seed分别保留，不作为独立任务样本合并'})
     return path
+
+
+def update_summary(completed):
+    path=ROOT/'docs/reports/summaries/02.md'
+    if not path.exists():return
+    evidence='## 证据索引'+path.read_text(encoding='utf-8').split('## 证据索引',1)[1]
+    rows=[('工具生成比较','experiments/E09/dev-tool-comparison.csv'),
+          ('1k 配对变化与失败例子','experiments/E09/E09-R06-comparison.json；experiments/E09/E09-R06-paired.csv'),
+          ('Windows 记录写入排查','experiments/E09/runs/E09-R07.json；experiments/E09/runs/E09-R08.json')]
+    for label,files in rows:
+        if (ROOT/files.split('；')[0]).exists() and label not in evidence:
+            evidence=evidence.replace('| 后续训练与生成结果 |',f'| {label} | {files} |\n| 后续训练与生成结果 |')
+    intro='# 从提示词基线走向正式微调\n\n原模型在相同完整 dev 上，零样本通过 268/500，加入三条固定示例后通过 355/500。少样本提示提高了调用轮表现，也增加了本该询问或不调用时的误调用。后续模型都沿用这个已冻结的提示。\n\n'
+    if completed:
+        r=completed[-1];s=r['summary']
+        intro+=f"最近这轮用了 {r['size']:,} 条训练轨迹，完整 dev 通过 {s['trajectory_passed']}/500；调用轮为 {s['call_turn_passed']}/568，不调用轮为 {s['no_call_turn_passed']}/360。loss 与实际工具决策分开看，不能把更容易生成调用当成任务成功率提升。\n\n"
+    intro+='训练已解决 LoRA 重复准备和缓存压力问题，失败条件与处理过程保留在正文。规模与 seed 比较仍按既定队列推进；尚未完成的对照和最终 test 保持未完成，不提前选择最终配置。\n\n'
+    path.write_text(intro+evidence,encoding='utf-8')
 
 
 def draw_curve(run_id):
@@ -118,7 +136,8 @@ def main():
     opening='正式微调还没有完成规模比较，暂时不能判断增加数据是否有用。当前先训练 1k，再以相同主要配置完成 5k 和 10k；dev loss 与工具生成结果分别保留。'
     if completed:
         latest=completed[-1];s=latest['summary']
-        opening=f"{latest['train_run']} 的完整 dev 已生成并检查，整条轨迹通过 {s['trajectory_passed']}/500。下面同时看调用轮、不调用轮和 loss；尚未完成的规模或 seed 继续保留为待比较，不能用单轮结果代替全部结论。"
+        baseline=json.loads((ROOT/'experiments/E08/summary.json').read_text(encoding='utf-8'))['few_shot']
+        opening=f"这轮用了 {latest['size']:,} 条训练轨迹，完整 dev 通过 {s['trajectory_passed']}/500；原模型加固定示例为 {baseline['trajectory_passed']}/500。调用轮相差 {s['call_turn_passed']-baseline['call_turn_passed']:+d} 条，不调用轮相差 {s['no_call_turn_passed']-baseline['no_call_turn_passed']:+d} 条。先把这两类决策分开，才看得清模型具体改变了什么；其余规模和 seed 仍需继续比较。"
     note=f"""# E09：从 1k 到 10k，模型学到的是格式还是任务？
 
 {opening}
@@ -170,13 +189,23 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
     if data:
         note+=f"\n当前运行展开 {data['train']['assistant_units']:,} 个回复单元，共 {data['train']['supervised_tokens']:,} 个监督 token；最长 {data['train']['max_sequence_length']} token。全部单元已检查官方渲染、非思考前缀和监督位置，没有截断调用。\n"
     if result and result['status']=='failed':
-        note+=f"\n这次运行失败，原配置和错误已保存。直接原因是：{result['error'].splitlines()[-1]}。调整条件后需要新的运行号，不能把失败覆盖掉。\n"
+        error=result['error'].splitlines()[-1]
+        if 'WinError 5' in error:error='PermissionError: [WinError 5]，Windows 拒绝替换进度记录'
+        note+=f"\n这次运行失败，原配置和错误已保存。直接原因是：{error}。调整条件后需要新的运行号，不能把失败覆盖掉。\n"
     folder=ROOT/'experiments/E09';folder.mkdir(parents=True,exist_ok=True);(folder/'notes.md').write_text(note,encoding='utf-8')
     curves={entry[0]:draw_curve(entry[0]) for entry in entries}
-    current_curve=curves[entries[-1][0]]
+    curve_name=entries[-1][0]
+    current_curve=curves[curve_name]
+    if not current_curve or not current_curve['train']:
+        candidates=[name for name,curve in curves.items() if curve and curve['train']]
+        if candidates:curve_name=candidates[-1];current_curve=curves[curve_name]
     if current_curve and current_curve['train']:
-        note+=f"\n![图 E09-1：{entries[-1][0]}，训练 {len(current_curve['train'])} 个点、完整 dev {len(current_curve['dev'])} 个点；保留原始波动。](figures/{current_curve['path'].name})\n"
+        note+=f"\n![图 E09-1：{curve_name}，训练 {len(current_curve['train'])} 个点、完整 dev {len(current_curve['dev'])} 个点；保留原始波动。](figures/{current_curve['path'].name})\n"
         note+='\n训练点是 TRL 每次参数更新的 loss，验证点来自完整 dev 的监督 token 加权交叉熵。它们的聚合窗口不同，先观察各自趋势，再结合工具生成结果判断；不能把一两个低点当成能力改善。\n'
+    first=next((entry for entry in entries if entry[0]=='E09-R05'),None)
+    if first and first[2] and first[2]['status']=='trained_pending_tool_eval':
+        r=first[2];initial=curves[first[0]]['dev'][0]['eval_loss']
+        note+=f"\n已完成的 1k 主运行共有 {r['train']['assistant_units']:,} 个回复单元、{r['train']['supervised_tokens']:,} 个监督 token，更新 {r['steps']} 次。完整 dev loss 从 {initial:.5f} 降到 {r['selected_dev_loss']:.5f}，选择了 {r['selected_checkpoint']}。下面的生成结果才用来检查，这种对标注文本的拟合是否变成了更可靠的决策。\n"
     note+='\n这一步要观察两条线：训练 loss 是否继续下降，完整 dev loss 是否也下降。只有两条线和工具结果放在一起，才有依据区分记住训练内容与适应新任务。\n'
     if active:
         note+='\n## 生成评测进行到哪一步？\n\n'
@@ -199,6 +228,12 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
         latest=completed[-1];s=latest['summary'];delta=s['trajectory_passed']-baseline['trajectory_passed']
         note+=f"\n最近完成的 {latest['train_run']} 通过 {s['trajectory_passed']}/500，与原模型相差 {delta:+d} 条，即 {100*delta/500:+.1f} 个百分点。调用轮相差 {s['call_turn_passed']-baseline['call_turn_passed']:+d} 条，不调用轮相差 {s['no_call_turn_passed']-baseline['no_call_turn_passed']:+d} 条。先分别看这两类决策，才能判断模型是否只是更愿意调工具。\n"
         note+='\n这些仍是 dev 成绩，用于探索规模与选配置；最终 test 还没有用于本阶段选择。数据更多也意味着监督 token 和更新次数更多，规模差异不能直接归因于某一种训练机制。\n'
+        analysis_path=folder/'E09-R06-comparison.json'
+        if analysis_path.exists():
+            a=json.loads(analysis_path.read_text(encoding='utf-8'));low,high=a['paired_bootstrap']['percentile_interval']
+            note+=f"\n## 只少通过五条，是原来的题都差了一点吗？\n\n不是。1k 这轮和提示词基线有 {a['both_passed']} 条共同通过、{a['both_failed']} 条共同失败；另外 {a['student_only']} 条原来错的轨迹被修好，{a['baseline_only']} 条原来对的轨迹退步了。最后相差五条，是这两边变化抵消后的结果。逐轮看也有 {a['decision_improvements']} 次改对和 {a['decision_regressions']} 次改错，不能说模型几乎没有变化。\n"
+            note+=f"\n把同一批 500 条轨迹成对重抽 10,000 次，差值的 95% 区间为 {low:.1f} 到 {high:+.1f} 个百分点，覆盖零。这里先把结论收住：本轮没有证明整体改善，也没有充分依据把这一点差距推广为稳定退步。区间只反映这份 dev 的轨迹差异，不包含重新训练不同 seed 的波动。\n"
+            note+='\n## 是不是每个缺参数的问题都变差了？\n\n也不是。上一节的待办例子 glaive-60626，这轮已经改成先询问任务和优先级；原模型猜参数的问题得到了修正。但 glaive-19711 只说想听音乐，没有给出类型，原模型会问想听什么，微调后却直接调用了下面的工具：\n\n```json\n{"name":"play_music","arguments":{"genre":"pop"}}\n```\n\n这条 JSON 和参数类型都有效，问题在于 pop 是模型自行补出的。两个例子都来自本轮实际回复。接下来继续原定 5k、10k 比较，观察这种多调用、少询问的倾向是否改变；数据质量和学习率的对照再单独排查，当前不为了让成绩变好而改评分。\n'
     diagnosis=ROOT/'experiments/E09/runs/E09-R02.json'
     if diagnosis.exists():
         probe=json.loads(diagnosis.read_text(encoding='utf-8'))
@@ -221,7 +256,17 @@ loss 选择结束后，还要真正生成工具调用。即使 dev loss 下降�
         if curves.get('E09-R04'):
             curve=curves['E09-R04']
             note+=f"\n![图 E09-2：R04 保留的 {len(curve['train'])} 次训练更新；仅显示已完成的 {len(curve['dev'])} 次完整 dev 测量，第 200 步验证未完成。](figures/{curve['path'].name})\n"
+    io_failure=ROOT/'.local/runs/E09-R07/result.json'
+    io_probe=ROOT/'.local/runs/E09-R08/result.json'
+    if io_failure.exists() and 'WinError 5' in json.loads(io_failure.read_text(encoding='utf-8')).get('error',''):
+        note+='\n## 这次没有 OOM，为什么 5k 还是停了？\n\nR07 已训练 100 次，完整 dev loss 为 0.18383；模型计算和验证都已完成，随后替换进度记录时出现 WinError 5。失败发生在保存 checkpoint 之前，因此这一轮没有可恢复的模型断点，不能把完成验证当成完成训练。已有 100 次更新、两次完整 dev 测量和原始报错全部保留。\n'
+        if io_probe.exists():
+            probe=json.loads(io_probe.read_text(encoding='utf-8'))
+            note+='\nR08 用真实 Windows 文件句柄复现了边界：文件还被读取时，旧写法替换失败；关闭读句柄后，同一替换成功。原失败时具体是哪一个进程持有句柄还没有确认，不能直接归因到某个程序。\n'
+            if probe.get('replacement_verification')=='completed':
+                note+=f"\n新的写法让各次写入使用独立临时文件，在短暂占用时有限重试。实际核验中，读句柄在 0.20 秒后释放，替换在 {probe['new_writer_seconds']:.2f} 秒后成功，读取到的内容正确；持续无法写入仍会报错。后续按同样 5k 数据、seed 和训练参数重新开始，改动针对记录写入，不减少训练量。\n"
     (folder/'notes.md').write_text(note,encoding='utf-8')
+    update_summary(completed)
 
 
 if __name__=='__main__':main()

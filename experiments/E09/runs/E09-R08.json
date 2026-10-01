@@ -1,0 +1,43 @@
+{
+  "status": "completed",
+  "kind": "file_io_probe",
+  "exit_code": 0,
+  "old_writer_with_read_handle": {
+    "type": "PermissionError",
+    "winerror": 5,
+    "message": "[WinError 5] 拒绝访问。: 'F:\\\\mini-llm-agent-lab\\\\.local\\\\runs\\\\E09-R08\\\\probe.json.tmp' -> 'F:\\\\mini-llm-agent-lab\\\\.local\\\\runs\\\\E09-R08\\\\probe.json'"
+  },
+  "old_writer_after_handle_closed": "success",
+  "replacement_verification": "completed",
+  "old_code_sha256": "6fdf71a72dbaa96e0f4567915794c685a0088e04507492428416c9f6f40dba68",
+  "scope": "实际读句柄可以复现WinError5；未识别原失败时持有句柄的具体进程",
+  "run_id": "E09-R08",
+  "finished": "2026-10-01T09:46:42+08:00",
+  "new_writer_with_temporary_read_handle": "success",
+  "new_writer_seconds": 0.3118977000049199,
+  "new_code_sha256": "90df5fa919d59eae5283c44510a1ab0a59f292dddb8fe7edac1455201a61f6ec",
+  "final_file_sha256": "ff0c35391e2b0e67413cbe2b370bcf4f80a711fd14e6a5b675892193b197d857",
+  "retry_policy": "12次有界替换尝试，最多等待约1.9秒；持续失败仍抛错并保留临时文件",
+  "previous_results": [
+    {
+      "file": "previous-result-01.json",
+      "sha256": "4c1d8147ae1633307d159b4afdef5cc0f5bbffde9ba573886165b02efab33117"
+    }
+  ],
+  "config": {
+    "kind": "file_io_probe",
+    "source_failure_run": "E09-R07",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "work/probe_json_lock.py"
+    ],
+    "gpu_used": false,
+    "purpose": "实际Windows读句柄与原子替换；定位进度写入的WinError5",
+    "run_id": "E09-R08",
+    "started": "2026-10-01T09:45:56+08:00",
+    "commit": "524b9e0dd4d3e203b812aaa742301fa366b58923",
+    "process_id": 38756,
+    "code_snapshot_sha256": "69c794e16940e28a3694dbe65b882c3b01c1b810140f42ec5485ad1a3d4ba7cd"
+  },
+  "raw_result_sha256": "4597e3f4b833570d59cb64921a7311dc969cd7fb06e00cd762694835ca386826"
+}

@@ -1,8 +1,8 @@
 {
-  "word_sha256": "73327f3d5de2584262d0b51f9e40dc7a36ced1ff7b18cb8bf0ac5249c4d439e7",
-  "pdf_sha256": "980d3d35e1384c264f6b4cfc43993cb2ff29871786a529f201b8ad3f3dbccb2b",
+  "word_sha256": "923415733fd2ed706ed2e31c732c7c776feaf6c09a6bceca8fcbb59e137fcd3a",
+  "pdf_sha256": "7758f363cedc56947500e6ef82653517013c035efa88b08c199cdb5e41c6a906",
   "visual_checked": true,
-  "checked_at": "2026-10-01T09:15:02+08:00",
+  "checked_at": "2026-10-01T09:57:20+08:00",
   "checked_pages": [
     1,
     2,
@@ -10,7 +10,9 @@
     4,
     5,
     6,
-    7
+    7,
+    8,
+    9
   ],
   "observations": [
     "实际查看 Word 导出的页面，代码缩进和中文可读",

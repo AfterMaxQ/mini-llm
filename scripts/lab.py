@@ -4,6 +4,8 @@ import json
 import os
 import shutil
 import subprocess
+import sys
+import time
 import zipfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -26,9 +28,19 @@ def sha256(path):
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary = path.with_name(f"{path.name}.{os.getpid()}.{time.time_ns()}.tmp")
     temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
-    temporary.replace(path)
+    # Windows 读句柄可能短暂阻止替换；临时文件独立，关闭句柄后重试。
+    for attempt in range(12):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError:
+            if attempt == 11:
+                raise
+            if attempt == 0:
+                print(f"记录暂时被占用，重试替换：{path.name}", file=sys.stderr, flush=True)
+            time.sleep(min(0.05 * (attempt + 1), 0.2))
 
 
 def command(args, run_dir, name):

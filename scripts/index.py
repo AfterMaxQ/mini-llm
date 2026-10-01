@@ -2,6 +2,7 @@
 import json
 
 from lab import ROOT, now
+from scale import alive
 
 TITLES = ["环境", "CUDA 与 NF4", "公开数据", "模板与遮罩", "手工核对 loss", "LoRA 参数更新", "32 条过拟合", "保存恢复",
           "提示词基线", "1k/5k/10k 微调", "LoRA 与 QLoRA", "rank 与学习率", "数据质量", "Pi 接入", "领域轨迹",
@@ -20,16 +21,25 @@ def main():
             data = json.loads(runs[-1].read_text(encoding="utf-8"))
             translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测"}
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
-        progress = sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/progress.json"))
-        if progress and not (progress[-1].parent / "result.json").exists():
-            data = json.loads(progress[-1].read_text(encoding="utf-8"))
-            state = f"{progress[-1].parent.name}：进行中"
+        unfinished = [p for p in sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/config.json"))
+                      if not (p.parent / "result.json").exists()]
+        if unfinished:
+            current = unfinished[-1].parent
+            config = json.loads(unfinished[-1].read_text(encoding="utf-8"))
+            state = f"{current.name}：进行中" if alive(config) else f"{current.name}：进程已结束，待核对结束记录"
+            data = json.loads((current / 'progress.json').read_text(encoding='utf-8')) if (current / 'progress.json').exists() else {}
             if number == 6:
-                state += f"，更新 {data['latest']['step']} 次；最近检查 {data['latest_eval']['passed']}/32"
+                if 'latest' in data:
+                    state += f"，更新 {data['latest']['step']} 次；最近检查 {data['latest_eval']['passed']}/32"
             elif "latest" in data:
                 state += f"，更新 {data['latest']['step']} 次"
             elif "summary" in data:
                 state += f"，{data['current_prompt']} 已记录 {data['summary']['decision_turns']} 个决策轮"
+            elif (current / 'validation-progress.json').exists():
+                validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
+                state += f"，第 {validation['step']} 步完整 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
+            elif alive(config):
+                state += '，准备数据与模型'
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",

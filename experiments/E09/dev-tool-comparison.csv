@@ -1,0 +1,3 @@
+train_run,eval_run,size,seed,passed,denominator,raw_rows_sha256
+官方学生,E08-R01,0,,355,500,d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f
+E09-R05,E09-R06,1000,17,350,500,8158e15a448a02f5a348b33ccd22fa81297a54c02afb6dda0de4e00a458cf877

@@ -1,0 +1,27 @@
+{
+  "source_file": "dev-tool-comparison.csv",
+  "source_sha256": "0c1c27b3ef5f054c12ac5524321a39cd83f1dfa55b8979073fc70ebd757766d4",
+  "image_sha256": "123f98ec4e088501b9cab2d2b0a23718d1984a24d8440558ae7ceb980d7831d0",
+  "denominator": 500,
+  "rows": [
+    {
+      "train_run": "官方学生",
+      "eval_run": "E08-R01",
+      "size": 0,
+      "seed": "",
+      "passed": 355,
+      "denominator": 500,
+      "raw_rows_sha256": "d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f"
+    },
+    {
+      "train_run": "E09-R05",
+      "eval_run": "E09-R06",
+      "size": 1000,
+      "seed": 17,
+      "passed": 350,
+      "denominator": 500,
+      "raw_rows_sha256": "8158e15a448a02f5a348b33ccd22fa81297a54c02afb6dda0de4e00a458cf877"
+    }
+  ],
+  "scope": "同一dev与固定提示；训练seed分别保留，不作为独立任务样本合并"
+}

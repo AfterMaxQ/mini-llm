@@ -1,0 +1,88 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "summaries": {
+    "few_shot": {
+      "trajectories": 500,
+      "evaluated_trajectories": 500,
+      "trajectory_passed": 350,
+      "decision_turns": 928,
+      "turn_passed": 750,
+      "call_turns": 568,
+      "call_turn_passed": 474,
+      "no_call_turns": 360,
+      "no_call_turn_passed": 276,
+      "name_exact_turns": 556,
+      "truncated": 1,
+      "errors": {
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 158 (char 157)": 1,
+        "no_tool_call": 3,
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 333 (char 332)": 1,
+        "incomplete_tool_call": 1,
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 146 (char 145)": 1
+      },
+      "categories": {
+        "multi_turn": {
+          "samples": 147,
+          "passed": 107
+        },
+        "no_call": {
+          "samples": 86,
+          "passed": 86
+        },
+        "parallel": {
+          "samples": 10,
+          "passed": 2
+        },
+        "single_call": {
+          "samples": 257,
+          "passed": 155
+        }
+      },
+      "rows_sha256": "8158e15a448a02f5a348b33ccd22fa81297a54c02afb6dda0de4e00a458cf877"
+    }
+  },
+  "selected_prompt": "few_shot",
+  "prompt_candidates_sha256": "841ffdfb378f9237bbbb6c69bff6ff639656d33a33677ad1382f85902ae79d38",
+  "scope": "完整冻结划分的工具决策；使用标注历史，不代表工具执行或最终任务状态",
+  "run_id": "E09-R06",
+  "finished": "2026-10-01T09:33:14+08:00",
+  "config": {
+    "data_run": "E02-R02",
+    "split": "dev",
+    "seed": 42,
+    "prompts": [
+      "few_shot"
+    ],
+    "batch_size": 4,
+    "context_length": 8192,
+    "max_new_tokens": 1024,
+    "max_batch_seconds": 300,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+    "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "adapter": ".local/runs/E09-R05/selected-adapter",
+    "source_train_run": "E09-R05",
+    "kind": "tool_eval",
+    "frozen_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "adapter_sha256": "6bc688812386da2875049e4fd68306058c8021976ec07b54ce9a9ab9c47a1687",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/offline_eval.py",
+      "--experiment",
+      "E09",
+      "--adapter",
+      ".local/runs/E09-R05/selected-adapter",
+      "--source-run",
+      "E09-R05"
+    ],
+    "run_id": "E09-R06",
+    "started": "2026-10-01T09:12:40+08:00",
+    "commit": "0c63e24764dadaf9157fe62df038293f1926c717",
+    "process_id": 14480,
+    "code_snapshot_sha256": "2e0aee97298cc00c4862247f9a9dff693d56532ddf5762306b76eef3a03037b1"
+  },
+  "raw_result_sha256": "67274245ad99e5a84d809fdcb8c91959ff86f38f4a931d85638f181352905261"
+}
