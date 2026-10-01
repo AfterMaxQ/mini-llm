@@ -9,6 +9,7 @@ from matplotlib.colors import ListedColormap
 from matplotlib.patches import Patch
 from matplotlib.ticker import MaxNLocator
 from lab import ROOT, sha256, write_json
+from notes_pi_dev import dev_note
 
 
 LABELS = {'read_locate': '读取定位', 'config_change': '配置修改', 'function_fix': '函数修复',
@@ -82,7 +83,7 @@ def encoding_note(folder, source_run):
 {{"name": "read", "arguments": {{"path": "src/slug.mjs"}}}}
 ```
 
-已经得到可追溯的原型训练格式，正式 1,000 条有效轨迹和领域训练还要继续完成。本轮只调用 tokenizer，未初始化 CUDA，也未进行模型前向或更新参数。
+这轮先得到可追溯的原型训练格式，接着逐条扩展到正式1,000条，进展放在后面的批量执行小节。本轮只调用tokenizer，未初始化CUDA，也未进行模型前向或更新参数。
 """
 
 
@@ -146,7 +147,7 @@ export const delay = config => config.refreshSeconds * 1000;
 
 移动模块的恢复任务也保留了第一次命令的真实导入错误。参考步骤根据迁移说明修正相对导入，再跑原检查；错误方案补回旧路径文件，被新增文件和执行检查拒绝。故障原因与上一批的空白正则错误不同。
 
-目前两批共16个训练模板族，各有一条已验证参考过程。所有任务仍在train；{pending}正式1,000条有效训练记录、独立dev/test和模型迁移评测继续分别验收。参考步骤由规则给定，没有模型自主选择工具；这16条不能写成模型成功率。判据仍有有限样例和询问语义只查必要词的局限，后续模型结果要保留逐条复查。
+这两批共16个训练模板族，各有一条已验证参考过程。它们都属于train；{pending}批量扩展与独立任务集见后续小节，模型迁移仍单独评测。参考步骤由规则给定，没有模型自主选择工具；这16条不能写成模型成功率。判据仍有有限样例和询问语义只查必要词的局限，后续模型结果要保留逐条复查。
 '''+format_note
 
 
@@ -162,7 +163,7 @@ def generation_note(folder):
 
 前两轮都被精确去重拦住。第一轮实际只有1,979个不同场景，时间单位任务出现21个重复；第二轮调整延时取值后，提醒任务仍有7个重复，只有1,993个不同场景。随机取值的范围有限，id不同也会抽到同一组实际内容。两轮没有用于参考批量执行。随后为延时和日期使用确定的取值序列，保留其他场景变化，新的2,000份完整问题与文件内容没有精确重复。
 
-这批数据仍共享16个模板族，属于训练区的场景增广。精确去重不能消除这种结构相似性，模型接触过的处理方式也不会因此变成未见任务。后续dev/test另建模板和仓库族；当前没有冻结这两个任务集，也没有让教师接触它们。
+这批数据仍共享16个模板族，属于训练区的场景增广。精确去重不能消除这种结构相似性，模型接触过的处理方式也不会因此变成未见任务。dev/test另建模板和仓库族，分别记录冻结与执行结果；教师生成只使用训练区场景。
 '''
     batch=[]
     for config_file in sorted((ROOT/'.local/runs').glob('E14-R*/config.json')):
@@ -298,7 +299,7 @@ value.trim().replace(/\\s+/g, '-').toLowerCase();
 
 复习时可以先看两个问题。为什么命令输出正确还可能失败？因为检查文件或不该动的配置也可能被改过，输出只是成功条件的一部分。为什么参考操作 8/8 不能写成 Agent 成功率 100%？因为步骤由规则预先给定，还没有让模型自己选择工具、读取错误并决定下一步。
 """
-    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder)+generation_note(folder), encoding='utf-8')
+    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder)+generation_note(folder)+dev_note(folder,LABELS), encoding='utf-8')
 
 
 if __name__ == '__main__':

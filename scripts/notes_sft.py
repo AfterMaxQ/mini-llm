@@ -86,6 +86,11 @@ def update_summary(completed):
     path=ROOT/'docs/reports/summaries/02.md'
     if not path.exists():return
     evidence='## 证据索引'+path.read_text(encoding='utf-8').split('## 证据索引',1)[1]
+    pi_summary=ROOT/'docs/reports/summaries/02B.md'
+    if pi_summary.exists():
+        for line in pi_summary.read_text(encoding='utf-8').splitlines():
+            if line.startswith('| Pi ') and line not in evidence:
+                evidence=evidence.replace('| 后续训练与生成结果 |',line+'\n| 后续训练与生成结果 |')
     rows=[('工具生成比较','experiments/E09/dev-tool-comparison.csv'),
           ('1k 配对变化与失败例子','experiments/E09/E09-R06-comparison.json；experiments/E09/E09-R06-paired.csv'),
           ('5k 配对变化与失败例子','experiments/E09/E09-R10-comparison.json；experiments/E09/E09-R10-paired.csv'),
@@ -109,20 +114,21 @@ def update_summary(completed):
         r=completed[-1];s=r['summary']
         intro+=f"最近这轮用了 {r['size']:,} 条训练轨迹，完整 dev 通过 {s['trajectory_passed']}/500；调用轮为 {s['call_turn_passed']}/568，不调用轮为 {s['no_call_turn_passed']}/360。loss 与实际工具决策分开看，不能把更容易生成调用当成任务成功率提升。\n\n"
     intro+='训练已解决 LoRA 重复准备和缓存压力问题，失败条件与处理过程保留在正文。规模与 seed 比较仍按既定队列推进；尚未完成的对照和最终 test 保持未完成，不提前选择最终配置。\n\n'
+    pi_intro='# 从工具链到可执行的任务数据\n\n'
     preparation=ROOT/'experiments/E13/preparation.json'
     if preparation.exists():
         p=json.loads(preparation.read_text(encoding='utf-8'))
         if p['status']=='tool_chain_verified':
-            intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据。模型尚未接入，不能把这些请求算成 Agent 任务成绩。\n\n"
+            pi_intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据。模型尚未接入，不能把这些请求算成 Agent 任务成绩。\n\n"
     if (ROOT/'experiments/E11/preparation.json').exists():
         intro+='rank 对照固定学习率，选定 rank 后再比较学习率。候选参数量来自真实权重形状，训练与工具表现按当前章节分别记录，配置选择只使用 dev。\n\n'
     if (ROOT/'configs/data-quality-frozen.json').exists():
         intro+='数据质量对照按来源和类别匹配两份 5k 数据，逐条复查也保留了规则误删和漏检。筛选成本、监督量与后续模型表现分开记录，效果不能由“通过筛选”直接推出。\n\n'
     if (ROOT/'experiments/E14/notes.md').exists():
-        intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
+        pi_intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
     extension=ROOT/'experiments/E14/runs/E14-R03.json'
     if extension.exists() and json.loads(extension.read_text(encoding='utf-8'))['status']=='reference_extension_verified':
-        intro+='新增八个训练模板改变了配置层级、单位换算、去重顺序和故障原因，两批共16个训练模板族。参考步骤由规则给定，逐条执行不等于模型自主完成任务。\n\n'
+        pi_intro+='新增八个训练模板改变了配置层级、单位换算、去重顺序和故障原因，两批共16个训练模板族。参考步骤由规则给定，逐条执行不等于模型自主完成任务。\n\n'
         evidence=put_evidence(evidence,'Pi 新增模板与错误方案','scripts/pi_tasks_extended.mjs；experiments/E14/runs/E14-R03.json；experiments/E14/extension-calls.csv；experiments/E14/extension-events.jsonl')
     converted=ROOT/'experiments/E14/runs/E14-R04.json'
     if converted.exists() and json.loads(converted.read_text(encoding='utf-8'))['status']=='reference_encoding_verified':
@@ -130,7 +136,38 @@ def update_summary(completed):
     scenes=ROOT/'experiments/E14/runs/E14-R07.json'
     if scenes.exists() and json.loads(scenes.read_text(encoding='utf-8'))['status']=='training_requests_frozen':
         evidence=put_evidence(evidence,'Pi 训练场景与批量参考入口','configs/pi-task-data.json；configs/pi-reference-batch.json；scripts/pi_task_data.py；scripts/pi_reference_batch.mjs')
-    path.write_text(intro+evidence,encoding='utf-8')
+    pi_runs=[json.loads(p.read_text(encoding='utf-8')) for p in sorted((ROOT/'experiments/E14/runs').glob('*.json'))]
+    batch=[r for r in pi_runs if r.get('status')=='reference_batch_verified']
+    if batch:
+        r=batch[-1]
+        pi_intro+=f"正式批量执行已获得1,000条有效规则参考，共{r['reference_tool_calls']:,}次工具调用，保留{r['reference_error_returns']}次预期错误返回。它们来自16个训练模板族，教师生成与模型迁移仍各自记录。\n\n"
+        evidence=put_evidence(evidence,'Pi 1000条实际规则参考',f"experiments/E14/runs/{r['run_id']}.json；experiments/E14/batch-reference.csv；experiments/E14/batch-audit.json")
+        encoded=[v for v in pi_runs if v.get('status')=='reference_encoding_verified' and v['config']['source_run']==r['run_id']]
+        if encoded:
+            v=encoded[-1]
+            pi_intro+=f"这批过程展开为{v['assistant_units']:,}个当前回复单元，{v['supervised_tokens']:,}个监督token。实际返回、模板和遮罩都已核验，最长{v['max_sequence_length']:,}token，没有截断；领域微调尚未开始。\n\n"
+            evidence=put_evidence(evidence,'Pi 1000条参考训练格式',f"scripts/pi_reference_data.py；experiments/E14/runs/{v['run_id']}.json")
+    dev=[r for r in pi_runs if r.get('status')=='dev_reference_verified']
+    if dev:
+        r=dev[-1]
+        pi_intro+='40个dev场景已用独立模板与仓库族建立，参考操作和错误候选逐条在容器执行。它们分属八个任务族，每族五个场景；模型迁移成绩与最终test仍要单独评测。\n\n'
+        evidence=put_evidence(evidence,'Pi dev任务与判据核验',f"configs/pi-dev-tasks.json；scripts/pi_tasks_dev.mjs；scripts/pi_dev_probe.mjs；experiments/E14/runs/{r['run_id']}.json")
+        if (ROOT/'experiments/E14/dev-audit.json').exists():
+            evidence=put_evidence(evidence,'Pi dev逐条结果与划分复核','experiments/E14/dev-reference.csv；experiments/E14/dev-audit.json')
+    lengths=[r for r in pi_runs if r.get('status')=='dev_lengths_verified']
+    if lengths:
+        r=lengths[-1]
+        evidence=put_evidence(evidence,'Pi dev参考历史长度',f"scripts/pi_dev_lengths.py；experiments/E14/runs/{r['run_id']}.json；experiments/E14/dev-lengths.csv")
+    inspection=[r for r in pi_runs if r.get('status')=='split_inspection_verified']
+    if inspection:
+        r=inspection[-1]
+        evidence=put_evidence(evidence,'Pi train/dev近似重复筛查',f"scripts/pi_split_inspect.py；experiments/E14/runs/{r['run_id']}.json")
+    pi_rows=[line for line in evidence.splitlines() if line.startswith('| Pi ')]
+    main_evidence='\n'.join(line for line in evidence.splitlines() if not line.startswith('| Pi '))+'\n'
+    pi_evidence='## 证据索引\n\n| 内容 | 对应记录 |\n| --- | --- |\n'+'\n'.join(pi_rows)+'\n'
+    pi_evidence+='\n完整工具返回、文件状态与容器记录保存在本地运行档案，公开结果给出来源哈希。理解回顾仍未回答，参考解释不代表用户已掌握。\n'
+    path.write_text(intro+main_evidence,encoding='utf-8')
+    if pi_rows:pi_summary.write_text(pi_intro+pi_evidence,encoding='utf-8')
 
 
 def draw_curve(run_id):

@@ -14,7 +14,8 @@ from docx.shared import Cm, Pt, RGBColor
 
 from lab import ROOT, now, sha256, write_json
 
-VOLUMES = {"01": ("环境与训练机制", range(0, 8)), "02": ("微调与数据", range(8, 15)),
+VOLUMES = {"01": ("环境与训练机制", range(0, 8)), "02": ("微调与数据", range(8, 13)),
+           "02B": ("Pi工具与任务数据", range(13, 15)),
            "03": ("蒸馏", range(15, 19)), "04": ("推理与 Agent 评测", range(19, 26))}
 
 
@@ -58,9 +59,9 @@ def styles(document, title):
     footer._p.append(field)
 
 
-def add_markdown(document, path, page_break_before=False):
+def add_markdown(document, path, page_break_before=False, content=None):
     first_paragraph = len(document.paragraphs)
-    lines = path.read_text(encoding="utf-8").splitlines()
+    lines = (path.read_text(encoding="utf-8") if content is None else content).splitlines()
     index = 0
     while index < len(lines):
         line = lines[index].strip()
@@ -170,32 +171,50 @@ def render(path, directory):
     print(json.dumps({"word": str(path), "pdf": str(pdf), "pages": pages}, ensure_ascii=False), flush=True)
 
 
+def sections(document, numbers, summary, source_root=ROOT):
+    overview = evidence = ''
+    if summary.exists():
+        overview, evidence = summary.read_text(encoding='utf-8').split('## 证据索引', 1)
+        add_markdown(document, summary, content=overview)
+    notes = [source_root / f'experiments/E{number:02d}/notes.md' for number in numbers]
+    notes = [p for p in notes if p.exists()]
+    for index, note in enumerate(notes):
+        add_markdown(document, note, page_break_before=bool(index or overview))
+    if evidence:
+        add_markdown(document, summary, page_break_before=True, content='## 证据索引'+evidence)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--volume", choices=VOLUMES, default="01")
     parser.add_argument("--render", action="store_true")
     args = parser.parse_args()
-    title, numbers = VOLUMES[args.volume]
+    volumes = [args.volume]
+    if args.volume == '02' and (ROOT/'experiments/E14/notes.md').exists():
+        volumes.append('02B')
+    for volume in volumes:
+        build(volume, args.render)
+
+
+def build(volume, should_render):
+    title, numbers = VOLUMES[volume]
     notes = [ROOT / f"experiments/E{number:02d}/notes.md" for number in numbers]
     notes = [p for p in notes if p.exists()]
     if not notes:
         raise RuntimeError("该分册没有真实实验笔记")
     document = Document()
     styles(document, title)
-    document.add_heading(f"MiniLLM 实验册 {args.volume}：{title}", 0)
+    document.add_heading(f"MiniLLM 实验册 {volume}：{title}", 0)
     document.add_paragraph(f"更新：{now()}。本册按实际实验整理，原始运行记录单独保存。")
-    for index, note in enumerate(notes):
-        add_markdown(document, note, page_break_before=bool(index))
-    summary = ROOT / f"docs/reports/summaries/{args.volume}.md"
-    if summary.exists():
-        add_markdown(document, summary)
+    summary = ROOT / f"docs/reports/summaries/{volume}.md"
+    sections(document, numbers, summary)
     directory = ROOT / "docs/reports"
     directory.mkdir(parents=True, exist_ok=True)
-    path = directory / f"{args.volume}-{title}.docx"
+    path = directory / f"{volume}-{title}.docx"
     staging = ROOT / ".local/report-staging" / f"{time.time_ns()}-{path.name}"
     staging.parent.mkdir(parents=True, exist_ok=True)
     document.save(staging)
-    snapshots = ROOT / ".local/doc-snapshots" / args.volume
+    snapshots = ROOT / ".local/doc-snapshots" / volume
     snapshots.mkdir(parents=True, exist_ok=True)
     stamp = time.time_ns()
     if path.exists():
@@ -210,7 +229,7 @@ def main():
         old.unlink()
     print(f"Word 已保存：{path}", flush=True)
     if path.parent==directory:
-        receipt=directory/f'visual-{args.volume}.json'
+        receipt=directory/f'visual-{volume}.json'
         previous=json.loads(receipt.read_text(encoding='utf-8')) if receipt.exists() else {}
         current_hash=sha256(path)
         if previous.get('word_sha256')!=current_hash:
@@ -219,8 +238,8 @@ def main():
                                'updated':now(),'previous_checked':checked})
     from index import main as update_index
     update_index()
-    if args.render:
-        render(path, ROOT / ".local/render" / args.volume)
+    if should_render:
+        render(path, ROOT / ".local/render" / volume)
 
 
 if __name__ == "__main__":

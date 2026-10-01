@@ -1,0 +1,8 @@
+{
+  "task_count": 40,
+  "variants_per_family": 5,
+  "split": "dev",
+  "training_scene_run": "E14-R07",
+  "update_seconds": 600,
+  "scope": "8个新dev模板与仓库族共40个场景的参考和判据核验；无模型调用，test另建"
+}

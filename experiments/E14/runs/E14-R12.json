@@ -1,0 +1,243 @@
+{
+  "method": "完整问题和初始文件：小写、数字归一后字符5-gram集合Jaccard",
+  "threshold": 0.8,
+  "pairs_checked": 80000,
+  "normalized_exact_overlap": 0,
+  "pairs_above_threshold": 0,
+  "nearest_per_dev": [
+    {
+      "dev_task_id": "dev-conditional-delivery-route-1",
+      "train_task_id": "train-0002-config_change",
+      "jaccard": 0.20215897939156036
+    },
+    {
+      "dev_task_id": "dev-subscription-row-selection-1",
+      "train_task_id": "train-0010-config_change",
+      "jaccard": 0.21586345381526104
+    },
+    {
+      "dev_task_id": "dev-quoted-csv-state-1",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.17985611510791366
+    },
+    {
+      "dev_task_id": "dev-named-export-chain-1",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.16509926854754442
+    },
+    {
+      "dev_task_id": "dev-await-format-result-1",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.19300106044538706
+    },
+    {
+      "dev_task_id": "dev-ambiguous-target-tenant-1",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.16820987654320987
+    },
+    {
+      "dev_task_id": "dev-nearest-rank-percentile-1",
+      "train_task_id": "train-0007-no_tool",
+      "jaccard": 0.1726457399103139
+    },
+    {
+      "dev_task_id": "dev-latest-successful-report-1",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.17414965986394557
+    },
+    {
+      "dev_task_id": "dev-conditional-delivery-route-2",
+      "train_task_id": "train-0002-config_change",
+      "jaccard": 0.20375865479723046
+    },
+    {
+      "dev_task_id": "dev-subscription-row-selection-2",
+      "train_task_id": "train-0010-config_change",
+      "jaccard": 0.21586345381526104
+    },
+    {
+      "dev_task_id": "dev-quoted-csv-state-2",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.17985611510791366
+    },
+    {
+      "dev_task_id": "dev-named-export-chain-2",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.16509926854754442
+    },
+    {
+      "dev_task_id": "dev-await-format-result-2",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.19300106044538706
+    },
+    {
+      "dev_task_id": "dev-ambiguous-target-tenant-2",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.16820987654320987
+    },
+    {
+      "dev_task_id": "dev-nearest-rank-percentile-2",
+      "train_task_id": "train-0007-no_tool",
+      "jaccard": 0.1726457399103139
+    },
+    {
+      "dev_task_id": "dev-latest-successful-report-2",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.17414965986394557
+    },
+    {
+      "dev_task_id": "dev-conditional-delivery-route-3",
+      "train_task_id": "train-0002-config_change",
+      "jaccard": 0.20215897939156036
+    },
+    {
+      "dev_task_id": "dev-subscription-row-selection-3",
+      "train_task_id": "train-0010-config_change",
+      "jaccard": 0.21586345381526104
+    },
+    {
+      "dev_task_id": "dev-quoted-csv-state-3",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.17985611510791366
+    },
+    {
+      "dev_task_id": "dev-named-export-chain-3",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.16509926854754442
+    },
+    {
+      "dev_task_id": "dev-await-format-result-3",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.19300106044538706
+    },
+    {
+      "dev_task_id": "dev-ambiguous-target-tenant-3",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.16820987654320987
+    },
+    {
+      "dev_task_id": "dev-nearest-rank-percentile-3",
+      "train_task_id": "train-0007-no_tool",
+      "jaccard": 0.1726457399103139
+    },
+    {
+      "dev_task_id": "dev-latest-successful-report-3",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.17414965986394557
+    },
+    {
+      "dev_task_id": "dev-conditional-delivery-route-4",
+      "train_task_id": "train-0002-config_change",
+      "jaccard": 0.20375865479723046
+    },
+    {
+      "dev_task_id": "dev-subscription-row-selection-4",
+      "train_task_id": "train-0010-config_change",
+      "jaccard": 0.21586345381526104
+    },
+    {
+      "dev_task_id": "dev-quoted-csv-state-4",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.17985611510791366
+    },
+    {
+      "dev_task_id": "dev-named-export-chain-4",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.16509926854754442
+    },
+    {
+      "dev_task_id": "dev-await-format-result-4",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.19300106044538706
+    },
+    {
+      "dev_task_id": "dev-ambiguous-target-tenant-4",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.16820987654320987
+    },
+    {
+      "dev_task_id": "dev-nearest-rank-percentile-4",
+      "train_task_id": "train-0007-no_tool",
+      "jaccard": 0.1726457399103139
+    },
+    {
+      "dev_task_id": "dev-latest-successful-report-4",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.17414965986394557
+    },
+    {
+      "dev_task_id": "dev-conditional-delivery-route-5",
+      "train_task_id": "train-0002-config_change",
+      "jaccard": 0.20215897939156036
+    },
+    {
+      "dev_task_id": "dev-subscription-row-selection-5",
+      "train_task_id": "train-0010-config_change",
+      "jaccard": 0.21586345381526104
+    },
+    {
+      "dev_task_id": "dev-quoted-csv-state-5",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.17985611510791366
+    },
+    {
+      "dev_task_id": "dev-named-export-chain-5",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.16509926854754442
+    },
+    {
+      "dev_task_id": "dev-await-format-result-5",
+      "train_task_id": "train-0013-failure_recovery",
+      "jaccard": 0.19300106044538706
+    },
+    {
+      "dev_task_id": "dev-ambiguous-target-tenant-5",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.16820987654320987
+    },
+    {
+      "dev_task_id": "dev-nearest-rank-percentile-5",
+      "train_task_id": "train-0007-no_tool",
+      "jaccard": 0.1726457399103139
+    },
+    {
+      "dev_task_id": "dev-latest-successful-report-5",
+      "train_task_id": "train-0016-invalid_path_recovery",
+      "jaccard": 0.17414965986394557
+    }
+  ],
+  "max_jaccard": 0.21586345381526104,
+  "scope": "可复现的近似重复筛查；未证明没有语义相似或预训练污染",
+  "status": "split_inspection_verified",
+  "exit_code": 0,
+  "operation": "pi_split_inspection",
+  "model_calls": 0,
+  "inspection_sha256": "f80b6a4b2d9ce1dc5c0c1adfd70dcfb01e10b811baaf182f0a8da94f12664942",
+  "duration_seconds": 4.425113800010877,
+  "run_id": "E14-R12",
+  "finished": "2026-10-01T14:14:34+08:00",
+  "config": {
+    "operation": "pi_split_inspection",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/pi_split_inspect.py",
+      "--training",
+      "E14-R07",
+      "--dev",
+      "E14-R09"
+    ],
+    "model": null,
+    "training_run": "E14-R07",
+    "dev_run": "E14-R09",
+    "training_sha256": "5f1ec4805523e14efafb236ed3104ff67c69081d96cd0bd9a8c11f1fdb832a35",
+    "dev_sha256": "f1d87916d118e3fc1b28a83546da9f14177da6b53abf5b6458f007accd2f2ab7",
+    "threshold": 0.8,
+    "character_ngrams": 5,
+    "run_id": "E14-R12",
+    "started": "2026-10-01T14:14:30+08:00",
+    "commit": "a79cb8880b5c7147dd6a3eb558b481292e00b9bd",
+    "process_id": 15048,
+    "code_snapshot_sha256": "b813ccfb476677e5410d760ff795667d8c87b33d3ac4c8705acf89bf3d3d4797"
+  },
+  "raw_result_sha256": "c2e82fa68af59ee87c6d87c53b712d3fb15df02a22d8d42a373eb95e5e45177a"
+}

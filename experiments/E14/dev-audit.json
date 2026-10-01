@@ -1,0 +1,246 @@
+{
+  "source_run": "E14-R09",
+  "length_run": "E14-R10",
+  "checked_at": "2026-10-01T14:12:54+08:00",
+  "task_count": 40,
+  "template_families": 8,
+  "variants_per_family": 5,
+  "categories": {
+    "read_locate": 5,
+    "config_change": 5,
+    "function_fix": 5,
+    "multi_file": 5,
+    "failure_recovery": 5,
+    "missing_information": 5,
+    "no_tool": 5,
+    "invalid_path_recovery": 5
+  },
+  "overlap_with_2000_training_scenes": {
+    "scene_sha256": 0,
+    "template_family": 0,
+    "repository_family": 0
+  },
+  "reference_passed": 40,
+  "initial_rejected": 40,
+  "negative_rejected": 40,
+  "near_duplicate_inspection": {
+    "method": "完整问题和初始文件：小写、数字归一后字符5-gram集合Jaccard",
+    "threshold": 0.8,
+    "pairs_checked": 80000,
+    "normalized_exact_overlap": 0,
+    "pairs_above_threshold": 0,
+    "nearest_per_dev": [
+      {
+        "dev_task_id": "dev-conditional-delivery-route-1",
+        "train_task_id": "train-0002-config_change",
+        "jaccard": 0.20215897939156036
+      },
+      {
+        "dev_task_id": "dev-subscription-row-selection-1",
+        "train_task_id": "train-0010-config_change",
+        "jaccard": 0.21586345381526104
+      },
+      {
+        "dev_task_id": "dev-quoted-csv-state-1",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.17985611510791366
+      },
+      {
+        "dev_task_id": "dev-named-export-chain-1",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.16509926854754442
+      },
+      {
+        "dev_task_id": "dev-await-format-result-1",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.19300106044538706
+      },
+      {
+        "dev_task_id": "dev-ambiguous-target-tenant-1",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.16820987654320987
+      },
+      {
+        "dev_task_id": "dev-nearest-rank-percentile-1",
+        "train_task_id": "train-0007-no_tool",
+        "jaccard": 0.1726457399103139
+      },
+      {
+        "dev_task_id": "dev-latest-successful-report-1",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.17414965986394557
+      },
+      {
+        "dev_task_id": "dev-conditional-delivery-route-2",
+        "train_task_id": "train-0002-config_change",
+        "jaccard": 0.20375865479723046
+      },
+      {
+        "dev_task_id": "dev-subscription-row-selection-2",
+        "train_task_id": "train-0010-config_change",
+        "jaccard": 0.21586345381526104
+      },
+      {
+        "dev_task_id": "dev-quoted-csv-state-2",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.17985611510791366
+      },
+      {
+        "dev_task_id": "dev-named-export-chain-2",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.16509926854754442
+      },
+      {
+        "dev_task_id": "dev-await-format-result-2",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.19300106044538706
+      },
+      {
+        "dev_task_id": "dev-ambiguous-target-tenant-2",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.16820987654320987
+      },
+      {
+        "dev_task_id": "dev-nearest-rank-percentile-2",
+        "train_task_id": "train-0007-no_tool",
+        "jaccard": 0.1726457399103139
+      },
+      {
+        "dev_task_id": "dev-latest-successful-report-2",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.17414965986394557
+      },
+      {
+        "dev_task_id": "dev-conditional-delivery-route-3",
+        "train_task_id": "train-0002-config_change",
+        "jaccard": 0.20215897939156036
+      },
+      {
+        "dev_task_id": "dev-subscription-row-selection-3",
+        "train_task_id": "train-0010-config_change",
+        "jaccard": 0.21586345381526104
+      },
+      {
+        "dev_task_id": "dev-quoted-csv-state-3",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.17985611510791366
+      },
+      {
+        "dev_task_id": "dev-named-export-chain-3",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.16509926854754442
+      },
+      {
+        "dev_task_id": "dev-await-format-result-3",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.19300106044538706
+      },
+      {
+        "dev_task_id": "dev-ambiguous-target-tenant-3",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.16820987654320987
+      },
+      {
+        "dev_task_id": "dev-nearest-rank-percentile-3",
+        "train_task_id": "train-0007-no_tool",
+        "jaccard": 0.1726457399103139
+      },
+      {
+        "dev_task_id": "dev-latest-successful-report-3",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.17414965986394557
+      },
+      {
+        "dev_task_id": "dev-conditional-delivery-route-4",
+        "train_task_id": "train-0002-config_change",
+        "jaccard": 0.20375865479723046
+      },
+      {
+        "dev_task_id": "dev-subscription-row-selection-4",
+        "train_task_id": "train-0010-config_change",
+        "jaccard": 0.21586345381526104
+      },
+      {
+        "dev_task_id": "dev-quoted-csv-state-4",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.17985611510791366
+      },
+      {
+        "dev_task_id": "dev-named-export-chain-4",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.16509926854754442
+      },
+      {
+        "dev_task_id": "dev-await-format-result-4",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.19300106044538706
+      },
+      {
+        "dev_task_id": "dev-ambiguous-target-tenant-4",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.16820987654320987
+      },
+      {
+        "dev_task_id": "dev-nearest-rank-percentile-4",
+        "train_task_id": "train-0007-no_tool",
+        "jaccard": 0.1726457399103139
+      },
+      {
+        "dev_task_id": "dev-latest-successful-report-4",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.17414965986394557
+      },
+      {
+        "dev_task_id": "dev-conditional-delivery-route-5",
+        "train_task_id": "train-0002-config_change",
+        "jaccard": 0.20215897939156036
+      },
+      {
+        "dev_task_id": "dev-subscription-row-selection-5",
+        "train_task_id": "train-0010-config_change",
+        "jaccard": 0.21586345381526104
+      },
+      {
+        "dev_task_id": "dev-quoted-csv-state-5",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.17985611510791366
+      },
+      {
+        "dev_task_id": "dev-named-export-chain-5",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.16509926854754442
+      },
+      {
+        "dev_task_id": "dev-await-format-result-5",
+        "train_task_id": "train-0013-failure_recovery",
+        "jaccard": 0.19300106044538706
+      },
+      {
+        "dev_task_id": "dev-ambiguous-target-tenant-5",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.16820987654320987
+      },
+      {
+        "dev_task_id": "dev-nearest-rank-percentile-5",
+        "train_task_id": "train-0007-no_tool",
+        "jaccard": 0.1726457399103139
+      },
+      {
+        "dev_task_id": "dev-latest-successful-report-5",
+        "train_task_id": "train-0016-invalid_path_recovery",
+        "jaccard": 0.17414965986394557
+      }
+    ],
+    "max_jaccard": 0.21586345381526104,
+    "scope": "可复现的近似重复筛查；未证明没有语义相似或预训练污染"
+  },
+  "reference_tool_calls": 155,
+  "reference_error_returns": 10,
+  "removed_containers": 80,
+  "remaining_owned_containers": 0,
+  "records_sha256": "ca23e6f999bf70ece83c455981020544bf4f699f8965b84699bfd9449c2553de",
+  "tasks_sha256": "f1d87916d118e3fc1b28a83546da9f14177da6b53abf5b6458f007accd2f2ab7",
+  "compact_csv_sha256": "f7075d0eefa7ed905d947cfc837dfada54a3beb3c9c5dae5936f50e8dc8a9cb1",
+  "data_archive_sha256": "ba79f2b6917adfd145f5a6dd0aaa499fedf07db8d18ea1370ffb369e6c6a06ad",
+  "scope": "规则参考与错误判据核验；无模型调用；8族各5场景，尚无Agent成绩"
+}

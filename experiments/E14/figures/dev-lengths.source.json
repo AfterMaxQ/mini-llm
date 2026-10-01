@@ -1,0 +1,10 @@
+{
+  "source_file": "dev-lengths.csv",
+  "source_sha256": "20512476bdd3fd716cb6bac8bcc874d81f76c16ce232600e7d83fd67bcf27191",
+  "image_sha256": "b4943d47fa13a82d9c45869e959d039d84cba60dc6dc3d4c1724799fc4d1c048",
+  "run_id": "E14-R10",
+  "reference_run": "E14-R09",
+  "task_count": 40,
+  "reply_points": 195,
+  "scope": "40个dev场景的已执行参考历史长度；不生成训练标签，不代表模型轨迹长度"
+}

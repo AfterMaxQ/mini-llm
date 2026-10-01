@@ -1,5 +1,6 @@
 """按已有运行与笔记刷新实验总索引。"""
 import json
+import subprocess
 
 from lab import ROOT, now
 from scale import alive
@@ -32,6 +33,11 @@ def main():
             translated['reference_encoding_verified']='新增参考训练格式已核验，正式轨迹与迁移训练待执行'
             translated['training_requests_frozen']='2000个训练场景已冻结，逐条参考执行待完成'
             translated['reference_batch_verified']='1000条规则参考已执行，训练格式与迁移待核对'
+            translated['dev_reference_verified']='40个dev场景与错误判据已执行，模型迁移待评测'
+            translated['dev_lengths_verified']='40个dev参考历史长度已核验，模型迁移待评测'
+            translated['split_inspection_verified']='train/dev近似重复已筛查，领域训练与模型迁移待执行'
+            if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
+                translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
         unfinished = [p for p in sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/config.json"))
                       if not (p.parent / "result.json").exists()]
@@ -49,16 +55,28 @@ def main():
                 state += f"，{data['current_prompt']} 已记录 {data['summary']['decision_turns']} 个决策轮"
             elif config.get('operation')=='pi_reference_batch' and 'completed' in data:
                 state += f"，参考过程 {data['completed']}/{data['target']}，有效 {data['valid']} 条"
+            elif config.get('operation')=='pi_dev_probe' and 'completed' in data:
+                state += f"，dev参考 {data['completed']}/{data['target']}"
             elif (current / 'validation-progress.json').exists():
                 validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
                 state += f"，第 {validation['step']} 步完整 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
             elif alive(config):
                 state += '，准备数据与模型'
+        if number==14:
+            actual=[json.loads(p.read_text(encoding='utf-8')) for p in runs]
+            if any(r.get('operation')=='pi_reference_encoding' and r.get('status')=='reference_encoding_verified' and r.get('independent_trajectories')==1000 for r in actual):
+                state += '；1000条规则参考格式已核验'
+            if any(r.get('status')=='dev_reference_verified' for r in actual):
+                state += '；40个dev场景已冻结，模型成绩待测'
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",
               "[实验规格](superpowers/specs/2026-09-30-agent-training-lab-design.md)；[执行计划](superpowers/plans/2026-10-01-local-experiments.md)。", "",
               "公开数据的工具返回属于来源标注，不等于本机真实执行。32 条过拟合属于训练机制检查；正式微调、Agent、蒸馏、标准评测及性能实验分别保留自己的分母和条件。"]
+    books=subprocess.check_output(['git','ls-files','-z','--','docs/reports/*.docx'],cwd=ROOT).decode('utf-8').split('\0')
+    if any(books):
+        lines += ['', '## 实验册', '']
+        lines += [f"- [{file.rsplit('/',1)[-1].removesuffix('.docx')}]({file.removeprefix('docs/')})" for file in books if file]
     (ROOT / "docs/实验索引.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

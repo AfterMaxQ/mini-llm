@@ -1,0 +1,31 @@
+{
+  "source_run": "E14-R08",
+  "encoding_run": "E14-R11",
+  "checked_at": "2026-10-01T14:17:28+08:00",
+  "trajectories": 1000,
+  "templates": 16,
+  "categories": {
+    "read_locate": 125,
+    "config_change": 125,
+    "function_fix": 125,
+    "multi_file": 125,
+    "failure_recovery": 125,
+    "missing_information": 125,
+    "no_tool": 125,
+    "invalid_path_recovery": 125
+  },
+  "tool_calls": 3436,
+  "error_returns": 250,
+  "removed_containers": 1000,
+  "remaining_owned_containers": 0,
+  "assistant_units": 4436,
+  "supervised_tokens": 169321,
+  "all_history_supervised_tokens": 0,
+  "max_input_tokens": 1547,
+  "cuda_initialized": false,
+  "compact_csv_sha256": "c5c91a3a3acfeed4fc4f05416e3cd5746603710ec389d3b7837584cc090fe3ac",
+  "source_records_sha256": "84e78b30db91816ee91639971e770073b41000ac9aa4fbdb50aef6bbdc3e2a8d",
+  "processed_sha256": "c9bf50dc36b099a0963ee3092bad26951f6b575bbe6fa146cc7bf45c714a54fb",
+  "processed_archive_sha256": "e29290b5515871524469d3a19e7eed0d5e4a1411c9e0ab8edbbb05780c3f3ae6",
+  "scope": "1000条规则参考及完整训练格式的独立复核；没有教师或学生生成，没有领域模型成绩"
+}
