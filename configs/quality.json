@@ -1,0 +1,17 @@
+{
+  "experiment": "E12",
+  "training_config": "configs/sft-quality.json",
+  "reference": {
+    "experiment": "E09",
+    "training_config": "configs/sft.json",
+    "size": 5000,
+    "seed": 17
+  },
+  "jobs": [
+    {
+      "size": 5000,
+      "seed": 17
+    }
+  ],
+  "purpose": "匹配来源和类别的5k数据；严格表面来源筛选，完整dev另行比较"
+}

@@ -1,0 +1,316 @@
+{
+  "reviewer": "当前主Agent逐条阅读50条完整标注，关键争议另查实际工具schema",
+  "reviewed": "2026-10-01T11:39:04+08:00",
+  "sampling": "候选训练池中随机抽取25条通过与25条剔除；不等于随机抽查最终dev",
+  "counts": {
+    "accepted_no_visible_issue": 21,
+    "accepted_caveats": 4,
+    "rejected_reasonable_transform": 14,
+    "rejected_unverified_choice": 7,
+    "rejected_placeholder": 1,
+    "rejected_mixed": 3
+  },
+  "samples": [
+    {
+      "sample_id": "glaive-52108",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有温度转换工具，不能订披萨。"
+    },
+    {
+      "sample_id": "glaive-45394",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "矩形和长宽均明确，面积15与输入对应。"
+    },
+    {
+      "sample_id": "glaive-78793",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有随机数工具，不能订披萨。"
+    },
+    {
+      "sample_id": "glaive-92849",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "technology来自用户，新闻链接仅是公开标注，未真实访问。"
+    },
+    {
+      "sample_id": "glaive-15323",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有密码工具，不能订披萨。"
+    },
+    {
+      "sample_id": "glaive-103580",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "chicken和broccoli来自用户，回复引用标注食谱。"
+    },
+    {
+      "sample_id": "glaive-55120",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "姓名和500明确，句末数值现在保留；发票创建未真实执行。"
+    },
+    {
+      "sample_id": "glaive-69605",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有小费工具，不能订机票。"
+    },
+    {
+      "sample_id": "glaive-60323",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有邮件工具，不能订披萨。"
+    },
+    {
+      "sample_id": "glaive-68032",
+      "arm": "accepted",
+      "review_category": "retained_caveat",
+      "conclusion": "参数正确，但最后声称将邮件送达，工具定义和返回未支持邮件动作。"
+    },
+    {
+      "sample_id": "glaive-25672",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有二维码工具，不能订披萨。"
+    },
+    {
+      "sample_id": "hermes-350fd59a-2b03-4c85-af5d-3774267cca43",
+      "arm": "accepted",
+      "review_category": "retained_caveat",
+      "conclusion": "地点文字有出处，但只有泛称，没有地址也生成具体里程，真实路线不可验证。"
+    },
+    {
+      "sample_id": "glaive-78365",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "先询问号码和消息，用户补充后按原文调用。"
+    },
+    {
+      "sample_id": "glaive-86346",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有待办工具，不能订披萨。"
+    },
+    {
+      "sample_id": "glaive-112369",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "五个数字均来自用户，平均15对应输入；句末25现在保留。"
+    },
+    {
+      "sample_id": "glaive-107531",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "姓名、邮箱与电话都来自用户，example.com邮箱作为用户输入不应一律判错。"
+    },
+    {
+      "sample_id": "glaive-50369",
+      "arm": "accepted",
+      "review_category": "retained_caveat",
+      "conclusion": "两轮食材有出处，但甜点步骤提到remaining ingredients，返回没有列出剩余配料。"
+    },
+    {
+      "sample_id": "glaive-1288",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "两轮产品名与类别明确，价格库存仅为标注。"
+    },
+    {
+      "sample_id": "hermes-412ae880-171f-43d2-b098-9a4768122f05",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "French/English/Spanish原文明确，后续待翻译文本也由用户给出。"
+    },
+    {
+      "sample_id": "glaive-89729",
+      "arm": "accepted",
+      "review_category": "retained_caveat",
+      "conclusion": "关键词有出处，但链接为example1.com等示例式内容，规则未验证链接可用性。"
+    },
+    {
+      "sample_id": "glaive-58358",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有发票工具，不能订机票。"
+    },
+    {
+      "sample_id": "glaive-30409",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "四座城市来自各用户轮，距离返回未本地执行。"
+    },
+    {
+      "sample_id": "glaive-108271",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "只有密码工具，不能订机票。"
+    },
+    {
+      "sample_id": "glaive-109748",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "75与1.8明确，标注BMI23.15与除法四舍五入对应。"
+    },
+    {
+      "sample_id": "glaive-352",
+      "arm": "accepted",
+      "review_category": "no_visible_issue",
+      "conclusion": "矩形与圆的参数明确；圆面积50.24使用近似圆周率，回复也写约值。"
+    },
+    {
+      "sample_id": "glaive-34092",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "current_date=2022-04-01缺少可追溯基准日期，不把离线标注的today当当前日期。"
+    },
+    {
+      "sample_id": "glaive-84178",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "limit=5由模型选择，没有用户要求或schema默认值；是未核验选择，不认定必错。"
+    },
+    {
+      "sample_id": "glaive-13651",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "last week展开为2022年日期，但没有基准时间，来源未核验。"
+    },
+    {
+      "sample_id": "glaive-111983",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "Apple/Microsoft到AAPL/MSFT是合理名称映射，严格规则误删。"
+    },
+    {
+      "sample_id": "hermes-9161491d-15f6-4b79-88b4-c3c4de22ae6a",
+      "arm": "rejected",
+      "review_category": "mixed_case",
+      "conclusion": "目标完整路径可由目录和文件名组合，但移动与从旧路径复制同时调用存在执行顺序风险。"
+    },
+    {
+      "sample_id": "hermes-fcc82343-3969-4066-a444-7ce5c2784c4d",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "空query可表示只按comedy检索，格式合法，严格规则会剔除。"
+    },
+    {
+      "sample_id": "hermes-cc6a4ff4-86f9-4ef3-a29f-3b14da750a99",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "Apple/Microsoft到AAPL/MSFT合理，规则误删。"
+    },
+    {
+      "sample_id": "glaive-47723",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "US dollars/Euros转USD/EUR合理，规则误删。"
+    },
+    {
+      "sample_id": "hermes-36a953fb-e5a8-427a-806e-ce29e52fbf22",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "bike转biking合理，规则误删。"
+    },
+    {
+      "sample_id": "glaive-50527",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "table=books为模型选择，schema没提供表目录；无法确认是可用表。"
+    },
+    {
+      "sample_id": "hermes-748f3006-4e87-4af4-aaae-4afb13929b6d",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "Euros转EUR合理，规则误删。"
+    },
+    {
+      "sample_id": "hermes-badcf689-6032-4f72-a17b-34473c3a2f84",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "5%转0.05有合理转换依据，但schema未明确比例单位，不能把差异直接判错。"
+    },
+    {
+      "sample_id": "glaive-81726",
+      "arm": "rejected",
+      "review_category": "explicit_placeholder",
+      "conclusion": "QR_CODE_IMAGE_DATA为占位字符串，没有可扫描图像；规则实际命中。"
+    },
+    {
+      "sample_id": "hermes-03e7ce61-d9d0-412f-9774-1b84f24d5f7c",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "各货币名称转代码合理，规则误删。"
+    },
+    {
+      "sample_id": "hermes-8cbb487b-60d3-4597-8328-f188344db1fb",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "Euros转EUR合理，规则误删。"
+    },
+    {
+      "sample_id": "hermes-fa39a37d-2f44-4269-8213-6cbb2f49536a",
+      "arm": "rejected",
+      "review_category": "mixed_case",
+      "conclusion": "historical simulation转historical_simulation合理，但输入只有不完整文件描述和省略行，返回未执行。"
+    },
+    {
+      "sample_id": "glaive-94154",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "经纬度没有用户或前序工具出处；参数来源未核验。"
+    },
+    {
+      "sample_id": "glaive-72359",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "两轮货币名称转代码合理，规则误删。"
+    },
+    {
+      "sample_id": "hermes-de36f5e2-c72b-4161-8cf7-bb616bc4facd",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "月日可转换，但2023年没有由用户提供，完整日期来源未核验。"
+    },
+    {
+      "sample_id": "glaive-28557",
+      "arm": "rejected",
+      "review_category": "mixed_case",
+      "conclusion": "5000mAh数值因单位字母紧连被排除；参数有出处，且工具结果并未真实计算。"
+    },
+    {
+      "sample_id": "glaive-43891",
+      "arm": "rejected",
+      "review_category": "unverified_choice",
+      "conclusion": "size=200无用户或schema默认依据，image_link也像占位内容但v2规则没识别。"
+    },
+    {
+      "sample_id": "glaive-71251",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "空name可表示按ingredients检索，格式合法，严格规则会剔除。"
+    },
+    {
+      "sample_id": "glaive-21163",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "Lakers转basketball有常识依据，严格规则误删。"
+    },
+    {
+      "sample_id": "glaive-82852",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "股票名称转代码合理，规则误删。"
+    },
+    {
+      "sample_id": "glaive-11790",
+      "arm": "rejected",
+      "review_category": "reasonable_transform_rejected",
+      "conclusion": "budget-friendly转$价格等级合理，符号没有词项，严格规则会剔除。"
+    }
+  ],
+  "conclusion": "可作为严格表面来源规则的对照；存在误删与语义漏检，不命名为金标准数据"
+}

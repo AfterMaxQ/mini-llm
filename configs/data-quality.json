@@ -1,0 +1,19 @@
+{
+  "base_data_run": "E02-R02",
+  "reference_size": 5000,
+  "training_context": 2048,
+  "selection_order": "原 E02 split_seed=2026 的组序与组内代表样本，不重新随机挑选",
+  "matching": ["source", "category"],
+  "inspection_seed": 42,
+  "inspection_per_arm": 25,
+  "policy_version": "surface_provenance_v2",
+  "string_provenance": "Unicode单词序列归一化后，非空字符串必须连续出现在此前用户消息或工具返回中；不使用assistant内容作出处",
+  "number_provenance": "有限数值须等于此前用户消息或工具返回中出现的数字；支持负数、小数、千位分隔符，不推导日期或算术结果",
+  "unchecked_argument_types": ["boolean", "null", "object_keys"],
+  "empty_string_policy": "没有可追溯的词项，作为unverified_string剔除；不表示空字符串一定违反工具schema",
+  "placeholder_exact": ["...", "…", "[redacted]", "<placeholder>", "<output>", "<result>", "qr_code_image_data"],
+  "placeholder_pattern": "\\b(?:insert|add)\\s+(?:output|result|response)\\s+here\\b",
+  "no_call_policy": "仅沿用已有格式与schema检查，额外规则不验证是否应调用",
+  "execution_policy": "公开工具未执行；规则只筛选标注，不生成或改写标签",
+  "limitations": "合理的日期转换、同义改写与派生计算也可能被剔除；字符串有出处不证明工具选择和最终回复正确"
+}

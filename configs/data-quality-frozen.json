@@ -1,0 +1,71 @@
+{
+  "run_id": "E12-R02",
+  "baseline_data_run": "E02-R02",
+  "policy": "surface_provenance_v2",
+  "policy_config_sha256": "b8c43b7e7540c680e4bac87d19898444a373ab14d47236f242120de9c4588254",
+  "outputs": {
+    "train-5000.jsonl": {
+      "sha256": "99c2721d0568a2d68e142bbf01a852c329461b936c8841597ab29825023f6ee6",
+      "samples": 5000
+    },
+    "dev.jsonl": {
+      "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+      "samples": 500
+    }
+  },
+  "matched_strata": [
+    {
+      "source": "glaive",
+      "category": "multi_turn",
+      "reference": 1002,
+      "filtered": 1002,
+      "available": 3022
+    },
+    {
+      "source": "glaive",
+      "category": "no_call",
+      "reference": 837,
+      "filtered": 837,
+      "available": 3169
+    },
+    {
+      "source": "glaive",
+      "category": "single_call",
+      "reference": 2273,
+      "filtered": 2273,
+      "available": 7664
+    },
+    {
+      "source": "hermes",
+      "category": "multi_turn",
+      "reference": 355,
+      "filtered": 355,
+      "available": 1078
+    },
+    {
+      "source": "hermes",
+      "category": "no_call",
+      "reference": 3,
+      "filtered": 3,
+      "available": 9
+    },
+    {
+      "source": "hermes",
+      "category": "parallel",
+      "reference": 125,
+      "filtered": 125,
+      "available": 300
+    },
+    {
+      "source": "hermes",
+      "category": "single_call",
+      "reference": 405,
+      "filtered": 405,
+      "available": 1300
+    }
+  ],
+  "review_sha256": "c3238839be2445c2f78573c54c921a021a5d15888e2b5ad93303e7130131402d",
+  "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+  "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+  "inspection_status": "completed_with_caveats"
+}

@@ -1,0 +1,178 @@
+{
+  "status": "criterion_not_met",
+  "exit_code": 0,
+  "operation": "data_selection",
+  "policy": "surface_provenance_v1",
+  "candidate_train_groups": 19040,
+  "accepted": 15312,
+  "rejected": 3728,
+  "selected": 5000,
+  "baseline_retained": 4003,
+  "baseline_replaced": 997,
+  "matched_strata": [
+    {
+      "source": "glaive",
+      "category": "multi_turn",
+      "reference": 1002,
+      "filtered": 1002,
+      "available": 2704
+    },
+    {
+      "source": "glaive",
+      "category": "no_call",
+      "reference": 837,
+      "filtered": 837,
+      "available": 3169
+    },
+    {
+      "source": "glaive",
+      "category": "single_call",
+      "reference": 2273,
+      "filtered": 2273,
+      "available": 7003
+    },
+    {
+      "source": "hermes",
+      "category": "multi_turn",
+      "reference": 355,
+      "filtered": 355,
+      "available": 897
+    },
+    {
+      "source": "hermes",
+      "category": "no_call",
+      "reference": 3,
+      "filtered": 3,
+      "available": 9
+    },
+    {
+      "source": "hermes",
+      "category": "parallel",
+      "reference": 125,
+      "filtered": 125,
+      "available": 290
+    },
+    {
+      "source": "hermes",
+      "category": "single_call",
+      "reference": 405,
+      "filtered": 405,
+      "available": 1240
+    }
+  ],
+  "reason_counts": {
+    "unverified_string": 1868,
+    "unverified_number": 2014
+  },
+  "argument_status": {
+    "surface_supported": 40470,
+    "unverified_string": 3319,
+    "unverified_number": 2694,
+    "not_checked_type": 772
+  },
+  "screening_seconds": 7.5480950999990455,
+  "outputs": {
+    "train-5000.jsonl": {
+      "sha256": "f973bc22b3b7d3767dd01973646b65e33b31f23af393c485f8893bbc78f53fb0",
+      "samples": 5000
+    },
+    "dev.jsonl": {
+      "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+      "samples": 500
+    }
+  },
+  "evidence": [
+    {
+      "file": "screening.jsonl",
+      "sha256": "202a91575944fbe5bfd2168e2ee35a62752e7fe150f9983d5c5a7a4ecc9b4972"
+    },
+    {
+      "file": "inspection-50.jsonl",
+      "sha256": "3418428ff7e3d888b33720155bcbad507731c82c90ef6eac450708d39cca6081"
+    },
+    {
+      "file": "selection-manifest.jsonl",
+      "sha256": "477c5bc97d17d905bb9170f4e5e78478f1c076fbae04a100adb4ec7016cca81b"
+    }
+  ],
+  "frozen_prefix_identical": true,
+  "evaluation_samples_screened": 0,
+  "gpu_model_calls": 0,
+  "inspection_status": "completed",
+  "run_id": "E12-R01",
+  "finished": "2026-10-01T11:36:22+08:00",
+  "usable_for_training": false,
+  "review_sha256": "2ffc7c0249cd18621ff27a326ceccb1ba25b18a0bb6852a8eeec1f32ef2988f6",
+  "reason": "数字提取错误与占位返回漏检，下一轮修正后重新筛选",
+  "previous_results": [
+    {
+      "file": "previous-result-01.json",
+      "sha256": "15a6ff98c693debffb7ffa9bd58764fc7562e89f97b97cad3ae4e803166571e0"
+    }
+  ],
+  "config": {
+    "base_data_run": "E02-R02",
+    "reference_size": 5000,
+    "training_context": 2048,
+    "selection_order": "原 E02 split_seed=2026 的组序与组内代表样本，不重新随机挑选",
+    "matching": [
+      "source",
+      "category"
+    ],
+    "inspection_seed": 42,
+    "inspection_per_arm": 25,
+    "policy_version": "surface_provenance_v1",
+    "string_provenance": "Unicode单词序列归一化后，非空字符串必须连续出现在此前用户消息或工具返回中；不使用assistant内容作出处",
+    "number_provenance": "有限数值须等于此前用户消息或工具返回中出现的数字；支持负数、小数、千位分隔符，不推导日期或算术结果",
+    "unchecked_argument_types": [
+      "boolean",
+      "null",
+      "object_keys"
+    ],
+    "placeholder_exact": [
+      "...",
+      "…",
+      "[redacted]",
+      "<placeholder>",
+      "<output>",
+      "<result>"
+    ],
+    "placeholder_pattern": "\\b(?:insert|add)\\s+(?:output|result|response)\\s+here\\b",
+    "no_call_policy": "仅沿用已有格式与schema检查，额外规则不验证是否应调用",
+    "execution_policy": "公开工具未执行；规则只筛选标注，不生成或改写标签",
+    "limitations": "合理的日期转换、同义改写与派生计算也可能被剔除；字符串有出处不证明工具选择和最终回复正确",
+    "operation": "data_selection",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/data_quality.py"
+    ],
+    "inputs": [
+      {
+        "file": ".local/runs/E02-R02/pool-manifest.jsonl",
+        "sha256": "29223f1d92ef050a23208b8da33e65f11437781f4c9707a64a0aa997158a40b3"
+      },
+      {
+        "file": ".local/runs/E02-R02/normalized-pool.jsonl",
+        "sha256": "ce2e46ca9d806c138e39e4573ae80cc55ce1d6538883c1f8b16e7da3190724c6"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/train-5000.jsonl",
+        "sha256": "07e4abe73d4e479008be6356e087bd8beab9ac49ce2bc20e1d78310dd612970c"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/train-10000.jsonl",
+        "sha256": "e9165867997bf5435b53e4404fac60d4ee9b279a6f5481b6503f17bc3a1821ae"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/dev.jsonl",
+        "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce"
+      }
+    ],
+    "run_id": "E12-R01",
+    "started": "2026-10-01T11:34:02+08:00",
+    "commit": "435ef4bb22f7cabf0c2db85c27c3fcf512452a0b",
+    "process_id": 41676,
+    "code_snapshot_sha256": "d7d973dfd48e3d5b323e35a6ddebdacc90bebdcac49c81e703e9d30abd9ccbef"
+  },
+  "raw_result_sha256": "47f806a1802eb064ec2f1c6e5141a83d72046898e6f4ff988669b384cae2682c"
+}

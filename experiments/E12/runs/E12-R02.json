@@ -1,0 +1,260 @@
+{
+  "status": "data_ready_pending_training",
+  "exit_code": 0,
+  "operation": "data_selection",
+  "policy": "surface_provenance_v2",
+  "candidate_train_groups": 19040,
+  "accepted": 16542,
+  "rejected": 2498,
+  "selected": 5000,
+  "baseline_retained": 4326,
+  "baseline_replaced": 674,
+  "matched_strata": [
+    {
+      "source": "glaive",
+      "category": "multi_turn",
+      "reference": 1002,
+      "filtered": 1002,
+      "available": 3022
+    },
+    {
+      "source": "glaive",
+      "category": "no_call",
+      "reference": 837,
+      "filtered": 837,
+      "available": 3169
+    },
+    {
+      "source": "glaive",
+      "category": "single_call",
+      "reference": 2273,
+      "filtered": 2273,
+      "available": 7664
+    },
+    {
+      "source": "hermes",
+      "category": "multi_turn",
+      "reference": 355,
+      "filtered": 355,
+      "available": 1078
+    },
+    {
+      "source": "hermes",
+      "category": "no_call",
+      "reference": 3,
+      "filtered": 3,
+      "available": 9
+    },
+    {
+      "source": "hermes",
+      "category": "parallel",
+      "reference": 125,
+      "filtered": 125,
+      "available": 300
+    },
+    {
+      "source": "hermes",
+      "category": "single_call",
+      "reference": 405,
+      "filtered": 405,
+      "available": 1300
+    }
+  ],
+  "reason_counts": {
+    "unverified_string": 1868,
+    "unverified_number": 548,
+    "placeholder_tool_return": 175
+  },
+  "argument_status": {
+    "surface_supported": 42189,
+    "unverified_string": 3319,
+    "unverified_number": 975,
+    "not_checked_type": 772
+  },
+  "screening_seconds": 7.522339400005876,
+  "outputs": {
+    "train-5000.jsonl": {
+      "sha256": "99c2721d0568a2d68e142bbf01a852c329461b936c8841597ab29825023f6ee6",
+      "samples": 5000
+    },
+    "dev.jsonl": {
+      "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+      "samples": 500
+    }
+  },
+  "evidence": [
+    {
+      "file": "screening.jsonl",
+      "sha256": "2e92b5476e398ad09d1651288d489e13e386cb508b0906e60cff405a94941223"
+    },
+    {
+      "file": "inspection-50.jsonl",
+      "sha256": "71053e891f10916200b0ec7ac73961d8dea88ee4271c1d219d4eeb1da6c0fa94"
+    },
+    {
+      "file": "selection-manifest.jsonl",
+      "sha256": "ba7fa677879d37dfe7e61d6823ff25e8618093790dba8cbc26a606420c83066f"
+    }
+  ],
+  "frozen_prefix_identical": true,
+  "evaluation_samples_screened": 0,
+  "gpu_model_calls": 0,
+  "inspection_status": "completed",
+  "run_id": "E12-R02",
+  "finished": "2026-10-01T11:39:28+08:00",
+  "review_sha256": "c3238839be2445c2f78573c54c921a021a5d15888e2b5ad93303e7130131402d",
+  "encoded_data_sha256": "f19c2121a67c7f11e2bf935b96da10ab8a25eaac6e4ca4afa7b546379aeb0ae5",
+  "train": {
+    "data_run": "E12-R02",
+    "data_file": "train-5000.jsonl",
+    "source_sha256": "99c2721d0568a2d68e142bbf01a852c329461b936c8841597ab29825023f6ee6",
+    "independent_trajectories": 5000,
+    "assistant_units": 14501,
+    "input_tokens": 5836558,
+    "supervised_tokens": 629212,
+    "max_sequence_length": 2034,
+    "max_target_length": 701,
+    "categories": {
+      "single_call": 2678,
+      "no_call": 840,
+      "multi_turn": 1357,
+      "parallel": 125
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 14501,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "38e71c3a9abe47a680999559c4be5a8c7861049e7fa4b76fff5dd21c1794a2af"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "b8722626fad7ef5ed3cb3dae08c104b73d83c3b336bc79f6c159a9c0b46d0648"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "6f0a2f62bbcc0b2ddb557217c1b449848fc9b76cb30d932d777149785b40c89c"
+      }
+    ]
+  },
+  "dev": {
+    "data_run": "E02-R02",
+    "data_file": "dev.jsonl",
+    "source_sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+    "independent_trajectories": 500,
+    "assistant_units": 1484,
+    "input_tokens": 615718,
+    "supervised_tokens": 66664,
+    "max_sequence_length": 2735,
+    "max_target_length": 610,
+    "categories": {
+      "multi_turn": 147,
+      "single_call": 257,
+      "no_call": 86,
+      "parallel": 10
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 1484,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "4469e045fbe371a2052ac4c983e993158c0f25cb4e4b812016bf5cc3bb1e7071"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "ae90b2242890689c664b1fdd5cd909bc00bb934cf364c88ade5cd32346ab9707"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "eb0db524be25b47b2a880425a0330faafa495d5b5ccd154912ad9594b93caa46"
+      }
+    ]
+  },
+  "usable_for_training": true,
+  "selection_scope": "严格表面来源筛选；参数语义与真实执行不由该规则保证",
+  "previous_results": [
+    {
+      "file": "previous-result-01.json",
+      "sha256": "9698d254ffa26818b412be05495e1f77eda181a286d3e6294fcdc36703b0b556"
+    }
+  ],
+  "config": {
+    "base_data_run": "E02-R02",
+    "reference_size": 5000,
+    "training_context": 2048,
+    "selection_order": "原 E02 split_seed=2026 的组序与组内代表样本，不重新随机挑选",
+    "matching": [
+      "source",
+      "category"
+    ],
+    "inspection_seed": 42,
+    "inspection_per_arm": 25,
+    "policy_version": "surface_provenance_v2",
+    "string_provenance": "Unicode单词序列归一化后，非空字符串必须连续出现在此前用户消息或工具返回中；不使用assistant内容作出处",
+    "number_provenance": "有限数值须等于此前用户消息或工具返回中出现的数字；支持负数、小数、千位分隔符，不推导日期或算术结果",
+    "unchecked_argument_types": [
+      "boolean",
+      "null",
+      "object_keys"
+    ],
+    "empty_string_policy": "没有可追溯的词项，作为unverified_string剔除；不表示空字符串一定违反工具schema",
+    "placeholder_exact": [
+      "...",
+      "…",
+      "[redacted]",
+      "<placeholder>",
+      "<output>",
+      "<result>",
+      "qr_code_image_data"
+    ],
+    "placeholder_pattern": "\\b(?:insert|add)\\s+(?:output|result|response)\\s+here\\b",
+    "no_call_policy": "仅沿用已有格式与schema检查，额外规则不验证是否应调用",
+    "execution_policy": "公开工具未执行；规则只筛选标注，不生成或改写标签",
+    "limitations": "合理的日期转换、同义改写与派生计算也可能被剔除；字符串有出处不证明工具选择和最终回复正确",
+    "operation": "data_selection",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/data_quality.py"
+    ],
+    "inputs": [
+      {
+        "file": ".local/runs/E02-R02/pool-manifest.jsonl",
+        "sha256": "29223f1d92ef050a23208b8da33e65f11437781f4c9707a64a0aa997158a40b3"
+      },
+      {
+        "file": ".local/runs/E02-R02/normalized-pool.jsonl",
+        "sha256": "ce2e46ca9d806c138e39e4573ae80cc55ce1d6538883c1f8b16e7da3190724c6"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/train-5000.jsonl",
+        "sha256": "07e4abe73d4e479008be6356e087bd8beab9ac49ce2bc20e1d78310dd612970c"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/train-10000.jsonl",
+        "sha256": "e9165867997bf5435b53e4404fac60d4ee9b279a6f5481b6503f17bc3a1821ae"
+      },
+      {
+        "file": ".local/data/processed/E02-R02/dev.jsonl",
+        "sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce"
+      }
+    ],
+    "run_id": "E12-R02",
+    "started": "2026-10-01T11:36:26+08:00",
+    "commit": "435ef4bb22f7cabf0c2db85c27c3fcf512452a0b",
+    "process_id": 30948,
+    "code_snapshot_sha256": "50f839e1d7021f7ffb5535591affbce8d81fe81d9a62828888dcf9a4e2f9931c"
+  },
+  "raw_result_sha256": "3bfda529a583548fb2de5e22a9219ca2b093703fbaf23be0a7467bdff40678c3"
+}

@@ -73,7 +73,7 @@ class RecordCallback(TrainerCallback):
         self.run, self.trainer, self.last_report = run, trainer, 0
 
     def refresh(self):
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(self.run.name.split('-')[0],'scripts/notes_sft.py')
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py'}.get(self.run.name.split('-')[0],'scripts/notes_sft.py')
         commands=[[sys.executable, script],
                   [sys.executable, 'scripts/report.py', '--volume', '02']]
         for command in commands:
@@ -158,6 +158,8 @@ def main():
         write_json(run/f"resume-{time.time_ns()}.json",{"time":now(),"command":config["command"],"checkpoint":resume.name})
     try:
         set_seed(config["seed"])
+        for name, expected_hash in config.get("data_file_hashes", {}).items():
+            assert sha256(ROOT / ".local/data/processed" / config["data_run"] / name) == expected_hash, "对照数据文件已改变"
         train_cache,train_manifest=prepare(f"train-{config['train_size']}.jsonl",config["data_run"])
         dev_cache,dev_manifest=prepare("dev.jsonl",config["data_run"])
         assert train_manifest["max_sequence_length"]<=config["max_sequence_length"],"完整训练单元超过当前上下文，不允许截断"
@@ -217,7 +219,7 @@ def main():
         finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc(),
                    'allocated_mib_at_failure':torch.cuda.memory_allocated()/1024**2,
                    'reserved_mib_at_failure':torch.cuda.memory_reserved()/1024**2})
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py'}.get(args.experiment,'scripts/notes_sft.py')
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py'}.get(args.experiment,'scripts/notes_sft.py')
         subprocess.run([sys.executable,script],cwd=ROOT,check=True)
         subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)
         raise

@@ -1,0 +1,7 @@
+{
+  "run_id": "E12-R02",
+  "source": "../data-comparison.csv",
+  "source_sha256": "2de24b9fd729870671ad70e557464bf6f4292d8c4c01f1f60933a5964ea42c0a",
+  "image_sha256": "fe4fbe55667a25720d772c34e05a5f27679113e1692e64aec852a009da4fe675",
+  "result_sha256": "3bfda529a583548fb2de5e22a9219ca2b093703fbaf23be0a7467bdff40678c3"
+}
