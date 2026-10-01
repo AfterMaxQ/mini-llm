@@ -2,18 +2,18 @@
   "run_id": "E09-R15",
   "plot_version": 2,
   "source_file": "E09-R15-metrics.csv",
-  "source_sha256": "9d8122aaee99effe733fb553bc9f35c5da1fb340c0bc6273cee6673dd4021634",
-  "raw_metrics_prefix_sha256": "5223e6dc92ab6ccc8088f7ba5ffb41c80124a8251a4eee96312c160ca9c0db57",
-  "image_sha256": "241b07239a262bd6e7ce3a5a65a28cced7568055b9c73d644df8308a8ee5852f",
-  "train_points": 300,
+  "source_sha256": "a960d12e0b7de03a96153995d6e9f5fb9f6427a390b903fe9e6852389117b946",
+  "raw_metrics_prefix_sha256": "f9ddffbb75bfc693322a7246090438b35c5d064fc808b1782448bb46b8d030e1",
+  "image_sha256": "3ce5074a4d303dc90834dd0dee0bfee995ebb765ef36d9940679ede6752cda29",
+  "train_points": 400,
   "train_segments": [
     {
       "start_step": 1,
-      "end_step": 300,
-      "points": 300
+      "end_step": 400,
+      "points": 400
     }
   ],
   "resume_checkpoint": null,
-  "validation_points": 4,
+  "validation_points": 5,
   "smoothing": null
 }
