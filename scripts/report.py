@@ -87,7 +87,9 @@ def add_markdown(document, path):
             table = document.add_table(rows=0, cols=len(rows[0]))
             table.style = "Table Grid"
             for number, values in enumerate(rows):
-                cells = table.add_row().cells
+                row = table.add_row()
+                row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+                cells = row.cells
                 for cell, value in zip(cells, values):
                     text(cell.paragraphs[0], value)
                     cell.paragraphs[0].paragraph_format.space_after = Pt(2)

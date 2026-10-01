@@ -1,0 +1,146 @@
+{
+  "status": "trained_pending_tool_eval",
+  "exit_code": 0,
+  "train_size": 1000,
+  "seed": 17,
+  "steps": 363,
+  "train": {
+    "data_run": "E02-R02",
+    "data_file": "train-1000.jsonl",
+    "source_sha256": "2ada49cee0ec99086067cd107cfae20202ced0291cf77ba486d9e6d0d4886b69",
+    "independent_trajectories": 1000,
+    "assistant_units": 2900,
+    "input_tokens": 1171709,
+    "supervised_tokens": 126688,
+    "max_sequence_length": 1945,
+    "max_target_length": 606,
+    "categories": {
+      "single_call": 556,
+      "no_call": 155,
+      "multi_turn": 262,
+      "parallel": 27
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 2900,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "1f0de2f0e81d15dd230618789ddad257ef73df61058674861627bf8fef818692"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "83923dd03bddcb55939ecc140557b5457dadddbb052e3bda2fae44e5fcab8797"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "a024f26263af9a8dad79c4d686d9255acdc4b4827a8aacbb271346bff9f2e502"
+      }
+    ]
+  },
+  "dev": {
+    "data_run": "E02-R02",
+    "data_file": "dev.jsonl",
+    "source_sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+    "independent_trajectories": 500,
+    "assistant_units": 1484,
+    "input_tokens": 615718,
+    "supervised_tokens": 66664,
+    "max_sequence_length": 2735,
+    "max_target_length": 610,
+    "categories": {
+      "multi_turn": 147,
+      "single_call": 257,
+      "no_call": 86,
+      "parallel": 10
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 1484,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "4469e045fbe371a2052ac4c983e993158c0f25cb4e4b812016bf5cc3bb1e7071"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "ae90b2242890689c664b1fdd5cd909bc00bb934cf364c88ade5cd32346ab9707"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "eb0db524be25b47b2a880425a0330faafa495d5b5ccd154912ad9594b93caa46"
+      }
+    ]
+  },
+  "selected_checkpoint": "checkpoint-363",
+  "selected_dev_loss": 0.14346234372173,
+  "train_metrics": {
+    "train_runtime": 1793.7004,
+    "train_samples_per_second": 1.617,
+    "train_steps_per_second": 0.202,
+    "train_loss": 0.20070325636456288,
+    "epoch": 1.0
+  },
+  "metrics_sha256": "fec51ac5ad4330e384eb642a3b8ca817a984e79c04af69fd3326c3305fefe081",
+  "scope": "完成一个epoch及完整dev loss选择；工具泛化指标必须由独立生成评估补齐",
+  "run_id": "E09-R05",
+  "finished": "2026-10-01T09:12:22+08:00",
+  "config": {
+    "data_run": "E02-R02",
+    "train_size": 1000,
+    "seed": 17,
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "epochs": 1,
+    "micro_batch": 1,
+    "gradient_accumulation": 8,
+    "max_sequence_length": 2048,
+    "eval_steps": 100,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "lr_scheduler_type": "linear",
+    "packing": false,
+    "assistant_only_loss": true,
+    "unit_policy": "assistant_action",
+    "enable_thinking": false,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "training_prompt": "冻结数据中的通用系统提示；不加入少样本示例",
+    "precision": "NF4 double quant, BF16 mixed precision",
+    "validation_loss": "完整500条dev的全部当前回复单元；按实际监督token加权的交叉熵",
+    "checkpoint_selection": "最低完整dev loss；并列保留较早checkpoint",
+    "optimizer": "torch AdamW",
+    "empty_cuda_cache_each_step": true,
+    "empty_cuda_cache_each_validation_unit": true,
+    "evaluation_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts\\sft.py",
+      "--size",
+      "1000",
+      "--seed",
+      "17"
+    ],
+    "run_id": "E09-R05",
+    "started": "2026-10-01T08:37:02+08:00",
+    "commit": "9059dc4dc1e7b970ee8128dc7243870478080d43",
+    "process_id": 42380,
+    "code_snapshot_sha256": "c74bcbf429e0723ec32b0f50eb81fbae3d8af6178907b2a7fbc1f101cd408000"
+  },
+  "raw_result_sha256": "8907b83382fc82a85d915da2dc36a251fafc56a1a88e531dc178dc3e31ea3aa8"
+}
