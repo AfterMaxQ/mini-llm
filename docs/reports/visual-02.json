@@ -1,94 +1,567 @@
 {
-  "word_sha256": "cdd17a64d5af950051d2775c720c75bd5166aa61227ab8a1893a1c2e390666dc",
+  "word_sha256": "d7f8c9c0d4ed00edde4c45a903432d38c5aec3f82bb745c55f12e21497bac2a6",
+  "pdf_sha256": "3385e1dc5f6153d9d2122d44df71ff58333b4a40eb31194cd14ad088ee15bc4e",
   "visual_checked": true,
-  "updated": "2026-10-01T23:10:45+08:00",
+  "updated": "2026-10-01T23:42:04+08:00",
+  "checked_at": "2026-10-01T23:42:04+08:00",
+  "checked_pages": [
+    1,
+    5,
+    6
+  ],
+  "newly_viewed_pages": [
+    1,
+    5,
+    6
+  ],
+  "unchanged_pages": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "identical_pages_inherited": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "page_sha256": {
+    "page-01.png": "e3620a965a1f448c3633821026bfe845cd6974375615a7afb5978041439ea0d1",
+    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+    "page-05.png": "2df651ccd28475496630a59fecf46260234cdc5d112e3531d163566200988940",
+    "page-06.png": "6aff82d1128dd5d2a0f29785b1035d4d512fabf52ace37bf1fa3e9cf80e7cd3f",
+    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+  },
+  "observations": [
+    "实际查看第1、5、6页；step 1500 运行状态、step 1400 最佳 dev、曲线与代码块清晰。",
+    "其余页面 PNG 哈希与上一版视觉核验相同。"
+  ],
   "previous_checked": {
-    "word_sha256": "babe2ed1e5f443505129fc5a67db4cc4bf1c5e1c1db9e9d05c0d3bf76f25f117",
+    "word_sha256": "66395fcd5b58f8e2f9d4d9a50bcae98613c7c0ae3f6dbe3ed90fda48fb1bd395",
+    "pdf_sha256": "9e5e75d108e3ddb5ccf40fac18d26a1e05cabfaa41ae53b91c80e2f3ecccbc7e",
     "visual_checked": true,
-    "updated": "2026-10-01T23:03:09+08:00",
+    "updated": "2026-10-01T23:36:51+08:00",
+    "checked_at": "2026-10-01T23:36:51+08:00",
+    "checked_pages": [
+      1,
+      5,
+      6
+    ],
+    "newly_viewed_pages": [
+      1,
+      5,
+      6
+    ],
+    "unchanged_pages": [
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "identical_pages_inherited": [
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "page_sha256": {
+      "page-01.png": "745c168730249e6258be953b44af626b82eddef50627302561cacb161b8be222",
+      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+      "page-05.png": "54fb3362f3226ceb7336ac911e6fad61a5811ad4e9b0e7bfd4aaaba2473e2cee",
+      "page-06.png": "618f402a406181ba9e36d7b948439f813c1780f4a4e7627c809270b8df7713b0",
+      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+    },
+    "observations": [
+      "实际查看第1、5、6页；step 1400 状态表、断点恢复曲线、中文和代码块均清楚。",
+      "其余页面 PNG 哈希与上一版视觉核验相同。"
+    ],
     "previous_checked": {
-      "word_sha256": "108abb432a12435859a50993062ccc5d06921bfdb7e238897b7e442610293ae4",
+      "word_sha256": "39b5e7c3aae2fab152e5b30ca6a3b52847d787003211c7f023722970d3c2f633",
+      "pdf_sha256": "4c93ddd97cd5bf68acb1e8174965ab168c33f5924399e384686e85db66626ba9",
       "visual_checked": true,
-      "updated": "2026-10-01T22:55:42+08:00",
+      "updated": "2026-10-01T23:32:00+08:00",
+      "checked_at": "2026-10-01T23:32:00+08:00",
+      "checked_pages": [
+        1,
+        5,
+        6
+      ],
+      "newly_viewed_pages": [
+        1,
+        5,
+        6
+      ],
+      "unchanged_pages": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "identical_pages_inherited": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "page_sha256": {
+        "page-01.png": "13d712b08704b6f291a0e2c3e51e839987d344c10aed7dd3a76ff1e07c52c8d6",
+        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+        "page-05.png": "1ffa21cf29f5568756b26035e1c41a400328df1869897a3e5fe4adc12715bf75",
+        "page-06.png": "6366e3df356f9874c4f8dc7fb2e12d0f5fed00df25b3653bf190ccd52e9b942d",
+        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+      },
+      "observations": [
+        "实际查看第1、5、6页；中文摘要、表格、代码与断点续训曲线清楚，内容对应 E09-R13 checkpoint-1300。",
+        "其余页面图像哈希与上一版视觉核验相同。"
+      ],
       "previous_checked": {
-        "word_sha256": "3de5081ec865a5b5a0cdddf57f198a38d7c1c436654cc1af4b34ded57bd46cb6",
+        "word_sha256": "cdd17a64d5af950051d2775c720c75bd5166aa61227ab8a1893a1c2e390666dc",
         "visual_checked": true,
-        "updated": "2026-10-01T22:46:44+08:00",
+        "updated": "2026-10-01T23:10:45+08:00",
         "previous_checked": {
-          "word_sha256": "26394090ee8532715dc2cb2b2d5bdf2e19bd7aea5aae5e61d0eab54030efdd14",
-          "pdf_sha256": "61b1171ab7c2de57677b58b767edd9684d3e1877faf87b3b0ce9c03c18c97e61",
+          "word_sha256": "babe2ed1e5f443505129fc5a67db4cc4bf1c5e1c1db9e9d05c0d3bf76f25f117",
           "visual_checked": true,
-          "checked_at": "2026-10-01T22:40:54+08:00",
-          "checked_pages": [
-            1,
-            5,
-            6
-          ],
-          "newly_viewed_pages": [
-            1,
-            5,
-            6
-          ],
-          "unchanged_pages": [
-            2,
-            3,
-            4,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15
-          ],
-          "identical_pages_inherited": [
-            2,
-            3,
-            4,
-            7,
-            8,
-            9,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15
-          ],
-          "page_sha256": {
-            "page-01.png": "4d5c31c2239b1cb205b982828f97328d55bde44fc6269a21a9b8035655eaad90",
-            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-            "page-05.png": "57a010e6063fb700b1090fbeb3e20d7ab5a34073453d2bdd329ad77a203ac1b1",
-            "page-06.png": "9b7d8f6d8026e1c8df5e8ae4ea3229966e4bf66668e7313ff93d00f47535cdb8",
-            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-          },
-          "observations": [
-            "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
-            "其余12页的PNG哈希与上一份已核验版本一致。"
-          ],
+          "updated": "2026-10-01T23:03:09+08:00",
           "previous_checked": {
-            "word_sha256": "1af5a1ab8cf38bef1babd94756872d94c428c7e27ea70f4888127bc56763bbea",
-            "pdf_sha256": "df2e010fed9aa2e6ff95130635c7a2898c778f67757a1601d79194c8518f36eb",
+            "word_sha256": "108abb432a12435859a50993062ccc5d06921bfdb7e238897b7e442610293ae4",
             "visual_checked": true,
-            "checked_at": "2026-10-01T22:35:23+08:00",
+            "updated": "2026-10-01T22:55:42+08:00",
+            "previous_checked": {
+              "word_sha256": "3de5081ec865a5b5a0cdddf57f198a38d7c1c436654cc1af4b34ded57bd46cb6",
+              "visual_checked": true,
+              "updated": "2026-10-01T22:46:44+08:00",
+              "previous_checked": {
+                "word_sha256": "26394090ee8532715dc2cb2b2d5bdf2e19bd7aea5aae5e61d0eab54030efdd14",
+                "pdf_sha256": "61b1171ab7c2de57677b58b767edd9684d3e1877faf87b3b0ce9c03c18c97e61",
+                "visual_checked": true,
+                "checked_at": "2026-10-01T22:40:54+08:00",
+                "checked_pages": [
+                  1,
+                  5,
+                  6
+                ],
+                "newly_viewed_pages": [
+                  1,
+                  5,
+                  6
+                ],
+                "unchanged_pages": [
+                  2,
+                  3,
+                  4,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "identical_pages_inherited": [
+                  2,
+                  3,
+                  4,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15
+                ],
+                "page_sha256": {
+                  "page-01.png": "4d5c31c2239b1cb205b982828f97328d55bde44fc6269a21a9b8035655eaad90",
+                  "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                  "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                  "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                  "page-05.png": "57a010e6063fb700b1090fbeb3e20d7ab5a34073453d2bdd329ad77a203ac1b1",
+                  "page-06.png": "9b7d8f6d8026e1c8df5e8ae4ea3229966e4bf66668e7313ff93d00f47535cdb8",
+                  "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                  "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                  "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                  "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                  "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                  "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                  "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                  "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                  "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                },
+                "observations": [
+                  "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
+                  "其余12页的PNG哈希与上一份已核验版本一致。"
+                ],
+                "previous_checked": {
+                  "word_sha256": "1af5a1ab8cf38bef1babd94756872d94c428c7e27ea70f4888127bc56763bbea",
+                  "pdf_sha256": "df2e010fed9aa2e6ff95130635c7a2898c778f67757a1601d79194c8518f36eb",
+                  "visual_checked": true,
+                  "checked_at": "2026-10-01T22:35:23+08:00",
+                  "checked_pages": [
+                    1,
+                    5,
+                    6
+                  ],
+                  "newly_viewed_pages": [
+                    1,
+                    5,
+                    6
+                  ],
+                  "unchanged_pages": [
+                    2,
+                    3,
+                    4,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                  ],
+                  "identical_pages_inherited": [
+                    2,
+                    3,
+                    4,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                  ],
+                  "page_sha256": {
+                    "page-01.png": "8a564e6af8ad6b96f446798386f048947903b5ca4a77da0881f1607a6c653c5e",
+                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                    "page-05.png": "dc3e75a284b6c726f83f518c147efef61ee34cf0765d13baca638d03bb458af7",
+                    "page-06.png": "f2fadc1cc3a360203c1edf8688cb3d7140d47844cd40495c5753c997f9f975ef",
+                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                  },
+                  "observations": [
+                    "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
+                    "其余12页的PNG哈希与上一份已核验版本一致。"
+                  ],
+                  "previous_checked": {
+                    "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
+                    "pdf_sha256": "137f262bcbbbb1c368a9ec82aac6c04db5505b3bd04ce3b3705a358cd1b10e07",
+                    "visual_checked": true,
+                    "checked_at": "2026-10-01T22:00:28+08:00",
+                    "checked_pages": [
+                      1,
+                      15
+                    ],
+                    "unchanged_pages": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8,
+                      9,
+                      10,
+                      11,
+                      12,
+                      13,
+                      14
+                    ],
+                    "page_sha256": {
+                      "page-01.png": "89041cafc2d70b7c5e0f6f1b728301f877708dbb18e50e980c3fb81e9396d519",
+                      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                      "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
+                      "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
+                      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+                    },
+                    "observations": [
+                      "实际查看修改页：1, 15。中文、代码、图表、表格边界和图注均可读。",
+                      "其余 13 页与上一份已核验版本的页面图像哈希一致。",
+                      "E09-R13 当前仍按系统重启后断点恢复处理，未把未完成训练写成最终结果。"
+                    ],
+                    "previous_checked": {
+                      "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
+                      "visual_checked": false,
+                      "updated": "2026-10-01T21:57:38+08:00",
+                      "previous_checked": {
+                        "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
+                        "pdf_sha256": "0b62875e252e557d5b3995f2978a68bd9b6698c8e8dcf671917306315676f45a",
+                        "visual_checked": true,
+                        "checked_at": "2026-10-01T21:55:16+08:00",
+                        "checked_pages": [
+                          1,
+                          4,
+                          5,
+                          6,
+                          7,
+                          8,
+                          9,
+                          10,
+                          15
+                        ],
+                        "unchanged_pages": [
+                          2,
+                          3,
+                          11,
+                          12,
+                          13,
+                          14
+                        ],
+                        "page_sha256": {
+                          "page-01.png": "86baf1cc00fb1d36f229e6b43ec6692f28cfc802a5c8d0d732449bc0c2ffb92c",
+                          "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                          "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                          "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                          "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
+                          "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
+                          "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                          "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                          "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                          "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                          "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                          "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                          "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                          "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                          "page-15.png": "f9c4f52d2e6033be661ea250b5ffa84a0da9e3347fecdb636218d9f6d644da76"
+                        },
+                        "observations": [
+                          "实际查看修改页：1, 4, 5, 6, 7, 8, 9, 10, 15。中文、图例、坐标、表格边界和图注均可读。",
+                          "其余 6 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
+                          "文档中的 E09-R13 状态仍是重启中断、待断点恢复；没有把未完成训练写成最终结果。"
+                        ],
+                        "previous_checked": {
+                          "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
+                          "visual_checked": false,
+                          "updated": "2026-10-01T21:52:51+08:00",
+                          "previous_checked": {
+                            "word_sha256": "96bf201d99656ee12733af49b6bda9fdbeafa2b3255aea22803004c623bf7ab1",
+                            "pdf_sha256": "ff82e9e0261a89411cace5d844f128b797c913c0182f14be470b1957f8b3fef4",
+                            "visual_checked": true,
+                            "checked_at": "2026-10-01T18:28:27+08:00",
+                            "checked_pages": [
+                              1,
+                              5
+                            ],
+                            "unchanged_pages": [
+                              2,
+                              3,
+                              4,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15
+                            ],
+                            "page_sha256": {
+                              "page-01.png": "988438397330d7416be30630c5ff74d416a4a8e15a50056b58adb98b6d785568",
+                              "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                              "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                              "page-04.png": "c091ee43002e009b0bab13d6c0d1d9e09bcb2d2046a752cc86e5ae4af24417ad",
+                              "page-05.png": "aace71c2c78a36ff5cde1ee1c697ea2a01187745cf138a2fb5a4b2a38dc7e05d",
+                              "page-06.png": "f6c97803beb7847efb9ae79030d257077aaecf4a4df20d410d060bb38df40faf",
+                              "page-07.png": "6d26b428dc95ccc547d322c0eefd081e42354776eca728ca9437bbfdbb949176",
+                              "page-08.png": "e7aa34d4b538b5dbc1fd23c51f4bcf6af5f51b1fb10935a301bb8178985466e9",
+                              "page-09.png": "f14bb574ae83da80d383f9e188f9e9b766cfa71c1d86537bf25932da87333930",
+                              "page-10.png": "a4eca08d64b6b32197971e96db45ac553c58b26348d0caac83241d4ecba7dea5",
+                              "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                              "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                              "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                              "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                              "page-15.png": "84b7a98a762021b9eb7c79d66a6d23c7d3b9a5ddf7d915facad2aeddb62f975b"
+                            },
+                            "observations": [
+                              "本次仅第1页的生成时间和第5页的E09-R11 step2200表格及loss曲线发生变化；两页已实际查看。",
+                              "其余13页页面图像与上一份已核验版本逐像素一致。",
+                              "标题、中文、表格边界、图例、坐标、图注、页码和证据索引清楚。"
+                            ],
+                            "previous_checked": {
+                              "word_sha256": "0ea2707681a0d404bf8fa82ed8503101d895af87b78b69178780dac097e9c0a3",
+                              "pdf_sha256": "eeab7f17333e965e89c6eb39870e44a02175d3accbf9eb5959fd0c747a922a3a",
+                              "visual_checked": true,
+                              "checked_at": "2026-10-01T18:22:18+08:00",
+                              "checked_pages": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9,
+                                10,
+                                11,
+                                12,
+                                13,
+                                14,
+                                15
+                              ],
+                              "observations": [
+                                "实际查看本次 Word 导出的全部15页，中文、代码和页码清楚。",
+                                "训练曲线、dev 对照图与正文结论可读；曲线截至 step 2100，与图注和实验记录一致。",
+                                "数据质量图、表格和末尾证据索引均在页面内，未见越界、缺字或空白页。"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "checked_at": "2026-10-01T22:51:21+08:00",
+              "checked_pages": [
+                1,
+                5,
+                6
+              ],
+              "unchanged_pages": [
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+              ],
+              "page_sha256": {
+                "page-01.png": "e53dbf9de06a2221e4ecf467d0a1a5c39579a2c587c93d9b376153f31173fd3f",
+                "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+                "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+                "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+                "page-05.png": "84489a44ca1891c3be8e01c406ac125783a8a11908c4b22f2b8d9d6d5c8d1be7",
+                "page-06.png": "901d624ae36b25fc21cda9f090e9a2c0804431f785820cc050d167121db4cad9",
+                "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+                "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+                "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+                "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+                "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+                "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+                "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+                "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+                "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+              },
+              "observations": [
+                "实际查看封面、运行进度表和 E09-R13 Loss 页；中文、表格、代码块和图例可读。",
+                "其余页面图像哈希与上一份已核验版本一致。"
+              ]
+            },
+            "checked_at": "2026-10-01T22:58:36+08:00",
             "checked_pages": [
-              1,
-              5,
-              6
-            ],
-            "newly_viewed_pages": [
               1,
               5,
               6
@@ -107,27 +580,13 @@
               14,
               15
             ],
-            "identical_pages_inherited": [
-              2,
-              3,
-              4,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15
-            ],
             "page_sha256": {
-              "page-01.png": "8a564e6af8ad6b96f446798386f048947903b5ca4a77da0881f1607a6c653c5e",
+              "page-01.png": "cce936f4ea46f321973443f1600d8bff5e3a34c89db511767dff6ed7367dc9b4",
               "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
               "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
               "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-              "page-05.png": "dc3e75a284b6c726f83f518c147efef61ee34cf0765d13baca638d03bb458af7",
-              "page-06.png": "f2fadc1cc3a360203c1edf8688cb3d7140d47844cd40495c5753c997f9f975ef",
+              "page-05.png": "3c39c44dd63954583561caca9c76e1b5056664da715ac292d173df2d5185d08f",
+              "page-06.png": "374be4a6fe7a9eac9ce3f8e533add983d6ec152942c7e5402b63014113ebd5f0",
               "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
               "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
               "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -139,191 +598,53 @@
               "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
             },
             "observations": [
-              "实际查看第1、5、6页；E09-R13的重启前与checkpoint-400恢复段分开显示，表格、图例、中文和代码块可读。",
-              "其余12页的PNG哈希与上一份已核验版本一致。"
-            ],
-            "previous_checked": {
-              "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
-              "pdf_sha256": "137f262bcbbbb1c368a9ec82aac6c04db5505b3bd04ce3b3705a358cd1b10e07",
-              "visual_checked": true,
-              "checked_at": "2026-10-01T22:00:28+08:00",
-              "checked_pages": [
-                1,
-                15
-              ],
-              "unchanged_pages": [
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11,
-                12,
-                13,
-                14
-              ],
-              "page_sha256": {
-                "page-01.png": "89041cafc2d70b7c5e0f6f1b728301f877708dbb18e50e980c3fb81e9396d519",
-                "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
-                "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
-                "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-              },
-              "observations": [
-                "实际查看修改页：1, 15。中文、代码、图表、表格边界和图注均可读。",
-                "其余 13 页与上一份已核验版本的页面图像哈希一致。",
-                "E09-R13 当前仍按系统重启后断点恢复处理，未把未完成训练写成最终结果。"
-              ],
-              "previous_checked": {
-                "word_sha256": "75824a6eda6a0695352e35405dd9a0fce82a8728bce92f26da303cf52245dc59",
-                "visual_checked": false,
-                "updated": "2026-10-01T21:57:38+08:00",
-                "previous_checked": {
-                  "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
-                  "pdf_sha256": "0b62875e252e557d5b3995f2978a68bd9b6698c8e8dcf671917306315676f45a",
-                  "visual_checked": true,
-                  "checked_at": "2026-10-01T21:55:16+08:00",
-                  "checked_pages": [
-                    1,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    15
-                  ],
-                  "unchanged_pages": [
-                    2,
-                    3,
-                    11,
-                    12,
-                    13,
-                    14
-                  ],
-                  "page_sha256": {
-                    "page-01.png": "86baf1cc00fb1d36f229e6b43ec6692f28cfc802a5c8d0d732449bc0c2ffb92c",
-                    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-                    "page-05.png": "a66027b2fa5c70f3fad6eee4e74ad182fb763e8fdf9156ef8eeb40e1ec392d10",
-                    "page-06.png": "735d6a38f20e0a7319df8c198cc988dc22a4a4d5fc083c751e56a0b912b82a3d",
-                    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-                    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-                    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-                    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-                    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                    "page-15.png": "f9c4f52d2e6033be661ea250b5ffa84a0da9e3347fecdb636218d9f6d644da76"
-                  },
-                  "observations": [
-                    "实际查看修改页：1, 4, 5, 6, 7, 8, 9, 10, 15。中文、图例、坐标、表格边界和图注均可读。",
-                    "其余 6 页的页面图像哈希与上一份已核验版本一致，沿用上一轮视觉核验。",
-                    "文档中的 E09-R13 状态仍是重启中断、待断点恢复；没有把未完成训练写成最终结果。"
-                  ],
-                  "previous_checked": {
-                    "word_sha256": "567cf22b5664002fb9318d1fd8a978921db12c0bbc73e3d31f5c5d98b252a687",
-                    "visual_checked": false,
-                    "updated": "2026-10-01T21:52:51+08:00",
-                    "previous_checked": {
-                      "word_sha256": "96bf201d99656ee12733af49b6bda9fdbeafa2b3255aea22803004c623bf7ab1",
-                      "pdf_sha256": "ff82e9e0261a89411cace5d844f128b797c913c0182f14be470b1957f8b3fef4",
-                      "visual_checked": true,
-                      "checked_at": "2026-10-01T18:28:27+08:00",
-                      "checked_pages": [
-                        1,
-                        5
-                      ],
-                      "unchanged_pages": [
-                        2,
-                        3,
-                        4,
-                        6,
-                        7,
-                        8,
-                        9,
-                        10,
-                        11,
-                        12,
-                        13,
-                        14,
-                        15
-                      ],
-                      "page_sha256": {
-                        "page-01.png": "988438397330d7416be30630c5ff74d416a4a8e15a50056b58adb98b6d785568",
-                        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-                        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-                        "page-04.png": "c091ee43002e009b0bab13d6c0d1d9e09bcb2d2046a752cc86e5ae4af24417ad",
-                        "page-05.png": "aace71c2c78a36ff5cde1ee1c697ea2a01187745cf138a2fb5a4b2a38dc7e05d",
-                        "page-06.png": "f6c97803beb7847efb9ae79030d257077aaecf4a4df20d410d060bb38df40faf",
-                        "page-07.png": "6d26b428dc95ccc547d322c0eefd081e42354776eca728ca9437bbfdbb949176",
-                        "page-08.png": "e7aa34d4b538b5dbc1fd23c51f4bcf6af5f51b1fb10935a301bb8178985466e9",
-                        "page-09.png": "f14bb574ae83da80d383f9e188f9e9b766cfa71c1d86537bf25932da87333930",
-                        "page-10.png": "a4eca08d64b6b32197971e96db45ac553c58b26348d0caac83241d4ecba7dea5",
-                        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-                        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-                        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-                        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-                        "page-15.png": "84b7a98a762021b9eb7c79d66a6d23c7d3b9a5ddf7d915facad2aeddb62f975b"
-                      },
-                      "observations": [
-                        "本次仅第1页的生成时间和第5页的E09-R11 step2200表格及loss曲线发生变化；两页已实际查看。",
-                        "其余13页页面图像与上一份已核验版本逐像素一致。",
-                        "标题、中文、表格边界、图例、坐标、图注、页码和证据索引清楚。"
-                      ],
-                      "previous_checked": {
-                        "word_sha256": "0ea2707681a0d404bf8fa82ed8503101d895af87b78b69178780dac097e9c0a3",
-                        "pdf_sha256": "eeab7f17333e965e89c6eb39870e44a02175d3accbf9eb5959fd0c747a922a3a",
-                        "visual_checked": true,
-                        "checked_at": "2026-10-01T18:22:18+08:00",
-                        "checked_pages": [
-                          1,
-                          2,
-                          3,
-                          4,
-                          5,
-                          6,
-                          7,
-                          8,
-                          9,
-                          10,
-                          11,
-                          12,
-                          13,
-                          14,
-                          15
-                        ],
-                        "observations": [
-                          "实际查看本次 Word 导出的全部15页，中文、代码和页码清楚。",
-                          "训练曲线、dev 对照图与正文结论可读；曲线截至 step 2100，与图注和实验记录一致。",
-                          "数据质量图、表格和末尾证据索引均在页面内，未见越界、缺字或空白页。"
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+              "实际查看封面、当前训练进度表和 E09-R13 Loss 曲线页；中文、表格、图例与代码块可读。",
+              "其余页面 PNG 哈希与上一份已核验版本一致。"
+            ]
+          },
+          "checked_at": "2026-10-01T23:06:20+08:00",
+          "checked_pages": [
+            1,
+            5,
+            6
+          ],
+          "unchanged_pages": [
+            2,
+            3,
+            4,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "page_sha256": {
+            "page-01.png": "821a74598e0341d1d8973e1b44bbbb5a0d0734e0dec54b67910d9a3ac175c7eb",
+            "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
+            "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
+            "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
+            "page-05.png": "773ec34fed63e45ead305c95ade7e7482ee9eb9b479f6f136edee98821458a64",
+            "page-06.png": "abb9eb6a023c4715ada71b83168423f1538ddc89abfaccb7f13de43834f1a8a9",
+            "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
+            "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
+            "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
+            "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
+            "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
+            "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
+            "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
+            "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
+            "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
+          },
+          "observations": [
+            "实际查看封面、训练进度表和 E09-R13 Loss 页；当前步数、dev loss、分段曲线、中文和分页正常。",
+            "其余页面与上一份已核验版本的 PNG 哈希一致。"
+          ]
         },
-        "checked_at": "2026-10-01T22:51:21+08:00",
+        "checked_at": "2026-10-01T23:16:08+08:00",
         "checked_pages": [
           1,
           5,
@@ -344,12 +665,12 @@
           15
         ],
         "page_sha256": {
-          "page-01.png": "e53dbf9de06a2221e4ecf467d0a1a5c39579a2c587c93d9b376153f31173fd3f",
+          "page-01.png": "a54f4517851494505ef65737da8d76fd156d5c621d3ecbe4a01998aada3f602c",
           "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
           "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
           "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-          "page-05.png": "84489a44ca1891c3be8e01c406ac125783a8a11908c4b22f2b8d9d6d5c8d1be7",
-          "page-06.png": "901d624ae36b25fc21cda9f090e9a2c0804431f785820cc050d167121db4cad9",
+          "page-05.png": "7b03835d20101cde063c51b6be0451c7f6b53e4e99197802bddfe4391d557dc6",
+          "page-06.png": "3acf164d6143471598418bea9a8b37254d983088917e127a1200d2c212705b4b",
           "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
           "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
           "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
@@ -361,133 +682,10 @@
           "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
         },
         "observations": [
-          "实际查看封面、运行进度表和 E09-R13 Loss 页；中文、表格、代码块和图例可读。",
-          "其余页面图像哈希与上一份已核验版本一致。"
+          "实际查看封面、运行进度表和 E09-R13 Loss 页；step 1100 与 dev loss 0.11937 已呈现，中文、图表和分页正常。",
+          "其余页面与上一份已核验版本的 PNG 哈希一致。"
         ]
-      },
-      "checked_at": "2026-10-01T22:58:36+08:00",
-      "checked_pages": [
-        1,
-        5,
-        6
-      ],
-      "unchanged_pages": [
-        2,
-        3,
-        4,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "page_sha256": {
-        "page-01.png": "cce936f4ea46f321973443f1600d8bff5e3a34c89db511767dff6ed7367dc9b4",
-        "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-        "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-        "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-        "page-05.png": "3c39c44dd63954583561caca9c76e1b5056664da715ac292d173df2d5185d08f",
-        "page-06.png": "374be4a6fe7a9eac9ce3f8e533add983d6ec152942c7e5402b63014113ebd5f0",
-        "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-        "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-        "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-        "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-        "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-        "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-        "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-        "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-        "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-      },
-      "observations": [
-        "实际查看封面、当前训练进度表和 E09-R13 Loss 曲线页；中文、表格、图例与代码块可读。",
-        "其余页面 PNG 哈希与上一份已核验版本一致。"
-      ]
-    },
-    "checked_at": "2026-10-01T23:06:20+08:00",
-    "checked_pages": [
-      1,
-      5,
-      6
-    ],
-    "unchanged_pages": [
-      2,
-      3,
-      4,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
-    ],
-    "page_sha256": {
-      "page-01.png": "821a74598e0341d1d8973e1b44bbbb5a0d0734e0dec54b67910d9a3ac175c7eb",
-      "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-      "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-      "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-      "page-05.png": "773ec34fed63e45ead305c95ade7e7482ee9eb9b479f6f136edee98821458a64",
-      "page-06.png": "abb9eb6a023c4715ada71b83168423f1538ddc89abfaccb7f13de43834f1a8a9",
-      "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-      "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-      "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-      "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-      "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-      "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-      "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-      "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-      "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-    },
-    "observations": [
-      "实际查看封面、训练进度表和 E09-R13 Loss 页；当前步数、dev loss、分段曲线、中文和分页正常。",
-      "其余页面与上一份已核验版本的 PNG 哈希一致。"
-    ]
-  },
-  "checked_at": "2026-10-01T23:16:08+08:00",
-  "checked_pages": [
-    1,
-    5,
-    6
-  ],
-  "unchanged_pages": [
-    2,
-    3,
-    4,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15
-  ],
-  "page_sha256": {
-    "page-01.png": "a54f4517851494505ef65737da8d76fd156d5c621d3ecbe4a01998aada3f602c",
-    "page-02.png": "bda747576cd7fac023b254a3b4803c847afbc3487d2ea68f5d2350c8d14548e1",
-    "page-03.png": "f002443907ef56805bbcdf5460196636546e3b23b475b1e6250a51c8d429d1ae",
-    "page-04.png": "054fd7340cfcf349163f5d660d08a972d8f582d6b44fd6821659e4a3c25f998a",
-    "page-05.png": "7b03835d20101cde063c51b6be0451c7f6b53e4e99197802bddfe4391d557dc6",
-    "page-06.png": "3acf164d6143471598418bea9a8b37254d983088917e127a1200d2c212705b4b",
-    "page-07.png": "59e207d28af87b0e35851ff797d57af0decd5380f77849ef3f1daecbfe57f644",
-    "page-08.png": "58864cb9166bdd711f97934882e23cf08a9009c3e37417ad9360425bdd74ee44",
-    "page-09.png": "248b44a1f93c86873d15714b5faf9bba9877f2ff56e4408f775e585bb460ec06",
-    "page-10.png": "684529baea6405aea6ea5ee99e581b8273a6b8d79d8bcc640dc1cda954043792",
-    "page-11.png": "d3dae05466de04505b9ee25bc06fca955c0dcd9c05976a933650193686d1a297",
-    "page-12.png": "df9dd2116e739eeca665f07b3831d47c5066066fdc427b2b9511109ae14ab84a",
-    "page-13.png": "36bd335ff711d396d009c7f0769b7edb546e45d9faf937d9149012fd77e65592",
-    "page-14.png": "13eaabb6f4d5b2666e54fb74135b21fea7d387f18978f9ab479cd6cbf54bd460",
-    "page-15.png": "fd62b4b7a6707ed0271945e10358461086d43cb0c8334d4082c39d0954e58d95"
-  },
-  "observations": [
-    "实际查看封面、运行进度表和 E09-R13 Loss 页；step 1100 与 dev loss 0.11937 已呈现，中文、图表和分页正常。",
-    "其余页面与上一份已核验版本的 PNG 哈希一致。"
-  ]
+      }
+    }
+  }
 }
