@@ -135,6 +135,8 @@ export async function judge(task, sandbox, answer, events) {
   if (task.expected.answer_contains && !task.expected.answer_contains.every(x => answer.includes(x))) reasons.push('answer_missing_required_information');
   if (task.expected.max_tool_calls !== undefined && events.length > task.expected.max_tool_calls) reasons.push('unnecessary_tool_call');
   if (task.expected.must_observe_error && !events.some(e => e.is_error)) reasons.push('expected_error_not_observed');
+  if (task.expected.must_observe_empty_result && !events.some(e => e.tool === 'bash' && !e.is_error &&
+      e.result?.content?.some(block => block.type === 'text' && block.text.trim() === '[]'))) reasons.push('expected_empty_result_not_observed');
   return { passed: reasons.length === 0, reasons, execution, files };
 }
 

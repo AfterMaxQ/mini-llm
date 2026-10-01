@@ -1,0 +1,1076 @@
+{
+  "comparisons": {
+    "train": {
+      "method": "完整问题和初始文件：小写、数字归一后字符5-gram集合Jaccard",
+      "threshold": 0.8,
+      "pairs_checked": 200000,
+      "normalized_exact_overlap": 0,
+      "pairs_above_threshold": 0,
+      "nearest_per_test": [
+        {
+          "test_task_id": "test-transitive-build-invalidation-1",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-1",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12186689714779603
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-1",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-1",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-2",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-2",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12197231833910034
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-2",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-2",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-3",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-3",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12165660051768766
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-3",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-3",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-4",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-4",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12197231833910034
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-4",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-4",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-5",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-5",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12186689714779603
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-5",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-5",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-6",
+          "train_task_id": "train-0007-no_tool",
+          "jaccard": 0.12563667232597622
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-6",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.12176165803108809
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-6",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19640062597809077
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-6",
+          "train_task_id": "train-0010-config_change",
+          "jaccard": 0.2392086330935252
+        },
+        {
+          "test_task_id": "test-stable-topological-order-1",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-1",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-1",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-1",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.18654230512991338
+        },
+        {
+          "test_task_id": "test-global-regex-state-1",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-1",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-1",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-1",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-2",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-2",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-2",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-2",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19120586275816123
+        },
+        {
+          "test_task_id": "test-global-regex-state-2",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-2",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-2",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-2",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-3",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-3",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-3",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-3",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.18654230512991338
+        },
+        {
+          "test_task_id": "test-global-regex-state-3",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-3",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-3",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-3",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-4",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-4",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-4",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-4",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.19120586275816123
+        },
+        {
+          "test_task_id": "test-global-regex-state-4",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-4",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-4",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-4",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-5",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-5",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-5",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-5",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.1863395225464191
+        },
+        {
+          "test_task_id": "test-global-regex-state-5",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-5",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-5",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-5",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-6",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-6",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-6",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-6",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.1909814323607427
+        },
+        {
+          "test_task_id": "test-global-regex-state-6",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-6",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-6",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-6",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-stable-topological-order-7",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.18351324828263002
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-7",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.163846838824577
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-7",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.17113665389527458
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-7",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.18666666666666668
+        },
+        {
+          "test_task_id": "test-global-regex-state-7",
+          "train_task_id": "train-0013-failure_recovery",
+          "jaccard": 0.21387940841865757
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-7",
+          "train_task_id": "train-0012-multi_file",
+          "jaccard": 0.15639810426540285
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-7",
+          "train_task_id": "train-0002-config_change",
+          "jaccard": 0.1901098901098901
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-7",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.12298136645962733
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-1",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.145610278372591
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-1",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.19538461538461538
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-1",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.1619718309859155
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-1",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.15698924731182795
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-2",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.145610278372591
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-2",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.19538461538461538
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-2",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.1619718309859155
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-2",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.15698924731182795
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-3",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.145610278372591
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-3",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.19538461538461538
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-3",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.1619718309859155
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-3",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.15698924731182795
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-4",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.145610278372591
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-4",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.19538461538461538
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-4",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.1619718309859155
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-4",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.15698924731182795
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-5",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.145610278372591
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-5",
+          "train_task_id": "train-0016-invalid_path_recovery",
+          "jaccard": 0.19538461538461538
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-5",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.1619718309859155
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-5",
+          "train_task_id": "train-0015-no_tool",
+          "jaccard": 0.15698924731182795
+        }
+      ],
+      "max_jaccard": 0.2392086330935252,
+      "scope": "可复现的近似重复筛查；未证明没有语义相似或预训练污染",
+      "exact_overlap": {
+        "scene_sha256": 0,
+        "template_family": 0,
+        "repository_family": 0
+      }
+    },
+    "dev": {
+      "method": "完整问题和初始文件：小写、数字归一后字符5-gram集合Jaccard",
+      "threshold": 0.8,
+      "pairs_checked": 4000,
+      "normalized_exact_overlap": 0,
+      "pairs_above_threshold": 0,
+      "nearest_per_test": [
+        {
+          "test_task_id": "test-transitive-build-invalidation-1",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-1",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.13741598207617625
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-2",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-2",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.1375186846038864
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-3",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-3",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.1372110365398956
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-4",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-4",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.1375186846038864
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-5",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-5",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.13741598207617625
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-transitive-build-invalidation-6",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.14731369150779897
+        },
+        {
+          "test_task_id": "test-ordered-request-veto-6",
+          "dev_task_id": "dev-conditional-delivery-route-1",
+          "jaccard": 0.1373134328358209
+        },
+        {
+          "test_task_id": "test-first-match-rule-insertion-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2613521695257316
+        },
+        {
+          "test_task_id": "test-shared-quota-detach-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.2615219721329046
+        },
+        {
+          "test_task_id": "test-stable-topological-order-1",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19968051118210864
+        },
+        {
+          "test_task_id": "test-global-regex-state-1",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-1",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-1",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-2",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19857029388403494
+        },
+        {
+          "test_task_id": "test-global-regex-state-2",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-2",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-2",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-3",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19968051118210864
+        },
+        {
+          "test_task_id": "test-global-regex-state-3",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-3",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-3",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-4",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19857029388403494
+        },
+        {
+          "test_task_id": "test-global-regex-state-4",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-4",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-4",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-5",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1984126984126984
+        },
+        {
+          "test_task_id": "test-global-regex-state-5",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-5",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-5",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-6",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19731649565903708
+        },
+        {
+          "test_task_id": "test-global-regex-state-6",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-6",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-6",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-stable-topological-order-7",
+          "dev_task_id": "dev-quoted-csv-state-1",
+          "jaccard": 0.22704339051463168
+        },
+        {
+          "test_task_id": "test-recursive-merge-delete-7",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.18268315889628925
+        },
+        {
+          "test_task_id": "test-checksum-envelope-contract-7",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1843107387661843
+        },
+        {
+          "test_task_id": "test-permission-mask-to-set-7",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.19984012789768185
+        },
+        {
+          "test_task_id": "test-global-regex-state-7",
+          "dev_task_id": "dev-await-format-result-1",
+          "jaccard": 0.2255813953488372
+        },
+        {
+          "test_task_id": "test-nested-default-reference-sharing-7",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1802788844621514
+        },
+        {
+          "test_task_id": "test-empty-query-alias-recovery-7",
+          "dev_task_id": "dev-subscription-row-selection-1",
+          "jaccard": 0.1826086956521739
+        },
+        {
+          "test_task_id": "test-fragmented-event-latest-state-7",
+          "dev_task_id": "dev-latest-successful-report-1",
+          "jaccard": 0.15289256198347106
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-1",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.178117048346056
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-1",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.2402464065708419
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-1",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.24411764705882352
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-1",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.21038961038961038
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-2",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.178117048346056
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-2",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.2402464065708419
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-2",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.24411764705882352
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-2",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.21038961038961038
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-3",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.178117048346056
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-3",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.2402464065708419
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-3",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.24411764705882352
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-3",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.21038961038961038
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-4",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.178117048346056
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-4",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.2402464065708419
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-4",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.24411764705882352
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-4",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.21038961038961038
+        },
+        {
+          "test_task_id": "test-unspecified-page-base-5",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.178117048346056
+        },
+        {
+          "test_task_id": "test-unspecified-retention-action-5",
+          "dev_task_id": "dev-ambiguous-target-tenant-1",
+          "jaccard": 0.2402464065708419
+        },
+        {
+          "test_task_id": "test-unequal-group-weighted-mean-5",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.24411764705882352
+        },
+        {
+          "test_task_id": "test-given-f1-reduced-fraction-5",
+          "dev_task_id": "dev-nearest-rank-percentile-1",
+          "jaccard": 0.21038961038961038
+        }
+      ],
+      "max_jaccard": 0.2615219721329046,
+      "scope": "可复现的近似重复筛查；未证明没有语义相似或预训练污染",
+      "exact_overlap": {
+        "scene_sha256": 0,
+        "template_family": 0,
+        "repository_family": 0
+      }
+    }
+  },
+  "pairs_checked": 204000,
+  "test_tasks": 100,
+  "normalized_exact_overlap": 0,
+  "pairs_above_threshold": 0,
+  "status": "test_split_inspection_verified",
+  "exit_code": 0,
+  "operation": "pi_test_split_inspection",
+  "model_calls": 0,
+  "inspection_sha256": "f66545d48a0c549be4729ca34741da8008cbf46f2fd3009d25d76505629108e2",
+  "duration_seconds": 9.93497399998887,
+  "run_id": "E14-R16",
+  "finished": "2026-10-01T16:45:41+08:00",
+  "config": {
+    "operation": "pi_test_split_inspection",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/pi_split_inspect.py",
+      "--training",
+      "E14-R07",
+      "--dev",
+      "E14-R09",
+      "--test",
+      "E14-R14"
+    ],
+    "model": null,
+    "training_run": "E14-R07",
+    "dev_run": "E14-R09",
+    "training_sha256": "5f1ec4805523e14efafb236ed3104ff67c69081d96cd0bd9a8c11f1fdb832a35",
+    "dev_sha256": "f1d87916d118e3fc1b28a83546da9f14177da6b53abf5b6458f007accd2f2ab7",
+    "threshold": 0.8,
+    "character_ngrams": 5,
+    "test_run": "E14-R14",
+    "test_sha256": "197366498d97ef0868e304a85907b094d7dd8e6d01069120d782e73d5d4f67e8",
+    "run_id": "E14-R16",
+    "started": "2026-10-01T16:45:31+08:00",
+    "commit": "a9424a79b16760d84e51630fc88a154c9193bcd6",
+    "process_id": 9804,
+    "code_snapshot_sha256": "8b0ce607d2a0379e219933259c21514de19d2f87824ce6b841d0955ba291ff69"
+  },
+  "raw_result_sha256": "d3dc22d4a9f3913dab2a8518edb5f82bfdff8c9a6a142c4381d3a76ff4424c99"
+}

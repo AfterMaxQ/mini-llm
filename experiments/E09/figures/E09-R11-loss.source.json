@@ -2,10 +2,10 @@
   "run_id": "E09-R11",
   "plot_version": 2,
   "source_file": "E09-R11-metrics.csv",
-  "source_sha256": "414f11fbbf5ba5c17a4e3b8c7ac03e99df3e310ddae4e3cb543de880d04e6b62",
-  "raw_metrics_prefix_sha256": "209283cc0def22c0d3185286cd8dcd4d4f043bfeeca0c73b9fa3c6b39238ccd1",
-  "image_sha256": "f67d4360ddae9dc33bb230d4e4157c2f34eb6b91e8b01d8d4f4c7c673698721f",
-  "train_points": 300,
-  "validation_points": 4,
+  "source_sha256": "2c4414ddb0cca065e051bb9302986c14b2d0db2be7fa0ec165eb7b299a9b87f2",
+  "raw_metrics_prefix_sha256": "478e835d210ed48462e78b6e162312fc6f31957c71d68d591a6d10a5ece3128b",
+  "image_sha256": "49a24e0ad86888ea68ec270713d4979d62aafbd98fde7766b24043c2e14b78da",
+  "train_points": 1200,
+  "validation_points": 12,
   "smoothing": null
 }

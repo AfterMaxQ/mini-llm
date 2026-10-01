@@ -1,0 +1,10 @@
+{
+  "source_file": "test-lengths.csv",
+  "source_sha256": "a12b3be10569757228faca160983cb9328f690bd91b74b1c351dd92c1a8abd1e",
+  "image_sha256": "44fc6ff7dd89179314a60412403278b76f18b35b818b9ec60fa462761c7aedb4",
+  "run_id": "E14-R15",
+  "reference_run": "E14-R14",
+  "task_count": 100,
+  "reply_points": 497,
+  "scope": "100个test场景的已执行参考历史长度；不生成训练标签，不代表模型轨迹长度"
+}

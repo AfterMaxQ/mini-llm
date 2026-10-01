@@ -158,6 +158,25 @@ def update_summary(completed):
     if lengths:
         r=lengths[-1]
         evidence=put_evidence(evidence,'Pi dev参考历史长度',f"scripts/pi_dev_lengths.py；experiments/E14/runs/{r['run_id']}.json；experiments/E14/dev-lengths.csv")
+    tests=[r for r in pi_runs if r.get('status')=='test_reference_verified']
+    failed_tests=[r for r in pi_runs if r.get('operation')=='pi_test_probe' and r['status']=='failed']
+    if failed_tests:
+        r=failed_tests[-1]
+        evidence=put_evidence(evidence,'Pi test生成失败记录',f"experiments/E14/runs/{r['run_id']}.json")
+    if tests:
+        r=tests[-1]
+        pi_intro+='最终100个test场景已冻结，16个新任务族按预定类别配额分配。题目、参考与错误判据已实际执行，模型没有接触test；后续选择配置仍只用dev。\n\n'
+        evidence=put_evidence(evidence,'Pi test任务与判据核验',f"configs/pi-test-tasks.json；scripts/pi_tasks_test.mjs；scripts/pi_eval_tasks.mjs；experiments/E14/runs/{r['run_id']}.json")
+        if (ROOT/'experiments/E14/test-audit.json').exists():
+            evidence=put_evidence(evidence,'Pi test逐条结果与归档复核','experiments/E14/test-reference.csv；experiments/E14/test-audit.json')
+    test_lengths=[r for r in pi_runs if r.get('status')=='test_lengths_verified']
+    if test_lengths:
+        r=test_lengths[-1]
+        evidence=put_evidence(evidence,'Pi test参考历史长度',f"scripts/pi_eval_lengths.py；experiments/E14/runs/{r['run_id']}.json；experiments/E14/test-lengths.csv")
+    test_inspections=[r for r in pi_runs if r.get('status')=='test_split_inspection_verified']
+    if test_inspections:
+        r=test_inspections[-1]
+        evidence=put_evidence(evidence,'Pi test与train/dev划分筛查',f"scripts/pi_split_inspect.py；experiments/E14/runs/{r['run_id']}.json")
     inspection=[r for r in pi_runs if r.get('status')=='split_inspection_verified']
     if inspection:
         r=inspection[-1]

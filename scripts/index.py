@@ -36,6 +36,9 @@ def main():
             translated['dev_reference_verified']='40个dev场景与错误判据已执行，模型迁移待评测'
             translated['dev_lengths_verified']='40个dev参考历史长度已核验，模型迁移待评测'
             translated['split_inspection_verified']='train/dev近似重复已筛查，领域训练与模型迁移待执行'
+            translated['test_reference_verified']='100个test场景参考与判据已核验，模型评测待执行'
+            translated['test_lengths_verified']='100个test参考历史长度已核验，模型评测待执行'
+            translated['test_split_inspection_verified']='train/dev/test划分筛查完成，模型迁移与最终评测待执行'
             if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
                 translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
@@ -55,8 +58,8 @@ def main():
                 state += f"，{data['current_prompt']} 已记录 {data['summary']['decision_turns']} 个决策轮"
             elif config.get('operation')=='pi_reference_batch' and 'completed' in data:
                 state += f"，参考过程 {data['completed']}/{data['target']}，有效 {data['valid']} 条"
-            elif config.get('operation')=='pi_dev_probe' and 'completed' in data:
-                state += f"，dev参考 {data['completed']}/{data['target']}"
+            elif config.get('operation') in ['pi_dev_probe','pi_test_probe'] and 'completed' in data:
+                state += f"，{config['split']}参考 {data['completed']}/{data['target']}"
             elif (current / 'validation-progress.json').exists():
                 validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
                 state += f"，第 {validation['step']} 步完整 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
@@ -68,6 +71,8 @@ def main():
                 state += '；1000条规则参考格式已核验'
             if any(r.get('status')=='dev_reference_verified' for r in actual):
                 state += '；40个dev场景已冻结，模型成绩待测'
+            if any(r.get('status')=='test_reference_verified' for r in actual):
+                state += '；100个test场景已冻结，模型成绩待测'
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",

@@ -10,6 +10,7 @@ from matplotlib.patches import Patch
 from matplotlib.ticker import MaxNLocator
 from lab import ROOT, sha256, write_json
 from notes_pi_dev import dev_note
+from notes_pi_test import test_note
 
 
 LABELS = {'read_locate': '读取定位', 'config_change': '配置修改', 'function_fix': '函数修复',
@@ -237,7 +238,7 @@ def main():
 
 怎样才算任务做成了？这次先把判据跑了一遍。八类训练任务原型的参考操作全部通过；同一批任务的初始错误候选和刻意构造的错误候选，各有 8 个被拒绝。检查依据是最终文件、实际运行结果和必要的回复内容，模型说一句“已完成”不能代替这些结果。
 
-这轮是 {result['run_id']}，从创建任务容器到完成核验用了 {result['duration_seconds']:.1f} 秒，不含写任务和整理文档的时间。参考过程共调用工具 {result['reference_tool_calls']} 次，包含 {result['reference_error_returns']} 次预期错误；另外有 {result['diagnostic_tool_calls']} 次调用用于构造错误候选。模型调用数仍为 0，八个原型只属于训练区，正式的 1,000 条轨迹和独立 dev、test 还没有完成。
+这轮是 {result['run_id']}，从创建任务容器到完成核验用了 {result['duration_seconds']:.1f} 秒，不含写任务和整理文档的时间。参考过程共调用工具 {result['reference_tool_calls']} 次，包含 {result['reference_error_returns']} 次预期错误；另外有 {result['diagnostic_tool_calls']} 次调用用于构造错误候选。模型调用数为 0，八个原型只属于训练区。下面继续按规模扩展、训练格式、dev和test分别记录后续结果。
 
 ## 为什么不直接从“把一个函数改对”开始算成绩？
 
@@ -299,7 +300,7 @@ value.trim().replace(/\\s+/g, '-').toLowerCase();
 
 复习时可以先看两个问题。为什么命令输出正确还可能失败？因为检查文件或不该动的配置也可能被改过，输出只是成功条件的一部分。为什么参考操作 8/8 不能写成 Agent 成功率 100%？因为步骤由规则预先给定，还没有让模型自己选择工具、读取错误并决定下一步。
 """
-    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder)+generation_note(folder)+dev_note(folder,LABELS), encoding='utf-8')
+    (folder / 'notes.md').write_text(note+encoding_note(folder,result['run_id'])+extension_note(folder)+generation_note(folder)+dev_note(folder,LABELS)+test_note(folder,LABELS), encoding='utf-8')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,32 @@
+{
+  "source_run": "E14-R14",
+  "checked_at": "2026-10-01T16:45:30+08:00",
+  "task_count": 100,
+  "template_families": 16,
+  "categories": {
+    "read_locate": 12,
+    "config_change": 12,
+    "function_fix": 14,
+    "multi_file": 14,
+    "failure_recovery": 14,
+    "invalid_path_recovery": 14,
+    "missing_information": 10,
+    "no_tool": 10
+  },
+  "reference_passed": 100,
+  "initial_rejected": 100,
+  "negative_rejected": 100,
+  "reference_tool_calls": 397,
+  "reference_error_returns": 21,
+  "empty_query_scenes": 7,
+  "diagnostic_tool_calls": 88,
+  "removed_containers": 200,
+  "remaining_owned_containers": 0,
+  "records_sha256": "47e0e5fbb8cfadbb1806c786aaf34f77b8bda6b7fa729e53b7dc0e6335844cb6",
+  "tasks_sha256": "197366498d97ef0868e304a85907b094d7dd8e6d01069120d782e73d5d4f67e8",
+  "frozen_data_sha256": "197366498d97ef0868e304a85907b094d7dd8e6d01069120d782e73d5d4f67e8",
+  "compact_csv_sha256": "966c82b0d53e277df64986e1de380fe1f1bb2b35a2d4c4e26d06d5c04cb7174b",
+  "data_archive_sha256": "a81c2183fce0f9d14bc323c6ad159c6a13e3182edf78fab17f93ccb989213222",
+  "model_calls": 0,
+  "scope": "实际规则参考、文件字节和明确错误候选复核；场景共享任务族，不代表模型成绩"
+}

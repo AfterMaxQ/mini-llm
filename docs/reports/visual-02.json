@@ -1,8 +1,8 @@
 {
-  "word_sha256": "b528a8333d747fd644a3ec29861f0517a9a8e7f0c68d117b434d26e843b1e3c6",
-  "pdf_sha256": "c9c9cc4cd15cf66a82f40c03e274835d9981137899fc45dd0d26fe69ca89cc0f",
+  "word_sha256": "ce04ebfb47c0afcf9b8cadfe406c8719ee4ee89e7c4bf38a1f693a199ef8e3e2",
+  "pdf_sha256": "986e6327912869191a1b22e5d001763f396219fb24e241ec27ff8b2b8807e0f4",
   "visual_checked": true,
-  "checked_at": "2026-10-01T16:04:28+08:00",
+  "checked_at": "2026-10-01T16:50:34+08:00",
   "checked_pages": [
     1,
     2,
@@ -25,14 +25,16 @@
     "图例、坐标与图注清楚，表格未越界，无空白页",
     "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
     "代码和内嵌图片另与同版 Markdown、源图核对",
-    "拆册后查看全部页面；概述在册首，证据索引在实验正文之后"
+    "实际查看全部修改页；其余页在120dpi逐像素与已核验上一版一致；概述在册首，证据索引在实验正文之后"
   ],
   "newly_viewed_pages": [
     1,
+    5
+  ],
+  "identical_pages_inherited": [
     2,
     3,
     4,
-    5,
     6,
     7,
     8,
@@ -43,5 +45,6 @@
     13,
     14,
     15
-  ]
+  ],
+  "previous_pdf_sha256": "c9c9cc4cd15cf66a82f40c03e274835d9981137899fc45dd0d26fe69ca89cc0f"
 }
