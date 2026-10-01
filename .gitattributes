@@ -1,0 +1,4 @@
+# 指标和配置保留原始字节，避免自动换行转换改变来源哈希。
+*.json -text
+*.jsonl -text
+*.csv -text

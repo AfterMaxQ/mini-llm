@@ -1,0 +1,81 @@
+{
+  "zero_shot": {
+    "trajectories": 500,
+    "evaluated_trajectories": 500,
+    "trajectory_passed": 268,
+    "decision_turns": 928,
+    "turn_passed": 670,
+    "call_turns": 568,
+    "call_turn_passed": 315,
+    "no_call_turns": 360,
+    "no_call_turn_passed": 355,
+    "name_exact_turns": 350,
+    "truncated": 0,
+    "errors": {
+      "no_tool_call": 213,
+      "incomplete_tool_call": 1,
+      "ValueError:unknown_tool": 1,
+      "ValidationError:'topic' is a required property": 1
+    },
+    "categories": {
+      "multi_turn": {
+        "samples": 147,
+        "passed": 48
+      },
+      "no_call": {
+        "samples": 86,
+        "passed": 86
+      },
+      "parallel": {
+        "samples": 10,
+        "passed": 4
+      },
+      "single_call": {
+        "samples": 257,
+        "passed": 130
+      }
+    },
+    "rows_sha256": "1b31fb037b9266a2f3016d66ed198010538b4c5b07f30a1c378d2b67034ee914"
+  },
+  "few_shot": {
+    "trajectories": 500,
+    "evaluated_trajectories": 500,
+    "trajectory_passed": 355,
+    "decision_turns": 928,
+    "turn_passed": 755,
+    "call_turns": 568,
+    "call_turn_passed": 456,
+    "no_call_turns": 360,
+    "no_call_turn_passed": 299,
+    "name_exact_turns": 542,
+    "truncated": 0,
+    "errors": {
+      "JSONDecodeError:Expecting ',' delimiter: line 1 column 158 (char 157)": 1,
+      "no_tool_call": 13,
+      "JSONDecodeError:Expecting ',' delimiter: line 1 column 146 (char 145)": 2,
+      "JSONDecodeError:Expecting ',' delimiter: line 1 column 160 (char 159)": 1,
+      "ValueError:unknown_tool": 3,
+      "incomplete_tool_call": 3,
+      "JSONDecodeError:Expecting ',' delimiter: line 1 column 151 (char 150)": 1
+    },
+    "categories": {
+      "multi_turn": {
+        "samples": 147,
+        "passed": 105
+      },
+      "no_call": {
+        "samples": 86,
+        "passed": 86
+      },
+      "parallel": {
+        "samples": 10,
+        "passed": 3
+      },
+      "single_call": {
+        "samples": 257,
+        "passed": 161
+      }
+    },
+    "rows_sha256": "d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f"
+  }
+}

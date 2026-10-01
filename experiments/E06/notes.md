@@ -12,6 +12,20 @@
 
 QLoRA 使用 NF4 权重和 BF16 计算，rank=16、alpha=32、dropout=0.05。学习率为 1e-4，每条样本单独前向，累计 8 次梯度后更新一次。每 25 次更新检查全部 32 条轨迹，最多更新 300 次。调用的工具名、参数与标注严格一致才算通过，截断或无法解析都计为失败。
 
+参数更新的核心是这一段。inputs 是一个完整的当前回复单元，micro_batches 提供本次更新的 8 个单元。
+
+```python
+optimizer.zero_grad(set_to_none=True)
+for inputs in micro_batches:
+    with torch.autocast("cuda", dtype=torch.bfloat16):
+        loss = model(**inputs).loss
+    (loss / 8).backward()
+torch.nn.utils.clip_grad_norm_(trainable, 1.0)
+optimizer.step()
+```
+
+除以 8 对应这轮固定的梯度累积数；8 次反向才执行一次 optimizer.step，所以图上一个点是一次参数更新。
+
 本轮运行编号为 E06-R02。
 
 32 条独立轨迹展开成 88 个当前回复单元。每次前向使用一个单元，历史消息保留为输入，只有当前 assistant 回复参与 loss；轨迹数量没有增加到 88 条。
@@ -39,5 +53,3 @@ R01 在确认差异后停止，训练日志、两次完整调用检查和 checkp
 | 25 | 27/32 |
 | 50 | 28/32 |
 | 75 | 31/32 |
-
-每次检查后同时保存适配器、优化器、步数与随机状态。下一轮会实际加载并续训，检查保存的文件是否足以恢复同一次实验。

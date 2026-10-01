@@ -1,0 +1,12 @@
+{
+  "experiment": "E09",
+  "training_config": "configs/sft.json",
+  "jobs": [
+    {"size": 1000, "seed": 17},
+    {"size": 5000, "seed": 17},
+    {"size": 10000, "seed": 17},
+    {"size": 10000, "seed": 42},
+    {"size": 10000, "seed": 2026}
+  ],
+  "purpose": "单seed的规模探索，随后对10k主条件完成三次训练；每轮完整dev工具评测"
+}

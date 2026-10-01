@@ -1,0 +1,21 @@
+{
+  "word_sha256": "b7533c0ae54b5c5b5db28d3c617097421d3feccb75e8cfce04be923b1f62fd06",
+  "pdf_sha256": "88eb0c1c4897fc0ed0f278ee992a1e9e802961cea9e34410339ccce0c74c34a1",
+  "visual_checked": true,
+  "checked_at": "2026-10-01T09:03:42+08:00",
+  "checked_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "observations": [
+    "实际查看 Word 导出的页面，代码缩进和中文可读",
+    "图例、坐标与图注清楚，表格未越界，无空白页",
+    "问题旁保留实际结论；文件位置放在阶段总结后的证据索引",
+    "代码和内嵌图片另与同版 Markdown、源图核对"
+  ]
+}

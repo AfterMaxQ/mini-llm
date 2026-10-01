@@ -1,0 +1,2 @@
+time,step,loss,eval_loss,grad_norm,learning_rate,epoch,num_tokens,supervised_tokens,step_seconds,peak_allocated_mib,peak_reserved_mib,allocated_mib,reserved_mib,device_free_mib,reserved_before_step_mib,reserved_after_release_mib
+2026-10-01T08:00:54+08:00,0,,2.182032789649203,,,,,0,,5348.35205078125,,,,,,

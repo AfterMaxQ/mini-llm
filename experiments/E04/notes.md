@@ -6,6 +6,19 @@
 
 语言模型在第 t 个位置的输出预测第 t+1 个 token。因此，计算交叉熵时把 logits 去掉最后一个位置，把 labels 去掉第一个位置，再按 -100 忽略不监督的标签。这里用同一份 logits 和标签重新计算了一遍，检查框架和手算是否对得上。
 
+实际手算用的是下面这段。output 来自模型对同一批 inputs 的前向，没有再生成一份不同的预测。
+
+```python
+import torch.nn.functional as F
+
+logits = output.logits[:, :-1].float()
+labels = inputs["labels"][:, 1:]
+manual = F.cross_entropy(
+    logits.reshape(-1, logits.shape[-1]),
+    labels.reshape(-1), ignore_index=-100,
+)
+```
+
 | loss 口径 | 监督 token 数 | 框架返回 | 手工计算 |
 | --- | --- | --- | --- |
 | assistant-only | 139 | 1.762018 | 1.762018 |

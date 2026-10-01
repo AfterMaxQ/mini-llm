@@ -1,0 +1,7 @@
+{
+  "run_id": "E08-R01",
+  "source_sha256": "70fbebe83590298126fc989eaa1787f0aeed92d43e8c4042147d2df845bd2870",
+  "image_sha256": "92a73ed9e790eb6053f8df0c222261e100ec3e8fab1b2a8ac7d0bac605340895",
+  "independent_trajectories": 500,
+  "inference": "greedy, batch=4"
+}

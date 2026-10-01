@@ -22,10 +22,10 @@ def load_model(adapter=False, config=None):
     return model
 
 
-def batch(records, pad_id):
+def batch(records, pad_id, device="cuda"):
     length = max(len(r["input_ids"]) for r in records)
     padded = {}
     for field, value in [("input_ids", pad_id), ("attention_mask", 0), ("labels", -100)]:
         padded[field] = torch.tensor([r[field] + [value] * (length - len(r[field])) for r in records],
-                                     device="cuda", dtype=torch.long)
+                                     device=device, dtype=torch.long)
     return padded

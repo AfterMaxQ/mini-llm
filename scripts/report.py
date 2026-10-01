@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 from docx import Document
+from docx.enum.style import WD_STYLE_TYPE
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
@@ -42,6 +43,14 @@ def styles(document, title):
             style.paragraph_format.space_before = Pt(8)
             style.paragraph_format.line_spacing = 1.1
     section.header.paragraphs[0].text = title
+    code = document.styles.add_style("Code Block", WD_STYLE_TYPE.PARAGRAPH)
+    code.font.name = "Consolas"
+    code.element.get_or_add_rPr().rFonts.set(qn("w:eastAsia"), "微软雅黑")
+    code.font.size = Pt(9)
+    code.paragraph_format.line_spacing = 1.05
+    code.paragraph_format.space_before = code.paragraph_format.space_after = Pt(6)
+    code.paragraph_format.left_indent = code.paragraph_format.right_indent = Cm(0.2)
+    code.paragraph_format.keep_together = True
     footer = section.footer.paragraphs[0]
     footer.alignment = 2
     field = OxmlElement("w:fldSimple")
@@ -55,6 +64,17 @@ def add_markdown(document, path):
     while index < len(lines):
         line = lines[index].strip()
         if not line:
+            index += 1
+            continue
+        if line.startswith("```"):
+            block = []
+            index += 1
+            while index < len(lines) and not lines[index].strip().startswith("```"):
+                block.append(lines[index]); index += 1
+            paragraph = document.add_paragraph(style="Code Block")
+            paragraph.add_run("\n".join(block))
+            shade = OxmlElement("w:shd"); shade.set(qn("w:fill"), "F3F4F6")
+            paragraph._p.get_or_add_pPr().append(shade)
             index += 1
             continue
         if line.startswith("|"):
@@ -134,6 +154,10 @@ def render(path, directory):
             image = directory / f"page-{index + 1:02d}.png"
             page.get_pixmap(dpi=120).save(image)
             pages.append({"page": index + 1, "png": str(image), "text_characters": len(page.get_text())})
+    # 分册缩短后，移除这次 PDF 已不存在的旧页面图片。
+    for old in directory.glob('page-*.png'):
+        if int(old.stem.split('-')[-1]) > len(pages):
+            old.unlink()
     write_json(directory / "render.json", {"word_sha256": sha256(path), "rendered": now(),
                                            "pdf_sha256": sha256(pdf), "visual_checked": False, "pages": pages})
     print(json.dumps({"word": str(path), "pdf": str(pdf), "pages": pages}, ensure_ascii=False), flush=True)
@@ -180,6 +204,14 @@ def main():
     for old in sorted(snapshots.glob("*.docx"), key=lambda p: p.stat().st_mtime, reverse=True)[5:]:
         old.unlink()
     print(f"Word 已保存：{path}", flush=True)
+    if path.parent==directory:
+        receipt=directory/f'visual-{args.volume}.json'
+        previous=json.loads(receipt.read_text(encoding='utf-8')) if receipt.exists() else {}
+        current_hash=sha256(path)
+        if previous.get('word_sha256')!=current_hash:
+            checked=previous if previous.get('visual_checked') else previous.get('previous_checked',{})
+            write_json(receipt,{'word_sha256':current_hash,'visual_checked':False,
+                               'updated':now(),'previous_checked':checked})
     from index import main as update_index
     update_index()
     if args.render:

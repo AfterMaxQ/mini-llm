@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "trainable_before": 17432576,
+  "trainable_after": 0,
+  "loss_requires_grad": false,
+  "grad_enabled": true,
+  "root_cause": "TRL重复调用k-bit准备，冻结已添加的LoRA；peft_config为None，没有重建适配器",
+  "run_id": "E09-R02",
+  "finished": "2026-10-01T08:03:25+08:00",
+  "config": {
+    "kind": "compatibility_probe",
+    "purpose": "复现已准备LoRA被TRL再次冻结",
+    "library": "TRL 0.22.2, PEFT 0.17.1",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "work\\diagnose_sft_freezing.py"
+    ],
+    "run_id": "E09-R02",
+    "started": "2026-10-01T08:03:22+08:00",
+    "commit": "9059dc4dc1e7b970ee8128dc7243870478080d43",
+    "process_id": 45796,
+    "code_snapshot_sha256": "478c049b63787f4adab8b811742967c38ef117d741c5e8f5e14315d3f7cfb9f8"
+  },
+  "raw_result_sha256": "50a7cd2892eaba123ea51c2eea2569274d9f137a5312bc696eeb7f81ffd5227b"
+}

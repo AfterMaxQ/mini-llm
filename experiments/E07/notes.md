@@ -8,6 +8,18 @@
 
 E06 的保存内容包括适配器、tokenizer、优化器、更新步数、当前数据顺序与位置，以及 Python、CPU 和 CUDA 的随机状态。本轮读取这些真实文件，不靠重新设一个 seed 来代替完整恢复。
 
+拿到保存的 state 后，恢复优化器和随机状态的核心是：
+
+```python
+optimizer.load_state_dict(state["optimizer"])
+rng.setstate(state["python_rng"])
+torch.set_rng_state(state["torch_rng"])
+torch.cuda.set_rng_state_all(state["cuda_rng"])
+order, cursor = list(state["order"]), state["cursor"]
+```
+
+order 和 cursor 记录下一次该用哪个训练单元；只有恢复 seed，而没有恢复这两个值，下一步就可能用到不同的数据。
+
 ## 先比较输出，再重放一次更新
 
 加载后先用保存前的首条任务生成回复，逐字比较结果。随后恢复全部训练状态，继续 8 个当前回复单元，完成第 76 次参数更新。记录用过的单元序号、loss 和更新后的权重，再重新加载原断点，重放同一步。

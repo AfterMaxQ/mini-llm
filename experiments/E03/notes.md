@@ -8,6 +8,20 @@
 
 官方模板没有直接给出所需的 assistant 监督区间。本轮只在 assistant 分支加了 generation 标记，没有更换工具格式或改写提示。每条样本都同时渲染原模板和加标记模板，核对全文、token 序列和非思考推理前缀。
 
+生成标签的核心逻辑如下。这里的 action 已保留当前回复之前的全部历史；marked 是只加了监督标记的官方模板。
+
+```python
+encoded = tokenizer.apply_chat_template(
+    action["messages"], tools=action["tools"],
+    chat_template=marked, tokenize=True,
+    return_dict=True, return_assistant_tokens_mask=True,
+    enable_thinking=False,
+)
+mask = encoded["assistant_masks"]
+```
+
+多轮单元还会把早于当前 assistant 的 mask 清零。随后按 mask 生成 labels：保留目标 token，其余写成 -100。这一步没有删掉历史输入。
+
 ![图 E03-1：E03-R02，真实 token 局部窗口；灰色为系统，蓝色为用户或工具返回，绿色为 assistant。](figures/assistant-mask.png)
 
 绿色位置的 mask 为 1，参与 loss；其余位置为 0，对应标签 -100。这里监督的是完整 assistant 消息，包含角色前缀和结束标记，不只是调用 JSON。原始逐 token 对照还能查看 token id、文本片段和标签。

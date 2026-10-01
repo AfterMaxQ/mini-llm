@@ -18,14 +18,18 @@ def main():
         state = "待执行"
         if runs:
             data = json.loads(runs[-1].read_text(encoding="utf-8"))
-            translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据"}
+            translated = {"completed": "已执行", "failed": "失败，证据保留", "criterion_not_met": "未达到门槛", "awaiting_sample_review": "等待样本复查", "stopped_for_template_mismatch": "模板差异，已停止并保留证据", "interrupted_for_memory_pressure": "显存压力，停止并保留证据", "trained_pending_tool_eval": "训练完成，待工具评测"}
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
-        if number == 6:
-            progress = sorted((ROOT / ".local/runs").glob("E06-R*/progress.json"))
-            if progress:
-                data = json.loads(progress[-1].read_text(encoding="utf-8"))
-                if not (progress[-1].parent / "result.json").exists():
-                    state = f"{progress[-1].parent.name}：进行中，更新 {data['latest']['step']} 次；最近检查 {data['latest_eval']['passed']}/32"
+        progress = sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/progress.json"))
+        if progress and not (progress[-1].parent / "result.json").exists():
+            data = json.loads(progress[-1].read_text(encoding="utf-8"))
+            state = f"{progress[-1].parent.name}：进行中"
+            if number == 6:
+                state += f"，更新 {data['latest']['step']} 次；最近检查 {data['latest_eval']['passed']}/32"
+            elif "latest" in data:
+                state += f"，更新 {data['latest']['step']} 次"
+            elif "summary" in data:
+                state += f"，{data['current_prompt']} 已记录 {data['summary']['decision_turns']} 个决策轮"
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",

@@ -28,11 +28,11 @@ def digest(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--kind", choices=["student", "data", "glaive"], required=True)
+    parser.add_argument("--kind", choices=["student", "teacher", "teacher_fallback", "data", "glaive"], required=True)
     args = parser.parse_args()
-    if args.kind == "student":
-        source = json.loads((ROOT / "configs/models.json").read_text(encoding="utf-8"))["student"]
-        target = ROOT / ".local/models/Qwen3-1.7B"
+    if args.kind in ["student", "teacher", "teacher_fallback"]:
+        source = json.loads((ROOT / "configs/models.json").read_text(encoding="utf-8"))[args.kind]
+        target = ROOT / ".local/models" / source["repo"].split("/")[-1]
         repo_type = "model"
         patterns = ["*.json", "*.safetensors", "*.jinja", "*.txt", "README.md", "LICENSE*"]
     elif args.kind == "data":

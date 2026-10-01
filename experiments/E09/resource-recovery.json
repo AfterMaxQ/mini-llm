@@ -1,0 +1,61 @@
+{
+  "checked": "2026-10-01T08:47:23+08:00",
+  "source_runs": [
+    "E09-R03",
+    "E09-R04"
+  ],
+  "original_metrics_sha256": "b8b37db57d07c24b8249d3a42a3f095386773bc5108b9e4b9cd7e6332ef976d0",
+  "comparison_steps": [
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "same_logged_loss_first_updates": 22,
+  "loss_logged_decimals": 4,
+  "same_supervised_token_count": true,
+  "old_median_seconds": 54.109846400002425,
+  "new_median_seconds": 2.905196200001228,
+  "old_gpu_pressure_csv_sha256": "bdf42ecb2f51e0b05e93a5db9e836d198f90d6bb060cfe6beccd7cae9c95d33d",
+  "gpu_used_before_stop_mib": 11818,
+  "gpu_used_after_stop_mib": 1026,
+  "pairs": [
+    {
+      "step": 18,
+      "old_seconds": 57.53739489999862,
+      "new_seconds": 2.9129070000053616,
+      "loss": 0.2102,
+      "new_peak_reserved_mib": 5614.0
+    },
+    {
+      "step": 19,
+      "old_seconds": 54.109846400002425,
+      "new_seconds": 2.8290526999990107,
+      "loss": 0.4712,
+      "new_peak_reserved_mib": 7048.0
+    },
+    {
+      "step": 20,
+      "old_seconds": 50.0833502999958,
+      "new_seconds": 2.905196200001228,
+      "loss": 0.2719,
+      "new_peak_reserved_mib": 5938.0
+    },
+    {
+      "step": 21,
+      "old_seconds": 59.73393500000384,
+      "new_seconds": 2.8263344000006327,
+      "loss": 0.3141,
+      "new_peak_reserved_mib": 6776.0
+    },
+    {
+      "step": 22,
+      "old_seconds": 53.74936829999933,
+      "new_seconds": 2.944846000005782,
+      "loss": 0.2463,
+      "new_peak_reserved_mib": 5928.0
+    }
+  ],
+  "scope": "相同初始学生、seed和数据顺序的实际对应更新；已记录loss相同，不声称检查了两轮全部参数逐位相同"
+}

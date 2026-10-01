@@ -19,6 +19,20 @@ def main():
 
 官方模板没有直接给出所需的 assistant 监督区间。本轮只在 assistant 分支加了 generation 标记，没有更换工具格式或改写提示。每条样本都同时渲染原模板和加标记模板，核对全文、token 序列和非思考推理前缀。
 
+生成标签的核心逻辑如下。这里的 action 已保留当前回复之前的全部历史；marked 是只加了监督标记的官方模板。
+
+```python
+encoded = tokenizer.apply_chat_template(
+    action["messages"], tools=action["tools"],
+    chat_template=marked, tokenize=True,
+    return_dict=True, return_assistant_tokens_mask=True,
+    enable_thinking=False,
+)
+mask = encoded["assistant_masks"]
+```
+
+多轮单元还会把早于当前 assistant 的 mask 清零。随后按 mask 生成 labels：保留目标 token，其余写成 -100。这一步没有删掉历史输入。
+
 ![图 E03-1：{e3['run_id']}，真实 token 局部窗口；灰色为系统，蓝色为用户或工具返回，绿色为 assistant。](figures/assistant-mask.png)
 
 绿色位置的 mask 为 1，参与 loss；其余位置为 0，对应标签 -100。这里监督的是完整 assistant 消息，包含角色前缀和结束标记，不只是调用 JSON。原始逐 token 对照还能查看 token id、文本片段和标签。
@@ -36,6 +50,19 @@ E06 暴露多轮训练与当前轮推理的空 think 前缀差异后，又补查
 ## 下一 token，具体对齐到哪里？
 
 语言模型在第 t 个位置的输出预测第 t+1 个 token。因此，计算交叉熵时把 logits 去掉最后一个位置，把 labels 去掉第一个位置，再按 -100 忽略不监督的标签。这里用同一份 logits 和标签重新计算了一遍，检查框架和手算是否对得上。
+
+实际手算用的是下面这段。output 来自模型对同一批 inputs 的前向，没有再生成一份不同的预测。
+
+```python
+import torch.nn.functional as F
+
+logits = output.logits[:, :-1].float()
+labels = inputs["labels"][:, 1:]
+manual = F.cross_entropy(
+    logits.reshape(-1, logits.shape[-1]),
+    labels.reshape(-1), ignore_index=-100,
+)
+```
 
 | loss 口径 | 监督 token 数 | 框架返回 | 手工计算 |
 | --- | --- | --- | --- |

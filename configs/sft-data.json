@@ -1,0 +1,86 @@
+{
+  "train-1000.jsonl": {
+    "data_run": "E02-R02",
+    "data_file": "train-1000.jsonl",
+    "source_sha256": "2ada49cee0ec99086067cd107cfae20202ced0291cf77ba486d9e6d0d4886b69",
+    "independent_trajectories": 1000,
+    "assistant_units": 2900,
+    "input_tokens": 1171709,
+    "supervised_tokens": 126688,
+    "max_sequence_length": 1945,
+    "max_target_length": 606,
+    "categories": {
+      "single_call": 556,
+      "no_call": 155,
+      "multi_turn": 262,
+      "parallel": 27
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 2900,
+    "packing": false
+  },
+  "train-5000.jsonl": {
+    "data_run": "E02-R02",
+    "data_file": "train-5000.jsonl",
+    "source_sha256": "07e4abe73d4e479008be6356e087bd8beab9ac49ce2bc20e1d78310dd612970c",
+    "independent_trajectories": 5000,
+    "assistant_units": 14502,
+    "input_tokens": 5879689,
+    "supervised_tokens": 638598,
+    "max_sequence_length": 2034,
+    "max_target_length": 701,
+    "categories": {
+      "single_call": 2678,
+      "no_call": 840,
+      "multi_turn": 1357,
+      "parallel": 125
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 14502,
+    "packing": false
+  },
+  "train-10000.jsonl": {
+    "data_run": "E02-R02",
+    "data_file": "train-10000.jsonl",
+    "source_sha256": "e9165867997bf5435b53e4404fac60d4ee9b279a6f5481b6503f17bc3a1821ae",
+    "independent_trajectories": 10000,
+    "assistant_units": 29073,
+    "input_tokens": 11806775,
+    "supervised_tokens": 1282656,
+    "max_sequence_length": 2040,
+    "max_target_length": 744,
+    "categories": {
+      "single_call": 5392,
+      "no_call": 1656,
+      "multi_turn": 2708,
+      "parallel": 244
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 29073,
+    "packing": false
+  },
+  "dev.jsonl": {
+    "data_run": "E02-R02",
+    "data_file": "dev.jsonl",
+    "source_sha256": "defb77bd3274ebc4ed301d77b35373dba64106fa31beb7bb0ee676175d91f2ce",
+    "independent_trajectories": 500,
+    "assistant_units": 1484,
+    "input_tokens": 615718,
+    "supervised_tokens": 66664,
+    "max_sequence_length": 2735,
+    "max_target_length": 610,
+    "categories": {
+      "multi_turn": 147,
+      "single_call": 257,
+      "no_call": 86,
+      "parallel": 10
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 1484,
+    "packing": false
+  }
+}

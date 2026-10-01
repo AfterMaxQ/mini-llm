@@ -1,0 +1,11 @@
+{
+  "run_id": "E09-R04",
+  "plot_version": 2,
+  "source_file": "E09-R04-metrics.csv",
+  "source_sha256": "10a16fd9080b224cb4a11f6c2bc901a3bf49bf9d93fea3ef141f96ba13f4bd2c",
+  "raw_metrics_prefix_sha256": "322cdb2f72dc414127c858687fa4322179c9755f7d019a1ddfcc4c875abd72a6",
+  "image_sha256": "61d422e2cd55250947a2a645d33e3a3ffdbab25775dc7403d1b27efa491a5d99",
+  "train_points": 200,
+  "validation_points": 2,
+  "smoothing": null
+}

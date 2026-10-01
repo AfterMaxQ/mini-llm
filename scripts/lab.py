@@ -1,6 +1,8 @@
 """实验共用的少量文件操作：运行号、来源快照与原始记录。"""
 import hashlib
 import json
+import os
+import shutil
 import subprocess
 import zipfile
 from datetime import datetime, timedelta, timezone
@@ -60,11 +62,19 @@ def start_run(experiment, config, run_dir=None):
     diff = subprocess.check_output(["git", "diff", "HEAD"], cwd=ROOT)
     (run_dir / "code.diff").write_bytes(diff)
     write_json(run_dir / "config.json", {**config, "run_id": run_dir.name, "started": now(), "commit": commit,
-                                        "code_snapshot_sha256": sha256(run_dir / "code.zip")})
+                                        "process_id": os.getpid(), "code_snapshot_sha256": sha256(run_dir / "code.zip")})
     return run_dir
 
 
 def finish_run(run_dir, result):
+    previous=[]
+    if (run_dir/'result.json').exists():
+        number=1
+        while (run_dir/f'previous-result-{number:02d}.json').exists():number+=1
+        shutil.copy2(run_dir/'result.json',run_dir/f'previous-result-{number:02d}.json')
+    for path in sorted(run_dir.glob('previous-result-*.json')):
+        previous.append({'file':path.name,'sha256':sha256(path)})
+    if previous:result={**result,'previous_results':previous}
     result = {**result, "run_id": run_dir.name, "finished": now()}
     write_json(run_dir / "result.json", result)
     experiment = run_dir.name.split("-")[0]

@@ -52,6 +52,20 @@ def main():
 
 看到 nvidia-smi 能列出显卡，很容易以为训练环境已经好了。它检查的是驱动；torch.cuda.is_available() 检查的是当前 Python 能否使用 CUDA。两边各查一次，问题就能定位到安装包，而不用先重装驱动。
 
+在准备训练的 Python 环境中，核心检查只有几行：
+
+```python
+import torch
+
+print("PyTorch:", torch.__version__)
+print("CUDA 构建:", torch.version.cuda)
+print("能否使用 GPU:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("设备:", torch.cuda.get_device_name(0))
+```
+
+这里必须用训练环境的 Python 来跑。系统里另一个 Python 装着什么包，不会自动变成当前环境的能力。
+
 | 检查项 | 实际结果 |
 | --- | --- |
 | 运行编号 | {env['run_id']} |

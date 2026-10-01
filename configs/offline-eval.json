@@ -1,0 +1,15 @@
+{
+  "data_run": "E02-R02",
+  "split": "dev",
+  "seed": 42,
+  "prompts": ["zero_shot", "few_shot"],
+  "batch_size": 4,
+  "context_length": 8192,
+  "max_new_tokens": 1024,
+  "max_batch_seconds": 300,
+  "enable_thinking": false,
+  "sampling": "greedy",
+  "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+  "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e"
+}

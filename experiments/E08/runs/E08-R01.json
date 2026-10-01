@@ -1,0 +1,118 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "summaries": {
+    "zero_shot": {
+      "trajectories": 500,
+      "evaluated_trajectories": 500,
+      "trajectory_passed": 268,
+      "decision_turns": 928,
+      "turn_passed": 670,
+      "call_turns": 568,
+      "call_turn_passed": 315,
+      "no_call_turns": 360,
+      "no_call_turn_passed": 355,
+      "name_exact_turns": 350,
+      "truncated": 0,
+      "errors": {
+        "no_tool_call": 213,
+        "incomplete_tool_call": 1,
+        "ValueError:unknown_tool": 1,
+        "ValidationError:'topic' is a required property": 1
+      },
+      "categories": {
+        "multi_turn": {
+          "samples": 147,
+          "passed": 48
+        },
+        "no_call": {
+          "samples": 86,
+          "passed": 86
+        },
+        "parallel": {
+          "samples": 10,
+          "passed": 4
+        },
+        "single_call": {
+          "samples": 257,
+          "passed": 130
+        }
+      },
+      "rows_sha256": "1b31fb037b9266a2f3016d66ed198010538b4c5b07f30a1c378d2b67034ee914"
+    },
+    "few_shot": {
+      "trajectories": 500,
+      "evaluated_trajectories": 500,
+      "trajectory_passed": 355,
+      "decision_turns": 928,
+      "turn_passed": 755,
+      "call_turns": 568,
+      "call_turn_passed": 456,
+      "no_call_turns": 360,
+      "no_call_turn_passed": 299,
+      "name_exact_turns": 542,
+      "truncated": 0,
+      "errors": {
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 158 (char 157)": 1,
+        "no_tool_call": 13,
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 146 (char 145)": 2,
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 160 (char 159)": 1,
+        "ValueError:unknown_tool": 3,
+        "incomplete_tool_call": 3,
+        "JSONDecodeError:Expecting ',' delimiter: line 1 column 151 (char 150)": 1
+      },
+      "categories": {
+        "multi_turn": {
+          "samples": 147,
+          "passed": 105
+        },
+        "no_call": {
+          "samples": 86,
+          "passed": 86
+        },
+        "parallel": {
+          "samples": 10,
+          "passed": 3
+        },
+        "single_call": {
+          "samples": 257,
+          "passed": 161
+        }
+      },
+      "rows_sha256": "d8c8afa15cdd9897e3adb271082627969dee73a20cd2e262e8563209d6c3359f"
+    }
+  },
+  "selected_prompt": "few_shot",
+  "prompt_candidates_sha256": "ec22ea57ae2c9b95557b3ceebd9a890937d3c7921b3175b0ff6088405d886f38",
+  "scope": "完整冻结划分的工具决策；使用标注历史，不代表工具执行或最终任务状态",
+  "run_id": "E08-R01",
+  "finished": "2026-10-01T03:35:21+08:00",
+  "config": {
+    "data_run": "E02-R02",
+    "split": "dev",
+    "seed": 42,
+    "prompts": [
+      "zero_shot",
+      "few_shot"
+    ],
+    "batch_size": 4,
+    "context_length": 8192,
+    "max_new_tokens": 1024,
+    "max_batch_seconds": 300,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+    "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "adapter": null,
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts\\offline_eval.py"
+    ],
+    "run_id": "E08-R01",
+    "started": "2026-10-01T03:05:59+08:00",
+    "commit": "9059dc4dc1e7b970ee8128dc7243870478080d43",
+    "code_snapshot_sha256": "5e66bfcb2568da9783d2a326487aee2cb45d343e81548abb8a74eacddb5a9c25"
+  },
+  "raw_result_sha256": "f8da8714f38e72648bbcd88a327bf6b1ea6af0bcbff574db9e477530e6006dd2"
+}
