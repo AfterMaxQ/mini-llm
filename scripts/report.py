@@ -199,7 +199,7 @@ def sections(document, numbers, summary, source_root=ROOT):
     for index, note in enumerate(notes):
         add_markdown(document, note, page_break_before=bool(index or overview))
     if evidence:
-        add_markdown(document, summary, page_break_before=True, content='## 证据索引'+evidence)
+        add_markdown(document, summary, content='## 证据索引'+evidence)
 
 
 def main():
