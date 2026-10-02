@@ -113,8 +113,15 @@ if load_in_4bit:
     if summary.exists():
         content=summary.read_text(encoding='utf-8');body,evidence=content.split('## 证据索引',1)
         body=body.split('## 精度对照',1)[0].rstrip()+f'\n\n## 精度对照\n\n{opening}\n\n'
-        if '| 精度对照 |' not in evidence:
-            evidence=evidence.replace('| 后续训练与生成结果 |','| 精度对照 | experiments/E10/notes.md；experiments/E10/runs；configs/sft-bf16.json |\n| 后续训练与生成结果 |')
+        evidence_row='| 精度对照 | experiments/E10/notes.md；experiments/E10/E10-R01-metrics.csv；experiments/E10/figures/E10-R01-loss.png；configs/sft-bf16.json |'
+        lines=evidence.splitlines();updated=False
+        for index,line in enumerate(lines):
+            if line.startswith('| 精度对照 |'):
+                lines[index]=evidence_row;updated=True
+        if not updated:
+            position=next((i for i,line in enumerate(lines) if line.startswith('| 后续训练与生成结果 |')),len(lines))
+            lines.insert(position,evidence_row)
+        evidence='\n'.join(lines)
         summary.write_text(body+'## 证据索引'+evidence,encoding='utf-8')
 
 

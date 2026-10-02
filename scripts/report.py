@@ -86,6 +86,10 @@ def add_markdown(document, path, page_break_before=False, content=None):
                 if not all(re.fullmatch(r":?-+:?", x) for x in values):
                     rows.append(values)
                 index += 1
+            body = document._body._element
+            last = body[-2] if body[-1].tag == qn("w:sectPr") else body[-1]
+            if last.tag == qn("w:tbl"):
+                document.add_paragraph()
             table = document.add_table(rows=0, cols=len(rows[0]))
             table.style = "Table Grid"
             for number, values in enumerate(rows):
