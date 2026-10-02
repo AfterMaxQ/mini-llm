@@ -23,6 +23,19 @@ def process_identity_alive(config):
         return False
 
 
+def pi_timeout_count(run_id):
+    result_path = ROOT / "experiments/E14/runs" / f"{run_id}.json"
+    if result_path.exists():
+        result = json.loads(result_path.read_text(encoding="utf-8"))
+        if "timed_out_tasks" in result:
+            return result["timed_out_tasks"]
+    path = ROOT / ".local/runs" / run_id / "records.jsonl"
+    if not path.exists():
+        return 0
+    return sum(bool(json.loads(line).get("agent_timed_out"))
+               for line in path.read_text(encoding="utf-8").splitlines() if line.strip())
+
+
 def main():
     lines = ["# MiniLLM 实验索引", "", f"最近整理：{now()}。状态来自实际运行记录，未执行的实验保持待执行。", "",
              "| 实验 | 内容 | 当前记录 | 笔记 |", "| --- | --- | --- | --- |"]
@@ -121,8 +134,15 @@ def main():
                     score=public[-1]['summaries'][public[-1]['selected_prompt']]['trajectory_passed']
                     detail+=f"；固定公开dev {score}/100"
                 for split,count in [('dev',16),('test',40)]:
-                    match=next((r for r in agent if r.get('split')==split and r.get('status')=='completed'),None)
-                    detail+=f"；Pi {split} {match['passed_tasks']}/{count}" if match else f"；Pi {split}{count}待评"
+                    matches=[r for r in agent if r.get('split')==split and r.get('status')=='completed']
+                    match=matches[-1] if matches else None
+                    if match:
+                        detail+=f"；Pi {split} {match['run_id']} {match['passed_tasks']}/{count}"
+                        timeouts=pi_timeout_count(match['run_id'])
+                        if timeouts:
+                            detail+=f"，{timeouts}项超时"
+                    else:
+                        detail+=f"；Pi {split}{count}待评"
                 if invalid_harness:
                     record=invalid_harness[-1]
                     detail+=f"；{record['run_id']}接线错误中止{record['evaluated_tasks']}/{record['target_tasks']}，不计模型成绩"
@@ -131,7 +151,8 @@ def main():
                 harness_smoke=harness_smokes[-1] if harness_smokes else None
                 if harness_smoke:
                     detail+=f"；{harness_smoke['run_id']}路径映射核验通过，不含模型推理"
-                state=f"E14-R{mix['run_id'].split('-R')[-1]}：{detail}"
+                latest_agent=agent[-1]['run_id'] if agent else mix['run_id']
+                state=f"{latest_agent}：{detail}"
                 if unfinished:
                     state=f"{unfinished[-1].parent.name}：进行中；{detail}"
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"

@@ -28,6 +28,33 @@ def teardown_judgement_count(run_id):
     return count
 
 
+def pi_run_metrics(run_id):
+    result_path = ROOT / "experiments/E14/runs" / f"{run_id}.json"
+    if result_path.exists():
+        result = read(result_path)
+        if "timed_out_tasks" in result:
+            return {
+                "timeouts": result["timed_out_tasks"],
+                "attempts": result["observed_tool_requests"],
+                "budget_rejections": result["budget_rejections"],
+                "failed_without_timeout": result["non_timeout_failed_tasks"],
+            }
+    path = ROOT / ".local/runs" / run_id / "records.jsonl"
+    if not path.exists():
+        return {"timeouts": 0, "attempts": 0, "budget_rejections": 0, "failed_without_timeout": 0}
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    calls = [call for row in rows for call in row.get("observed_tool_calls", [])]
+    budget_rejections = sum(any("任务超过工具调用预算" in block.get("text", "")
+                                for block in (call.get("result") or {}).get("content", [])
+                                if isinstance(block, dict)) for call in calls)
+    return {
+        "timeouts": sum(bool(row.get("agent_timed_out")) for row in rows),
+        "attempts": len(calls),
+        "budget_rejections": budget_rejections,
+        "failed_without_timeout": sum(not row.get("agent_timed_out") and not row.get("passed") for row in rows),
+    }
+
+
 def update_notes(run_id, pi_run_id=None):
     run = ROOT / ".local/runs" / run_id
     config = read(run / "config.json")
@@ -133,6 +160,11 @@ def update_notes(run_id, pi_run_id=None):
                 lines.append("原始调用记录还显示模型反复读取`F:/workspace/README.md`并耗尽12次工具预算；0/16是本轮原始观测值，不作为有效迁移成绩。")
             else:
                 lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
+                metrics = pi_run_metrics(item["run_id"])
+                if metrics["timeouts"]:
+                    elapsed = item.get("elapsed_seconds", 0)
+                    limit = item.get("config", {}).get("max_tool_calls", "配置")
+                    lines.append(f"{item['run_id']}耗时{elapsed}秒；{metrics['timeouts']}/{item['target_tasks']}个任务超时，{metrics['failed_without_timeout']}个未超时任务仍未通过。记录{metrics['attempts']}次工具请求，其中{metrics['budget_rejections']}次因{limit}次调用上限被沙箱拒绝。")
     if pi_run_id:
         live = ROOT / ".local/runs" / pi_run_id
         pi_config_path, pi_progress_path = live / "config.json", live / "progress.json"
@@ -152,7 +184,9 @@ def update_notes(run_id, pi_run_id=None):
                 if invalid:
                     lines.append(f"- {item['run_id']}：{item['split']}观察通过{item['passed_tasks']}/{item['target_tasks']}；{invalid}条超时任务判分时容器已被清理，整轮不作为可比模型成绩；记录：`experiments/E14/runs/{item['run_id']}.json`。")
                 else:
-                    lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
+                    timeouts = pi_run_metrics(item["run_id"])["timeouts"]
+                    timeout_text = f"，{timeouts}/{item['target_tasks']}个任务超时" if timeouts else ""
+                    lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}{timeout_text}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
         lines.append("")
     path_smokes = [read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
                    if read(path).get("operation", read(path).get("config", {}).get("operation")) == "pi_path_harness_smoke"
