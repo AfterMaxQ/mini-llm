@@ -14,6 +14,20 @@ def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def teardown_judgement_count(run_id):
+    path = ROOT / ".local/runs" / run_id / "records.jsonl"
+    if not path.exists():
+        return 0
+    count = 0
+    for line in path.read_text(encoding="utf-8").splitlines():
+        row = json.loads(line)
+        judgement = row.get("judgement", {})
+        stderr = (judgement.get("execution") or {}).get("stderr", "")
+        if "execution_check_failed" in judgement.get("reasons", []) and "No such container" in stderr:
+            count += 1
+    return count
+
+
 def update_notes(run_id, pi_run_id=None):
     run = ROOT / ".local/runs" / run_id
     config = read(run / "config.json")
@@ -113,7 +127,12 @@ def update_notes(run_id, pi_run_id=None):
                 reason = "会话工作目录与容器路径映射不一致，工具拒绝访问工作区外路径"
             lines.append(f"Pi {item['split']}接入排错（{item['run_id']}）：已运行{item['evaluated_tasks']}/{item['target_tasks']}个任务后中止。{reason}；本轮不计为模型成绩，冻结分母仍为{item['target_tasks']}。")
         else:
-            lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
+            invalid = teardown_judgement_count(item["run_id"])
+            if invalid:
+                lines.append(f"Pi {item['split']}记录{item['passed_tasks']}/{item['target_tasks']}个观察通过；{invalid}/{item['target_tasks']}条超时任务在判分前沙箱已被清理，整轮不作为可比模型成绩，原定分母仍为{item['target_tasks']}。")
+                lines.append("原始调用记录还显示模型反复读取`F:/workspace/README.md`并耗尽12次工具预算；0/16是本轮原始观测值，不作为有效迁移成绩。")
+            else:
+                lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
     if pi_run_id:
         live = ROOT / ".local/runs" / pi_run_id
         pi_config_path, pi_progress_path = live / "config.json", live / "progress.json"
@@ -129,7 +148,11 @@ def update_notes(run_id, pi_run_id=None):
             if item.get("status") == "aborted_invalid_harness":
                 lines.append(f"- {item['run_id']}：接线无效，中止于{item['evaluated_tasks']}/{item['target_tasks']}；不作为模型成绩。记录：`experiments/E14/runs/{item['run_id']}.json`。")
             else:
-                lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
+                invalid = teardown_judgement_count(item["run_id"])
+                if invalid:
+                    lines.append(f"- {item['run_id']}：{item['split']}观察通过{item['passed_tasks']}/{item['target_tasks']}；{invalid}条超时任务判分时容器已被清理，整轮不作为可比模型成绩；记录：`experiments/E14/runs/{item['run_id']}.json`。")
+                else:
+                    lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
         lines.append("")
     path_smokes = [read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
                    if read(path).get("operation", read(path).get("config", {}).get("operation")) == "pi_path_harness_smoke"

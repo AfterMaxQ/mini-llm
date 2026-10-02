@@ -172,7 +172,7 @@ try{
   assert.equal(frozenPrompt.selected_prompt,config.selected_prompt);
   for(let index=rows.length;index<tasks.length;index++){
     const task=tasks[index],taskStart=Date.now();current={task_id:task.task_id,category:task.category,index:index+1};
-    let sandbox,session,messages=[],entry={...current,started:new Date().toISOString()};
+    let sandbox,session,messages=[],timedOut=false,entry={...current,started:new Date().toISOString()};
     const tracePath=path.join(runDir,'model-api.jsonl');
     const traceOffset=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).length).catch(()=>0);
     try{
@@ -192,12 +192,13 @@ try{
       ({session}=await pi.createAgentSession({cwd:'/workspace',agentDir:path.join(root,'.local/pi-agent-runtime'),
         settingsManager:settings,sessionManager,resourceLoader:loader,modelRuntime,model,thinkingLevel:'off',
         noTools:'builtin',customTools:tools}));
-      const taskTimeout=setTimeout(()=>void session.abort(),config.task_timeout_seconds*1000-500);
+      const taskTimeout=setTimeout(()=>{timedOut=true;void session.abort();},config.task_timeout_seconds*1000-500);
       try{await session.prompt(task.prompt,{expandPromptTemplates:false});await session.waitForIdle();}
       finally{clearTimeout(taskTimeout);}
       messages=transcriptState(session.state.messages);
       const events=observedEvents(messages),answer=finalAnswer(messages);
       const checked=await judge(task,sandbox,answer,events);
+      entry.agent_timed_out=timedOut;
       entry.model_requests=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).slice(traceOffset).map(line=>JSON.parse(line))).catch(()=>[]);
       entry.truncated_generations=entry.model_requests.filter(request=>request.truncated).length;
       entry.agent_events=messages;entry.answer=answer;entry.observed_tool_calls=events;
@@ -205,6 +206,7 @@ try{
       entry.final_files=checked.files.map(file=>({path:file.path,kind:file.kind??'file',bytes:file.bytes,sha256:file.sha256,target:file.target}));
       entry.final_files_sha256=digest(JSON.stringify(entry.final_files));entry.passed=checked.passed;
     }catch(error){
+      entry.agent_timed_out=timedOut;
       entry.model_requests=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).slice(traceOffset).map(line=>JSON.parse(line))).catch(()=>[]);
       entry.truncated_generations=entry.model_requests.filter(request=>request.truncated).length;
       entry.passed=false;entry.judgement={passed:false,reasons:[typeName(error)+':'+String(error.message??error).slice(0,300)]};
@@ -246,6 +248,8 @@ try{
     const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
       {id:path.basename(runDir),result});
     console.log(finished);
+    await saveProgress(runDir,{status:result.status,completed:rows.length,target:tasks.length,passed,
+      category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
     updateNotes();
     if(!complete)process.exitCode=1;
   }else if(failure)process.exitCode=1;

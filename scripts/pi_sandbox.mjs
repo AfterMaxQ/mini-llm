@@ -77,7 +77,9 @@ export async function createSandbox(overrides = {}) {
   assert.match(containerId, /^[a-f0-9]{64}$/);
   let calls = 0, expired = false;
   const dispose = () => docker(['rm', '-f', containerId]);
-  const timer = setTimeout(() => { expired = true; void dispose(); }, config.task_timeout_seconds * 1000);
+  // 任务截止后还需等待限时命令退出并完成最终判分，再回收容器。
+  const cleanupSeconds = config.task_timeout_seconds + config.command_timeout_seconds * 2 + 60;
+  const timer = setTimeout(() => { expired = true; void dispose(); }, cleanupSeconds * 1000);
   timer.unref();
   function virtualPath(input) {
     assert.equal(typeof input, 'string', '文件路径必须是字符串');
@@ -110,16 +112,12 @@ export async function createSandbox(overrides = {}) {
   const bash = { exec: async (command, _cwd, options) => {
     const seconds = Math.min(config.command_timeout_seconds, options.timeout ?? config.command_timeout_seconds);
     if (!Number.isFinite(seconds) || seconds <= 0) throw new Error('命令时限必须大于零');
-    const onAbort = () => { void dispose(); };
     if (options.signal?.aborted) throw new Error('aborted');
-    options.signal?.addEventListener('abort', onAbort, { once: true });
-    try {
-      const result = await docker(['exec', '-i', '--workdir', config.workdir, containerId,
-        'timeout', '--kill-after=2s', String(seconds) + 's', 'bash', '--noprofile', '--norc', '-c', command], '', options.onData);
-      if (options.signal?.aborted) throw new Error('aborted');
-      if (result.code === 124) throw new Error('timeout:' + seconds);
-      return { exitCode: result.code };
-    } finally { options.signal?.removeEventListener('abort', onAbort); }
+    const result = await docker(['exec', '-i', '--workdir', config.workdir, containerId,
+      'timeout', '--kill-after=2s', String(seconds) + 's', 'bash', '--noprofile', '--norc', '-c', command], '', options.onData);
+    if (options.signal?.aborted) throw new Error('aborted');
+    if (result.code === 124) throw new Error('timeout:' + seconds);
+    return { exitCode: result.code };
   } };
   const tools = [pi.createReadTool(cwd, { operations: read }), pi.createEditTool(cwd, { operations: edit }),
     pi.createWriteTool(cwd, { operations: write }), pi.createBashTool(cwd, { operations: bash, exposeSessionEnvironment: false })].map(tool => ({
