@@ -1,0 +1,17 @@
+{
+  "sampling_seed": 2026,
+  "public_data_run": "focused-public",
+  "public_train_file": "train-1000.jsonl",
+  "public_source_sha256": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4637319740a9e25c972",
+  "public_count": 512,
+  "public_strata": ["source", "category"],
+  "pi_data_run": "E14-R11",
+  "pi_train_file": "train-reference.jsonl",
+  "pi_source_sha256": "c9bf50dc36b099a0963ee3092bad26951f6b575bbe6fa146cc7bf45c714a54fb",
+  "pi_family_key": "template_family",
+  "pi_per_family": 32,
+  "dev_data_run": "focused-public",
+  "dev_file": "dev.jsonl",
+  "dev_source_sha256": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb",
+  "output_data_run": "E14-domain"
+}

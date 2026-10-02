@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "exit_code": 1,
+  "error": "来源文件SHA-256配置与本机原始文件不符，冻结前检查拒绝；未生成训练集，未调用GPU",
+  "scope": "E14数据冻结前的来源哈希核对失败，保留原记录后按实测文件哈希修正",
+  "run_id": "E14-R17",
+  "finished": "2026-10-02T20:29:54+08:00",
+  "config": {
+    "operation": "domain_mix_source_hash_preflight",
+    "config_file": "configs/domain-mix.json",
+    "source": "focused-public/train-1000.jsonl",
+    "configured_sha256": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4639740a9e25c972",
+    "actual_sha256": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4637319740a9e25c972",
+    "run_id": "E14-R17",
+    "started": "2026-10-02T20:29:54+08:00",
+    "commit": "f4b34621175e47b925d1ed154d63d5c6f02335d9",
+    "process_id": 40428,
+    "code_snapshot_sha256": "2be9b6ed78486a930fafa16a3622db459e933a64b5d0fc5bfdb671d57d3cde06"
+  },
+  "raw_result_sha256": "7729727373445f3cf9c9382e3bb9549dfa928ef201d3d3e0323afaf6c574d3d6"
+}

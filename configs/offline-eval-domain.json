@@ -1,0 +1,24 @@
+{
+  "data_run": "E14-domain",
+  "split": "dev",
+  "seed": 42,
+  "prompts": [
+    "zero_shot",
+    "few_shot"
+  ],
+  "batch_size": 4,
+  "context_length": 8192,
+  "max_new_tokens": 1024,
+  "max_batch_seconds": 300,
+  "enable_thinking": false,
+  "sampling": "greedy",
+  "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+  "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "use_frozen_prompt": true,
+  "sampling_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+  "data_file_hashes": {
+    "dev.jsonl": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb"
+  },
+  "domain_manifest_sha256": "9055a69105b99eaf6c527b46cd10771164d4361018d366b74e82c3a03c003aca"
+}

@@ -1,0 +1,72 @@
+{
+  "status": "domain_mix_frozen",
+  "exit_code": 0,
+  "train_size": 1024,
+  "public_trajectories": 512,
+  "pi_trajectories": 512,
+  "public_strata": {
+    "('glaive', 'multi_turn')": 97,
+    "('glaive', 'no_call')": 79,
+    "('glaive', 'single_call')": 245,
+    "('hermes', 'multi_turn')": 37,
+    "('hermes', 'no_call')": 1,
+    "('hermes', 'parallel')": 14,
+    "('hermes', 'single_call')": 39
+  },
+  "pi_families": 16,
+  "pi_per_family": 32,
+  "dev_trajectories": 100,
+  "files": {
+    "train-1024.jsonl": "a645d8a84a55dc3a468c876d5e737613c0f4e3384bed3b397d81ff0204a98fb6",
+    "dev.jsonl": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb",
+    "domain-mix-frozen.json": "9055a69105b99eaf6c527b46cd10771164d4361018d366b74e82c3a03c003aca"
+  },
+  "domain_manifest_sha256": "9055a69105b99eaf6c527b46cd10771164d4361018d366b74e82c3a03c003aca",
+  "scope": "冻结512条公开工具轨迹与512条Pi训练参考轨迹；沿用100条固定公开dev，不读取模型成绩",
+  "run_id": "E14-R18",
+  "finished": "2026-10-02T20:30:18+08:00",
+  "config": {
+    "sampling_seed": 2026,
+    "public_data_run": "focused-public",
+    "public_train_file": "train-1000.jsonl",
+    "public_source_sha256": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4637319740a9e25c972",
+    "public_count": 512,
+    "public_strata": {
+      "('glaive', 'multi_turn')": 97,
+      "('glaive', 'no_call')": 79,
+      "('glaive', 'single_call')": 245,
+      "('hermes', 'multi_turn')": 37,
+      "('hermes', 'no_call')": 1,
+      "('hermes', 'parallel')": 14,
+      "('hermes', 'single_call')": 39
+    },
+    "pi_data_run": "E14-R11",
+    "pi_train_file": "train-reference.jsonl",
+    "pi_source_sha256": "c9bf50dc36b099a0963ee3092bad26951f6b575bbe6fa146cc7bf45c714a54fb",
+    "pi_family_key": "template_family",
+    "pi_per_family": 32,
+    "dev_data_run": "focused-public",
+    "dev_file": "dev.jsonl",
+    "dev_source_sha256": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb",
+    "output_data_run": "E14-domain",
+    "status": "domain_mix_frozen",
+    "exit_code": 0,
+    "train_size": 1024,
+    "public_trajectories": 512,
+    "pi_trajectories": 512,
+    "pi_families": 16,
+    "dev_trajectories": 100,
+    "files": {
+      "train-1024.jsonl": "a645d8a84a55dc3a468c876d5e737613c0f4e3384bed3b397d81ff0204a98fb6",
+      "dev.jsonl": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb"
+    },
+    "domain_manifest_sha256": "9055a69105b99eaf6c527b46cd10771164d4361018d366b74e82c3a03c003aca",
+    "scope": "冻结512条公开工具轨迹与512条Pi训练参考轨迹；沿用100条固定公开dev，不读取模型成绩",
+    "run_id": "E14-R18",
+    "started": "2026-10-02T20:30:18+08:00",
+    "commit": "f4b34621175e47b925d1ed154d63d5c6f02335d9",
+    "process_id": 48328,
+    "code_snapshot_sha256": "4d5a09c6bbc484704e767dc8e8ddd4fe5b1b033327835a2425a6439fb2290a98"
+  },
+  "raw_result_sha256": "aae8dcfec2c791da6f137c964fcb54a9d188a232170fdb2bcb78739cc1d49493"
+}

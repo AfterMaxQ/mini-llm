@@ -268,3 +268,45 @@ E14-R15 用固定系统提示、实际工具定义、原样返回和非思考模
 这是参考解的长度。模型可能反复读取或改错后重试，正式评测仍记录实际上下文、工具次数和超时，不能用参考长度代替模型轨迹长度。
 
 重复检查也已完成：test与2,000条train请求比较200,000对，与40个dev比较4,000对。场景、模板族和仓库族交叉为零；数字归一后的精确重复及达到0.8阈值的字符5-gram组合均为零，最高相似度分别为0.2392和0.2615。这能复查具体筛查规则，仍不能排除语义相似或预训练污染。
+
+## 领域混合微调与迁移评测
+
+### 训练样本如何组成？
+
+训练集由512条公开工具轨迹和512条Pi规则参考轨迹组成。公开样本按来源与调用类别分层抽取；Pi样本从16个训练模板族各取32条。样本清单在查看模型成绩前冻结，固定100条公开dev继续用于loss选择和工具决策评测。
+
+冻结记录确认了512条公开轨迹、512条Pi轨迹，Pi覆盖16个训练模板族；训练条数按独立轨迹计算。Pi dev和test采用单独模板族，本轮训练不会读取test。
+
+| 来源 | 类别 | 轨迹数 |
+| --- | --- | ---: |
+| glaive | multi_turn | 97 |
+| glaive | no_call | 79 |
+| glaive | single_call | 245 |
+| hermes | multi_turn | 37 |
+| hermes | no_call | 1 |
+| hermes | parallel | 14 |
+| hermes | single_call | 39 |
+| minillm_pi_rules | config_change | 64 |
+| minillm_pi_rules | failure_recovery | 64 |
+| minillm_pi_rules | function_fix | 64 |
+| minillm_pi_rules | invalid_path_recovery | 64 |
+| minillm_pi_rules | missing_information | 64 |
+| minillm_pi_rules | multi_file | 64 |
+| minillm_pi_rules | no_tool | 64 |
+| minillm_pi_rules | read_locate | 64 |
+
+Pi每类都是64条：该类两个独立训练模板族各抽32条；公开部分按原1k样本的来源和类别占比分层。
+
+### 训练进展与验证曲线
+
+混合数据与训练配置已冻结，尚无训练进度记录。
+
+首次冻结检查因来源文件哈希配置不匹配而停止；核对本机文件后修正配置，再按相同抽样规则完成冻结。错误发生在训练集写入前，失败记录保留。
+
+训练曲线尚未产生；开始训练后会按实际日志绘制。
+
+### 固定公开集和 Pi 任务的实际成绩
+
+模型训练完成后，固定100条公开dev会评估工具决策；Pi dev16与test40还需通过本机Agent容器分别运行。
+
+公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。

@@ -1,0 +1,11 @@
+{
+  "experiment": "E14",
+  "training_config": "configs/sft-domain.json",
+  "evaluation_config": "configs/offline-eval-domain.json",
+  "jobs": [
+    {
+      "size": 1024,
+      "seed": 17
+    }
+  ]
+}

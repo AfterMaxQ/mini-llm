@@ -95,9 +95,12 @@ class RecordCallback(TrainerCallback):
         self.run, self.trainer, self.last_report = run, trainer, 0
 
     def refresh(self):
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py'}.get(self.run.name.split('-')[0],'scripts/notes_sft.py')
-        commands=[[sys.executable, script],
-                  [sys.executable, 'scripts/report.py', '--volume', '02']]
+        experiment=self.run.name.split('-')[0]
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
+                'E14':'scripts/notes_domain.py'}.get(experiment,'scripts/notes_sft.py')
+        volume='02B' if experiment=='E14' else '02'
+        commands=[[sys.executable, script, '--run', self.run.name] if experiment=='E14' else [sys.executable, script],
+                  [sys.executable, 'scripts/report.py', '--volume', volume]]
         for command in commands:
             result=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,encoding='utf-8',errors='replace')
             if result.returncode:
@@ -186,6 +189,8 @@ def main():
                    "interruption":history})
     try:
         set_seed(config["seed"])
+        if config.get("domain_manifest_sha256"):
+            assert sha256(ROOT / "configs/domain-mix-frozen.json") == config["domain_manifest_sha256"], "领域混合抽样清单已改变"
         if config.get("sampling_manifest_sha256"):
             assert sha256(ROOT / "configs/subsets-frozen.json") == config["sampling_manifest_sha256"]
         for name, expected_hash in config.get("data_file_hashes", {}).items():
@@ -253,9 +258,12 @@ def main():
         finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc(),
                    'allocated_mib_at_failure':torch.cuda.memory_allocated()/1024**2,
                    'reserved_mib_at_failure':torch.cuda.memory_reserved()/1024**2})
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py'}.get(args.experiment,'scripts/notes_sft.py')
-        subprocess.run([sys.executable,script],cwd=ROOT,check=True)
-        subprocess.run([sys.executable,"scripts/report.py","--volume","02"],cwd=ROOT,check=True)
+        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
+                'E14':'scripts/notes_domain.py'}.get(args.experiment,'scripts/notes_sft.py')
+        volume='02B' if args.experiment=='E14' else '02'
+        command=[sys.executable,script,'--run',run.name] if args.experiment=='E14' else [sys.executable,script]
+        subprocess.run(command,cwd=ROOT,check=True)
+        subprocess.run([sys.executable,"scripts/report.py","--volume",volume],cwd=ROOT,check=True)
         raise
 
 

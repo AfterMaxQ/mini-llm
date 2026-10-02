@@ -7,12 +7,16 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createSandbox,policy,root} from './pi_sandbox.mjs';
 import {devTasks} from './pi_tasks_dev.mjs';
+import {testTasks} from './pi_tasks_test.mjs';
 import {seed,judge,digest} from './pi_tasks.mjs';
 
 const configPath=process.argv[2]??'configs/pi-agent-eval.json';
 const resumeArg=process.argv.indexOf('--resume-run');
 const resumeRun=resumeArg>=0?process.argv[resumeArg+1]:null;
 const config=JSON.parse(await readFile(path.join(root,configPath),'utf8'));
+const experiment=config.experiment??'E13';
+const split=config.split??'dev';
+const sourceTasks=split==='dev'?devTasks:split==='test'?testTasks:null;
 const packageRoot=path.join(root,'.local/pi/node_modules/@earendil-works/pi-coding-agent');
 const pi=await import(pathToFileURL(path.join(packageRoot,'dist/index.js')).href);
 const {createToolDefinitionFromAgentTool}=await import(pathToFileURL(path.join(packageRoot,'dist/core/tools/tool-definition-wrapper.js')).href);
@@ -99,13 +103,30 @@ async function stopApi(child){
 
 let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false;
 const started=Date.now();
+function updateNotes(){
+  const script=experiment==='E14'?'scripts/notes_domain.py':'scripts/notes_pi_agent.py';
+  const args=experiment==='E14'?['--run',config.source_run,'--pi-run',path.basename(runDir)]:['--run',path.basename(runDir)];
+  spawnSync(python,[script,...args],{cwd:root,windowsHide:true});
+  spawnSync(python,['scripts/report.py','--volume','02B'],{cwd:root,windowsHide:true});
+}
 try{
   checkLock();lockOwned=true;
   assert.equal(policy.pi_version,'0.99.1');
-  assert.equal(config.operation,'pi_model_agent_dev');
-  assert.equal(config.split,'dev');
-  assert.equal(config.source_run,'E09-R15');
-  assert.equal(config.source_eval_run,'E09-R16');
+  assert(['E13','E14'].includes(experiment));
+  assert(['dev','test'].includes(split));
+  assert(sourceTasks);
+  assert.equal(config.operation,`pi_model_agent_${split}`);
+  if(experiment==='E13'){
+    assert.equal(split,'dev');
+    assert.equal(config.source_run,'E09-R15');
+    assert.equal(config.source_eval_run,'E09-R16');
+  }else{
+    const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
+    const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
+    assert.equal(source.status,'trained_pending_tool_eval');
+    assert.equal(evaluation.status,'completed');
+    assert.equal(evaluation.config.source_train_run,config.source_run);
+  }
   assert.equal(config.selected_prompt,'few_shot');
   assert.equal(config.prompt_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['prompt_config']))",config));
   assert.equal(config.adapter_sha256,py("import json,sys;print(sha256(ROOT/json.load(sys.stdin)['adapter']/'adapter_model.safetensors'))",config));
@@ -113,16 +134,18 @@ try{
   assert.equal(frozen.selected_count,config.task_count);
   assert.equal(frozen.ids_sha256,config.ids_sha256);
   assert.equal(py("import hashlib;print(hashlib.sha256(json.dumps(json.load(sys.stdin),ensure_ascii=False,sort_keys=True).encode()).hexdigest())",frozen.ids),frozen.ids_sha256);
-  const all=devTasks(),byId=new Map(all.map(task=>[task.task_id,task]));
+  assert.equal(config.frozen_subset,`pi_${split}`);
+  const all=sourceTasks(),byId=new Map(all.map(task=>[task.task_id,task]));
   assert.equal(all.length,frozen.source_count);
   const tasks=frozen.ids.map(id=>byId.get(id));
   assert(tasks.every(Boolean));
   const quotas=tasks.reduce((out,task)=>(out[task.category]=(out[task.category]??0)+1,out),{});
   assert.deepEqual(quotas,frozen.strata);
+  const taskFile=split==='dev'?'scripts/pi_tasks_dev.mjs':'scripts/pi_tasks_test.mjs';
   const runConfig={...config,command:[process.execPath,...process.argv.slice(1)],process_identity:identity(),
     pi_version:policy.pi_version,pi_sandbox_sha256:py("print(sha256(ROOT/'scripts/pi_sandbox.mjs'))"),
     frozen_manifest_sha256:py("print(sha256(ROOT/'configs/subsets-frozen.json'))"),
-    task_ids:frozen.ids,category_quotas:quotas,source_task_file_sha256:py("import hashlib,pathlib; p=pathlib.Path(ROOT/'scripts/pi_tasks_dev.mjs');print(hashlib.sha256(p.read_bytes()).hexdigest())")};
+    task_ids:frozen.ids,category_quotas:quotas,source_task_file_sha256:py("import hashlib,pathlib; p=pathlib.Path(ROOT/json.load(sys.stdin)['file']);print(hashlib.sha256(p.read_bytes()).hexdigest())",{file:taskFile})};
   if(resumeRun){
     runDir=path.join(root,'.local/runs',resumeRun);
     const saved=JSON.parse(await readFile(path.join(runDir,'config.json'),'utf8'));
@@ -130,7 +153,7 @@ try{
     const progress=JSON.parse(await readFile(path.join(runDir,'progress.json'),'utf8'));
     rows=progress.rows??[];
     assert(rows.every((row,index)=>row.task_id===frozen.ids[index]));
-  }else runDir=py("print(start_run('E13',json.load(sys.stdin)))",runConfig);
+  }else runDir=py("v=json.load(sys.stdin);print(start_run(v['experiment'],v))",runConfig);
   await save(runDir,'tasks.json',tasks);
   await appendFile(path.join(runDir,'records.jsonl'),'','utf8');
   const authPath=path.join(root,'.local/pi-agent-runtime','auth.json');
@@ -200,8 +223,7 @@ try{
     console.log(JSON.stringify({task:entry.task_id,completed:rows.length,total:tasks.length,passed:entry.passed,reasons:entry.judgement.reasons}));
     current=null;
     if(Date.now()-lastNotes>=600000){
-      spawnSync(python,['scripts/notes_pi_agent.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
-      spawnSync(python,['scripts/report.py','--volume','02B'],{cwd:root,windowsHide:true});
+      updateNotes();
       lastNotes=Date.now();
     }
   }
@@ -219,12 +241,12 @@ try{
       records_sha256:rows.length?digest(await readFile(path.join(runDir,'records.jsonl'),'utf8')):zero,
       tasks_sha256:py("print(sha256(ROOT/'.local/runs'/json.load(sys.stdin)['run_id']/'tasks.json'))",{run_id:path.basename(runDir)}),
       model_api_trace_sha256:await readFile(path.join(runDir,'model-api.jsonl')).then(data=>digest(data)).catch(()=>zero),
-      elapsed_seconds:Math.round((Date.now()-started)/1000),error:failure,scope:'16个冻结Pi dev任务的实际Agent执行；不代表Pi test或全量项目任务表现'};
+      elapsed_seconds:Math.round((Date.now()-started)/1000),error:failure,
+      scope:`${config.task_count}个冻结Pi ${split}任务的实际Agent执行；不代表其他任务集或官方榜单表现`};
     const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
       {id:path.basename(runDir),result});
     console.log(finished);
-    spawnSync(python,['scripts/notes_pi_agent.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
-    spawnSync(python,['scripts/report.py','--volume','02B'],{cwd:root,windowsHide:true});
+    updateNotes();
     if(!complete)process.exitCode=1;
   }else if(failure)process.exitCode=1;
   if(lockOwned){

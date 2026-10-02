@@ -1,5 +1,6 @@
 """按已有运行与笔记刷新实验总索引。"""
 import json
+import psutil
 import subprocess
 
 from lab import ROOT, now
@@ -8,6 +9,18 @@ from scale import alive
 TITLES = ["环境", "CUDA 与 NF4", "公开数据", "模板与遮罩", "手工核对 loss", "LoRA 参数更新", "32 条过拟合", "保存恢复",
           "提示词基线", "1k/5k/10k 微调", "LoRA 与 QLoRA", "rank 与学习率", "数据质量", "Pi 接入", "领域轨迹",
           "教师验证", "教师生成筛选", "匹配蒸馏", "蒸馏规模", "合并与转换", "量化", "推理性能", "BFCL", "Pi 重复评测", "通用回归", "误差复盘"]
+
+
+def process_identity_alive(config):
+    identity = config.get("process_identity")
+    if not identity:
+        return False
+    try:
+        process = psutil.Process(identity["pid"])
+        return (abs(process.create_time() - identity["created"]) < 0.1 and
+                process.cmdline() == identity["command"] and process.is_running())
+    except (psutil.NoSuchProcess, psutil.AccessDenied, KeyError):
+        return False
 
 
 def main():
@@ -31,6 +44,7 @@ def main():
             translated['pilot_encoding_verified']='8条原型的34个回复单元已核验，正式轨迹与迁移训练待执行'
             translated['reference_extension_verified']='新增8个训练模板已核验，正式轨迹与迁移训练待执行'
             translated['reference_encoding_verified']='新增参考训练格式已核验，正式轨迹与迁移训练待执行'
+            translated['domain_mix_frozen']='512条公开轨迹与512条Pi轨迹已冻结，正式微调待执行'
             translated['training_requests_frozen']='2000个训练场景已冻结，逐条参考执行待完成'
             translated['reference_batch_verified']='1000条规则参考已执行，训练格式与迁移待核对'
             translated['dev_reference_verified']='40个dev场景与错误判据已执行，模型迁移待评测'
@@ -64,7 +78,7 @@ def main():
             if resumes:
                 resumed=json.loads(resumes[-1].read_text(encoding='utf-8'))
                 if {'process_id','started','command'}<=resumed.keys():config=resumed
-            running=alive(config)
+            running=alive(config) or process_identity_alive(config)
             state = f"{current.name}：进行中" if running else f"{current.name}：进程已结束，待核对结束记录"
             data = json.loads((current / 'progress.json').read_text(encoding='utf-8')) if (current / 'progress.json').exists() else {}
             if not running and data.get('status')=='interrupted':
@@ -80,6 +94,8 @@ def main():
                 state += f"，参考过程 {data['completed']}/{data['target']}，有效 {data['valid']} 条"
             elif config.get('operation') in ['pi_dev_probe','pi_test_probe'] and 'completed' in data:
                 state += f"，{config['split']}参考 {data['completed']}/{data['target']}"
+            elif config.get('operation') in ['pi_model_agent_dev','pi_model_agent_test'] and 'completed' in data:
+                state += f"，Pi {config['split']}任务 {data['completed']}/{data['target']}，通过 {data['passed']}"
             elif (current / 'validation-progress.json').exists():
                 validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
                 state += f"，第 {validation['step']} 步冻结 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
@@ -87,12 +103,28 @@ def main():
                 state += '，准备数据与模型'
         if number==14:
             actual=[json.loads(p.read_text(encoding='utf-8')) for p in runs]
-            if any(r.get('operation')=='pi_reference_encoding' and r.get('status')=='reference_encoding_verified' and r.get('independent_trajectories')==1000 for r in actual):
-                state += '；1000条规则参考格式已核验'
-            if any(r.get('status')=='dev_reference_verified' for r in actual):
-                state += '；40个dev场景已冻结，模型成绩待测'
-            if any(r.get('status')=='test_reference_verified' for r in actual):
-                state += '；100个test场景已冻结，模型成绩待测'
+            mix=next((r for r in actual if r.get('status')=='domain_mix_frozen'),None)
+            train=next((p for p in sorted((ROOT/'.local/runs').glob('E14-R*/result.json'))
+                        if json.loads(p.read_text(encoding='utf-8')).get('status')=='trained_pending_tool_eval'),None)
+            agent=[r for r in actual if r.get('operation','').startswith('pi_model_agent_')]
+            if mix:
+                detail='512条公开轨迹与512条Pi轨迹已冻结'
+                failed=[r for r in actual if r.get('status')=='failed']
+                if failed:
+                    detail+=f"；{failed[-1]['run_id']}失败记录保留"
+                if train:
+                    train_result=json.loads(train.read_text(encoding='utf-8'))
+                    detail+=f"；领域微调{train_result['run_id']}已完成"
+                public=[r for r in actual if r.get('config',{}).get('kind')=='tool_eval' and r.get('config',{}).get('data_run')=='E14-domain' and r.get('status')=='completed']
+                if public:
+                    score=public[-1]['summaries'][public[-1]['selected_prompt']]['trajectory_passed']
+                    detail+=f"；固定公开dev {score}/100"
+                for split,count in [('dev',16),('test',40)]:
+                    match=next((r for r in agent if r.get('split')==split and r.get('status')=='completed'),None)
+                    detail+=f"；Pi {split} {match['passed_tasks']}/{count}" if match else f"；Pi {split}{count}待评"
+                state=f"E14-R{mix['run_id'].split('-R')[-1]}：{detail}"
+                if unfinished:
+                    state=f"{unfinished[-1].parent.name}：进行中；{detail}"
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",
