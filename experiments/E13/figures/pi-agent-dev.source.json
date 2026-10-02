@@ -1,0 +1,36 @@
+{
+  "runs": [
+    {
+      "run_id": "E13-R01",
+      "file": "progress.json",
+      "sha256": "425840b8615e9a9d47ab0ca2de5e24807358ff08334433178842d4bd65823f28"
+    },
+    {
+      "run_id": "E13-R01",
+      "file": "result.json",
+      "sha256": "52beab841563a7f9975e3590ec7494a926ee6dbec0b18a7a9f191cc422e3a287"
+    },
+    {
+      "run_id": "E13-R01",
+      "file": "records.jsonl",
+      "sha256": "0abac6c0f35b6cbcfcc7bf045703d5f83099d8a35464af5e1bb11704915cc445"
+    },
+    {
+      "run_id": "E13-R02",
+      "file": "progress.json",
+      "sha256": "0938a3c8d1a1f24fd12fd28f40cc2f6285dc5405b33a7bb5d2b6961b8de42d21"
+    },
+    {
+      "run_id": "E13-R02",
+      "file": "result.json",
+      "sha256": "e188da2b5474445353609012f592658760f8dabe6f145a81bd9385b04fc858ce"
+    },
+    {
+      "run_id": "E13-R02",
+      "file": "records.jsonl",
+      "sha256": "4a4a8328ad5b2a2c978fe08613efa5c8bb52b5818b4c93d69533990174d87939"
+    }
+  ],
+  "image_sha256": "2d2c664573178a19cccc34f0f2b82b93bf0b3c6ac7119232585b709b2a194968",
+  "task_count_per_run": 16
+}

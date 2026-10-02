@@ -1,10 +1,84 @@
 {
-  "word_sha256": "f01e6d087c1368731f14cd41c4596791b5bcc815d9effddb06803bae21866215",
-  "pdf_sha256": "95f7ff680d81e5cea10ce5d82f0921e5ae5cc6007d179bfece8ab9c0ae341423",
+  "word_sha256": "fd1276e22867904e07cf1820057f2efe813cf79b9584b7c0c2eec7f76b043904",
   "visual_checked": true,
-  "checked_at": "2026-10-02T19:13:08+08:00",
-  "rendered": "2026-10-02T19:11:58+08:00",
-  "page_count": 18,
+  "updated": "2026-10-02T20:06:24+08:00",
+  "previous_checked": {
+    "word_sha256": "f01e6d087c1368731f14cd41c4596791b5bcc815d9effddb06803bae21866215",
+    "pdf_sha256": "95f7ff680d81e5cea10ce5d82f0921e5ae5cc6007d179bfece8ab9c0ae341423",
+    "visual_checked": true,
+    "checked_at": "2026-10-02T19:13:08+08:00",
+    "rendered": "2026-10-02T19:11:58+08:00",
+    "page_count": 18,
+    "checked_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "newly_viewed_pages": [
+      1,
+      4
+    ],
+    "identical_pages_inherited": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "page_sha256": {
+      "page-01.png": "fb406e36e4d6605ae40503eca80c44357c7f018ef378209fc7539f8a84b839df",
+      "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+      "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+      "page-04.png": "0b65239744295b5a8d1da02b46b3f3ceffc8ed3e92ad42e1e8b5f9c8b29b300b",
+      "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+      "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+      "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+      "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+      "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+      "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+      "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+      "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+      "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+      "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+      "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+      "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+      "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+      "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+    },
+    "observations": [
+      "18页已重新渲染并按图像哈希核对；实际复看第1,4页，其余页面与此前已核验版本一致。页面中文、图表、表格及分页清楚，未见缺字、越界或裁切。"
+    ]
+  },
+  "pdf_sha256": "fe324ab4a7ff66441e20654239feaf955e4782148a838387fb0168cb774effb6",
+  "checked_at": "2026-10-02T20:07:58+08:00",
+  "rendered": "2026-10-02T20:06:29+08:00",
+  "page_count": 20,
   "checked_pages": [
     1,
     2,
@@ -23,15 +97,15 @@
     15,
     16,
     17,
-    18
+    18,
+    19,
+    20
   ],
   "newly_viewed_pages": [
     1,
-    4
-  ],
-  "identical_pages_inherited": [
     2,
     3,
+    4,
     5,
     6,
     7,
@@ -45,29 +119,34 @@
     15,
     16,
     17,
-    18
+    18,
+    19,
+    20
   ],
+  "identical_pages_inherited": [],
   "page_sha256": {
-    "page-01.png": "fb406e36e4d6605ae40503eca80c44357c7f018ef378209fc7539f8a84b839df",
+    "page-01.png": "0f24169dd68028cefabba55ba327d739eaba4962e83b3abb8b6075098d639bc5",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
-    "page-04.png": "0b65239744295b5a8d1da02b46b3f3ceffc8ed3e92ad42e1e8b5f9c8b29b300b",
-    "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
-    "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
-    "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
-    "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
-    "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
-    "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
-    "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
-    "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
-    "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
-    "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
-    "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
-    "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
-    "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
-    "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+    "page-04.png": "e707ac1bd8b00e75a43eaa3ed7bd674c3c733c854cf32c566577073da3075130",
+    "page-05.png": "03c3acde4c09a4e909cb0eb83a5846833e6e2314ceef18a6a3b8242f8bb00773",
+    "page-06.png": "83adcb435239749d13fcce422ea14d6268ff30cd0ed84026635f06bf942f7089",
+    "page-07.png": "8b4431ac361e6368c7d5e21f8f9d6e85e7e39b8e9d0329fc819d4ab50c58108f",
+    "page-08.png": "c2e04e838528b68efdede37bb0e507df72fd373b37bc17ab34d6457a25cd3c02",
+    "page-09.png": "98ab3d1557a48a0583fc12f6184ee08d3c20a2c726e76915ebcbb65a091eadc2",
+    "page-10.png": "11d0a5f3e3f56d3615a51ef8482f7f3e7604b259bfdab127dd643d0c791f1692",
+    "page-11.png": "2b9f3da1aafd9a657e1bf5cf8462b508eb5eda19d4e879bcc7494addd7fa060c",
+    "page-12.png": "3212e8fde872ef69c867889fd5263be680361ef5110642cd63c2699957a95fbd",
+    "page-13.png": "acbd107b84d1f96cd682ff64f9e4de084a2695111d7e6cc124fbe5834c09631e",
+    "page-14.png": "e6c35d0e4c43dfd62f9eb4d6c4418a178b7440a7c5ab973b7e290ecefcff3ee4",
+    "page-15.png": "54b516526ced6ee17aa2e02ca7cc58799b2165cd6bb492c292085013ffb81cbd",
+    "page-16.png": "01181c3b482db8bce43abe7144bfb82fa7701e446a0dcbadfe0250bcc068ee08",
+    "page-17.png": "df6da94aa306304dd820abae38b762ba522602f3d90abca0bff1350eaeaf1837",
+    "page-18.png": "f0d4017cb8cc7b0932c96300b8aebb61a62075186527115588f8ee6240587e73",
+    "page-19.png": "e2421b10e552b09c63b627a9f23bef490a60089b6479524562f97a1a17ec9016",
+    "page-20.png": "adf7ff579fe2a283ee210d8a5381e52921b03575989b825430292f60977758af"
   },
   "observations": [
-    "18页已重新渲染并按图像哈希核对；实际复看第1,4页，其余页面与此前已核验版本一致。页面中文、图表、表格及分页清楚，未见缺字、越界或裁切。"
+    "20页已重新导出并逐页查看。E13结果表、逐类曲线、失败示例和后续E14证据表均完整；未见缺字、越界、表格裁切或分页空白。"
   ]
 }
