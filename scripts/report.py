@@ -100,6 +100,8 @@ def add_markdown(document, path, page_break_before=False, content=None):
                     text(cell.paragraphs[0], value)
                     cell.paragraphs[0].paragraph_format.space_after = Pt(2)
                     cell.paragraphs[0].paragraph_format.line_spacing = 1.0
+                    if number == 0:
+                        cell.paragraphs[0].paragraph_format.keep_with_next = True
                 if number == 0:
                     properties = table.rows[0]._tr.get_or_add_trPr()
                     properties.append(OxmlElement("w:tblHeader"))

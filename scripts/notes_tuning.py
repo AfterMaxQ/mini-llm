@@ -51,6 +51,8 @@ parameters = sum(rank * (out_dim + in_dim)
     note+='## 怎么安排，才能看出是哪一个变量起作用？\n\n'
     note+='先把学习率固定为 1e-4，比较 rank 8、16、32。三组使用同一份 5,000 条轨迹、14,502 个当前回复单元和 638,598 个监督 token，seed 17，训练一个 epoch、更新 1,813 次；长度、模板、监督遮罩和缓存策略保持一致。rank 16 复用 E09 同条件结果，必须完成训练和全部 500 条 dev 的工具生成后，才作为有效参考。\n\n'
     note+='根据整条轨迹通过数选择 rank，并列时选较小 rank。然后固定这个 rank，再比较 5e-5、1e-4、2e-4 三个学习率；已经完成的 1e-4 条件直接复用，并列时选较低学习率。两阶段都只用 dev，最终 test 不参与选择。调用轮、不调用轮和截断数仍单独展示，避免只看一个总分。\n\n'
+    note+='## 第一次启动为什么停了？\n\n'
+    note+='第一次启动队列时使用了系统默认 Python，训练子进程在导入 `datasets` 时以 `ModuleNotFoundError` 退出，退出码为 1。错误发生在训练初始化阶段，没有创建训练状态、加载模型或占用 GPU。随后改用项目锁定的训练环境启动 E11-R01；这次失败属于解释器入口问题，不是 rank 条件跑坏了。\n\n'
     note+='## 目前哪些条件已经实际运行？\n\n'
     displayed=[run for run in runs if run.name.startswith('E11-') or any(g['training']['run_id']==run.name for g in generations)]
     if displayed:note+='| 运行 | rank | 学习率 | 更新次数 | 状态 |\n| --- | --- | --- | --- | --- |\n'
