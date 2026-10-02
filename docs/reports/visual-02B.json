@@ -1,21 +1,95 @@
 {
-  "word_sha256": "56e40bd6357b81ad7d350ccc14646eed245f4f4b4f9506227b2b5c902de4c78c",
+  "word_sha256": "241fc78f2771278138d1f028cbe55af54c5f375d34843080db32c95b79bcec63",
   "visual_checked": true,
-  "updated": "2026-10-02T07:56:22+08:00",
+  "updated": "2026-10-02T08:22:07+08:00",
   "previous_checked": {
-    "word_sha256": "7fb8081f1137c3327e1b0e89caad3442e87c0d5af8005f7f09e9e36481f571c2",
+    "word_sha256": "56e40bd6357b81ad7d350ccc14646eed245f4f4b4f9506227b2b5c902de4c78c",
     "visual_checked": true,
-    "updated": "2026-10-02T07:53:06+08:00",
+    "updated": "2026-10-02T07:56:22+08:00",
     "previous_checked": {
-      "word_sha256": "5281a6f2869b72ca102d01118c925236e58e8978b7ca4a0e135ac9db132ba864",
+      "word_sha256": "7fb8081f1137c3327e1b0e89caad3442e87c0d5af8005f7f09e9e36481f571c2",
       "visual_checked": true,
-      "updated": "2026-10-02T07:41:00+08:00",
+      "updated": "2026-10-02T07:53:06+08:00",
       "previous_checked": {
-        "word_sha256": "4d0262f49b17afb6070502f94d75dd3cf3e6f0b2d5d13317d12fb83b307cfab6",
+        "word_sha256": "5281a6f2869b72ca102d01118c925236e58e8978b7ca4a0e135ac9db132ba864",
         "visual_checked": true,
-        "updated": "2026-10-02T07:33:42+08:00",
-        "pdf_sha256": "d72dcf6b808ee51ac2015beb81ce92bd061aaca4628536342b1c0343a766a43d",
-        "checked_at": "2026-10-02T07:33:42+08:00",
+        "updated": "2026-10-02T07:41:00+08:00",
+        "previous_checked": {
+          "word_sha256": "4d0262f49b17afb6070502f94d75dd3cf3e6f0b2d5d13317d12fb83b307cfab6",
+          "visual_checked": true,
+          "updated": "2026-10-02T07:33:42+08:00",
+          "pdf_sha256": "d72dcf6b808ee51ac2015beb81ce92bd061aaca4628536342b1c0343a766a43d",
+          "checked_at": "2026-10-02T07:33:42+08:00",
+          "checked_pages": [
+            1
+          ],
+          "newly_viewed_pages": [
+            1
+          ],
+          "unchanged_pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "identical_pages_inherited": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "page_sha256": {
+            "page-01.png": "464fb88e7daa5ae9092d3757299729420dd39cd478d741204da1a8b004116d11",
+            "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
+            "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
+            "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
+            "page-05.png": "fff0f0a5eff6be8b53abcaea381d8e9c528429f9292b5a4c0c1110e7b53ba469",
+            "page-06.png": "567dce76b1d3a10e7e80898a5586a676cd5cdda43b318ef4b61251799ab0b6ba",
+            "page-07.png": "f3aefa055750956a7af5733b7664d1f1b12ea4393fe36584f75bc87ef731ccab",
+            "page-08.png": "3e5482d6b759f75daa799b534d957b89fc7bf53b083fc126a992be8414672131",
+            "page-09.png": "8fe34bb12fcc5d5db4c53aefb2e0f10e39ab17774aa8ff21b8a901e1dacf799e",
+            "page-10.png": "4ad99b46017f1ab56d675f0f4d915c27277bc7d59ab21e88bab635cccaa0312f",
+            "page-11.png": "8deb83fda0c151682b5467950b0ee6bbc74ee600df1c95c57e882b3c59498550",
+            "page-12.png": "4c65babddb29d3f0987dcefad892531f35daa7241e475e03caf7953b9bc3ac76",
+            "page-13.png": "d81f6ce9b05d060e8397807e6a914e678894beec7c9c8e834025fbcabd395a1c",
+            "page-14.png": "b2c4c914782ef409f69fbd9d6629f7eee49999a70a69e300399d9ad5abe1eb95",
+            "page-15.png": "3c6ba9af74e5ba0d4b74ac8998bf65c58c3bd108b9235e1abe0625ce473ba1e6",
+            "page-16.png": "83e4273e3b2878e220f541ecf32a5d789d07b0deb7a12dfc821d6fe34c46565b",
+            "page-17.png": "9ae23e9f2e2fc24a97bc02b7308d6817996e96d370ee69d7ce054ca889d2ea09",
+            "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
+          },
+          "observations": [
+            "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
+          ]
+        },
+        "pdf_sha256": "8af72f50e91d04a84e60e4235c6fb804e7a152b911e2038280d1529a64786d23",
+        "checked_at": "2026-10-02T07:41:00+08:00",
         "checked_pages": [
           1
         ],
@@ -61,7 +135,7 @@
           18
         ],
         "page_sha256": {
-          "page-01.png": "464fb88e7daa5ae9092d3757299729420dd39cd478d741204da1a8b004116d11",
+          "page-01.png": "17dfa4b07985da8e5f0e5b76c88b8f10c5c2e1193d1a5e3137519240eb80d648",
           "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
           "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
           "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -84,8 +158,8 @@
           "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
         ]
       },
-      "pdf_sha256": "8af72f50e91d04a84e60e4235c6fb804e7a152b911e2038280d1529a64786d23",
-      "checked_at": "2026-10-02T07:41:00+08:00",
+      "pdf_sha256": "b594d2e6988714fe3fe63e34a589f80b34e331f7445753c6e48ef7bbc17d4f94",
+      "checked_at": "2026-10-02T07:53:06+08:00",
       "checked_pages": [
         1
       ],
@@ -131,7 +205,7 @@
         18
       ],
       "page_sha256": {
-        "page-01.png": "17dfa4b07985da8e5f0e5b76c88b8f10c5c2e1193d1a5e3137519240eb80d648",
+        "page-01.png": "d9055cbde8d05719c2e79cd678aebf909253835b825152521d48f3212fd21066",
         "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
         "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
         "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -154,8 +228,8 @@
         "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
       ]
     },
-    "pdf_sha256": "b594d2e6988714fe3fe63e34a589f80b34e331f7445753c6e48ef7bbc17d4f94",
-    "checked_at": "2026-10-02T07:53:06+08:00",
+    "pdf_sha256": "28532b5d16924321b57414fafd713a9751cae160b0a8f9b9c99edec235025ef5",
+    "checked_at": "2026-10-02T07:56:22+08:00",
     "checked_pages": [
       1
     ],
@@ -201,7 +275,7 @@
       18
     ],
     "page_sha256": {
-      "page-01.png": "d9055cbde8d05719c2e79cd678aebf909253835b825152521d48f3212fd21066",
+      "page-01.png": "e260796939ff10f119ba0f1dcdb9a511bf978bea8c9cc21561e06517ca7dc154",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -224,8 +298,8 @@
       "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
     ]
   },
-  "pdf_sha256": "28532b5d16924321b57414fafd713a9751cae160b0a8f9b9c99edec235025ef5",
-  "checked_at": "2026-10-02T07:56:22+08:00",
+  "pdf_sha256": "64d5701600104ee328d3007996566bb58956a6a53fd3f3eb9107a0c84c0a8c6e",
+  "checked_at": "2026-10-02T08:22:07+08:00",
   "checked_pages": [
     1
   ],
@@ -271,7 +345,7 @@
     18
   ],
   "page_sha256": {
-    "page-01.png": "e260796939ff10f119ba0f1dcdb9a511bf978bea8c9cc21561e06517ca7dc154",
+    "page-01.png": "cbff215ceb5d8773ea8777039436f7926f7a09d6105d5750b21efc451c65881e",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "cccfd506144f4a725742f3cf9883a6a42a2d20d637b602aca5242775407caa43",
@@ -291,6 +365,6 @@
     "page-18.png": "e6bc95abc12cae382419446990ad1ac94ed4df10918a1ed57612a256d659a6d5"
   },
   "observations": [
-    "已查看封面：中文、标题、摘要与页码正常，没有缺字、遮挡或越界；其余页面与上一版逐像素一致。"
+    "封面标题、中文摘要和页码清楚；第2至18页与上一份已核验页面逐像素一致。"
   ]
 }
