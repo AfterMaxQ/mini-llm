@@ -1,0 +1,86 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "summaries": {
+    "few_shot": {
+      "trajectories": 500,
+      "evaluated_trajectories": 500,
+      "trajectory_passed": 411,
+      "decision_turns": 928,
+      "turn_passed": 828,
+      "call_turns": 568,
+      "call_turn_passed": 494,
+      "no_call_turns": 360,
+      "no_call_turn_passed": 334,
+      "name_exact_turns": 562,
+      "truncated": 1,
+      "errors": {
+        "no_tool_call": 1,
+        "incomplete_tool_call": 1,
+        "ValueError:unknown_tool": 1
+      },
+      "categories": {
+        "multi_turn": {
+          "samples": 147,
+          "passed": 115
+        },
+        "no_call": {
+          "samples": 86,
+          "passed": 86
+        },
+        "parallel": {
+          "samples": 10,
+          "passed": 4
+        },
+        "single_call": {
+          "samples": 257,
+          "passed": 206
+        }
+      },
+      "rows_sha256": "e061e4c77184bc90b8de1d7d97c5bf2e3eec6bb2c35891128b6bc99512bd78fd"
+    }
+  },
+  "selected_prompt": "few_shot",
+  "prompt_candidates_sha256": "841ffdfb378f9237bbbb6c69bff6ff639656d33a33677ad1382f85902ae79d38",
+  "scope": "完整冻结划分的工具决策；使用标注历史，不代表工具执行或最终任务状态",
+  "run_id": "E09-R16",
+  "finished": "2026-10-02T09:51:02+08:00",
+  "config": {
+    "data_run": "E02-R02",
+    "split": "dev",
+    "seed": 42,
+    "prompts": [
+      "few_shot"
+    ],
+    "batch_size": 4,
+    "context_length": 8192,
+    "max_new_tokens": 1024,
+    "max_batch_seconds": 300,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+    "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "adapter": ".local/runs/E09-R15/selected-adapter",
+    "source_train_run": "E09-R15",
+    "kind": "tool_eval",
+    "frozen_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "adapter_sha256": "9dc08d652bd0721c8ebcc5ff9d87831dfecfcb07f1f1967907429aeb4a2be14a",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/offline_eval.py",
+      "--experiment",
+      "E09",
+      "--adapter",
+      ".local/runs/E09-R15/selected-adapter",
+      "--source-run",
+      "E09-R15"
+    ],
+    "run_id": "E09-R16",
+    "started": "2026-10-02T09:27:00+08:00",
+    "commit": "bb34e7b741e8035a9b00774d55624747ee034cbe",
+    "process_id": 3344,
+    "code_snapshot_sha256": "b8abce905032972980a7c91e9673a55153cbd1e6cfe7cef1153bec685434ad9f"
+  },
+  "raw_result_sha256": "9537475b472ed929c34b56cb6cd6b6aa73b95e078df6a652ce0198560c4a8797"
+}
