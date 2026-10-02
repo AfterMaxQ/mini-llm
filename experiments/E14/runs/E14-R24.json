@@ -1,0 +1,42 @@
+{
+  "pi_version": "0.99.1",
+  "session_cwd": "/workspace",
+  "session_manager_cwd": "/workspace",
+  "canonical_path": "F:/workspace/pi-path-smoke.txt",
+  "tool_calls": [
+    "write",
+    "read"
+  ],
+  "read_back_sha256": "a154473346aaf2d61b57335dbfdc0833de2f956545e85a8a840bf9d8d82b59c4",
+  "model_requests": 0,
+  "gpu_used": false,
+  "container_removed": true,
+  "status": "harness_verified",
+  "exit_code": 0,
+  "scope": "复现Pi在Windows归一化的F:/workspace路径并核验隔离read/write；无模型请求、不使用GPU",
+  "run_id": "E14-R24",
+  "finished": "2026-10-02T23:59:58+08:00",
+  "config": {
+    "operation": "pi_path_harness_smoke",
+    "related_failed_run": "E14-R23",
+    "status": "harness_verified",
+    "pi_version": "0.99.1",
+    "session_cwd": "/workspace",
+    "session_manager_cwd": "/workspace",
+    "canonical_path": "F:/workspace/pi-path-smoke.txt",
+    "tool_calls": [
+      "write",
+      "read"
+    ],
+    "read_back_sha256": "a154473346aaf2d61b57335dbfdc0833de2f956545e85a8a840bf9d8d82b59c4",
+    "model_requests": 0,
+    "gpu_used": false,
+    "container_removed": true,
+    "run_id": "E14-R24",
+    "started": "2026-10-02T23:59:58+08:00",
+    "commit": "91320bf4d439e6d3aa6a3e17839cbde3e42c6eb4",
+    "process_id": 42620,
+    "code_snapshot_sha256": "37fe10b51f25a153fd7d7a009a83a66c3a7059d0380dd4b126d465641cf58cc5"
+  },
+  "raw_result_sha256": "b85b295da08053b103e93ab50e2f4fcabcad1e8e97e2519a38914e79f6d9173c"
+}

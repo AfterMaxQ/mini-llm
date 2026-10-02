@@ -107,7 +107,11 @@ def update_notes(run_id, pi_run_id=None):
             pi_results.append(item)
     for item in pi_results:
         if item.get("status") == "aborted_invalid_harness":
-            lines.append(f"Pi {item['split']}接入排错（{item['run_id']}）：已运行{item['evaluated_tasks']}/{item['target_tasks']}个任务后中止。会话工作目录与容器路径不一致，模型重复请求同一路径并收到“文件路径超出任务工作区”；本轮不计为模型成绩，冻结分母仍为{item['target_tasks']}。")
+            if item["run_id"] == "E14-R23":
+                reason = "Pi 将相对路径规范化为`F:/workspace/README.md`，wrapper未映射该Windows容器根，读取失败后重复请求并耗尽工具预算"
+            else:
+                reason = "会话工作目录与容器路径映射不一致，工具拒绝访问工作区外路径"
+            lines.append(f"Pi {item['split']}接入排错（{item['run_id']}）：已运行{item['evaluated_tasks']}/{item['target_tasks']}个任务后中止。{reason}；本轮不计为模型成绩，冻结分母仍为{item['target_tasks']}。")
         else:
             lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
     if pi_run_id:
@@ -127,11 +131,12 @@ def update_notes(run_id, pi_run_id=None):
             else:
                 lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
         lines.append("")
-    path_smoke = next((read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
-                       if read(path).get("operation") == "pi_path_harness_smoke"
-                       and read(path).get("status") == "harness_verified"), None)
+    path_smokes = [read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
+                   if read(path).get("operation", read(path).get("config", {}).get("operation")) == "pi_path_harness_smoke"
+                   and read(path).get("status") == "harness_verified"]
+    path_smoke = path_smokes[-1] if path_smokes else None
     if path_smoke:
-        lines.append(f"Pi 路径映射核验（{path_smoke['run_id']}）：Pi 会话和 SessionManager 均使用`/workspace`；write/read工具往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/{path_smoke['run_id']}.json`。")
+        lines.append(f"Pi 路径映射核验（{path_smoke['run_id']}）：Pi 会话和 SessionManager 均使用`/workspace`；工具返回的`{path_smoke['canonical_path']}`经隔离write/read往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/{path_smoke['run_id']}.json`。")
         lines.append("")
 
     path = ROOT / "experiments/E14/notes.md"

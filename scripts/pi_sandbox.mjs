@@ -66,6 +66,7 @@ export async function createSandbox(overrides = {}) {
   const config = { ...policy, ...overrides };
   const name = 'minillm-task-' + randomUUID();
   const cwd = path.join(root, '.local/virtual-pi-tasks', name);
+  const piWorkspaceRoot = path.win32.resolve('/workspace').replaceAll('\\', '/');
   const args = ['run', '-d', '--name', name, '--network', config.network, '--read-only', '--user', config.user,
     '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', '--cpus', String(config.cpus), '--memory', config.memory,
     '--pids-limit', String(config.pids_limit), '--tmpfs', '/workspace:' + config.workspace_tmpfs,
@@ -80,7 +81,13 @@ export async function createSandbox(overrides = {}) {
   timer.unref();
   function virtualPath(input) {
     assert.equal(typeof input, 'string', '文件路径必须是字符串');
-    const requested = input === '/workspace' || input.startsWith('/workspace/') ? input.slice('/workspace'.length).replace(/^\//, '') : input;
+    const normalized = input.replaceAll('\\', '/');
+    const windowsRoot = piWorkspaceRoot.toLowerCase();
+    const candidate = normalized.toLowerCase();
+    const isPosixWorkspace = candidate === '/workspace' || candidate.startsWith('/workspace/');
+    const isWindowsWorkspace = candidate === windowsRoot || candidate.startsWith(windowsRoot + '/');
+    const requested = isPosixWorkspace ? normalized.slice('/workspace'.length).replace(/^\//, '')
+      : isWindowsWorkspace ? normalized.slice(piWorkspaceRoot.length).replace(/^\//, '') : input;
     const resolved = path.resolve(cwd, requested);
     const relative = path.relative(cwd, resolved);
     if (relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative)) throw new Error('文件路径超出任务工作区');

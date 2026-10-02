@@ -32,14 +32,17 @@ try{
     settingsManager:settings,sessionManager:pi.SessionManager.inMemory('/workspace'),resourceLoader:loader,
     modelRuntime,model,thinkingLevel:'off',noTools:'builtin',customTools:tools}));
   const signal=new AbortController().signal;
+  const piWorkspaceRoot=path.win32.resolve('/workspace').replaceAll('\\','/');
+  const canonicalPath=piWorkspaceRoot+'/pi-path-smoke.txt';
   const invoke=(name,id,params)=>tools.find(tool=>tool.name===name).execute(
     id,params,signal,()=>{},{cwd:'/workspace'});
-  await invoke('write','path-smoke-write',{path:'/workspace/pi-path-smoke.txt',content:'workspace-ok'});
-  const result=await invoke('read','path-smoke-read',{path:'/workspace/pi-path-smoke.txt'});
+  await invoke('write','path-smoke-write',{path:canonicalPath,content:'workspace-ok'});
+  const result=await invoke('read','path-smoke-read',{path:canonicalPath});
   const text=result.content.map(item=>item.text??'').join('\n');
   assert.equal(text,'workspace-ok');
   resultRecord={status:'harness_verified',pi_version:policy.pi_version,
-    session_cwd:'/workspace',session_manager_cwd:'/workspace',tool_calls:['write','read'],
+    session_cwd:'/workspace',session_manager_cwd:'/workspace',canonical_path:canonicalPath,
+    tool_calls:['write','read'],
     read_back_sha256:createHash('sha256').update(text).digest('hex'),model_requests:0,gpu_used:false};
 }finally{
   await session?.dispose();

@@ -99,6 +99,7 @@ def update_summary(completed):
           ('Pi 领域混合来源哈希失败与修正','experiments/E14/runs/E14-R17.json；configs/domain-mix.json'),
           ('Pi 512+512冻结清单与数据构建','scripts/domain_mix.py；configs/domain-mix-frozen.json；experiments/E14/runs/E14-R18.json'),
           ('Pi 领域微调及固定公开dev','configs/sft-domain.json；configs/offline-eval-domain.json；configs/scale-domain.json'),
+          ('Pi Agent dev路径映射失败与修正核验','experiments/E14/runs/E14-R21.json；experiments/E14/runs/E14-R23.json；experiments/E14/runs/E14-R24.json；scripts/pi_sandbox.mjs；scripts/pi_path_smoke.mjs'),
           ('Pi 实际工具定义与容器参数','configs/pi-tools.json；configs/pi-sandbox.json'),
           ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs'),
           ('rank 对照准备','experiments/E11/preparation.json；configs/rank.json；configs/sft-rank8.json；configs/sft-rank32.json'),
@@ -120,6 +121,11 @@ def update_summary(completed):
     for label,files in rows:
         if (ROOT/files.split('；')[0]).exists():
             evidence=put_evidence(evidence,label,files)
+    failed_agent_paths='experiments/E14/runs/E14-R21.json；experiments/E14/runs/E14-R23.json'
+    failed_agent_row=f'| Pi Agent dev无效接线记录（不计模型成绩） | {failed_agent_paths} |'
+    if all((ROOT/file).exists() for file in failed_agent_paths.split('；')) and 'experiments/E14/runs/E14-R23.json' not in evidence:
+        marker='\n\n完整逐条回复'
+        evidence=evidence.replace(marker,'\n'+failed_agent_row+marker) if marker in evidence else evidence.rstrip()+'\n'+failed_agent_row+'\n'
     intro='# 从提示词基线走向正式微调\n\n原模型在相同完整 dev 上，零样本通过 268/500，加入三条固定示例后通过 355/500。少样本提示提高了调用轮表现，也增加了本该询问或不调用时的误调用。后续模型都沿用这个已冻结的提示。\n\n'
     if completed:
         r=completed[-1];s=r['summary']
@@ -242,13 +248,14 @@ def update_summary(completed):
         record_path='experiments/E14/runs/'+record['run_id']+'.json'
         if not any(record_path in line for line in evidence.splitlines()):
             evidence=put_evidence(evidence,'E14 '+record['run_id']+' Pi Agent记录',record_path)
-    path_smoke=next((record for record in pi_runs if record.get('operation')=='pi_path_harness_smoke'
-                     and record.get('status')=='harness_verified'),None)
+    path_smokes=[record for record in pi_runs if record.get('operation',record.get('config',{}).get('operation'))=='pi_path_harness_smoke'
+                 and record.get('status')=='harness_verified']
+    path_smoke=path_smokes[-1] if path_smokes else None
     if path_smoke:
         files=f"scripts/pi_path_smoke.mjs；experiments/E14/runs/{path_smoke['run_id']}.json"
         if not any(path_smoke['run_id']+'.json' in line for line in evidence.splitlines()):
             evidence=put_evidence(evidence,'Pi Agent路径映射核验（未运行模型）',files)
-        pi_intro+='Pi Agent首次dev模型运行在前2/16个任务时因容器cwd路径映射错误中止，不计模型成绩；单独烟测确认会话工作目录及SessionManager目录均为`/workspace`，隔离write/read往返成功。烟测未请求模型，因此Pi dev模型成绩仍待完整冻结16题评测。\n\n'
+        pi_intro+='Pi Agent dev接线运行R21和R23分别在2/16、1/16处因 Windows 路径映射错误中止，均不计模型成绩。R24在不请求模型的本机烟测中，以Pi生成的`F:/workspace/...`规范化路径完成隔离write/read往返；正式dev仍按冻结的16题评测。\n\n'
     deduplicated=[];seen_files=set()
     for line in evidence.splitlines():
         if line.startswith('| ') and line.count('|') >= 3:
@@ -285,7 +292,9 @@ def update_summary(completed):
         ('Pi 512+512冻结清单与数据构建','scripts/domain_mix.py；configs/domain-mix-frozen.json；experiments/E14/runs/E14-R18.json'),
         ('Pi 领域微调及固定公开dev','configs/sft-domain.json；configs/offline-eval-domain.json；configs/scale-domain.json'),
         ('Pi 接线失败运行（不计模型成绩）','experiments/E14/runs/E14-R21.json'),
+        ('Pi 第二次接线失败运行（不计模型成绩）','experiments/E14/runs/E14-R23.json'),
         ('Pi 会话路径映射烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R22.json'),
+        ('Pi Windows规范化路径烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R24.json'),
     ]
     present_labels={line.split('|',2)[1].strip() for line in pi_rows}
     for label,files in pi_evidence_rows:
@@ -293,12 +302,17 @@ def update_summary(completed):
             continue
         pi_rows.append(f'| {label} | {files} |')
     main_evidence='\n'.join(line for line in evidence.splitlines() if not line.startswith('| Pi '))+'\n'
+    failed_paths='experiments/E14/runs/E14-R21.json；experiments/E14/runs/E14-R23.json'
+    failed_row=f'| E14 Pi Agent 无效接线（不计模型成绩） | {failed_paths} |'
+    if all((ROOT/file).exists() for file in failed_paths.split('；')) and 'experiments/E14/runs/E14-R23.json' not in main_evidence:
+        marker='\n\n完整逐条回复'
+        main_evidence=main_evidence.replace(marker,'\n'+failed_row+marker) if marker in main_evidence else main_evidence.rstrip()+'\n'+failed_row+'\n'
     if path_smoke:
         smoke_files=f"scripts/pi_path_smoke.mjs；experiments/E14/runs/{path_smoke['run_id']}.json"
-        row=f'| E14 R22 路径映射烟测（未运行模型） | {smoke_files} |'
+        row=f'| E14 {path_smoke["run_id"]} 路径映射烟测（未运行模型） | {smoke_files} |'
         lines=main_evidence.splitlines();found=False
         for index,line in enumerate(lines):
-            if line.startswith('| E14 R22 路径映射烟测（未运行模型） |'):
+            if line.startswith('| E14 ') and '路径映射烟测（未运行模型）' in line:
                 lines[index]=row;found=True
         if not found:
             marker='| 后续训练与生成结果 |'

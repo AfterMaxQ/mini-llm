@@ -126,8 +126,9 @@ def main():
                 if invalid_harness:
                     record=invalid_harness[-1]
                     detail+=f"；{record['run_id']}接线错误中止{record['evaluated_tasks']}/{record['target_tasks']}，不计模型成绩"
-                harness_smoke=next((r for r in actual if r.get('operation')=='pi_path_harness_smoke'
-                                    and r.get('status')=='harness_verified'),None)
+                harness_smokes=[r for r in actual if r.get('operation',r.get('config',{}).get('operation'))=='pi_path_harness_smoke'
+                                and r.get('status')=='harness_verified']
+                harness_smoke=harness_smokes[-1] if harness_smokes else None
                 if harness_smoke:
                     detail+=f"；{harness_smoke['run_id']}路径映射核验通过，不含模型推理"
                 state=f"E14-R{mix['run_id'].split('-R')[-1]}：{detail}"

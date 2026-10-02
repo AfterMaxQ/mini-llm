@@ -308,12 +308,14 @@ Pi每类都是64条：该类两个独立训练模板族各抽32条；公开部�
 ### 固定公开集和 Pi 任务的实际成绩
 
 固定公开dev通过64/100条；逐轮结果保留了100条完整分母。
-Pi dev接入排错（E14-R21）：已运行2/16个任务后中止。会话工作目录与容器路径不一致，模型重复请求同一路径并收到“文件路径超出任务工作区”；本轮不计为模型成绩，冻结分母仍为16。
+Pi dev接入排错（E14-R21）：已运行2/16个任务后中止。会话工作目录与容器路径映射不一致，工具拒绝访问工作区外路径；本轮不计为模型成绩，冻结分母仍为16。
+Pi dev接入排错（E14-R23）：已运行1/16个任务后中止。Pi 将相对路径规范化为`F:/workspace/README.md`，wrapper未映射该Windows容器根，读取失败后重复请求并耗尽工具预算；本轮不计为模型成绩，冻结分母仍为16。
 
 公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。
 
 ### Pi Agent 运行记录
 
 - E14-R21：接线无效，中止于2/16；不作为模型成绩。记录：`experiments/E14/runs/E14-R21.json`。
+- E14-R23：接线无效，中止于1/16；不作为模型成绩。记录：`experiments/E14/runs/E14-R23.json`。
 
-Pi 路径映射核验（E14-R22）：Pi 会话和 SessionManager 均使用`/workspace`；write/read工具往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/E14-R22.json`。
+Pi 路径映射核验（E14-R24）：Pi 会话和 SessionManager 均使用`/workspace`；工具返回的`F:/workspace/pi-path-smoke.txt`经隔离write/read往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/E14-R24.json`。
