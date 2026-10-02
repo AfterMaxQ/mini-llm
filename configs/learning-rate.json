@@ -1,0 +1,23 @@
+{
+  "experiment": "E11",
+  "training_config": "configs/sft-focused.json",
+  "evaluation_config": "configs/offline-eval-focused.json",
+  "jobs": [
+    {
+      "size": 1000,
+      "seed": 17
+    },
+    {
+      "size": 1000,
+      "seed": 17,
+      "training_config": "configs/sft-lr-low.json"
+    }
+  ],
+  "selection": {
+    "metric": "trajectory_passed",
+    "denominator": 100,
+    "tie_breaker": "lower_learning_rate"
+  },
+  "purpose": "固定rank16、同一1k训练集与100条dev，比较1e-4和5e-5；test不参与选择",
+  "next_config": "configs/quality.json"
+}

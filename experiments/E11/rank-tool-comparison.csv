@@ -1,0 +1,9 @@
+rank,category,passed,samples
+8,single_call,205,257
+8,multi_turn,113,147
+8,no_call,86,86
+8,parallel,2,10
+16,single_call,205,257
+16,multi_turn,113,147
+16,no_call,86,86
+16,parallel,2,10

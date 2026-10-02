@@ -1,0 +1,9 @@
+{
+  "source_file": "rank-tool-comparison.csv",
+  "source_sha256": "d209eca3af845f50910f29bab6b42e3f14efcb306d6dceb261a9da46264f178d",
+  "image_sha256": "302d7c9390f70fc1821b0befff9ee56639c41e7ea3864de3ed0e83f9f030ab0a",
+  "evaluation_files": {
+    "E09-R10": "68e04f597b9607d680af0a4394d72bd26e8ae284f8ebed2164e5ebedcafa4e8c",
+    "E11-R02": "b836b59e212168efdb4f2fe6df04a055be78fb4312b2d3f792365e1bfbb72c8f"
+  }
+}

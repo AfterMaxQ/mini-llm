@@ -12,24 +12,15 @@
       "size": 5000,
       "seed": 17,
       "training_config": "configs/sft-rank8.json"
-    },
-    {
-      "size": 5000,
-      "seed": 17,
-      "training_config": "configs/sft-rank32.json"
     }
   ],
   "selection": {
-    "metric": "trajectory_passed",
-    "denominator": 500,
-    "tie_breaker": "smaller_rank",
-    "learning_rate_candidates": [
-      5e-05,
-      0.0001,
-      0.0002
+    "rank_comparison": [
+      8,
+      16
     ],
-    "learning_rate_rank": "rank阶段选定后冻结",
-    "learning_rate_tie_breaker": "lower_learning_rate"
+    "learning_rate_rank": 16,
+    "learning_rate_plan": "configs/learning-rate.json"
   },
-  "purpose": "先固定学习率比较rank；复用同条件rank16参考；选择后再执行学习率阶段"
+  "purpose": "同一5k、完整500条dev比较rank8与rank16；学习率在独立1k条件下固定rank16比较"
 }

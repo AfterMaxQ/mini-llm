@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "sampling_seed": 2026,
+  "training_seed": 17,
+  "training": {
+    "learning_rate_sizes": [1000, 1000],
+    "learning_rates": [0.0001, 0.00005],
+    "rank": 16,
+    "quality_size": 1000,
+    "epochs": 1,
+    "eval_steps": 200,
+    "dev_trajectories": 100,
+    "domain_public_trajectories": 512,
+    "domain_pi_trajectories": 512,
+    "distillation_sizes": [128, 256],
+    "distillation_optimizer_steps": 128
+  },
+  "public_dev_quotas": {"single_call": 40, "multi_turn": 30, "no_call": 20, "parallel": 10},
+  "public_test_trajectories": 200,
+  "pi": {"dev_per_category": 2, "test_per_category": 5, "repeat_per_category": 2, "repeat_seeds": [42, 2026]},
+  "teacher": {"model": "Qwen/Qwen3-4B", "quantization": "NF4", "initial_requests": 512, "valid_target": 256, "extension_batch": 128, "maximum_requests": 1024},
+  "bfcl_per_category": 40,
+  "arc_test_questions": 200,
+  "performance": {"input_tokens": [256, 1024, 4096], "output_limit": 128, "concurrency": [1, 2], "warmup_requests": 3, "measured_requests": 10, "rounds": 1},
+  "conversion_check_samples": 32,
+  "optional_conditions": ["rank32", "learning_rate_2e-4", "student_4B", "teacher_8B", "distillation_token_budget_replication", "screening_causal_training", "extended_performance_grid"],
+  "evidence": "样本先按类别、来源或任务族冻结；所有比较使用相同id；失败、超时、截断和解析错误保留在预定分母；抽样结果只代表该固定样本集"
+}

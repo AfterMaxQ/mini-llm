@@ -1,4 +1,4 @@
-"""完整公开工具划分的逐轮评估：保留错误，按原始轨迹统计。"""
+"""冻结公开工具清单的逐轮评估：保留错误，按原始轨迹统计。"""
 import argparse
 import hashlib
 import json
@@ -176,11 +176,11 @@ def main():
     config["adapter"]=args.adapter
     config["source_train_run"]=args.source_run
     config["kind"]="tool_eval" if args.adapter else "prompt_baseline"
-    if args.adapter:
+    if args.adapter or config.get("use_frozen_prompt",False):
         frozen=json.loads((ROOT/"configs/prompt-frozen.json").read_text(encoding="utf-8"))
         config["prompts"]=[frozen["selected_prompt"]]
         config["frozen_prompt_sha256"]=sha256(ROOT/"configs/prompt-frozen.json")
-        config["adapter_sha256"]=sha256(ROOT/args.adapter/"adapter_model.safetensors")
+        if args.adapter:config["adapter_sha256"]=sha256(ROOT/args.adapter/"adapter_model.safetensors")
     config["command"]=[sys.executable,*sys.argv]
     run=ROOT/".local/runs"/args.resume_run if args.resume_run else start_run(args.experiment,config)
     if args.resume_run:
@@ -188,9 +188,13 @@ def main():
         assert all(config[k]==saved[k] for k in config if k!="command"),"续跑配置发生变化，需另开运行"
     try:
         torch.manual_seed(config["seed"])
+        if config.get("sampling_manifest_sha256"):
+            assert sha256(ROOT/"configs/subsets-frozen.json")==config["sampling_manifest_sha256"]
+        for name, expected in config.get("data_file_hashes",{}).items():
+            assert sha256(ROOT/".local/data/processed"/config["data_run"]/name)==expected
         records=read_records(config["split"]+".jsonl",config["data_run"])
         tokenizer,_,_=tokenizer_and_template()
-        if args.adapter:
+        if args.adapter or config.get("use_frozen_prompt",False):
             prompts={frozen['selected_prompt']:frozen['suffix']};examples=[]
         else:
             prompts,examples=prompt_candidates()
@@ -215,7 +219,7 @@ def main():
         selected=max(config["prompts"],key=lambda x:summaries[x]["trajectory_passed"])
         result=finish_run(run,{"status":"completed","exit_code":0,"summaries":summaries,"selected_prompt":selected,
                       "prompt_candidates_sha256":sha256(run/"prompt-candidates.json"),
-                      "scope":"完整冻结划分的工具决策；使用标注历史，不代表工具执行或最终任务状态"})
+                      "scope":f"冻结清单中{len(records)}条轨迹的工具决策；使用标注历史，不代表工具执行或最终任务状态"})
         if args.experiment=="E08" and config["split"]=="dev" and not args.adapter:
             write_json(ROOT/"configs/prompt-frozen.json",{"source_run":run.name,"selection_split":"dev","selected_prompt":selected,
                       "suffix":prompts[selected],"source_sha256":result["prompt_candidates_sha256"],"tie_break":"zero_shot"})

@@ -1,0 +1,157 @@
+{
+  "status": "trained_pending_tool_eval",
+  "exit_code": 0,
+  "train_size": 1000,
+  "seed": 17,
+  "steps": 363,
+  "train": {
+    "data_run": "focused-public",
+    "data_file": "train-1000.jsonl",
+    "source_sha256": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4637319740a9e25c972",
+    "independent_trajectories": 1000,
+    "assistant_units": 2900,
+    "input_tokens": 1171709,
+    "supervised_tokens": 126688,
+    "max_sequence_length": 1945,
+    "max_target_length": 606,
+    "categories": {
+      "single_call": 556,
+      "no_call": 155,
+      "multi_turn": 262,
+      "parallel": 27
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 2900,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "1f0de2f0e81d15dd230618789ddad257ef73df61058674861627bf8fef818692"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "83923dd03bddcb55939ecc140557b5457dadddbb052e3bda2fae44e5fcab8797"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "a024f26263af9a8dad79c4d686d9255acdc4b4827a8aacbb271346bff9f2e502"
+      }
+    ]
+  },
+  "dev": {
+    "data_run": "focused-public",
+    "data_file": "dev.jsonl",
+    "source_sha256": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb",
+    "independent_trajectories": 100,
+    "assistant_units": 288,
+    "input_tokens": 130631,
+    "supervised_tokens": 14346,
+    "max_sequence_length": 2505,
+    "max_target_length": 610,
+    "categories": {
+      "no_call": 20,
+      "single_call": 40,
+      "multi_turn": 30,
+      "parallel": 10
+    },
+    "template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "marked_template_sha256": "a01140eb8ed33b6108ab8bd6716363cfb95065f60c66814279c03923d2797226",
+    "prefix_checks": 288,
+    "packing": false,
+    "files": [
+      {
+        "file": "units.jsonl",
+        "sha256": "baef9efd85c2b3b1817111795168168168361d63de16f44b1a3dc9e23f02ab0f"
+      },
+      {
+        "file": "dataset/data-00000-of-00001.arrow",
+        "sha256": "e2a9d3c85a47dfb3ca682192ec8739d75d4aaf8fdcc18b724864479ad35ae662"
+      },
+      {
+        "file": "dataset/dataset_info.json",
+        "sha256": "99d4be5366ef3381f9663091f7501d1fa6e105ccdb41bd51c23f19877498d183"
+      },
+      {
+        "file": "dataset/state.json",
+        "sha256": "3de5ac5e59fd567787e92317e53898eee73e934165cea2ffdb5f88d0c7c1ed23"
+      }
+    ]
+  },
+  "selected_checkpoint": "checkpoint-363",
+  "selected_dev_loss": 0.18881645803163566,
+  "train_metrics": {
+    "train_runtime": 2010.3892,
+    "train_samples_per_second": 1.443,
+    "train_steps_per_second": 0.181,
+    "train_loss": 0.2301758462460532,
+    "epoch": 1.0
+  },
+  "resume_history": [],
+  "metrics_sha256": "e55fa84fdaf3e52929b0459ada32cc5d7680e565f76d027f069234ffbe3674fc",
+  "scope": "完成配置规定的训练预算；100条冻结dev用于loss选择，工具泛化由独立生成评估补齐",
+  "run_id": "E11-R05",
+  "finished": "2026-10-02T18:21:46+08:00",
+  "config": {
+    "data_run": "focused-public",
+    "train_size": 1000,
+    "seed": 17,
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "epochs": 1,
+    "micro_batch": 1,
+    "gradient_accumulation": 8,
+    "max_sequence_length": 2048,
+    "eval_steps": 200,
+    "warmup_ratio": 0.03,
+    "max_grad_norm": 1.0,
+    "lr_scheduler_type": "linear",
+    "packing": false,
+    "assistant_only_loss": true,
+    "unit_policy": "assistant_action",
+    "enable_thinking": false,
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "training_prompt": "冻结数据中的通用系统提示；不加入少样本示例",
+    "precision": "NF4 double quant, BF16 mixed precision",
+    "validation_loss": "冻结100条dev的全部当前回复单元，按监督token加权交叉熵",
+    "checkpoint_selection": "最低固定dev loss；并列保留较早checkpoint",
+    "optimizer": "torch AdamW",
+    "empty_cuda_cache_each_step": true,
+    "empty_cuda_cache_each_validation_unit": true,
+    "sampling_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "data_file_hashes": {
+      "train-1000.jsonl": "8c27aefebe8106ff2f6befc8844e9812a6fb6a856402e4637319740a9e25c972",
+      "dev.jsonl": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb"
+    },
+    "validation_context_length": 8192,
+    "evaluation_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/sft.py",
+      "--config",
+      "configs/sft-lr-low.json",
+      "--experiment",
+      "E11",
+      "--size",
+      "1000",
+      "--seed",
+      "17"
+    ],
+    "run_id": "E11-R05",
+    "started": "2026-10-02T17:47:05+08:00",
+    "commit": "06b2948eda4b8da18d90b4f12b7f46bbfd95369d",
+    "process_id": 45292,
+    "code_snapshot_sha256": "ad59fc8bbeaff41f4c1ddacff72f7d63c094e8188c39b3041c3086efcc7c2758"
+  },
+  "raw_result_sha256": "1d266d0262e8afe04e459b4ffc3c4c60fc1b8589fc73f8f7af54bb5dd99c0b8c"
+}

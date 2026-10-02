@@ -113,9 +113,11 @@ if message["role"] in ["user", "tool"]:
 
 50 条采用通过与剔除各半的抽样，没有按总体比例抽取，也没有逐条真实执行，因此不计算整批数据的“准确率”。这次抽查更有用的结论是：筛选会改变任务难度和表达方式，后续若分数上升，还要检查是否只学会了更直接的参数复制。
 
-## 训练与完整 dev 结果
+## 1k 训练对照怎么做？
 
-正式对照固定 rank 16、学习率 1e-4、seed 17、一个 epoch，精度、模板、缓存策略和固定提示与 E09 5k 相同。基础清洗条件只在训练及全部 500 条 dev 工具生成结束后复用。每 100 步计算完整 dev loss；最终工具评测仍包含 500 条轨迹、928 个决策轮。
+训练对照各用 1,000 条独立轨迹。基础组沿用原 1k 样本，额外筛选组从已复查的 5k 数据池中抽取，逐个匹配“来源 × 类别”的数量；原 5k 筛选记录仍用于解释规则和抽查过程。两组固定 rank 16、学习率 1e-4、seed 17、一个 epoch，模板、精度与缓存策略相同。
+
+两组使用同一份预先冻结的 100 条 dev，四类任务都覆盖，包含原 dev 全部 10 条并行调用。初始、每 200 步和末步计算 token 加权 loss，选择最低 loss 的 checkpoint，再用同样的固定提示生成工具决策。基础组使用 E11 的同条件 1k 运行，不能拿验证方法不同的旧运行直接作参考。100 条成绩只代表这份固定样本，不当作完整 dev 的分数。
 
 '''
     runs = []
@@ -124,26 +126,29 @@ if message["role"] in ["user", "tool"]:
         if "train_size" in config:
             runs.append(path.parent)
     if not runs:
-        note += "新数据尚未开始 GPU 训练，当前不填写通过率或提升值。现有 GPU 队列继续按原顺序运行。\n"
+        note += "新数据尚未开始 GPU 训练，当前不填写通过率或提升值。先完成基础组，再训练额外筛选组。\n"
     for run in runs:
         progress = json.loads((run / "progress.json").read_text(encoding="utf-8")) if (run / "progress.json").exists() else {}
         ended = json.loads((run / "result.json").read_text(encoding="utf-8")) if (run / "result.json").exists() else {}
-        state = {"trained_pending_tool_eval": "训练完成，完整工具评测另查", "failed": "失败，原记录保留"}.get(ended.get("status"), "运行中")
+        state = {"trained_pending_tool_eval": "训练完成，工具评测另查", "failed": "失败，原记录保留"}.get(ended.get("status"), "运行中")
         note += f"\n{run.name}：{state}，已更新 {ended.get('steps', progress.get('latest', {}).get('step', 0)):,} 次。\n"
         curve = draw_curve(run.name)
         if curve and curve["train"]:
-            note += f"\n![图 E12：{run.name} 的真实训练与完整 dev loss，未平滑。](figures/{curve['path'].name})\n"
+            note += f"\n![图 E12：{run.name} 的真实训练与固定 dev loss，未平滑。](figures/{curve['path'].name})\n"
     for path in sorted((folder / "runs").glob("*.json")):
         evaluation = json.loads(path.read_text(encoding="utf-8"))
         config = evaluation["config"]
         if evaluation["status"] != "completed" or config.get("kind") != "tool_eval":
             continue
         summary = evaluation["summaries"][evaluation["selected_prompt"]]
-        assert summary["trajectories"] == summary["evaluated_trajectories"] == 500 and summary["decision_turns"] == 928
+        records = [json.loads(line) for line in (ROOT / ".local/data/processed" / config["data_run"] / (config["split"] + ".jsonl")).read_text(encoding="utf-8").splitlines()]
+        turns = sum(m["role"] == "assistant" and bool(m.get("tool_calls") or record["messages"][i - 1]["role"] == "user")
+                    for record in records for i, m in enumerate(record["messages"]))
+        assert summary["trajectories"] == summary["evaluated_trajectories"] == len(records) and summary["decision_turns"] == turns
         assert summary["rows_sha256"] == sha256(ROOT / ".local/runs" / evaluation["run_id"] / (evaluation["selected_prompt"] + ".jsonl"))
         assert config["frozen_prompt_sha256"] == sha256(ROOT / "configs/prompt-frozen.json")
         assert config["adapter_sha256"] == sha256(ROOT / ".local/runs" / config["source_train_run"] / "selected-adapter/adapter_model.safetensors")
-        note += f"\n{evaluation['run_id']} 完整 dev：整条轨迹 {summary['trajectory_passed']}/500，调用轮 {summary['call_turn_passed']}/568，不调用轮 {summary['no_call_turn_passed']}/360，截断 {summary['truncated']}。\n"
+        note += f"\n{evaluation['run_id']} 固定 dev：整条轨迹 {summary['trajectory_passed']}/{summary['trajectories']}，调用轮 {summary['call_turn_passed']}/{summary['call_turns']}，不调用轮 {summary['no_call_turn_passed']}/{summary['no_call_turns']}，截断 {summary['truncated']}。\n"
     (folder / "notes.md").write_text(note, encoding="utf-8")
 
 

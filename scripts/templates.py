@@ -59,4 +59,9 @@ def read_records(name="train-10000.jsonl", data_run="E02-R02"):
     frozen = json.loads((ROOT / "configs/data-frozen.json").read_text(encoding="utf-8"))
     if data_run == frozen["run_id"]:
         assert sha256(path) == frozen["outputs"][name]["sha256"], "冻结数据文件已改变"
+    subsets = ROOT / "configs/subsets-frozen.json"
+    if subsets.exists():
+        datasets = json.loads(subsets.read_text(encoding="utf-8"))["datasets"]
+        if data_run in datasets:
+            assert sha256(path) == datasets[data_run]["files"][name], "固定抽样数据已改变"
     return [json.loads(x) for x in path.read_text(encoding="utf-8").splitlines()]

@@ -46,6 +46,15 @@ def main():
             if data.get('operation')=='pi_reference_encoding' and data.get('independent_trajectories')==1000:
                 translated['reference_encoding_verified']='1000条规则参考的训练格式已核验，领域训练待执行'
             state = f"{data['run_id']}：{translated.get(data['status'], data['status'])}"
+        if number==11 and runs:
+            evaluations=[json.loads(p.read_text(encoding='utf-8')) for p in runs]
+            complete=[r for r in evaluations if r.get('status')=='completed' and r.get('config',{}).get('kind')=='tool_eval']
+            if complete:
+                focused=[r for r in complete if r['config'].get('data_run')=='focused-public']
+                trains={r['run_id']:r['config'] for r in evaluations if r.get('config',{}).get('train_size')==1000}
+                rates={trains[r['config']['source_train_run']]['learning_rate'] for r in focused
+                       if r['config']['source_train_run'] in trains}
+                state='5k rank对照完成；1k学习率对照'+('完成' if {0.0001,0.00005}<=rates else f'已评测{len(rates)}/2组')
         unfinished = [p for p in sorted((ROOT / ".local/runs").glob(f"{experiment}-R*/config.json"))
                       if not (p.parent / "result.json").exists()]
         if unfinished:
@@ -73,7 +82,7 @@ def main():
                 state += f"，{config['split']}参考 {data['completed']}/{data['target']}"
             elif (current / 'validation-progress.json').exists():
                 validation=json.loads((current / 'validation-progress.json').read_text(encoding='utf-8'))
-                state += f"，第 {validation['step']} 步完整 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
+                state += f"，第 {validation['step']} 步冻结 dev loss 已检查 {validation['units']}/{validation['total_units']} 个回复"
             elif alive(config):
                 state += '，准备数据与模型'
         if number==14:

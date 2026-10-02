@@ -1,17 +1,19 @@
 {
   "experiment": "E12",
-  "training_config": "configs/sft-quality.json",
+  "training_config": "configs/sft-quality-focused.json",
+  "evaluation_config": "configs/offline-eval-focused.json",
   "reference": {
-    "experiment": "E09",
-    "training_config": "configs/sft.json",
-    "size": 5000,
+    "experiment": "E11",
+    "training_config": "configs/sft-focused.json",
+    "evaluation_config": "configs/offline-eval-focused.json",
+    "size": 1000,
     "seed": 17
   },
   "jobs": [
     {
-      "size": 5000,
+      "size": 1000,
       "seed": 17
     }
   ],
-  "purpose": "匹配来源和类别的5k数据；严格表面来源筛选，完整dev另行比较"
+  "purpose": "来源和类别匹配的1k训练对照，100条固定dev；筛选和样本内容差异共同报告"
 }

@@ -100,7 +100,9 @@ def update_summary(completed):
           ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs'),
           ('rank 对照准备','experiments/E11/preparation.json；configs/rank.json；configs/sft-rank8.json；configs/sft-rank32.json'),
           ('等量数据筛选与复查','configs/data-quality.json；configs/data-quality-frozen.json；experiments/E12/sample-review.json；experiments/E12/data-comparison.csv'),
-          ('数据质量对照入口','scripts/data_quality.py；configs/quality.json；configs/sft-quality.json'),
+          ('数据质量对照入口','scripts/data_quality.py；configs/quality.json；configs/sft-quality-focused.json'),
+          ('E11 rank训练与评测','experiments/E11/runs/E11-R01.json；experiments/E11/runs/E11-R02.json；experiments/E11/rank-tool-comparison.csv'),
+          ('1k训练与固定评测清单','configs/sft-focused.json；configs/sft-lr-low.json；configs/learning-rate.json；configs/subsets-frozen.json'),
           ('筛选失败与重新冻结','experiments/E12/runs/E12-R01.json；experiments/E12/runs/E12-R02.json'),
           ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
           ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs'),
@@ -118,8 +120,24 @@ def update_summary(completed):
     intro='# 从提示词基线走向正式微调\n\n原模型在相同完整 dev 上，零样本通过 268/500，加入三条固定示例后通过 355/500。少样本提示提高了调用轮表现，也增加了本该询问或不调用时的误调用。后续模型都沿用这个已冻结的提示。\n\n'
     if completed:
         r=completed[-1];s=r['summary']
-        intro+=f"最近这轮用了 {r['size']:,} 条训练轨迹，完整 dev 通过 {s['trajectory_passed']}/500；调用轮为 {s['call_turn_passed']}/568，不调用轮为 {s['no_call_turn_passed']}/360。loss 与实际工具决策分开看，不能把更容易生成调用当成任务成功率提升。\n\n"
-    intro+='训练已解决 LoRA 重复准备和缓存压力问题，失败条件与处理过程保留在正文。规模与 seed 比较仍按既定队列推进；尚未完成的对照和最终 test 保持未完成，不提前选择最终配置。\n\n'
+        intro+=f"最近完成的 E09 规模组 {r['eval_run']} 使用 {r['size']:,} 条训练轨迹，完整 dev 通过 {s['trajectory_passed']}/500；调用轮为 {s['call_turn_passed']}/568，不调用轮为 {s['no_call_turn_passed']}/360。loss 与实际工具决策分开看，不能把更容易生成调用当成任务成功率提升。\n\n"
+    ten_k=sorted((r for r in completed if r['size']==10000),key=lambda r:r['seed'])
+    if ten_k:
+        assert [r['seed'] for r in ten_k]==[17,42,2026]
+        passed=[r['summary']['trajectory_passed'] for r in ten_k]
+        no_call=[r['summary']['no_call_turn_passed'] for r in ten_k]
+        intro+=f"10k 三个 seed（17、42、2026）分别通过 {passed[0]}、{passed[1]}、{passed[2]}/500；不调用轮落在 {min(no_call)}—{max(no_call)}/360。三轮在同一份 dev 上完成，不能当作独立测试集成绩。\n\n"
+    precision_runs={}
+    for run_id in ('E09-R10','E10-R02'):
+        result_path=ROOT/'experiments'/run_id[:3]/'runs'/f'{run_id}.json'
+        if result_path.exists():
+            record=json.loads(result_path.read_text(encoding='utf-8'))
+            if record.get('status')=='completed':
+                precision_runs[run_id]=record['summaries'][record['selected_prompt']]
+    if len(precision_runs)==2:
+        nf4=precision_runs['E09-R10'];bf16=precision_runs['E10-R02']
+        intro+=f"精度对照沿用同一生成后端和完整 dev：NF4 训练组通过 {nf4['trajectory_passed']}/500，BF16 训练组通过 {bf16['trajectory_passed']}/500；调用轮分别为 {nf4['call_turn_passed']}/568 与 {bf16['call_turn_passed']}/568，不调用轮为 {nf4['no_call_turn_passed']}/360 与 {bf16['no_call_turn_passed']}/360。三条轨迹的差异说明这批结果接近，不能据此单独断言精度优劣。\n\n"
+    intro+='训练中遇到的 LoRA 重复准备和显存缓存问题，连同处理过程与失败条件都保留在正文。各组效果按自己的冻结数据与验证条件比较；最终配置只由 dev 选择，test 留作独立检查。\n\n'
     pi_intro='# 从工具链到可执行的任务数据\n\n'
     preparation=ROOT/'experiments/E13/preparation.json'
     if preparation.exists():
@@ -127,9 +145,9 @@ def update_summary(completed):
         if p['status']=='tool_chain_verified':
             pi_intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据。模型尚未接入，不能把这些请求算成 Agent 任务成绩。\n\n"
     if (ROOT/'experiments/E11/preparation.json').exists():
-        intro+='rank 对照固定学习率，选定 rank 后再比较学习率。候选参数量来自真实权重形状，训练与工具表现按当前章节分别记录，配置选择只使用 dev。\n\n'
+        intro+='rank 对照使用同一份 5k 数据，学习率对照另在同一份 1k 数据上固定 rank 16。两组各自使用相同的验证清单和保存规则，分开比较；配置选择只使用 dev。\n\n'
     if (ROOT/'configs/data-quality-frozen.json').exists():
-        intro+='数据质量对照按来源和类别匹配两份 5k 数据，逐条复查也保留了规则误删和漏检。筛选成本、监督量与后续模型表现分开记录，效果不能由“通过筛选”直接推出。\n\n'
+        intro+='数据质量准备保留 5k 筛选池与阅读抽查，训练比较使用来源和类别匹配的两份 1k 数据。规则的误删和漏检、筛选成本、监督量与模型表现分别记录，效果不能由“通过筛选”直接推出。\n\n'
     if (ROOT/'experiments/E14/notes.md').exists():
         pi_intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
     extension=ROOT/'experiments/E14/runs/E14-R03.json'
@@ -232,7 +250,9 @@ def draw_curve(run_id):
                 color='#059669' if index==1 else '#2563EB';style='-'
             axis.plot([r['step'] for r in segment],[r['loss'] for r in segment],
                       color=color,linestyle=style,linewidth=1.0,label=label)
-        if dev:axis.plot([r['step'] for r in dev],[r['eval_loss'] for r in dev],color='#059669',linestyle='None',marker='o',label='完整 dev：实测点，token 加权')
+        if dev:
+            count=dev[-1].get('eval_trajectories',500)
+            axis.plot([r['step'] for r in dev],[r['eval_loss'] for r in dev],color='#059669',linestyle='None',marker='o',label=f'dev {count} 条：实测点，token 加权')
         axis.set_xlabel('optimizer step',fontproperties=font);axis.set_ylabel('assistant-only 交叉熵',fontproperties=font)
         axis.set_title(run_id+'：真实训练与验证 loss，未平滑',fontproperties=font)
         axis.legend(prop=font,frameon=False);axis.yaxis.grid(True,color='#E5E7EB');axis.set_axisbelow(True)

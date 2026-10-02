@@ -252,6 +252,7 @@ def build(volume, should_render):
         current_hash=sha256(path)
         if previous.get('word_sha256')!=current_hash:
             checked=previous if previous.get('visual_checked') else previous.get('previous_checked',{})
+            checked={key:value for key,value in checked.items() if key!='previous_checked'}
             write_json(receipt,{'word_sha256':current_hash,'visual_checked':False,
                                'updated':now(),'previous_checked':checked})
     from index import main as update_index

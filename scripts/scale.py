@@ -49,6 +49,27 @@ def launch(command,label,log_directory=None):
     return log
 
 
+def evaluation_spec(path):
+    config=read(ROOT/path)
+    source=ROOT/'.local/data/processed'/config['data_run']/(config['split']+'.jsonl')
+    for name,expected in config.get('data_file_hashes',{}).items():
+        assert sha256(source.parent/name)==expected, '评测数据已改变'
+    if config.get('sampling_manifest_sha256'):
+        assert sha256(ROOT/'configs/subsets-frozen.json')==config['sampling_manifest_sha256']
+    records=[json.loads(line) for line in source.read_text(encoding='utf-8').splitlines() if line.strip()]
+    turns=sum(message['role']=='assistant' and bool(message.get('tool_calls') or record['messages'][i-1]['role']=='user')
+              for record in records for i,message in enumerate(record['messages']))
+    assert len(records)==len({r['sample_id'] for r in records})
+    return config,len(records),turns,sha256(source)
+
+
+def matching_evaluation(data,run,adapter_hash,desired,evaluation_config):
+    config=data['config']
+    return (data['status']=='completed' and config.get('kind')=='tool_eval' and config.get('source_train_run')==run.name
+            and config.get('adapter_sha256')==adapter_hash and config.get('frozen_prompt_sha256')==desired['evaluation_prompt_sha256']
+            and all(config.get(k)==v for k,v in evaluation_config.items() if k!='prompts'))
+
+
 def verify_reference(reference):
     desired={**read(ROOT/reference['training_config']),'train_size':reference['size'],'seed':reference['seed'],
              'evaluation_prompt_sha256':sha256(ROOT/'configs/prompt-frozen.json')}
@@ -58,20 +79,21 @@ def verify_reference(reference):
         raise RuntimeError('同条件参考训练尚未结束，不能启动对照队列')
     run=matches[-1];result=read(run/'result.json')
     assert result['status']=='trained_pending_tool_eval' and not alive(read(run/'config.json'))
-    assert result['train']['independent_trajectories']==reference['size'] and result['dev']['independent_trajectories']==500
-    expected_steps=(result['train']['assistant_units']+desired['gradient_accumulation']-1)//desired['gradient_accumulation']
+    eval_config,count,turns,source_hash=evaluation_spec(reference.get('evaluation_config','configs/offline-eval.json'))
+    assert result['train']['independent_trajectories']==reference['size'] and result['dev']['independent_trajectories']==count
+    assert result['dev']['source_sha256']==source_hash
+    expected_steps=desired.get('max_steps') or (result['train']['assistant_units']+desired['gradient_accumulation']-1)//desired['gradient_accumulation']
     assert result['steps']==expected_steps and desired['epochs']==1
     adapter_hash=sha256(run/'selected-adapter/adapter_model.safetensors')
     evaluations=[]
     for path in (ROOT/'experiments'/reference['experiment']/'runs').glob('*.json'):
         data=read(path);config=data['config']
-        if (data['status']=='completed' and config.get('kind')=='tool_eval' and config.get('source_train_run')==run.name
-            and config.get('adapter_sha256')==adapter_hash and config.get('frozen_prompt_sha256')==desired['evaluation_prompt_sha256']):
+        if matching_evaluation(data,run,adapter_hash,desired,eval_config):
             summary=data['summaries'][data['selected_prompt']]
-            assert summary['trajectories']==summary['evaluated_trajectories']==500 and summary['decision_turns']==928
+            assert summary['trajectories']==summary['evaluated_trajectories']==count and summary['decision_turns']==turns
             assert sha256(ROOT/'.local/runs'/data['run_id']/(data['selected_prompt']+'.jsonl'))==summary['rows_sha256']
             evaluations.append(data['run_id'])
-    if not evaluations:raise RuntimeError('同条件参考尚未完成完整 dev 工具评测')
+    if not evaluations:raise RuntimeError('同条件参考尚未完成冻结 dev 工具评测')
     print(json.dumps({'reference_train':run.name,'reference_dev':evaluations,'adapter_sha256':adapter_hash}),flush=True)
 
 
@@ -87,6 +109,8 @@ def main():
     try:
         if 'reference' in plan:verify_reference(plan['reference'])
         for job in plan['jobs']:
+            evaluation_path=job.get('evaluation_config',plan.get('evaluation_config','configs/offline-eval.json'))
+            eval_config,count,turns,source_hash=evaluation_spec(evaluation_path)
             training_config=job.get('training_config',plan['training_config'])
             base=read(ROOT/training_config)
             desired={**base,'train_size':job['size'],'seed':job['seed'],
@@ -121,31 +145,34 @@ def main():
                 write_json(run/'external-log.json',{'file':log.relative_to(ROOT).as_posix()})
             result=read(run/'result.json')
             assert result['status']=='trained_pending_tool_eval' and result['steps']>0
+            assert result['dev']['source_sha256']==source_hash and result['dev']['independent_trajectories']==count
             adapter=run/'selected-adapter';adapter_hash=sha256(adapter/'adapter_model.safetensors')
             evaluations=[]
             for path in (ROOT/'experiments'/plan['experiment']/'runs').glob('*.json'):
                 data=read(path);config=data['config']
-                if (data['status']=='completed' and config.get('kind')=='tool_eval' and config.get('source_train_run')==run.name
-                    and config.get('adapter_sha256')==adapter_hash and config.get('frozen_prompt_sha256')==desired['evaluation_prompt_sha256']):
+                if matching_evaluation(data,run,adapter_hash,desired,eval_config):
                     evaluations.append(data)
             if not evaluations:
-                log=launch(['scripts/offline_eval.py','--experiment',plan['experiment'],'--adapter',adapter.relative_to(ROOT).as_posix(),
+                log=launch(['scripts/offline_eval.py','--config',evaluation_path,'--experiment',plan['experiment'],'--adapter',adapter.relative_to(ROOT).as_posix(),
                         '--source-run',run.name],f"scale-{job['size']}-{job['seed']}-dev")
                 evaluations=[read(p) for p in sorted((ROOT/'experiments'/plan['experiment']/'runs').glob('*.json'))
-                             if read(p).get('config',{}).get('source_train_run')==run.name and read(p)['status']=='completed']
+                             if matching_evaluation(read(p),run,adapter_hash,desired,eval_config)]
                 write_json(ROOT/'.local/runs'/evaluations[-1]['run_id']/'external-log.json',{'file':log.relative_to(ROOT).as_posix()})
             evaluation=evaluations[-1]
             summary=evaluation['summaries'][evaluation['selected_prompt']]
-            assert summary['trajectories']==summary['evaluated_trajectories']==500 and summary['decision_turns']==928
+            assert summary['trajectories']==summary['evaluated_trajectories']==count and summary['decision_turns']==turns
+            assert sha256(ROOT/'.local/runs'/evaluation['run_id']/(evaluation['selected_prompt']+'.jsonl'))==summary['rows_sha256']
             for run_id in [run.name,evaluation['run_id']]:archive_run(run_id)
             print(json.dumps({'time':now(),'job':job,'train_run':run.name,'eval_run':evaluation['run_id'],
-                              'trajectory_passed':summary['trajectory_passed'],'denominator':500},ensure_ascii=False),flush=True)
-        write_json(ROOT/'.local/scale-state.json',{'status':'completed','time':now(),'scope':plan['experiment']+'训练与完整dev工具评测；后续实验继续按spec执行'})
+                              'trajectory_passed':summary['trajectory_passed'],'denominator':count},ensure_ascii=False),flush=True)
+        write_json(ROOT/'.local/scale-state.json',{'status':'completed','time':now(),'scope':plan['experiment']+'训练与冻结dev工具评测；后续实验继续按spec执行'})
     except Exception as error:
         write_json(ROOT/'.local/scale-state.json',{'status':'failed','time':now(),'error':str(error)})
         raise
     finally:
         lock.unlink(missing_ok=True)
+    if plan.get('next_config'):
+        launch(['scripts/scale.py','--config',plan['next_config']], 'next-queue')
 
 
 if __name__=='__main__':main()

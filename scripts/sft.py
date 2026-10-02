@@ -62,7 +62,7 @@ class RecordedTrainer(SFTTrainer):
                 count = sum(x != -100 for x in item["labels"][1:])
                 with torch.autocast("cuda", dtype=torch.bfloat16):
                     loss = self.model(**batch([item], self.processing_class.pad_token_id), use_cache=False).loss
-                assert torch.isfinite(loss), "完整 dev 验证出现非有限 loss"
+                assert torch.isfinite(loss), "dev 验证出现非有限 loss"
                 value=loss.item()
                 total += value * count; tokens += count; samples.add(item["sample_id"])
                 allocated=torch.cuda.memory_allocated()/1024**2;reserved=torch.cuda.memory_reserved()/1024**2
@@ -74,11 +74,11 @@ class RecordedTrainer(SFTTrainer):
                                         "allocated_mib":allocated,"reserved_before_release_mib":reserved,
                                         "reserved_after_release_mib":torch.cuda.memory_reserved()/1024**2}, ensure_ascii=False)+"\n")
                 if (index+1) % 200 == 0:
-                    handle.flush(); print(f"完整 dev loss：{index+1}/{len(dataset)} 个回复", flush=True)
+                    handle.flush(); print(f"dev loss：{index+1}/{len(dataset)} 个回复", flush=True)
                     write_json(self.run_directory/'validation-progress.json',{'time':now(),'step':self.state.global_step,
                                'units':index+1,'total_units':len(dataset),'seconds':time.perf_counter()-started,
                                'reserved_mib':torch.cuda.memory_reserved()/1024**2})
-        assert len(samples) == 500
+        assert samples == self.expected_validation_ids, "验证轨迹与冻结清单不一致"
         torch.cuda.synchronize()
         metrics = {metric_key_prefix+"_loss": total/tokens, metric_key_prefix+"_target_tokens": tokens,
                    metric_key_prefix+"_units": len(dataset), metric_key_prefix+"_trajectories": len(samples),
@@ -118,7 +118,7 @@ class RecordCallback(TrainerCallback):
         torch.cuda.reset_peak_memory_stats()
 
     def on_step_end(self, args, state, control, **kwargs):
-        # 最后不足 100 步的一段也必须完整验证并保存。
+        # 末步也验证并保存，不能漏掉不足一个验证间隔的尾段。
         if state.global_step == state.max_steps: control.should_evaluate = control.should_save = True
 
     def on_log(self, args, state, control, logs=None, **kwargs):
@@ -156,7 +156,7 @@ class RecordCallback(TrainerCallback):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--config",default="configs/sft.json")
-    parser.add_argument("--size",type=int,choices=[1000,5000,10000])
+    parser.add_argument("--size",type=int)
     parser.add_argument("--seed",type=int)
     parser.add_argument("--experiment",default="E09")
     parser.add_argument("--resume-run")
@@ -186,11 +186,14 @@ def main():
                    "interruption":history})
     try:
         set_seed(config["seed"])
+        if config.get("sampling_manifest_sha256"):
+            assert sha256(ROOT / "configs/subsets-frozen.json") == config["sampling_manifest_sha256"]
         for name, expected_hash in config.get("data_file_hashes", {}).items():
             assert sha256(ROOT / ".local/data/processed" / config["data_run"] / name) == expected_hash, "对照数据文件已改变"
         train_cache,train_manifest=prepare(f"train-{config['train_size']}.jsonl",config["data_run"])
         dev_cache,dev_manifest=prepare("dev.jsonl",config["data_run"])
         assert train_manifest["max_sequence_length"]<=config["max_sequence_length"],"完整训练单元超过当前上下文，不允许截断"
+        assert dev_manifest["max_sequence_length"]<=config.get("validation_context_length",8192),"验证单元超过验证上下文，不允许截断"
         write_json(run/"training-data.json",{"train":train_manifest,"dev":dev_manifest})
         tokenizer,_,_=tokenizer_and_template();tokenizer.padding_side="right"
         train_dataset=load_from_disk(train_cache/"dataset");dev_dataset=load_from_disk(dev_cache/"dataset")
@@ -203,7 +206,7 @@ def main():
                    'allocated_mib':torch.cuda.memory_allocated()/1024**2})
         peft_config=LoraConfig(r=config['rank'],lora_alpha=config['alpha'],lora_dropout=config['dropout'],
             bias='none',task_type='CAUSAL_LM',target_modules=['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj'])
-        training_args=SFTConfig(output_dir=str(run),num_train_epochs=config["epochs"],
+        training_args=SFTConfig(output_dir=str(run),num_train_epochs=config["epochs"],max_steps=config.get("max_steps",-1),
             per_device_train_batch_size=config["micro_batch"],per_device_eval_batch_size=1,
             gradient_accumulation_steps=config["gradient_accumulation"],learning_rate=config["learning_rate"],
             weight_decay=config["weight_decay"],adam_beta1=config["adam_beta1"],adam_beta2=config["adam_beta2"],adam_epsilon=config["adam_epsilon"],
@@ -217,6 +220,8 @@ def main():
             max_length=None,packing=False,assistant_only_loss=True,dataset_kwargs={"skip_prepare_dataset":True})
         trainer=RecordedTrainer(model=model,args=training_args,processing_class=tokenizer,train_dataset=train_dataset,eval_dataset=dev_dataset,peft_config=peft_config)
         trainer.run_directory=run;trainer.supervised_tokens=0;trainer.resource_policy=config
+        trainer.expected_validation_ids=set(dev_dataset["sample_id"])
+        assert len(trainer.expected_validation_ids)==dev_manifest["independent_trajectories"]
         trainable=[(name,p) for name,p in trainer.model.named_parameters() if p.requires_grad]
         assert trainable and all('lora_' in name for name,p in trainable), 'TRL 接入后 LoRA 没有保持可训练'
         write_json(run/'trainable-parameters.json',{'parameters':sum(p.numel() for name,p in trainable),
@@ -241,7 +246,7 @@ def main():
                   "selected_dev_loss":trainer.state.best_metric,"train_metrics":trained.metrics,
                   "resume_history":[json.loads(p.read_text(encoding='utf-8')) for p in sorted(run.glob('resume-*.json'))],
                   "metrics_sha256":sha256(run/"metrics.jsonl"),
-                  "scope":"完成一个epoch及完整dev loss选择；工具泛化指标必须由独立生成评估补齐"})
+                  "scope":f"完成配置规定的训练预算；{dev_manifest['independent_trajectories']}条冻结dev用于loss选择，工具泛化由独立生成评估补齐"})
         callback.refresh();print(json.dumps(result,ensure_ascii=False),flush=True)
     except Exception:
         (run/f"failure-{time.time_ns()}.txt").write_text(traceback.format_exc(),encoding="utf-8")
