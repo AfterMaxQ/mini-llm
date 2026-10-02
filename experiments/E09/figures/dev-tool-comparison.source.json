@@ -1,7 +1,7 @@
 {
   "source_file": "dev-tool-comparison.csv",
   "source_sha256": "ca50c0c6d63ec9a52d2b2c4948d909877919712b31e037d3a4acc1d7c99805e8",
-  "image_sha256": "2aa4232059f6fb50c8ee886e77770dee5de3136bba0d5d3d78591bd0d1e31ae5",
+  "image_sha256": "c28717c77b39a3e171191985033aa53da45790994cf873d1ab64137e201a36fd",
   "denominator": 500,
   "rows": [
     {

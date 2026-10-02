@@ -1,0 +1,108 @@
+{
+  "status": "aborted_invalid_harness",
+  "exit_code": 1,
+  "operation": "pi_model_agent_dev",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R20",
+  "split": "dev",
+  "target_tasks": 16,
+  "evaluated_tasks": 2,
+  "passed_tasks": 0,
+  "category_results": {
+    "missing_information": {
+      "tasks": 2,
+      "passed": 0
+    }
+  },
+  "records_sha256": "e009882e6de602f902daa1fb0bbbe802b9d423b133dd25b551da40a5974fa545",
+  "tasks_sha256": "87fb1e135e25b5dfb75793bcb6fbb4816ae8f86af56a8034b484a070ed6c202e",
+  "model_api_trace_sha256": "11d5e855e2d48656c5d24ef527ca6501809ead67a7e63a1b1fdc01b4f1c1b178",
+  "error": "Pi会话将容器名误作cwd，产生仓库根下的F盘绝对路径，沙箱拒绝访问；已保留前2条失败记录并中止本轮，冻结分母仍为16。",
+  "scope": "评测中止且不作为Pi dev成绩；保留2条原始记录和完整冻结任务清单",
+  "run_id": "E14-R21",
+  "finished": "2026-10-02T22:33:53+08:00",
+  "config": {
+    "experiment": "E14",
+    "operation": "pi_model_agent_dev",
+    "split": "dev",
+    "source_run": "E14-R19",
+    "source_eval_run": "E14-R20",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
+    "adapter": ".local/runs/E14-R19/selected-adapter",
+    "adapter_sha256": "66e17e53377bcfed07f282a36ad67499fb618edc553b52b4362aaaffc99469fd",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "frozen_subset": "pi_dev",
+    "task_count": 16,
+    "ids_sha256": "fdf7a26e5d2ef416fd9b54c8b904c75fa3553780b28957bbd4ae8cd33575b6b9",
+    "context_window": 8192,
+    "max_new_tokens": 1024,
+    "temperature": 0.2,
+    "sampling": "temperature",
+    "inference_seed": 17,
+    "load_in_4bit": true,
+    "enable_thinking": false,
+    "task_timeout_seconds": 300,
+    "max_tool_calls": 12,
+    "api": {
+      "host": "127.0.0.1",
+      "port": 18763,
+      "base_url": "http://127.0.0.1:18763/v1",
+      "provider": "minillm-local",
+      "model": "qwen3-1.7b-e14-r19"
+    },
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
+      "configs/pi-agent-e14-dev.json"
+    ],
+    "process_identity": {
+      "pid": 48620,
+      "created": 1790950442.2295914,
+      "command": [
+        "G:\\program files\\Node_js\\node.exe",
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-e14-dev.json"
+      ]
+    },
+    "pi_version": "0.99.1",
+    "pi_sandbox_sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11",
+    "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "task_ids": [
+      "dev-ambiguous-target-tenant-2",
+      "dev-ambiguous-target-tenant-5",
+      "dev-await-format-result-1",
+      "dev-await-format-result-2",
+      "dev-conditional-delivery-route-3",
+      "dev-conditional-delivery-route-4",
+      "dev-latest-successful-report-3",
+      "dev-latest-successful-report-4",
+      "dev-named-export-chain-2",
+      "dev-named-export-chain-5",
+      "dev-nearest-rank-percentile-1",
+      "dev-nearest-rank-percentile-4",
+      "dev-quoted-csv-state-2",
+      "dev-quoted-csv-state-5",
+      "dev-subscription-row-selection-1",
+      "dev-subscription-row-selection-4"
+    ],
+    "category_quotas": {
+      "missing_information": 2,
+      "failure_recovery": 2,
+      "read_locate": 2,
+      "invalid_path_recovery": 2,
+      "multi_file": 2,
+      "no_tool": 2,
+      "function_fix": 2,
+      "config_change": 2
+    },
+    "source_task_file_sha256": "92b594b7e0b1be57c35afe275a05b937f2780e668b7b06d010021de38280fe32",
+    "run_id": "E14-R21",
+    "started": "2026-10-02T22:14:05+08:00",
+    "commit": "5ee66ff43de96b5180a76e3e57200d1d31e47076",
+    "process_id": 23232,
+    "code_snapshot_sha256": "9f8ddfb0c2a8d27186f2d5f119461ef3cbdf5d4150d106a5508eb7e0d9b9dd7c"
+  },
+  "raw_result_sha256": "ade253ed5707bf9f6cf89964a4676fa3ce151f3f36d4fafce475326c0bc964d8"
+}

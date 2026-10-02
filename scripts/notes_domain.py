@@ -106,7 +106,10 @@ def update_notes(run_id, pi_run_id=None):
         if item.get("operation", "").startswith("pi_model_agent_"):
             pi_results.append(item)
     for item in pi_results:
-        lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
+        if item.get("status") == "aborted_invalid_harness":
+            lines.append(f"Pi {item['split']}接入排错（{item['run_id']}）：已运行{item['evaluated_tasks']}/{item['target_tasks']}个任务后中止。会话工作目录与容器路径不一致，模型重复请求同一路径并收到“文件路径超出任务工作区”；本轮不计为模型成绩，冻结分母仍为{item['target_tasks']}。")
+        else:
+            lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
     if pi_run_id:
         live = ROOT / ".local/runs" / pi_run_id
         pi_config_path, pi_progress_path = live / "config.json", live / "progress.json"
@@ -114,6 +117,22 @@ def update_notes(run_id, pi_run_id=None):
             pi_config, pi_progress = read(pi_config_path), read(pi_progress_path)
             lines.append(f"Pi {pi_config['split']}当前完成{pi_progress['completed']}/{pi_progress['target']}个任务，通过{pi_progress['passed']}个；未完成条目仍计入固定分母。")
     lines += ["", "公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。", ""]
+    pi_records = [read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
+                  if read(path).get("operation", "").startswith("pi_model_agent_")]
+    if pi_records:
+        lines += ["### Pi Agent 运行记录", ""]
+        for item in pi_records:
+            if item.get("status") == "aborted_invalid_harness":
+                lines.append(f"- {item['run_id']}：接线无效，中止于{item['evaluated_tasks']}/{item['target_tasks']}；不作为模型成绩。记录：`experiments/E14/runs/{item['run_id']}.json`。")
+            else:
+                lines.append(f"- {item['run_id']}：{item['split']} {item['passed_tasks']}/{item['target_tasks']}；记录：`experiments/E14/runs/{item['run_id']}.json`。")
+        lines.append("")
+    path_smoke = next((read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
+                       if read(path).get("operation") == "pi_path_harness_smoke"
+                       and read(path).get("status") == "harness_verified"), None)
+    if path_smoke:
+        lines.append(f"Pi 路径映射核验（{path_smoke['run_id']}）：Pi 会话和 SessionManager 均使用`/workspace`；write/read工具往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/{path_smoke['run_id']}.json`。")
+        lines.append("")
 
     path = ROOT / "experiments/E14/notes.md"
     existing = path.read_text(encoding="utf-8").rstrip()

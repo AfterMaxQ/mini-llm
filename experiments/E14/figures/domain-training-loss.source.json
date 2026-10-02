@@ -1,7 +1,7 @@
 {
-  "metrics_sha256": "70afbcdda992f8ddc84540663dec7cae3c56efe9ecafe83aba5e4b09eaaed8b8",
-  "image_sha256": "6822f9f6e21274f2cdb9bb0395f61eca491e72a71e62e20ba6bc462722703b8c",
+  "metrics_sha256": "a249882b6af578a37abf6719dbb9e5da6aa925d95161d40425bb43bea480a1b6",
+  "image_sha256": "dd6dcc93ba7ea013d7c9b36e3301d7355ecf050605f8cce2fb52da1ada5f2f47",
   "training_run": "E14-R19",
-  "train_points": 200,
-  "dev_points": 2
+  "train_points": 472,
+  "dev_points": 4
 }

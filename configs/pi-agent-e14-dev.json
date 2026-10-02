@@ -1,0 +1,32 @@
+{
+  "experiment": "E14",
+  "operation": "pi_model_agent_dev",
+  "split": "dev",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R20",
+  "prompt_config": "configs/prompt-frozen.json",
+  "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+  "selected_prompt": "few_shot",
+  "adapter": ".local/runs/E14-R19/selected-adapter",
+  "adapter_sha256": "66e17e53377bcfed07f282a36ad67499fb618edc553b52b4362aaaffc99469fd",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "frozen_subset": "pi_dev",
+  "task_count": 16,
+  "ids_sha256": "fdf7a26e5d2ef416fd9b54c8b904c75fa3553780b28957bbd4ae8cd33575b6b9",
+  "context_window": 8192,
+  "max_new_tokens": 1024,
+  "temperature": 0.2,
+  "sampling": "temperature",
+  "inference_seed": 17,
+  "load_in_4bit": true,
+  "enable_thinking": false,
+  "task_timeout_seconds": 300,
+  "max_tool_calls": 12,
+  "api": {
+    "host": "127.0.0.1",
+    "port": 18763,
+    "base_url": "http://127.0.0.1:18763/v1",
+    "provider": "minillm-local",
+    "model": "qwen3-1.7b-e14-r19"
+  }
+}

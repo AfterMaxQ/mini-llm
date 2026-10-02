@@ -107,6 +107,7 @@ def main():
             train=next((p for p in sorted((ROOT/'.local/runs').glob('E14-R*/result.json'))
                         if json.loads(p.read_text(encoding='utf-8')).get('status')=='trained_pending_tool_eval'),None)
             agent=[r for r in actual if r.get('operation','').startswith('pi_model_agent_')]
+            invalid_harness=[r for r in agent if r.get('status')=='aborted_invalid_harness']
             if mix:
                 detail='512条公开轨迹与512条Pi轨迹已冻结'
                 failed=[r for r in actual if r.get('status')=='failed']
@@ -122,6 +123,13 @@ def main():
                 for split,count in [('dev',16),('test',40)]:
                     match=next((r for r in agent if r.get('split')==split and r.get('status')=='completed'),None)
                     detail+=f"；Pi {split} {match['passed_tasks']}/{count}" if match else f"；Pi {split}{count}待评"
+                if invalid_harness:
+                    record=invalid_harness[-1]
+                    detail+=f"；{record['run_id']}接线错误中止{record['evaluated_tasks']}/{record['target_tasks']}，不计模型成绩"
+                harness_smoke=next((r for r in actual if r.get('operation')=='pi_path_harness_smoke'
+                                    and r.get('status')=='harness_verified'),None)
+                if harness_smoke:
+                    detail+=f"；{harness_smoke['run_id']}路径映射核验通过，不含模型推理"
                 state=f"E14-R{mix['run_id'].split('-R')[-1]}：{detail}"
                 if unfinished:
                     state=f"{unfinished[-1].parent.name}：进行中；{detail}"

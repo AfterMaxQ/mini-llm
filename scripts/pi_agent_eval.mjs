@@ -187,9 +187,9 @@ try{
         settingsManager:settings,noExtensions:true,noSkills:true,noPromptTemplates:true,noThemes:true,noContextFiles:true,
         systemPrompt:referencePrompt+'\n\n'+frozenPrompt.suffix});
       await loader.reload();
-      const sessionManager=pi.SessionManager.inMemory(sandbox.name);
+      const sessionManager=pi.SessionManager.inMemory('/workspace');
       const tools=sandbox.tools.map(createToolDefinitionFromAgentTool);
-      ({session}=await pi.createAgentSession({cwd:sandbox.name,agentDir:path.join(root,'.local/pi-agent-runtime'),
+      ({session}=await pi.createAgentSession({cwd:'/workspace',agentDir:path.join(root,'.local/pi-agent-runtime'),
         settingsManager:settings,sessionManager,resourceLoader:loader,modelRuntime,model,thinkingLevel:'off',
         noTools:'builtin',customTools:tools}));
       const taskTimeout=setTimeout(()=>void session.abort(),config.task_timeout_seconds*1000-500);

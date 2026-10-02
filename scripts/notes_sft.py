@@ -96,6 +96,9 @@ def update_summary(completed):
           ('5k 配对变化与失败例子','experiments/E09/E09-R10-comparison.json；experiments/E09/E09-R10-paired.csv'),
           ('Windows 记录写入排查','experiments/E09/runs/E09-R07.json；experiments/E09/runs/E09-R08.json'),
           ('Pi 工具链准备','experiments/E13/preparation.json；experiments/E13/notes.md'),
+          ('Pi 领域混合来源哈希失败与修正','experiments/E14/runs/E14-R17.json；configs/domain-mix.json'),
+          ('Pi 512+512冻结清单与数据构建','scripts/domain_mix.py；configs/domain-mix-frozen.json；experiments/E14/runs/E14-R18.json'),
+          ('Pi 领域微调及固定公开dev','configs/sft-domain.json；configs/offline-eval-domain.json；configs/scale-domain.json'),
           ('Pi 实际工具定义与容器参数','configs/pi-tools.json；configs/pi-sandbox.json'),
           ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs'),
           ('rank 对照准备','experiments/E11/preparation.json；configs/rank.json；configs/sft-rank8.json；configs/sft-rank32.json'),
@@ -127,6 +130,26 @@ def update_summary(completed):
         passed=[r['summary']['trajectory_passed'] for r in ten_k]
         no_call=[r['summary']['no_call_turn_passed'] for r in ten_k]
         intro+=f"10k 三个 seed（17、42、2026）分别通过 {passed[0]}、{passed[1]}、{passed[2]}/500；不调用轮落在 {min(no_call)}—{max(no_call)}/360。三轮在同一份 dev 上完成，不能当作独立测试集成绩。\n\n"
+    lr_runs={run_id:json.loads((ROOT/'experiments/E11/runs'/f'{run_id}.json').read_text(encoding='utf-8'))
+             for run_id in ('E11-R03','E11-R04','E11-R05','E11-R06')}
+    lr_low,lr_low_eval,lr_high,lr_high_eval=(lr_runs[key] for key in ('E11-R03','E11-R04','E11-R05','E11-R06'))
+    if all(item.get('status') in {'trained_pending_tool_eval','completed'} for item in lr_runs.values()):
+        assert (lr_low['config']['train_size'],lr_low['config']['rank'],lr_low['config']['seed']) == (1000,16,17)
+        assert (lr_high['config']['train_size'],lr_high['config']['rank'],lr_high['config']['seed']) == (1000,16,17)
+        assert lr_low['config']['data_file_hashes']['train-1000.jsonl']==lr_high['config']['data_file_hashes']['train-1000.jsonl']
+        low=lr_low_eval['summaries'][lr_low_eval['selected_prompt']]
+        high=lr_high_eval['summaries'][lr_high_eval['selected_prompt']]
+        assert low['trajectories']==high['trajectories']==100
+        intro+=f"1k 学习率对照使用相同训练轨迹、rank 16、seed 17 和固定 100 条 dev：1e-4 组通过 {low['trajectory_passed']}/100，5e-5 组通过 {high['trajectory_passed']}/100；调用轮为 {low['call_turn_passed']}/112 与 {high['call_turn_passed']}/112，不调用轮为 {low['no_call_turn_passed']}/72 与 {high['no_call_turn_passed']}/72。5e-5 组有 {high['truncated']} 条截断，仍保留在分母中。该单 seed 对照只说明本轮结果。\n\n"
+    quality_train=json.loads((ROOT/'experiments/E12/runs/E12-R03.json').read_text(encoding='utf-8'))
+    quality_eval=json.loads((ROOT/'experiments/E12/runs/E12-R04.json').read_text(encoding='utf-8'))
+    if quality_eval.get('status')=='completed' and quality_train.get('status')=='trained_pending_tool_eval':
+        base=lr_low_eval['summaries'][lr_low_eval['selected_prompt']]
+        quality=quality_eval['summaries'][quality_eval['selected_prompt']]
+        assert quality['trajectories']==base['trajectories']==100
+        assert quality_train['config']['rank']==lr_low['config']['rank']==16
+        assert quality_train['config']['learning_rate']==lr_low['config']['learning_rate']==1e-4
+        intro+=f"数据质量对照在固定 100 条 dev 上，基础组通过 {base['trajectory_passed']}/100，额外筛选组通过 {quality['trajectory_passed']}/100。两组各用 1k、rank 16、学习率 1e-4、seed 17，但筛选组替换了部分样本且只有一个 seed；这是本次数据组的差异，不能归因于筛选规则本身。\n\n"
     precision_runs={}
     for run_id in ('E09-R10','E10-R02'):
         result_path=ROOT/'experiments'/run_id[:3]/'runs'/f'{run_id}.json'
@@ -143,13 +166,21 @@ def update_summary(completed):
     if preparation.exists():
         p=json.loads(preparation.read_text(encoding='utf-8'))
         if p['status']=='tool_chain_verified':
-            pi_intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据。模型尚未接入，不能把这些请求算成 Agent 任务成绩。\n\n"
+            pi_intro+=f"Pi 的四个工具已在本机任务容器实际核验：{p['request_count']} 次请求中，{p['normal_returns']} 次正常返回，{p['expected_error_returns']} 次触发预期错误或预算限制。最终文件、逐次返回与隔离设置都保留了证据；这轮探针请求不是模型 Agent 成绩。\n\n"
     if (ROOT/'experiments/E11/preparation.json').exists():
         intro+='rank 对照使用同一份 5k 数据，学习率对照另在同一份 1k 数据上固定 rank 16。两组各自使用相同的验证清单和保存规则，分开比较；配置选择只使用 dev。\n\n'
     if (ROOT/'configs/data-quality-frozen.json').exists():
         intro+='数据质量准备保留 5k 筛选池与阅读抽查，训练比较使用来源和类别匹配的两份 1k 数据。规则的误删和漏检、筛选成本、监督量与模型表现分别记录，效果不能由“通过筛选”直接推出。\n\n'
     if (ROOT/'experiments/E14/notes.md').exists():
         pi_intro+='八类 Pi 训练任务原型的参考操作已实际执行，同一判据也拒绝了初始错误和明确错误候选。它们帮助检查任务是否判得准；正式轨迹规模、独立任务集和模型迁移表现继续分别验证。\n\n'
+    domain_runs=[json.loads(p.read_text(encoding='utf-8')) for p in sorted((ROOT/'experiments/E14/runs').glob('*.json'))]
+    domain_train=next((r for r in domain_runs if r.get('status')=='trained_pending_tool_eval'),None)
+    domain_evals=[r for r in domain_runs if r.get('config',{}).get('kind')=='tool_eval'
+                  and r['config'].get('source_train_run')=='E14-R19']
+    if domain_train and domain_evals:
+        evaluation=domain_evals[-1]['summaries'][domain_evals[-1]['selected_prompt']]
+        pi_intro+=f"领域混合模型使用512条公开轨迹和512条Pi参考轨迹训练，更新{domain_train['steps']}步，最低冻结dev loss为{domain_train['selected_dev_loss']:.6f}；固定100条公开dev通过{evaluation['trajectory_passed']}/100。Pi Agent迁移另用隔离任务集评估。\n\n"
+        evidence=put_evidence(evidence,'E14领域混合训练与固定公开dev','experiments/E14/runs/E14-R19.json；experiments/E14/runs/E14-R20.json')
     extension=ROOT/'experiments/E14/runs/E14-R03.json'
     if extension.exists() and json.loads(extension.read_text(encoding='utf-8'))['status']=='reference_extension_verified':
         pi_intro+='新增八个训练模板改变了配置层级、单位换算、去重顺序和故障原因，两批共16个训练模板族。参考步骤由规则给定，逐条执行不等于模型自主完成任务。\n\n'
@@ -169,7 +200,7 @@ def update_summary(completed):
         encoded=[v for v in pi_runs if v.get('status')=='reference_encoding_verified' and v['config']['source_run']==r['run_id']]
         if encoded:
             v=encoded[-1]
-            pi_intro+=f"这批过程展开为{v['assistant_units']:,}个当前回复单元，{v['supervised_tokens']:,}个监督token。实际返回、模板和遮罩都已核验，最长{v['max_sequence_length']:,}token，没有截断；领域微调尚未开始。\n\n"
+            pi_intro+=f"这批过程展开为{v['assistant_units']:,}个当前回复单元，{v['supervised_tokens']:,}个监督token。实际返回、模板和遮罩都已核验，最长{v['max_sequence_length']:,}token，没有截断；领域微调与模型迁移成绩另行评估。\n\n"
             evidence=put_evidence(evidence,'Pi 1000条参考训练格式',f"scripts/pi_reference_data.py；experiments/E14/runs/{v['run_id']}.json")
     dev=[r for r in pi_runs if r.get('status')=='dev_reference_verified']
     if dev:
@@ -205,8 +236,75 @@ def update_summary(completed):
     if inspection:
         r=inspection[-1]
         evidence=put_evidence(evidence,'Pi train/dev近似重复筛查',f"scripts/pi_split_inspect.py；experiments/E14/runs/{r['run_id']}.json")
+    for record in pi_runs:
+        if not record.get('operation','').startswith('pi_model_agent_'):
+            continue
+        record_path='experiments/E14/runs/'+record['run_id']+'.json'
+        if not any(record_path in line for line in evidence.splitlines()):
+            evidence=put_evidence(evidence,'E14 '+record['run_id']+' Pi Agent记录',record_path)
+    path_smoke=next((record for record in pi_runs if record.get('operation')=='pi_path_harness_smoke'
+                     and record.get('status')=='harness_verified'),None)
+    if path_smoke:
+        files=f"scripts/pi_path_smoke.mjs；experiments/E14/runs/{path_smoke['run_id']}.json"
+        if not any(path_smoke['run_id']+'.json' in line for line in evidence.splitlines()):
+            evidence=put_evidence(evidence,'Pi Agent路径映射核验（未运行模型）',files)
+        pi_intro+='Pi Agent首次dev模型运行在前2/16个任务时因容器cwd路径映射错误中止，不计模型成绩；单独烟测确认会话工作目录及SessionManager目录均为`/workspace`，隔离write/read往返成功。烟测未请求模型，因此Pi dev模型成绩仍待完整冻结16题评测。\n\n'
+    deduplicated=[];seen_files=set()
+    for line in evidence.splitlines():
+        if line.startswith('| ') and line.count('|') >= 3:
+            files=line.rsplit('|',2)[1].strip()
+            if files in seen_files:
+                continue
+            seen_files.add(files)
+        deduplicated.append(line)
+    evidence='\n'.join(deduplicated)+'\n'
     pi_rows=[line for line in evidence.splitlines() if line.startswith('| Pi ')]
+    pi_evidence_rows=[
+        ('Pi 实际工具定义与容器参数','configs/pi-tools.json；configs/pi-sandbox.json'),
+        ('Pi 工具适配与核验入口','scripts/pi_sandbox.mjs；scripts/pi_tools_probe.mjs'),
+        ('Pi 工具链准备','experiments/E13/preparation.json；experiments/E13/notes.md'),
+        ('Pi 任务参考与判据核验','experiments/E14/runs/E14-R01.json；experiments/E14/reference-calls.csv；experiments/E14/reference-events.jsonl'),
+        ('Pi 训练任务原型与核验入口','configs/pi-task-catalog.json；scripts/pi_tasks.mjs；scripts/pi_task_probe.mjs'),
+        ('Pi 多轮训练格式与监督检查','configs/pi-reference-data.json；scripts/pi_reference_data.py；experiments/E14/runs/E14-R02.json；experiments/E14/current-reply-mask.csv'),
+        ('Pi 新增模板与错误方案','scripts/pi_tasks_extended.mjs；experiments/E14/runs/E14-R03.json；experiments/E14/extension-calls.csv；experiments/E14/extension-events.jsonl'),
+        ('Pi 新增参考的训练格式','configs/pi-reference-extension.json；experiments/E14/runs/E14-R04.json'),
+        ('Pi 训练场景与批量参考入口','configs/pi-task-data.json；configs/pi-reference-batch.json；scripts/pi_task_data.py；scripts/pi_reference_batch.mjs'),
+        ('Pi 场景去重与失败记录','experiments/E14/scene-generation-audit.json；experiments/E14/runs/E14-R05.json；experiments/E14/runs/E14-R06.json；experiments/E14/runs/E14-R07.json'),
+        ('Pi dev任务与判据核验','configs/pi-dev-tasks.json；scripts/pi_tasks_dev.mjs；scripts/pi_dev_probe.mjs；experiments/E14/runs/E14-R09.json'),
+        ('Pi dev参考历史长度','scripts/pi_dev_lengths.py；experiments/E14/runs/E14-R10.json；experiments/E14/dev-lengths.csv'),
+        ('Pi dev逐条结果与划分复核','experiments/E14/dev-reference.csv；experiments/E14/dev-audit.json'),
+        ('Pi 1000条实际规则参考','experiments/E14/runs/E14-R08.json；experiments/E14/batch-reference.csv；experiments/E14/batch-audit.json'),
+        ('Pi 1000条参考训练格式','scripts/pi_reference_data.py；experiments/E14/runs/E14-R11.json'),
+        ('Pi train/dev近似重复筛查','scripts/pi_split_inspect.py；experiments/E14/runs/E14-R12.json'),
+        ('Pi test任务与判据核验','configs/pi-test-tasks.json；scripts/pi_tasks_test.mjs；scripts/pi_eval_tasks.mjs；experiments/E14/runs/E14-R14.json'),
+        ('Pi test逐条结果与归档复核','experiments/E14/test-reference.csv；experiments/E14/test-audit.json'),
+        ('Pi test参考历史长度','scripts/pi_eval_lengths.py；experiments/E14/runs/E14-R15.json；experiments/E14/test-lengths.csv'),
+        ('Pi test与train/dev划分筛查','scripts/pi_split_inspect.py；experiments/E14/runs/E14-R16.json'),
+        ('Pi test生成失败记录','experiments/E14/runs/E14-R13.json'),
+        ('Pi 领域混合来源哈希失败与修正','experiments/E14/runs/E14-R17.json；configs/domain-mix.json'),
+        ('Pi 512+512冻结清单与数据构建','scripts/domain_mix.py；configs/domain-mix-frozen.json；experiments/E14/runs/E14-R18.json'),
+        ('Pi 领域微调及固定公开dev','configs/sft-domain.json；configs/offline-eval-domain.json；configs/scale-domain.json'),
+        ('Pi 接线失败运行（不计模型成绩）','experiments/E14/runs/E14-R21.json'),
+        ('Pi 会话路径映射烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R22.json'),
+    ]
+    present_labels={line.split('|',2)[1].strip() for line in pi_rows}
+    for label,files in pi_evidence_rows:
+        if label in present_labels or not all((ROOT/file).exists() for file in files.split('；')):
+            continue
+        pi_rows.append(f'| {label} | {files} |')
     main_evidence='\n'.join(line for line in evidence.splitlines() if not line.startswith('| Pi '))+'\n'
+    if path_smoke:
+        smoke_files=f"scripts/pi_path_smoke.mjs；experiments/E14/runs/{path_smoke['run_id']}.json"
+        row=f'| E14 R22 路径映射烟测（未运行模型） | {smoke_files} |'
+        lines=main_evidence.splitlines();found=False
+        for index,line in enumerate(lines):
+            if line.startswith('| E14 R22 路径映射烟测（未运行模型） |'):
+                lines[index]=row;found=True
+        if not found:
+            marker='| 后续训练与生成结果 |'
+            marker_index=next((index for index,line in enumerate(lines) if line.startswith(marker)),len(lines))
+            lines.insert(marker_index,row)
+        main_evidence='\n'.join(lines)+'\n'
     pi_evidence='## 证据索引\n\n| 内容 | 对应记录 |\n| --- | --- |\n'+'\n'.join(pi_rows)+'\n'
     pi_evidence+='\n完整工具返回、文件状态与容器记录保存在本地运行档案，公开结果给出来源哈希。理解回顾仍未回答，参考解释不代表用户已掌握。\n'
     path.write_text(intro+main_evidence,encoding='utf-8')

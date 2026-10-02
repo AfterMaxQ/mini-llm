@@ -1,0 +1,42 @@
+{
+  "status": "harness_verified",
+  "pi_version": "0.99.1",
+  "session_cwd": "/workspace",
+  "session_manager_cwd": "/workspace",
+  "tool_calls": [
+    "write",
+    "read"
+  ],
+  "read_back_sha256": "a154473346aaf2d61b57335dbfdc0833de2f956545e85a8a840bf9d8d82b59c4",
+  "model_requests": 0,
+  "gpu_used": false,
+  "container_removed": true,
+  "operation": "pi_path_harness_smoke",
+  "exit_code": 0,
+  "scope": "Pi会话初始化与隔离write/read路径映射核验，不启动模型服务，不计模型成绩",
+  "run_id": "E14-R22",
+  "finished": "2026-10-02T23:20:02+08:00",
+  "config": {
+    "operation": "pi_path_harness_smoke",
+    "related_failed_run": "E14-R21",
+    "pi_version": "0.99.1",
+    "session_cwd": "/workspace",
+    "session_manager_cwd": "/workspace",
+    "tools": [
+      "write",
+      "read"
+    ],
+    "model_requests": 0,
+    "gpu_used": false,
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "scripts/pi_path_smoke.mjs"
+    ],
+    "run_id": "E14-R22",
+    "started": "2026-10-02T23:20:00+08:00",
+    "commit": "5ee66ff43de96b5180a76e3e57200d1d31e47076",
+    "process_id": 43032,
+    "code_snapshot_sha256": "0141c54343a57784d070d84b87eb784b6c6d65bb33b00bcff40b123e9e8a3385"
+  },
+  "raw_result_sha256": "5ce933bba37e534c7a1f0a8c725777fb326e9898e72d5e1644d3eb2711db2625"
+}

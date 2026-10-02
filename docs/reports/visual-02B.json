@@ -1,14 +1,14 @@
 {
-  "word_sha256": "92c6a66cdebec6548f97373852cb8e40fbfa4bd0b8ee7c9994e835d44abd8f30",
+  "word_sha256": "6a7c4645ce8e34d7bfc92bf3bc4f03be630c2c23f6589723bf6fff2e3767dea7",
   "visual_checked": true,
-  "updated": "2026-10-02T21:24:00+08:00",
+  "updated": "2026-10-02T23:44:51+08:00",
   "previous_checked": {
-    "word_sha256": "fd1276e22867904e07cf1820057f2efe813cf79b9584b7c0c2eec7f76b043904",
+    "word_sha256": "449f4544f49dcf606ef0eaed13a464993eaf5b85bffd840dcc7e84110e4bcf8f",
     "visual_checked": true,
-    "updated": "2026-10-02T20:06:24+08:00",
-    "pdf_sha256": "fe324ab4a7ff66441e20654239feaf955e4782148a838387fb0168cb774effb6",
-    "checked_at": "2026-10-02T20:07:58+08:00",
-    "rendered": "2026-10-02T20:06:29+08:00",
+    "updated": "2026-10-02T23:37:27+08:00",
+    "pdf_sha256": "77dcb0bb472e6985c99a754d87c8490f0ecc2d775c14f022948ea7b60ccaefcb",
+    "rendered": "2026-10-02T23:36:59+08:00",
+    "checked_at": "2026-10-02T23:37:27+08:00",
     "page_count": 20,
     "checked_pages": [
       1,
@@ -34,6 +34,9 @@
     ],
     "newly_viewed_pages": [
       1,
+      20
+    ],
+    "identical_pages_inherited": [
       2,
       3,
       4,
@@ -51,16 +54,14 @@
       16,
       17,
       18,
-      19,
-      20
+      19
     ],
-    "identical_pages_inherited": [],
     "page_sha256": {
-      "page-01.png": "0f24169dd68028cefabba55ba327d739eaba4962e83b3abb8b6075098d639bc5",
+      "page-01.png": "ff26302bdcbfd34c38845f8b2aa3eb7f5481f5e9ab19fd47063d5b8044ecb7bb",
       "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
       "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
       "page-04.png": "e707ac1bd8b00e75a43eaa3ed7bd674c3c733c854cf32c566577073da3075130",
-      "page-05.png": "03c3acde4c09a4e909cb0eb83a5846833e6e2314ceef18a6a3b8242f8bb00773",
+      "page-05.png": "90a06240fa43e8f835db2081b8c9827549ea5766c64631cfc833b3abc52a5f6a",
       "page-06.png": "83adcb435239749d13fcce422ea14d6268ff30cd0ed84026635f06bf942f7089",
       "page-07.png": "8b4431ac361e6368c7d5e21f8f9d6e85e7e39b8e9d0329fc819d4ab50c58108f",
       "page-08.png": "c2e04e838528b68efdede37bb0e507df72fd373b37bc17ab34d6457a25cd3c02",
@@ -73,17 +74,17 @@
       "page-15.png": "54b516526ced6ee17aa2e02ca7cc58799b2165cd6bb492c292085013ffb81cbd",
       "page-16.png": "01181c3b482db8bce43abe7144bfb82fa7701e446a0dcbadfe0250bcc068ee08",
       "page-17.png": "df6da94aa306304dd820abae38b762ba522602f3d90abca0bff1350eaeaf1837",
-      "page-18.png": "f0d4017cb8cc7b0932c96300b8aebb61a62075186527115588f8ee6240587e73",
-      "page-19.png": "e2421b10e552b09c63b627a9f23bef490a60089b6479524562f97a1a17ec9016",
-      "page-20.png": "adf7ff579fe2a283ee210d8a5381e52921b03575989b825430292f60977758af"
+      "page-18.png": "40625462657f90046a8ad25d4ec989ec1adc1794a18e56470950b5fbf0e9bb52",
+      "page-19.png": "4e91d83678c94fb539b582068fad1e44c5bcd9d53bfb16b81d4bb1ba0e8b98c2",
+      "page-20.png": "7152e1dc99f0da9ab8a4ddbbdb7d8cd770fddee35e9f71aed31660df04a7f98f"
     },
     "observations": [
-      "20页已重新导出并逐页查看。E13结果表、逐类曲线、失败示例和后续E14证据表均完整；未见缺字、越界、表格裁切或分页空白。"
+      "本册PDF共20页；本次复看更新后的第1页和第20页，其余18页图像哈希与上一已核验版一致。Pi运行故障、冻结轨迹证据索引均可读，无越界或裁切。"
     ]
   },
-  "checked_at": "2026-10-02T21:25:29+08:00",
-  "rendered": "2026-10-02T21:24:04+08:00",
-  "pdf_sha256": "9676e4ed8f5a30974d22f464f35aa44feb8f982c47b7a5e05d305054d90ad922",
+  "pdf_sha256": "0306fe39806c8cfd0c56321a9fc163ec7ca73187c8815e268dfdb50bcdd0b114",
+  "checked_at": "2026-10-02T23:44:51+08:00",
+  "rendered": "2026-10-02T23:44:19+08:00",
   "page_count": 21,
   "checked_pages": [
     1,
@@ -110,6 +111,10 @@
   ],
   "newly_viewed_pages": [
     1,
+    20,
+    21
+  ],
+  "identical_pages_inherited": [
     2,
     3,
     4,
@@ -127,17 +132,14 @@
     16,
     17,
     18,
-    19,
-    20,
-    21
+    19
   ],
-  "identical_pages_inherited": [],
   "page_sha256": {
-    "page-01.png": "4d009535102c0fd87525348764b9cf5b82211ac04a066a7d2cf7cb46f52726c1",
+    "page-01.png": "1c9ef8ae74db7346cc70c31bc9d54e95bece109fff3709d34e0732a404804688",
     "page-02.png": "5d733cca88bde2b35edc29a870609fd97cecc37eda7197127d856f780c23c37f",
     "page-03.png": "8a8ab311647bcbba9351b0807de6e5bb83215483b4c403e78dff879866f782fc",
     "page-04.png": "e707ac1bd8b00e75a43eaa3ed7bd674c3c733c854cf32c566577073da3075130",
-    "page-05.png": "03c3acde4c09a4e909cb0eb83a5846833e6e2314ceef18a6a3b8242f8bb00773",
+    "page-05.png": "90a06240fa43e8f835db2081b8c9827549ea5766c64631cfc833b3abc52a5f6a",
     "page-06.png": "83adcb435239749d13fcce422ea14d6268ff30cd0ed84026635f06bf942f7089",
     "page-07.png": "8b4431ac361e6368c7d5e21f8f9d6e85e7e39b8e9d0329fc819d4ab50c58108f",
     "page-08.png": "c2e04e838528b68efdede37bb0e507df72fd373b37bc17ab34d6457a25cd3c02",
@@ -151,12 +153,11 @@
     "page-16.png": "01181c3b482db8bce43abe7144bfb82fa7701e446a0dcbadfe0250bcc068ee08",
     "page-17.png": "df6da94aa306304dd820abae38b762ba522602f3d90abca0bff1350eaeaf1837",
     "page-18.png": "40625462657f90046a8ad25d4ec989ec1adc1794a18e56470950b5fbf0e9bb52",
-    "page-19.png": "1e72c02eb29013d9be95de8b6a839d69be014660fb8e7a64b11012aa836353be",
-    "page-20.png": "5030d55ba4454fdf2fd796825c241b8636362d41769e0d167816ddafad242daf",
-    "page-21.png": "226e73b0371bafe41599bbc9e92dd7c604f5604abaff7a337e7f9b6ba0629201"
+    "page-19.png": "4e91d83678c94fb539b582068fad1e44c5bcd9d53bfb16b81d4bb1ba0e8b98c2",
+    "page-20.png": "d4b7847bed1f2b04ab0f280e2dff0ed9324d5d6cf63626751a08ca955d45abf9",
+    "page-21.png": "b198cd97c17cafd3add8013bbcb548fbdd653a07db509677886c32b9494abc2f"
   },
   "observations": [
-    "当前 21 页 Word 已导出 PDF 并检查全部页面；移除总结与证据索引间的强制分页后不再出现仅有一段文字的稀疏页。",
-    "E14 训练曲线、中文字符、表格分页与证据索引可读；未见空白页、缺字或裁切。"
+    "PDF共21页，查看变化页1、20、21；证据索引分页完整，表格行可读，未见裁切或越界。"
   ]
 }
