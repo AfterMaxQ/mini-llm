@@ -1,0 +1,9 @@
+{
+  "reference_run": "E11-R04",
+  "reference_result_sha256": "3e76d1ab3248e1589a3fb0f8d4c1903d95ca8879b36f04a61899de59bde8ef78",
+  "quality_run": "E12-R04",
+  "quality_result_sha256": "4ad231a21526d638f7e7fb04e8d3001b9602589e0d571ff2218af3420c7cf18a",
+  "source": "../quality-evaluation.csv",
+  "source_sha256": "9eea8fb673df86bd788e62a28bd06720e11b1fd4a76065314c751ee3ea3038ea",
+  "image_sha256": "d97e15aa78e51852eb3cab97fb536837450bee9555bad2a6579c4118f1ce6db3"
+}

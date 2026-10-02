@@ -1,0 +1,91 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "summaries": {
+    "few_shot": {
+      "trajectories": 100,
+      "evaluated_trajectories": 100,
+      "trajectory_passed": 78,
+      "decision_turns": 184,
+      "turn_passed": 156,
+      "call_turns": 112,
+      "call_turn_passed": 88,
+      "no_call_turns": 72,
+      "no_call_turn_passed": 68,
+      "name_exact_turns": 109,
+      "truncated": 0,
+      "errors": {
+        "no_tool_call": 1
+      },
+      "categories": {
+        "multi_turn": {
+          "samples": 30,
+          "passed": 21
+        },
+        "no_call": {
+          "samples": 20,
+          "passed": 20
+        },
+        "parallel": {
+          "samples": 10,
+          "passed": 4
+        },
+        "single_call": {
+          "samples": 40,
+          "passed": 33
+        }
+      },
+      "rows_sha256": "6ec231f5dad1a479f1940108e639d4073a907b67696926212669c3ac5fe73298"
+    }
+  },
+  "selected_prompt": "few_shot",
+  "prompt_candidates_sha256": "841ffdfb378f9237bbbb6c69bff6ff639656d33a33677ad1382f85902ae79d38",
+  "scope": "冻结清单中100条轨迹的工具决策；使用标注历史，不代表工具执行或最终任务状态",
+  "run_id": "E12-R04",
+  "finished": "2026-10-02T18:52:50+08:00",
+  "config": {
+    "data_run": "focused-public",
+    "split": "dev",
+    "seed": 42,
+    "prompts": [
+      "few_shot"
+    ],
+    "batch_size": 4,
+    "context_length": 8192,
+    "max_new_tokens": 1024,
+    "max_batch_seconds": 300,
+    "enable_thinking": false,
+    "sampling": "greedy",
+    "precision": "NF4 double quant, BF16 autocast; k-bit preparation casts non-quantized parameters to FP32",
+    "evaluation_policy": "带标注工具调用的 assistant，以及紧接用户的无调用 assistant；输入使用该轮之前的完整标注历史；并行调用按无序多重集合比较",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "use_frozen_prompt": true,
+    "sampling_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "data_file_hashes": {
+      "dev.jsonl": "cc2d1dfe161604e80fe835ca64624823602d613e0c6b5722fa7c2d1c811274cb"
+    },
+    "adapter": ".local/runs/E12-R03/selected-adapter",
+    "source_train_run": "E12-R03",
+    "kind": "tool_eval",
+    "frozen_prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "adapter_sha256": "602964293c884236eca653f43a247a1cc58430be4f550c1d14d86f67e17f2749",
+    "command": [
+      "F:\\mini-llm-agent-lab\\.local\\venv-train\\Scripts\\python.exe",
+      "scripts/offline_eval.py",
+      "--config",
+      "configs/offline-eval-focused.json",
+      "--experiment",
+      "E12",
+      "--adapter",
+      ".local/runs/E12-R03/selected-adapter",
+      "--source-run",
+      "E12-R03"
+    ],
+    "run_id": "E12-R04",
+    "started": "2026-10-02T18:48:39+08:00",
+    "commit": "58dde092de21d0cba845dd6d4b63b4d8fd95f5ac",
+    "process_id": 45804,
+    "code_snapshot_sha256": "ad59fc8bbeaff41f4c1ddacff72f7d63c094e8188c39b3041c3086efcc7c2758"
+  },
+  "raw_result_sha256": "0498370643d0cfbe5bebb35b5db2390e9fb3560218bb30efe6e8b158f373c867"
+}

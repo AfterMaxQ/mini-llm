@@ -28,6 +28,12 @@ def main():
     for row in result["matched_strata"]:
         assert row["reference"] == row["filtered"]
         categories[row["category"]] += row["filtered"]
+    evaluations = []
+    for path in sorted((folder / "runs").glob("*.json")):
+        evaluation = json.loads(path.read_text(encoding="utf-8"))
+        if evaluation.get("status") == "completed" and evaluation.get("config", {}).get("kind") == "tool_eval":
+            evaluations.append(evaluation)
+    evaluated_train_runs = {item["config"].get("source_train_run") for item in evaluations}
     csv_path = folder / "data-comparison.csv"
     with csv_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
@@ -58,7 +64,7 @@ def main():
     train = result["train"]
     note = f'''# E12：筛得更严格，数据就一定更好吗？
 
-目前只能确认数据条件，效果还要等训练。两份数据都保留 5,000 条独立轨迹，来源和四类任务数量一致；额外筛选保留原来的 {result['baseline_retained']:,} 条，替换 {result['baseline_replaced']:,} 条。抽查同时发现了误删和漏检，因此这里的“通过筛选”只表示符合固定规则。
+这组实验先把筛选规则说清楚，再看两组各 1,000 条训练数据在同一份 dev 上的表现。筛选前后各有 5,000 条独立轨迹，来源和四类任务数量配平；额外筛选保留原来的 {result['baseline_retained']:,} 条，替换 {result['baseline_replaced']:,} 条。抽查同时发现了误删和漏检，因此这里的“通过筛选”只表示符合固定规则。
 
 ## 第一版为什么不能直接拿去训练？
 
@@ -130,16 +136,16 @@ if message["role"] in ["user", "tool"]:
     for run in runs:
         progress = json.loads((run / "progress.json").read_text(encoding="utf-8")) if (run / "progress.json").exists() else {}
         ended = json.loads((run / "result.json").read_text(encoding="utf-8")) if (run / "result.json").exists() else {}
-        state = {"trained_pending_tool_eval": "训练完成，工具评测另查", "failed": "失败，原记录保留"}.get(ended.get("status"), "运行中")
+        if ended.get("status") == "trained_pending_tool_eval":
+            state = "训练完成，工具评测已记录" if run.name in evaluated_train_runs else "训练完成，工具评测待核对"
+        else:
+            state = {"failed": "失败，原记录保留"}.get(ended.get("status"), "运行中")
         note += f"\n{run.name}：{state}，已更新 {ended.get('steps', progress.get('latest', {}).get('step', 0)):,} 次。\n"
         curve = draw_curve(run.name)
         if curve and curve["train"]:
             note += f"\n![图 E12：{run.name} 的真实训练与固定 dev loss，未平滑。](figures/{curve['path'].name})\n"
-    for path in sorted((folder / "runs").glob("*.json")):
-        evaluation = json.loads(path.read_text(encoding="utf-8"))
+    for evaluation in evaluations:
         config = evaluation["config"]
-        if evaluation["status"] != "completed" or config.get("kind") != "tool_eval":
-            continue
         summary = evaluation["summaries"][evaluation["selected_prompt"]]
         records = [json.loads(line) for line in (ROOT / ".local/data/processed" / config["data_run"] / (config["split"] + ".jsonl")).read_text(encoding="utf-8").splitlines()]
         turns = sum(m["role"] == "assistant" and bool(m.get("tool_calls") or record["messages"][i - 1]["role"] == "user")
@@ -149,6 +155,112 @@ if message["role"] in ["user", "tool"]:
         assert config["frozen_prompt_sha256"] == sha256(ROOT / "configs/prompt-frozen.json")
         assert config["adapter_sha256"] == sha256(ROOT / ".local/runs" / config["source_train_run"] / "selected-adapter/adapter_model.safetensors")
         note += f"\n{evaluation['run_id']} 固定 dev：整条轨迹 {summary['trajectory_passed']}/{summary['trajectories']}，调用轮 {summary['call_turn_passed']}/{summary['call_turns']}，不调用轮 {summary['no_call_turn_passed']}/{summary['no_call_turns']}，截断 {summary['truncated']}。\n"
+    budget = json.loads((ROOT / "configs/quality.json").read_text(encoding="utf-8"))
+    reference = budget["reference"]
+    reference_config = json.loads((ROOT / reference["training_config"]).read_text(encoding="utf-8"))
+    quality_config = json.loads((ROOT / budget["training_config"]).read_text(encoding="utf-8"))
+    shared_config = ("seed", "rank", "learning_rate", "epochs", "micro_batch",
+                     "gradient_accumulation", "max_sequence_length", "precision", "model_revision")
+    assert all(reference_config[key] == quality_config[key] for key in shared_config)
+    reference_train = None
+    for path in sorted((ROOT / "experiments" / reference["experiment"] / "runs").glob("*.json")):
+        run = json.loads(path.read_text(encoding="utf-8"))
+        config = run.get("config", {})
+        if (config.get("train_size") == reference["size"] and config.get("seed") == reference["seed"]
+                and config.get("data_run") == reference_config["data_run"]
+                and config.get("rank") == reference_config["rank"]
+                and config.get("learning_rate") == reference_config["learning_rate"]):
+            reference_train = run
+            break
+    quality_train = None
+    job = budget["jobs"][0]
+    for path in sorted((folder / "runs").glob("*.json")):
+        run = json.loads(path.read_text(encoding="utf-8"))
+        config = run.get("config", {})
+        if config.get("train_size") == job["size"] and config.get("seed") == job["seed"]:
+            quality_train = run
+            break
+    if reference_train and quality_train:
+        reference_eval = None
+        for path in sorted((ROOT / "experiments" / reference["experiment"] / "runs").glob("*.json")):
+            item = json.loads(path.read_text(encoding="utf-8"))
+            if (item.get("status") == "completed" and item.get("config", {}).get("kind") == "tool_eval"
+                    and item["config"].get("source_train_run") == reference_train["run_id"]):
+                reference_eval = item
+                break
+        quality_eval = next((item for item in evaluations if item["config"].get("source_train_run") == quality_train["run_id"]), None)
+        if reference_eval and quality_eval:
+            assert all(reference_train["config"][key] == quality_train["config"][key] for key in shared_config)
+            reference_dev = reference_train.get("train", {}).get("data_file_hashes", {}).get("dev.jsonl")
+            quality_dev = quality_train.get("train", {}).get("data_file_hashes", {}).get("dev.jsonl")
+            reference_summary = reference_eval["summaries"][reference_eval["selected_prompt"]]
+            quality_summary = quality_eval["summaries"][quality_eval["selected_prompt"]]
+            assert reference_dev == quality_dev
+            assert reference_eval["config"]["frozen_prompt_sha256"] == quality_eval["config"]["frozen_prompt_sha256"]
+            assert reference_eval["config"]["data_run"] == quality_eval["config"]["data_run"]
+            assert reference_eval["selected_prompt"] == quality_eval["selected_prompt"] == "few_shot"
+            assert reference_summary["trajectories"] == quality_summary["trajectories"] == 100
+            comparison_rows = []
+            for category, label in [("single_call", "单次调用"), ("multi_turn", "多轮调用"),
+                                    ("no_call", "不调用"), ("parallel", "并行调用")]:
+                base = reference_summary["categories"][category]
+                filtered = quality_summary["categories"][category]
+                assert base["samples"] == filtered["samples"]
+                comparison_rows.append((label, base["passed"], filtered["passed"], base["samples"]))
+            comparison_csv = folder / "quality-evaluation.csv"
+            with comparison_csv.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.writer(handle)
+                writer.writerow(["category", "reference_passed", "filtered_passed", "denominator"])
+                writer.writerows(comparison_rows)
+            fig, axis = plt.subplots(figsize=(6.4, 3.3), layout="constrained")
+            positions = list(range(len(comparison_rows)))
+            for offset, column, label, color, hatch in [
+                    (-0.18, 1, "基础清洗", "#6B7280", ""),
+                    (0.18, 2, "额外筛选", "#059669", "//")]:
+                values = [row[column] / row[3] * 100 for row in comparison_rows]
+                bars = axis.bar([i + offset for i in positions], values, width=0.34,
+                                color=color, hatch=hatch, label=label)
+                axis.bar_label(bars, labels=[f"{row[column]}/{row[3]}" for row in comparison_rows],
+                               fontsize=8, padding=3)
+            axis.set_xticks(positions, [row[0] for row in comparison_rows], fontproperties=font)
+            axis.set_ylabel("固定 dev 轨迹通过率（%）", fontproperties=font)
+            axis.set_ylim(0, 120)
+            axis.legend(prop=font)
+            axis.grid(axis="y", color="#E5E7EB", linewidth=0.6)
+            axis.set_axisbelow(True)
+            for side in ["top", "right"]:
+                axis.spines[side].set_visible(False)
+            comparison_figure = figures / "quality-evaluation.png"
+            fig.savefig(comparison_figure, dpi=300)
+            plt.close(fig)
+            write_json(figures / "quality-evaluation.source.json", {
+                "reference_run": reference_eval["run_id"],
+                "reference_result_sha256": sha256(ROOT / "experiments" / reference["experiment"] / "runs" / f"{reference_eval['run_id']}.json"),
+                "quality_run": quality_eval["run_id"],
+                "quality_result_sha256": sha256(folder / "runs" / f"{quality_eval['run_id']}.json"),
+                "source": "../quality-evaluation.csv",
+                "source_sha256": sha256(comparison_csv),
+                "image_sha256": sha256(comparison_figure),
+            })
+            category_table = "\n".join(
+                f"| {label} | {base}/{denominator} | {filtered}/{denominator} |"
+                for label, base, filtered, denominator in comparison_rows)
+            note += f'''\n## 额外筛选后，固定 dev 上的表现怎样？
+
+基础组与额外筛选组都使用 rank 16、学习率 1e-4、seed 17 和一个 epoch；验证数据与提示哈希相同。基础组来自 E11，筛选组从匹配后的数据池抽取。固定 100 条 dev 上，整条轨迹通过数为 {reference_summary['trajectory_passed']}/100 与 {quality_summary['trajectory_passed']}/100，差值 {quality_summary['trajectory_passed'] - reference_summary['trajectory_passed']:+d} 条。下面按任务类型拆开看：
+
+![图 E12-2：同一份固定 dev 上，两组的分类型轨迹通过率。](figures/quality-evaluation.png)
+
+| 任务类型 | 基础组 | 额外筛选组 |
+| --- | ---: | ---: |
+{category_table}
+
+调用轮分别通过 {reference_summary['call_turn_passed']}/{reference_summary['call_turns']} 与 {quality_summary['call_turn_passed']}/{quality_summary['call_turns']}；不调用轮分别通过 {reference_summary['no_call_turn_passed']}/{reference_summary['no_call_turns']} 与 {quality_summary['no_call_turn_passed']}/{quality_summary['no_call_turns']}。错误记录为 {json.dumps(reference_summary['errors'], ensure_ascii=False)} 与 {json.dumps(quality_summary['errors'], ensure_ascii=False)}，截断数为 {reference_summary['truncated']} 与 {quality_summary['truncated']}。
+
+表格里的“不调用”按整条任务轨迹计数；这里的“不调用轮”则是轨迹中的单次决策，统计口径和分母不同。
+
+在这 100 条固定样本上，额外筛选组多通过 {quality_summary['trajectory_passed'] - reference_summary['trajectory_passed']} 条轨迹；不调用决策轮多通过 {quality_summary['no_call_turn_passed'] - reference_summary['no_call_turn_passed']} 条，其余三类轨迹也有增加。这个结果值得继续看，但还不是筛选规则的因果证明：这里只有一个训练 seed，且筛选组替换了部分样本，规则变化与样本内容变化没有拆开。
+'''
     (folder / "notes.md").write_text(note, encoding="utf-8")
 
 

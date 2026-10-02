@@ -1,0 +1,5 @@
+category,reference_passed,filtered_passed,denominator
+单次调用,30,33,40
+多轮调用,16,21,30
+不调用,20,20,20
+并行调用,2,4,10
