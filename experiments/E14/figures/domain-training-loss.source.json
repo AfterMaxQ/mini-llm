@@ -1,0 +1,7 @@
+{
+  "metrics_sha256": "4d27cdadbe51e9621e0b5bd19a18cb5b9c1e333d2da41cceb6fd5271294083b7",
+  "image_sha256": "d31341cb747903dd0c954c9067707a78d54d41afc1ee3528279c93d8dc3b97f9",
+  "training_run": "E14-R19",
+  "train_points": 72,
+  "dev_points": 1
+}

@@ -44,7 +44,11 @@ def update_notes(run_id, pi_run_id=None):
         lines.append("训练未成功，失败配置和已产生的checkpoint保持原样；本次不记作领域能力结果。")
     elif progress:
         latest = progress.get("latest", {})
-        lines.append(f"训练仍在进行：最近记录到第{latest.get('step', 0)}/{progress.get('max_steps', 0)}步；当前train loss为{latest.get('loss', float('nan')):.6f}，目前最低dev loss为{progress.get('best_metric', float('nan')):.6f}。尚未结束的曲线只描述运行进度。")
+        train_loss = latest.get("loss")
+        best_metric = progress.get("best_metric")
+        train_loss_text = f"{train_loss:.6f}" if isinstance(train_loss, (int, float)) else "尚未产生"
+        best_metric_text = f"{best_metric:.6f}" if isinstance(best_metric, (int, float)) else "尚未产生"
+        lines.append(f"训练仍在进行：最近记录到第{latest.get('step', 0)}/{progress.get('max_steps', 0)}步；当前train loss为{train_loss_text}，目前最低dev loss为{best_metric_text}。尚未结束的曲线只描述运行进度。")
     else:
         lines.append("混合数据与训练配置已冻结，尚无训练进度记录。")
     failed = []
