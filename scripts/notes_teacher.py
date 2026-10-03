@@ -1,148 +1,135 @@
-"""从固定 Pi dev 运行记录生成教师验证笔记。"""
+"""从实际 Pi 运行生成教师对照笔记。"""
 import argparse
 import json
 from collections import Counter
 
 import matplotlib
-matplotlib.use("Agg")
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 
-from lab import ROOT
+from lab import ROOT, sha256, write_json
 
-LABELS = {
-    "missing_information": "缺信息先询问",
-    "failure_recovery": "失败后恢复",
-    "read_locate": "读取定位",
-    "invalid_path_recovery": "无效路径恢复",
-    "multi_file": "多文件修改",
-    "no_tool": "无需调用工具",
-    "function_fix": "函数修复",
-    "config_change": "配置修改",
-}
+LABELS = {'missing_information': '缺信息先询问', 'failure_recovery': '失败后恢复',
+          'read_locate': '读取定位', 'invalid_path_recovery': '无效路径恢复',
+          'multi_file': '多文件修改', 'no_tool': '无需调用工具',
+          'function_fix': '函数修复', 'config_change': '配置修改'}
 
 
 def read(path):
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding='utf-8'))
 
 
-def update(run_id):
-    folder = ROOT / ".local/runs" / run_id
-    config = read(folder / "config.json")
-    progress_path, result_path = folder / "progress.json", folder / "result.json"
-    progress = read(progress_path) if progress_path.exists() else {}
-    result = read(result_path) if result_path.exists() else {}
-    student_run = config["source_eval_run"]
-    student_eval = read(ROOT / "experiments/E14/runs" / f"{student_run}.json")
-    assert student_eval.get("validity") != "invalid_harness"
-    rows = progress.get("rows", [])
-    assert config["experiment"] == "E15" and config["operation"] == "pi_teacher_agent_dev"
-    passed = sum(bool(row.get("passed")) for row in rows)
-    timeouts = sum(bool(row.get("agent_timed_out")) for row in rows)
-    truncations = sum(bool(request.get("truncated")) for row in rows
-                      for request in row.get("model_requests", []))
-    categories = Counter(row["category"] for row in rows)
-    category_passed = Counter(row["category"] for row in rows if row.get("passed"))
+def metrics(run):
+    folder = ROOT / '.local/runs' / run
+    rows = read(folder / 'progress.json')['rows']
+    result = read(folder / 'result.json') if (folder / 'result.json').exists() else {}
+    requests = [request for row in rows for request in row.get('model_requests', [])]
+    return {'run': run, 'config': read(folder / 'config.json'), 'rows': rows, 'result': result,
+            'passed': sum(bool(row.get('passed')) for row in rows), 'requests': len(requests),
+            'timeouts': sum(bool(row.get('agent_timed_out')) for row in rows),
+            'budget': sum(bool(row.get('tool_budget_exhausted')) for row in rows),
+            'truncated': sum(bool(request.get('truncated')) for request in requests),
+            'malformed': sum('<tool_call>' in request['raw_response'] and not request['tool_calls'] for request in requests),
+            'seconds': result.get('elapsed_seconds'),
+            'source': {'records_sha256': sha256(folder / 'records.jsonl'), 'config_sha256': sha256(folder / 'config.json')}}
 
-    figure = ROOT / "experiments/E15/figures/E15-1.png"
-    figure.parent.mkdir(parents=True, exist_ok=True)
+
+def update(run):
+    current = metrics(run)
+    teachers = [metrics(path.stem) for path in sorted((ROOT / 'experiments/E15/runs').glob('*.json'))
+                if read(path).get('validity') == 'valid_harness']
+    if run not in [item['run'] for item in teachers]:
+        teachers.append(current)
+    for item in teachers:
+        student = read(ROOT / 'experiments/E14/runs' / f"{item['config']['source_eval_run']}.json")
+        assert student.get('validity') == 'valid_harness' and student['input_delivery_verified']
+        item['student'] = student
+    config, rows = current['config'], current['rows']
+    complete = [item for item in teachers if item['seconds'] is not None]
+    conclusion = ('已完成的教师条件均为0/16，与各自学生参照相比增加0个百分点；这批任务尚未观察到教师更可靠。教师回复不能直接当作优质标签，训练场景仍需逐条执行并筛选。'
+                  if complete and all(item['passed'] == 0 for item in complete) else
+                  '教师表现以同提示、同任务的实际对照为准；未完成任务保留在16题分母中。')
+    lines = ['# E15：4B 教师能否更可靠地完成工具任务', '',
+             '本机Qwen3-4B基础模型以NF4量化接入Pi，与Qwen3-1.7B领域适配器使用同一冻结dev16、同一工具和解码预算。每个教师条件绑定使用相同提示的学生运行。任务成绩由实际文件状态、检查结果和最终回答决定。', '',
+             '## 同条件对照', '', '| 提示条件 | 学生 | 学生成绩 | 教师 | 教师成绩 | 教师耗时 |', '| --- | --- | ---: | --- | ---: | ---: |']
+    for item in teachers:
+        student = item['student']
+        label = '简短工具提示' if item['config'].get('condition') == 'pi_focused_teacher' else '原few-shot提示'
+        score = f"{item['passed']}/16" if item['result'].get('status') == 'completed' else f"已评{len(item['rows'])}/16，通过{item['passed']}"
+        elapsed = f"{item['seconds']}秒" if item['seconds'] is not None else '进行中'
+        lines.append(f"| {label} | {student['run_id']} | {student['passed_tasks']}/16 | {item['run']} | {score} | {elapsed} |")
+    lines += ['', conclusion, '', '## 预算与错误记录', '',
+              f"输入上限{config['context_window']} token，生成上限{config['max_new_tokens']} token；温度{config['temperature']}、推理seed{config['inference_seed']}，关闭thinking。每题最多{config['max_tool_calls']}次工具调用、{config['task_timeout_seconds']}秒。预算耗尽立即结束并记失败，超时和截断也保留。", '',
+              '| 教师运行 | API请求 | 任务超时 | 预算耗尽 | 截断回复 | 调用解析失败 |', '| --- | ---: | ---: | ---: | ---: | ---: |']
+    for item in teachers:
+        lines.append(f"| {item['run']} | {item['requests']} | {item['timeouts']} | {item['budget']} | {item['truncated']} | {item['malformed']} |")
+    lines += ['', '调用解析失败统计的是回复中出现工具调用标记、但没有任何调用成功解析的请求数。']
+    figure = ROOT / 'experiments/E15/figures/E15-1.png'
     if rows:
-        font = FontProperties(fname="C:/Windows/Fonts/msyh.ttc")
-        keys = list(LABELS)
-        fig, axis = plt.subplots(figsize=(8, 4.8), layout="constrained")
-        values = [category_passed[key] for key in keys]
-        axis.barh(range(len(keys)), values, color="#2f855a", label="通过")
-        axis.barh(range(len(keys)), [2 - value for value in values], left=values,
-                  color="#cbd5e0", label="未通过")
-        axis.set_yticks(range(len(keys)), [LABELS[key] for key in keys], fontproperties=font)
-        axis.set_xlim(0, 2)
-        axis.set_xticks([0, 1, 2])
-        axis.set_xlabel("固定 dev 任务数")
-        axis.set_title(f"Qwen3-4B NF4 教师 Pi dev：{len(rows)}/16 已评")
-        axis.legend(prop=font, loc="lower right")
-        axis.invert_yaxis()
-        fig.savefig(figure, dpi=160)
+        figure.parent.mkdir(parents=True, exist_ok=True)
+        font = FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
+        fig, axes = plt.subplots(1, 2, figsize=(10, 4.8), layout='constrained')
+        totals = Counter(row['category'] for row in rows)
+        passed = Counter(row['category'] for row in rows if row.get('passed'))
+        values = [passed[key] for key in LABELS]
+        axes[0].barh(range(8), values, color='#2f855a', label='通过')
+        axes[0].barh(range(8), [totals[key] - passed[key] for key in LABELS], left=values, color='#cbd5e0', label='未通过')
+        axes[0].set_yticks(range(8), LABELS.values(), fontproperties=font)
+        axes[0].set_xlim(0, 2)
+        axes[0].set_xticks([0, 1, 2])
+        axes[0].set_xlabel('每类任务数', fontproperties=font)
+        axes[0].set_title(f"{run}：已评{len(rows)}/16，通过{current['passed']}", fontproperties=font)
+        axes[0].invert_yaxis()
+        axes[0].legend(prop=font, loc='lower right')
+        labels, times = [], []
+        for item in complete:
+            student = metrics(item['student']['run_id'])
+            labels += [f"学生 {student['run']}", f"教师 {item['run']}"]
+            times += [student['seconds'] / 60, item['seconds'] / 60]
+        axes[1].barh(range(len(times)), times, color=['#718096', '#2b6cb0'] * len(complete))
+        axes[1].set_yticks(range(len(times)), labels, fontproperties=font)
+        for index, value in enumerate(times):
+            axes[1].text(value + .1, index, f'{value:.2f}', va='center')
+        axes[1].set_xlim(0, max(times, default=1) * 1.3)
+        axes[1].set_xlabel('完整16题耗时（分钟）', fontproperties=font)
+        axes[1].set_title('同提示、同任务的实测耗时', fontproperties=font)
+        axes[1].invert_yaxis()
+        fig.savefig(figure, dpi=300)
         plt.close(fig)
-
-    status = result.get("status", progress.get("status", "prepared"))
-    summary = (f"本轮已完成{len(rows)}/16条固定dev任务，通过{passed}条，超时{timeouts}条，截断回复{truncations}条。"
-               if status == "completed" else
-               f"当前已完成{len(rows)}/16条固定dev任务，通过{passed}条，超时{timeouts}条，截断回复{truncations}条；未完成任务仍保留在16条分母中。")
-    lines = [
-        "# E15：4B 教师的工具任务表现",
-        "",
-        f"本轮直接在本机加载 Qwen3-4B 基础模型，以 NF4 量化和该模型自带的 Qwen3 chat template 接入 Pi。模型没有经过本项目的 LoRA 微调；评测使用冻结的 Pi dev16、同一 few-shot 提示和隔离工具容器。E14 学生有效接入运行 {student_run} 在同一固定 dev 子集通过 {student_eval['passed_tasks']}/{student_eval['target_tasks']}，作为同集参照。结论以实际任务记录为准，不从参数量推断教师更可靠。",
-        "",
-        "## 固定条件",
-        "",
-        "| 条件 | 配置 |",
-        "| --- | --- |",
-        f"| 教师 | `Qwen/Qwen3-4B`，revision `{config['model_revision']}`，NF4 双重量化 |",
-        f"| tokenizer 模板 SHA-256 | `{config['tokenizer_template_sha256']}`，与 E14 学生的 Qwen3-1.7B 模板相同 |",
-        f"| 模型文件清单 SHA-256 | `{config['model_manifest_sha256']}` |",
-        f"| 提示 | 冻结 `few_shot`，SHA-256 `{config['prompt_sha256']}` |",
-        "| 任务 | `configs/subsets-frozen.json` 的 `pi_dev`，8类各2条 |",
-        f"| 解码预算 | context {config['context_window']}，每次最多生成{config['max_new_tokens']} token，温度{config['temperature']}，seed {config['inference_seed']} |",
-        f"| Agent 预算 | 每题最多{config['task_timeout_seconds']}秒、{config['max_tool_calls']}次工具调用 |",
-        "",
-        "## 运行结果",
-        "",
-        summary,
-        "",
-    ]
-    if rows:
-        lines += ["![图 E15-1：八类固定 Pi dev 任务的实际通过数与未通过数](figures/E15-1.png)", ""]
-        lines += ["| 任务类别 | 已评 | 通过 | 超时 |", "| --- | ---: | ---: | ---: |"]
-        timed = Counter(row["category"] for row in rows if row.get("agent_timed_out"))
-        for key, label in LABELS.items():
-            if categories[key]:
-                lines.append(f"| {label} | {categories[key]} | {category_passed[key]} | {timed[key]} |")
-        lines.append("")
-    failure = next((row for row in rows if not row.get("passed")), None)
-    if failure:
-        reasons = "；".join(failure.get("judgement", {}).get("reasons", [])) or "最终文件状态未满足冻结判据"
-        answer = " ".join(failure.get("answer", "").split())[:240].replace("`", "\\`")
-        lines += ["## 一个实际失败例子", "",
-                  f"任务 `{failure['task_id']}`（{LABELS.get(failure['category'], failure['category'])}）未通过：{reasons}。",
-                  f"模型最终回复：`{answer or '无最终文本回复'}`。该例保留在原始16题分母中。", ""]
-    if (ROOT / "experiments/E15/runs/E15-R02.json").exists():
-        old = read(ROOT / "experiments/E15/runs/E15-R02.json")
-        if old.get("validity") == "invalid_harness":
-            lines += ["## 输入完整性复核", "",
-                      f"E15-R02 的16题原始记录保留，但 Pi 文本块未被旧 API 转成模型输入；其 `{old['passed_tasks']}/{old['target_tasks']}` 观测不作为教师能力成绩。修复后的本轮逐题保存任务提示与模型输入哈希，并检查不同任务输入不碰撞。审计见 `experiments/E13/prompt-delivery-audit.json`。", ""]
-    lines += [
-        "## 本机加载入口",
-        "",
-        "```python",
-        "model = AutoModelForCausalLM.from_pretrained(",
-        "    model_path, local_files_only=True, **model_loading_kwargs(load_in_4bit=True)",
-        ")",
-        "```",
-        "",
-        "模型和 tokenizer 均从本地 revision 读取；接口只绑定 `127.0.0.1`，Pi 每题使用新的无网络、只读根文件系统容器。",
-        "",
-        "## 证据索引",
-        "",
-        "| 内容 | 实际记录 |",
-        "| --- | --- |",
-        f"| 教师运行配置、逐题进度、结果与模型回复 | `{folder.relative_to(ROOT).as_posix()}/config.json`；`{folder.relative_to(ROOT).as_posix()}/progress.json`；`{folder.relative_to(ROOT).as_posix()}/result.json` |",
-        f"| 教师本机 API 请求轨迹 | `{folder.relative_to(ROOT).as_posix()}/model-api.jsonl` |",
-        "| 教师模型来源与 NF4 配置 | `configs/pi-agent-e15-teacher-dev.json`；`.local/models/Qwen3-4B/download-manifest.json` |",
-        f"| 冻结任务及学生同集参照 | `configs/subsets-frozen.json`；`experiments/E14/runs/{student_run}.json` |",
-        "",
-    ]
-    path = ROOT / "experiments/E15/notes.md"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes("\n".join(lines).encode("utf-8"))
+        write_json(figure.with_suffix('.source.json'), {'runs': {item['run']: item['source'] for item in teachers},
+                   'student_runs': {item['student']['run_id']: metrics(item['student']['run_id'])['source'] for item in teachers},
+                   'figure_sha256': sha256(figure)})
+        lines += ['', '![图 E15-1：当前教师八类实际计数与已完成配对评测耗时](figures/E15-1.png)', '']
+    original = next((item for item in teachers if item['run'] == 'E15-R03'), None)
+    if original:
+        failure = next(row for row in original['rows'] if row['category'] == 'failure_recovery')
+        lines += ['## 错误发生在哪一步', '',
+                  '原提示教师在缺信息任务中没有先读取已有配置，就要求用户补充文件里已有的信息；修复时修改受保护的检查文件；路径定位时猜测不存在的文件。部分工具参数的JSON字符串引号没有正确转义，导致调用无法解析。这分别属于任务策略、文件边界和调用格式问题。', '',
+                  f"实际任务 `{failure['task_id']}` 未通过的判据为：{'；'.join(failure['judgement']['reasons'])}。判据检查修复后的文件与测试，模型解释不能代替修复。", '',
+                  '```python', 'accepted = task_passed and schema_valid and arguments_valid',
+                  'accepted = accepted and not (timed_out or truncated)', '```', '']
+    lines += ['## 阶段结论', '', conclusion, '',
+              '教师使用本地固定revision和模型自带的Qwen3模板，没有经过本项目的LoRA训练。学生、教师模板一致。旧E15-R02的文本块接线无效，原始记录保留且不参与能力比较；有效条件逐题核对任务提示与模型输入哈希。', '',
+              '## 证据索引', '', '| 内容 | 对应记录 |', '| --- | --- |']
+    for item in teachers:
+        lines.append(f"| {item['run']}逐题执行与本机生成 | `.local/runs/{item['run']}/records.jsonl`；`model-api.jsonl`；`tasks.json`；`config.json`；`result.json` |")
+    lines += ['| 教师来源和条件 | `.local/models/Qwen3-4B/download-manifest.json`；`configs/pi-agent-e15-teacher-dev.json`；`configs/pi-agent-e15-teacher-focused-dev.json` |',
+              '| 任务、提示和输入审计 | `configs/subsets-frozen.json`；`configs/prompt-frozen.json`；`configs/pi-focused-prompt.json`；`experiments/E13/prompt-delivery-audit.json` |',
+              '| 图表来源 | `experiments/E15/figures/E15-1.source.json` |', '']
+    (ROOT / 'experiments/E15/notes.md').write_text('\n'.join(lines), encoding='utf-8')
+    summary = ROOT / 'docs/reports/summaries/03.md'
+    summary.parent.mkdir(parents=True, exist_ok=True)
+    summary.write_text('# 教师与蒸馏阶段总结\n\n' + conclusion + '\n\n'
+                       '各条件保留自己的提示、任务分母、耗时和错误。未执行的蒸馏训练与规模比较不计为结果。\n\n'
+                       '## 证据索引\n\n| 内容 | 对应记录 |\n| --- | --- |\n'
+                       '| 教师对照 | `experiments/E15/notes.md`；`experiments/E15/runs/` |\n'
+                       '| 输入交付与图表来源 | `experiments/E13/prompt-delivery-audit.json`；`experiments/E15/figures/E15-1.source.json` |\n', encoding='utf-8')
 
 
-def main():
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--run", required=True)
+    parser.add_argument('--run', required=True)
     args = parser.parse_args()
-    assert args.run.startswith("E15-R") and "/" not in args.run and "\\" not in args.run
+    assert args.run.startswith('E15-R') and '/' not in args.run and '\\' not in args.run
     update(args.run)
-
-
-if __name__ == "__main__":
-    main()

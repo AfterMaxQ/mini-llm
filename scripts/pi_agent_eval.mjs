@@ -9,6 +9,7 @@ import {createSandbox,policy,root} from './pi_sandbox.mjs';
 import {devTasks} from './pi_tasks_dev.mjs';
 import {testTasks} from './pi_tasks_test.mjs';
 import {seed,judge,digest} from './pi_tasks.mjs';
+import {teacherTasks,teacherFilter} from './pi_teacher_tasks.mjs';
 
 const configPath=process.argv[2]??'configs/pi-agent-eval.json';
 const resumeArg=process.argv.indexOf('--resume-run');
@@ -113,11 +114,18 @@ async function stopApi(child){
 }
 
 let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false,scaleLockOwned=false,scaleLockIdentity;
+let targetCount=config.task_count;
 const initialPromptHashes=new Map();
 const started=Date.now();
 function updateNotes(){
+  if(experiment==='E16'){
+    spawnSync(python,['scripts/notes_teacher_data.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
+    spawnSync(python,['scripts/report.py','--volume','03'],{cwd:root,windowsHide:true});
+    return;
+  }
   if(experiment==='E15'){
     spawnSync(python,['scripts/notes_teacher.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
+    spawnSync(python,['scripts/report.py','--volume','03'],{cwd:root,windowsHide:true});
     return;
   }
   const script=config.notes_script??(experiment==='E14'?'scripts/notes_domain.py':'scripts/notes_pi_agent.py');
@@ -129,10 +137,10 @@ try{
   checkGpuLock();
   checkLock();lockOwned=true;
   assert.equal(policy.pi_version,'0.99.1');
-  assert(['E13','E14','E15'].includes(experiment));
-  assert(['dev','test'].includes(split));
-  assert(sourceTasks);
-  assert.equal(config.operation,experiment==='E15'?'pi_teacher_agent_dev':`pi_model_agent_${split}`);
+  assert(['E13','E14','E15','E16'].includes(experiment));
+  assert(['dev','test','train'].includes(split));
+  if(experiment!=='E16')assert(sourceTasks);
+  assert.equal(config.operation,experiment==='E16'?'pi_teacher_generation':experiment==='E15'?'pi_teacher_agent_dev':`pi_model_agent_${split}`);
   if(experiment==='E13'){
     assert.equal(split,'dev');
     assert.equal(config.source_run,'E09-R15');
@@ -145,7 +153,7 @@ try{
       assert.equal(evaluation.status,'completed');
       assert.equal(evaluation.config.source_train_run,config.source_run);
     }
-  }else{
+  }else if(experiment==='E15'){
     const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
     const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
     assert.equal(config.split,'dev');
@@ -155,28 +163,49 @@ try{
     assert.equal(evaluation.validity,'valid_harness');
     assert.equal(evaluation.input_delivery_verified,true);
     assert.equal(evaluation.config.source_run,config.source_run);
+    assert.equal(evaluation.config.prompt_config,config.prompt_config);
+    assert.equal(evaluation.config.prompt_sha256,config.prompt_sha256);
     assert.equal(evaluation.target_tasks,config.task_count);
     assert.equal(evaluation.config.ids_sha256,config.ids_sha256);
     assert.equal(config.quantization,'NF4');
     assert.equal(config.load_in_4bit,true);
     assert.equal(config.tokenizer_template_sha256,config.student_tokenizer_template_sha256);
     assert.equal(config.model_manifest_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['model_manifest_path']))",config));
+  }else{
+    assert.equal(split,'train');
+    const teacher=JSON.parse(await readFile(path.join(root,'experiments/E15/runs',`${config.teacher_eval_run}.json`),'utf8'));
+    assert.equal(teacher.status,'completed');
+    assert.equal(teacher.validity,'valid_harness');
+    assert.equal(teacher.input_delivery_verified,true);
+    for(const key of ['prompt_config','prompt_sha256','model_manifest_sha256','model_revision','quantization',
+      'tokenizer_template_sha256','context_window','max_new_tokens','temperature','inference_seed','task_timeout_seconds','max_tool_calls'])
+      assert.equal(config[key],teacher.config[key],`教师条件变化：${key}`);
+    const budget=JSON.parse(await readFile(path.join(root,'configs/experiment-budget.json'),'utf8')).teacher;
+    for(const key of ['initial_requests','extension_batch','maximum_requests','valid_target'])assert.equal(config[key],budget[key]);
+    assert.equal(config.task_count,config.initial_requests);
+    assert.equal(config.model_manifest_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['model_manifest_path']))",config));
   }
   assert.equal(config.selected_prompt,'few_shot');
   assert.equal(config.prompt_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['prompt_config']))",config));
-  if(experiment!=='E15')assert.equal(config.adapter_sha256,py("import json,sys;print(sha256(ROOT/json.load(sys.stdin)['adapter']/'adapter_model.safetensors'))",config));
-  const frozen=JSON.parse(await readFile(path.join(root,'configs/subsets-frozen.json'),'utf8'))[config.frozen_subset];
-  assert.equal(frozen.selected_count,config.task_count);
-  assert.equal(frozen.ids_sha256,config.ids_sha256);
-  assert.equal(py("import hashlib;print(hashlib.sha256(json.dumps(json.load(sys.stdin),ensure_ascii=False,sort_keys=True).encode()).hexdigest())",frozen.ids),frozen.ids_sha256);
-  assert.equal(config.frozen_subset,`pi_${split}`);
-  const all=sourceTasks(),byId=new Map(all.map(task=>[task.task_id,task]));
-  assert.equal(all.length,frozen.source_count);
-  const tasks=frozen.ids.map(id=>byId.get(id));
+  if(!['E15','E16'].includes(experiment))assert.equal(config.adapter_sha256,py("import json,sys;print(sha256(ROOT/json.load(sys.stdin)['adapter']/'adapter_model.safetensors'))",config));
+  let frozen,tasks;
+  if(experiment==='E16'){
+    ({tasks,manifest:frozen}=await teacherTasks(config));
+  }else{
+    frozen=JSON.parse(await readFile(path.join(root,'configs/subsets-frozen.json'),'utf8'))[config.frozen_subset];
+    assert.equal(frozen.selected_count,config.task_count);
+    assert.equal(frozen.ids_sha256,config.ids_sha256);
+    assert.equal(py("import hashlib;print(hashlib.sha256(json.dumps(json.load(sys.stdin),ensure_ascii=False,sort_keys=True).encode()).hexdigest())",frozen.ids),frozen.ids_sha256);
+    assert.equal(config.frozen_subset,`pi_${split}`);
+    const all=sourceTasks(),byId=new Map(all.map(task=>[task.task_id,task]));
+    assert.equal(all.length,frozen.source_count);
+    tasks=frozen.ids.map(id=>byId.get(id));
+  }
   assert(tasks.every(Boolean));
   const quotas=tasks.reduce((out,task)=>(out[task.category]=(out[task.category]??0)+1,out),{});
   assert.deepEqual(quotas,frozen.strata);
-  const taskFile=split==='dev'?'scripts/pi_tasks_dev.mjs':'scripts/pi_tasks_test.mjs';
+  const taskFile=experiment==='E16'?frozen.source_file:split==='dev'?'scripts/pi_tasks_dev.mjs':'scripts/pi_tasks_test.mjs';
+  const definitions=Object.fromEntries(JSON.parse(await readFile(path.join(root,'configs/pi-tools.json'),'utf8')).tools.map(tool=>[tool.name,tool]));
   const runConfig={...config,command:[process.execPath,...process.argv.slice(1)],process_identity:identity(),
     pi_version:policy.pi_version,pi_sandbox_sha256:py("print(sha256(ROOT/'scripts/pi_sandbox.mjs'))"),
     frozen_manifest_sha256:py("print(sha256(ROOT/'configs/subsets-frozen.json'))"),
@@ -186,7 +215,8 @@ try{
     const saved=JSON.parse(await readFile(path.join(runDir,'config.json'),'utf8'));
     for(const [key,value] of Object.entries(runConfig))if(!['command','process_identity'].includes(key))assert.deepEqual(saved[key],value,`恢复配置变化：${key}`);
     const progress=JSON.parse(await readFile(path.join(runDir,'progress.json'),'utf8'));
-    rows=progress.rows??[];
+    rows=experiment==='E16'?(await readFile(path.join(runDir,'records.jsonl'),'utf8')).split('\n').filter(Boolean).map(JSON.parse):progress.rows??[];
+    targetCount=progress.target??config.task_count;
     assert(rows.every((row,index)=>row.task_id===frozen.ids[index]));
   }else runDir=py("v=json.load(sys.stdin);print(start_run(v['experiment'],v))",runConfig);
   py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':'running','scope':v['scope'],'run_id':v['run_id'],'time':now(),'process_identity':v['process_identity']})",
@@ -208,6 +238,10 @@ try{
   const frozenPrompt=JSON.parse(await readFile(path.join(root,config.prompt_config),'utf8'));
   assert.equal(frozenPrompt.selected_prompt,config.selected_prompt);
   for(let index=rows.length;index<tasks.length;index++){
+    if(experiment==='E16'&&index>=targetCount){
+      if(rows.filter(row=>row.teacher_filter?.accepted).length>=config.valid_target)break;
+      targetCount=Math.min(targetCount+config.extension_batch,tasks.length);
+    }
     const task=tasks[index],taskStart=Date.now();current={task_id:task.task_id,category:task.category,index:index+1};
     let sandbox,session,messages=[],timedOut=false,budgetExceeded=false,toolAttempts=0,entry={...current,started:new Date().toISOString()};
     const tracePath=path.join(runDir,'model-api.jsonl');
@@ -274,9 +308,11 @@ try{
     entry.task_prompt_sha256=digest(task.prompt);
     entry.model_input_prompt_sha256=firstRequest.prompt_sha256;
     entry.finished=new Date().toISOString();entry.seconds=Math.round((Date.now()-taskStart)/1000*1000)/1000;
+    if(experiment==='E16')entry.teacher_filter=teacherFilter(entry,definitions);
     rows.push(entry);await appendFile(path.join(runDir,'records.jsonl'),JSON.stringify(entry)+'\n','utf8');
-    await saveProgress(runDir,{status:'running',completed:rows.length,target:tasks.length,passed:rows.filter(row=>row.passed).length,
-      category_results:counts(rows),rows,last_task:entry.task_id,updated:entry.finished});
+    await saveProgress(runDir,{status:'running',completed:rows.length,target:targetCount,passed:rows.filter(row=>row.passed).length,
+      accepted:rows.filter(row=>row.teacher_filter?.accepted).length,
+      category_results:counts(rows),...(experiment==='E16'?{}:{rows}),last_task:entry.task_id,updated:entry.finished});
     console.log(JSON.stringify({task:entry.task_id,completed:rows.length,total:tasks.length,passed:entry.passed,reasons:entry.judgement.reasons}));
     current=null;
     if(Date.now()-lastNotes>=600000){
@@ -284,7 +320,7 @@ try{
       lastNotes=Date.now();
     }
   }
-  assert.equal(rows.length,config.task_count);
+  assert.equal(rows.length,targetCount);
 }catch(error){failure=error.stack??String(error);console.error(failure);
   if(runDir){await save(runDir,'failure.json',{error:failure,current,updated:new Date().toISOString()});}
 }finally{
@@ -292,21 +328,30 @@ try{
     await stopApi(api).catch(()=>{});
     if(runDir){
       const passed=rows.filter(row=>row.passed).length;
-      const complete=rows.length===config.task_count&&!failure;
+      const complete=rows.length===targetCount&&!failure;
       const tasksPath=path.join(runDir,'tasks.json');
       const result={status:complete?'completed':'failed',exit_code:complete?0:1,operation:config.operation,
         source_run:config.source_run,source_eval_run:config.source_eval_run,split:config.split,
-        target_tasks:config.task_count,evaluated_tasks:rows.length,passed_tasks:passed,category_results:counts(rows),
+        target_tasks:targetCount,evaluated_tasks:rows.length,passed_tasks:passed,category_results:counts(rows),
+        ...(experiment==='E16'?{valid_target:config.valid_target,accepted_trajectories:rows.filter(row=>row.teacher_filter?.accepted).length,
+          valid_target_met:rows.filter(row=>row.teacher_filter?.accepted).length>=config.valid_target}:{}),
         records_sha256:rows.length?digest(await readFile(path.join(runDir,'records.jsonl'),'utf8')):zero,
         tasks_sha256:existsSync(tasksPath)?py("print(sha256(ROOT/'.local/runs'/json.load(sys.stdin)['run_id']/'tasks.json'))",{run_id:path.basename(runDir)}):zero,
         model_api_trace_sha256:await readFile(path.join(runDir,'model-api.jsonl')).then(data=>digest(data)).catch(()=>zero),
         elapsed_seconds:Math.round((Date.now()-started)/1000),error:failure,
-        scope:`${config.task_count}个冻结Pi ${split}任务的实际Agent执行；不代表其他任务集或官方榜单表现`};
+        scope:`${targetCount}个冻结Pi ${split}任务的实际Agent执行；不代表其他任务集或官方榜单表现`};
       const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
         {id:path.basename(runDir),result});
       console.log(finished);
-      await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
-        category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
+      if(experiment==='E16'&&complete){
+        const exported=spawnSync(python,['scripts/pi_teacher_data.py','export','--run',path.basename(runDir)],
+          {cwd:root,windowsHide:true,encoding:'utf8',env:{...process.env,PYTHONUTF8:'1'}});
+        await save(runDir,'export-execution.json',{exit_code:exported.status,stdout:exported.stdout,stderr:exported.stderr});
+        if(exported.status!==0){console.error('教师编码失败，原始生成结果保留：'+exported.stderr);process.exitCode=1;}
+      }
+      await saveProgress(runDir,{status:result.status,completed:rows.length,target:targetCount,passed,
+        accepted:rows.filter(row=>row.teacher_filter?.accepted).length,
+        category_results:counts(rows),...(experiment==='E16'?{}:{rows}),last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
       updateNotes();
       try{
         py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':v['scope'],'run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v.get('error')})",

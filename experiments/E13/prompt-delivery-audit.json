@@ -191,6 +191,28 @@
       "model_api_trace_sha256": "3f356b86152d42074de9e966fc4ba5d7f8a166333441218ed01d92745e7cbca0",
       "result_sha256": "f49a3cc9eea5412b51e16f2ebebfbbe77a16702a090ef053069feca8e0d4c728",
       "eligible_for_model_comparison": true
+    },
+    "E15-R03": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 96,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "a419bf8cecf0b4c2550a9f303cb286591e63cc207b90cea756b2d4d859525ff8",
+      "model_api_trace_sha256": "2d8c28f14f1dd7b24e9c2630aa5ec900c50393c39db26284a72201d49f1c3b0a",
+      "result_sha256": "7b6f96f86da83c7fff14a38c654f92008ee0817a05600ba00ddf182357973d4a",
+      "eligible_for_model_comparison": true
+    },
+    "E15-R04": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 132,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "2f48c0a32de8c4b7d1392866200726f9443069c443840b3f77eef3b522cf2a17",
+      "model_api_trace_sha256": "97aea3076683ee942b9c589fb9c6862c69603d551a69d53daea1cf12f7d9dd65",
+      "result_sha256": "97bfd62062ae91cf9b04d4966e8dfc32bcacda11dcb2066beee836d5be989c70",
+      "eligible_for_model_comparison": true
     }
   }
 }

@@ -1,0 +1,148 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "operation": "pi_teacher_agent_dev",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R28",
+  "split": "dev",
+  "target_tasks": 16,
+  "evaluated_tasks": 16,
+  "passed_tasks": 0,
+  "category_results": {
+    "config_change": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "failure_recovery": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "function_fix": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "invalid_path_recovery": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "missing_information": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "multi_file": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "no_tool": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "read_locate": {
+      "tasks": 2,
+      "passed": 0
+    }
+  },
+  "records_sha256": "a419bf8cecf0b4c2550a9f303cb286591e63cc207b90cea756b2d4d859525ff8",
+  "tasks_sha256": "87fb1e135e25b5dfb75793bcb6fbb4816ae8f86af56a8034b484a070ed6c202e",
+  "model_api_trace_sha256": "2d8c28f14f1dd7b24e9c2630aa5ec900c50393c39db26284a72201d49f1c3b0a",
+  "elapsed_seconds": 778,
+  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表其他任务集或官方榜单表现",
+  "run_id": "E15-R03",
+  "finished": "2026-10-03T11:35:06+08:00",
+  "config": {
+    "experiment": "E15",
+    "operation": "pi_teacher_agent_dev",
+    "split": "dev",
+    "source_run": "E14-R19",
+    "source_eval_run": "E14-R28",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
+    "base_model_path": ".local/models/Qwen3-4B",
+    "model_manifest_path": ".local/models/Qwen3-4B/download-manifest.json",
+    "model_manifest_sha256": "2bf636151ab7f3fec2671196f6193f32f4ebeea0ac0e6704ef3aa0dfcc25c7f5",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "quantization": "NF4",
+    "load_in_4bit": true,
+    "tokenizer_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "student_tokenizer_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "frozen_subset": "pi_dev",
+    "task_count": 16,
+    "ids_sha256": "fdf7a26e5d2ef416fd9b54c8b904c75fa3553780b28957bbd4ae8cd33575b6b9",
+    "context_window": 8192,
+    "max_new_tokens": 1024,
+    "temperature": 0.2,
+    "sampling": "temperature",
+    "inference_seed": 17,
+    "enable_thinking": false,
+    "task_timeout_seconds": 300,
+    "max_tool_calls": 12,
+    "api": {
+      "host": "127.0.0.1",
+      "port": 18765,
+      "base_url": "http://127.0.0.1:18765/v1",
+      "provider": "minillm-local",
+      "model": "qwen3-4b-teacher-nf4-e15",
+      "display_name": "Qwen3-4B Teacher NF4 E15"
+    },
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
+      "configs/pi-agent-e15-teacher-dev.json"
+    ],
+    "process_identity": {
+      "pid": 49676,
+      "created": 1790997727.8615365,
+      "command": [
+        "G:\\program files\\Node_js\\node.exe",
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-e15-teacher-dev.json"
+      ]
+    },
+    "pi_version": "0.99.1",
+    "pi_sandbox_sha256": "4b2be7e64b720979f2a117677c25917aba226ef0cf608880a8270e2f234ccb20",
+    "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "task_ids": [
+      "dev-ambiguous-target-tenant-2",
+      "dev-ambiguous-target-tenant-5",
+      "dev-await-format-result-1",
+      "dev-await-format-result-2",
+      "dev-conditional-delivery-route-3",
+      "dev-conditional-delivery-route-4",
+      "dev-latest-successful-report-3",
+      "dev-latest-successful-report-4",
+      "dev-named-export-chain-2",
+      "dev-named-export-chain-5",
+      "dev-nearest-rank-percentile-1",
+      "dev-nearest-rank-percentile-4",
+      "dev-quoted-csv-state-2",
+      "dev-quoted-csv-state-5",
+      "dev-subscription-row-selection-1",
+      "dev-subscription-row-selection-4"
+    ],
+    "category_quotas": {
+      "missing_information": 2,
+      "failure_recovery": 2,
+      "read_locate": 2,
+      "invalid_path_recovery": 2,
+      "multi_file": 2,
+      "no_tool": 2,
+      "function_fix": 2,
+      "config_change": 2
+    },
+    "source_task_file_sha256": "92b594b7e0b1be57c35afe275a05b937f2780e668b7b06d010021de38280fe32",
+    "run_id": "E15-R03",
+    "started": "2026-10-03T11:22:09+08:00",
+    "commit": "c9ad7e3be0c0c65c792079bcd594825b98cdc6a1",
+    "process_id": 33072,
+    "code_snapshot_sha256": "86a32a1c85f40aeddcc19704cdb9fbc9487ad92c65412629b83df709159bfa20"
+  },
+  "raw_result_sha256": "7b6f96f86da83c7fff14a38c654f92008ee0817a05600ba00ddf182357973d4a",
+  "validity": "valid_harness",
+  "input_delivery_verified": true,
+  "timed_out_tasks": 0,
+  "tool_budget_exhausted_tasks": 2,
+  "observed_tool_requests": 88,
+  "budget_rejections": 0,
+  "non_timeout_failed_tasks": 16
+}

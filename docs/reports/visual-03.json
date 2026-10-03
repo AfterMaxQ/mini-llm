@@ -1,0 +1,35 @@
+{
+  "word_sha256": "fcd780645d605cbdb5d30a5c5c0e64b4b6a4d973fae7ba445df1e28e54dd1593",
+  "rendered": "2026-10-03T11:59:25+08:00",
+  "pdf_sha256": "18537e8ed3aacf40363d67212249de6b795a247dc635b5ac9fc4435ba24ac79b",
+  "visual_checked": true,
+  "pages": [
+    {
+      "page": 1,
+      "png": "F:\\mini-llm-agent-lab\\.local\\render\\03\\page-01.png",
+      "text_characters": 212
+    },
+    {
+      "page": 2,
+      "png": "F:\\mini-llm-agent-lab\\.local\\render\\03\\page-02.png",
+      "text_characters": 632
+    },
+    {
+      "page": 3,
+      "png": "F:\\mini-llm-agent-lab\\.local\\render\\03\\page-03.png",
+      "text_characters": 1148
+    }
+  ],
+  "checked": "2026-10-03T12:00:34+08:00",
+  "checked_pages": [
+    1,
+    2,
+    3
+  ],
+  "checks": [
+    "中文文字与表格完整",
+    "图例、单位与真实计数一致",
+    "证据索引位于阶段结论后",
+    "没有截断或空白页"
+  ]
+}

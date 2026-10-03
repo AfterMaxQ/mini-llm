@@ -188,6 +188,16 @@ def main():
                 state=f"{record['run_id']}：教师 Pi dev {record['passed_tasks']}/{record['target_tasks']}"
             elif invalid:
                 state=f"{invalid[-1]['run_id']}：文本块接线审计判无效，原始记录保留；有效教师评测待执行"
+            active=[path for path in unfinished if process_identity_alive(json.loads(path.read_text(encoding='utf-8')))]
+            if active:
+                current=active[-1].parent
+                progress=json.loads((current/'progress.json').read_text(encoding='utf-8')) if (current/'progress.json').exists() else {}
+                state=f"{current.name}：教师 Pi dev {progress.get('completed',0)}/16进行中；{state}"
+        active=[path for path in unfinished if process_identity_alive(json.loads(path.read_text(encoding='utf-8')))]
+        if number==16 and active:
+            current=active[-1].parent
+            progress=json.loads((current/'progress.json').read_text(encoding='utf-8')) if (current/'progress.json').exists() else {}
+            state=f"{current.name}：训练请求{progress.get('completed',0)}/{progress.get('target',512)}，初筛接受{progress.get('accepted',0)}；完整编码待核对"
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",

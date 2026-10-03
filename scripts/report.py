@@ -198,7 +198,7 @@ def sections(document, numbers, summary, source_root=ROOT):
     notes = [p for p in notes if p.exists()]
     for index, note in enumerate(notes):
         add_markdown(document, note, page_break_before=bool(index or overview))
-    if evidence:
+    if evidence and summary.stem != '03':
         add_markdown(document, summary, content='## 证据索引'+evidence)
 
 

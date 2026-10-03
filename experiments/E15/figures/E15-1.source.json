@@ -1,0 +1,23 @@
+{
+  "runs": {
+    "E15-R03": {
+      "records_sha256": "a419bf8cecf0b4c2550a9f303cb286591e63cc207b90cea756b2d4d859525ff8",
+      "config_sha256": "38f69ac9c1d04e999319a2281d8273d04e422f6ddeeeb5a2e31033b7dd38ccdf"
+    },
+    "E15-R04": {
+      "records_sha256": "2f48c0a32de8c4b7d1392866200726f9443069c443840b3f77eef3b522cf2a17",
+      "config_sha256": "f6ad7dfac3690758e1e97ecc23a8550e24272ef6e7d6faa2f84e6591fb07bd2f"
+    }
+  },
+  "student_runs": {
+    "E14-R28": {
+      "records_sha256": "62bc6b42cf96d0ceab85c103ce9270fd99352c62d089f965d83dec377397b5b5",
+      "config_sha256": "0fe8c377e430901b2c24fba9fa674dfaa4ad733ef74d3d105e0f87eae6223ea0"
+    },
+    "E14-R31": {
+      "records_sha256": "60c39d2c2a464af8d3f8c6df2df6615a85fb89d9e12a45da17cb7506890137d6",
+      "config_sha256": "7f4fea4e9dd7bb53071136725387776168844204c1f33242b253ae729d2bdf5d"
+    }
+  },
+  "figure_sha256": "573f2ccb6196182660f5312d1d587436675baa18571fcbc518f0b63933cb0963"
+}

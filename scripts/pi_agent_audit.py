@@ -22,7 +22,11 @@ def audit(run_id):
     frozen = read(ROOT / 'configs/subsets-frozen.json')[config['frozen_subset']]
     assert config['task_ids'] == frozen['ids'] and config['ids_sha256'] == frozen['ids_sha256']
     assert sha256(ROOT / config['prompt_config']) == config['prompt_sha256']
-    assert sha256(ROOT / config['adapter'] / 'adapter_model.safetensors') == config['adapter_sha256']
+    if config['experiment'] == 'E15':
+        assert sha256(ROOT / config['model_manifest_path']) == config['model_manifest_sha256']
+        assert config['tokenizer_template_sha256'] == config['student_tokenizer_template_sha256']
+    else:
+        assert sha256(ROOT / config['adapter'] / 'adapter_model.safetensors') == config['adapter_sha256']
     assert len(rows) == len(tasks) == result['target_tasks'] == result['evaluated_tasks']
     assert [row['task_id'] for row in rows] == config['task_ids'] == [task['task_id'] for task in tasks]
     assert Counter(row['category'] for row in rows) == config['category_quotas']
