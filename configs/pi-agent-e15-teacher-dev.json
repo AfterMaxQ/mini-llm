@@ -3,7 +3,7 @@
   "operation": "pi_teacher_agent_dev",
   "split": "dev",
   "source_run": "E14-R19",
-  "source_eval_run": "E14-R26",
+  "source_eval_run": "E14-R28",
   "prompt_config": "configs/prompt-frozen.json",
   "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
   "selected_prompt": "few_shot",

@@ -121,7 +121,8 @@ def main():
                         if json.loads(p.read_text(encoding='utf-8')).get('status')=='trained_pending_tool_eval'),None)
             agent=[r for r in actual if r.get('operation','').startswith('pi_model_agent_')]
             invalid_harness=[r for r in agent if r.get('status')=='aborted_invalid_harness' or r.get('validity')=='invalid_harness']
-            eligible=[r for r in agent if r.get('status')=='completed' and r.get('validity')!='invalid_harness']
+            eligible=[r for r in agent if r.get('status')=='completed' and r.get('validity')!='invalid_harness'
+                      and not r.get('config',{}).get('condition')]
             if mix:
                 detail='512条公开轨迹与512条Pi轨迹已冻结'
                 failed=[r for r in actual if r.get('status')=='failed']
@@ -144,6 +145,14 @@ def main():
                             detail+=f"，{timeouts}项超时"
                     else:
                         detail+=f"；Pi {split}{count}待评"
+                focused=[r for r in actual if r.get('status')=='focused_tool_data_frozen']
+                if focused:
+                    detail+='；专项工具集64条已冻结'
+                for condition,label in [('pi_focused_baseline','短提示原模型'),('pi_focused_sft','同提示专项模型')]:
+                    matches=[r for r in agent if r.get('status')=='completed' and r.get('config',{}).get('condition')==condition]
+                    if matches:
+                        match=matches[-1]
+                        detail+=f"；{label} {match['run_id']} {match['passed_tasks']}/{match['target_tasks']}"
                 if invalid_harness:
                     record=invalid_harness[-1]
                     detail+=f"；文本块接线审计判无效的旧运行：{', '.join(r['run_id'] for r in invalid_harness)}，原始记录保留"

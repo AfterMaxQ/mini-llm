@@ -120,7 +120,7 @@ function updateNotes(){
     spawnSync(python,['scripts/notes_teacher.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
     return;
   }
-  const script=experiment==='E14'?'scripts/notes_domain.py':'scripts/notes_pi_agent.py';
+  const script=config.notes_script??(experiment==='E14'?'scripts/notes_domain.py':'scripts/notes_pi_agent.py');
   const args=experiment==='E14'?['--run',config.source_run,'--pi-run',path.basename(runDir)]:['--run',path.basename(runDir)];
   spawnSync(python,[script,...args],{cwd:root,windowsHide:true});
   spawnSync(python,['scripts/report.py','--volume','02B'],{cwd:root,windowsHide:true});
@@ -139,10 +139,12 @@ try{
     assert.equal(config.source_eval_run,'E09-R16');
   }else if(experiment==='E14'){
     const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
-    const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
     assert.equal(source.status,'trained_pending_tool_eval');
-    assert.equal(evaluation.status,'completed');
-    assert.equal(evaluation.config.source_train_run,config.source_run);
+    if(config.source_eval_run){
+      const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
+      assert.equal(evaluation.status,'completed');
+      assert.equal(evaluation.config.source_train_run,config.source_run);
+    }
   }else{
     const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
     const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
@@ -150,6 +152,8 @@ try{
     assert.equal(config.frozen_subset,'pi_dev');
     assert.equal(source.status,'trained_pending_tool_eval');
     assert.equal(evaluation.status,'completed');
+    assert.equal(evaluation.validity,'valid_harness');
+    assert.equal(evaluation.input_delivery_verified,true);
     assert.equal(evaluation.config.source_run,config.source_run);
     assert.equal(evaluation.target_tasks,config.task_count);
     assert.equal(evaluation.config.ids_sha256,config.ids_sha256);
@@ -185,8 +189,8 @@ try{
     rows=progress.rows??[];
     assert(rows.every((row,index)=>row.task_id===frozen.ids[index]));
   }else runDir=py("v=json.load(sys.stdin);print(start_run(v['experiment'],v))",runConfig);
-  if(experiment==='E15')py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':'running','scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'process_identity':v['process_identity']})",
-    {run_id:path.basename(runDir),process_identity:scaleLockIdentity});
+  py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':'running','scope':v['scope'],'run_id':v['run_id'],'time':now(),'process_identity':v['process_identity']})",
+    {run_id:path.basename(runDir),scope:`${experiment} local Pi ${split} evaluation`,process_identity:scaleLockIdentity});
   await save(runDir,'tasks.json',tasks);
   await appendFile(path.join(runDir,'records.jsonl'),'','utf8');
   const authPath=path.join(root,'.local/pi-agent-runtime','auth.json');
@@ -205,7 +209,7 @@ try{
   assert.equal(frozenPrompt.selected_prompt,config.selected_prompt);
   for(let index=rows.length;index<tasks.length;index++){
     const task=tasks[index],taskStart=Date.now();current={task_id:task.task_id,category:task.category,index:index+1};
-    let sandbox,session,messages=[],timedOut=false,entry={...current,started:new Date().toISOString()};
+    let sandbox,session,messages=[],timedOut=false,budgetExceeded=false,toolAttempts=0,entry={...current,started:new Date().toISOString()};
     const tracePath=path.join(runDir,'model-api.jsonl');
     const traceOffset=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).length).catch(()=>0);
     try{
@@ -225,13 +229,21 @@ try{
       ({session}=await pi.createAgentSession({cwd:'/workspace',agentDir:path.join(root,'.local/pi-agent-runtime'),
         settingsManager:settings,sessionManager,resourceLoader:loader,modelRuntime,model,thinkingLevel:'off',
         noTools:'builtin',customTools:tools}));
+      // 第13次请求已超出冻结预算，记录预算耗尽并结束会话。
+      session.subscribe(event=>{
+        if(event.type==='tool_execution_start'&&++toolAttempts>config.max_tool_calls){
+          budgetExceeded=true;void session.abort();
+        }
+      });
       const taskTimeout=setTimeout(()=>{timedOut=true;void session.abort();},config.task_timeout_seconds*1000-500);
       try{await session.prompt(task.prompt,{expandPromptTemplates:false});await session.waitForIdle();}
       finally{clearTimeout(taskTimeout);}
       messages=transcriptState(session.state.messages);
       const events=observedEvents(messages),answer=finalAnswer(messages);
       const checked=await judge(task,sandbox,answer,events);
+      if(budgetExceeded){checked.passed=false;checked.reasons.push('tool_call_budget_exhausted');}
       entry.agent_timed_out=timedOut;
+      entry.tool_budget_exhausted=budgetExceeded;
       entry.model_requests=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).slice(traceOffset).map(line=>JSON.parse(line))).catch(()=>[]);
       entry.truncated_generations=entry.model_requests.filter(request=>request.truncated).length;
       entry.agent_events=messages;entry.answer=answer;entry.observed_tool_calls=events;
@@ -240,6 +252,7 @@ try{
       entry.final_files_sha256=digest(JSON.stringify(entry.final_files));entry.passed=checked.passed;
     }catch(error){
       entry.agent_timed_out=timedOut;
+      entry.tool_budget_exhausted=budgetExceeded;
       entry.model_requests=await readFile(tracePath,'utf8').then(text=>text.split('\n').filter(Boolean).slice(traceOffset).map(line=>JSON.parse(line))).catch(()=>[]);
       entry.truncated_generations=entry.model_requests.filter(request=>request.truncated).length;
       entry.passed=false;entry.judgement={passed:false,reasons:[typeName(error)+':'+String(error.message??error).slice(0,300)]};
@@ -295,9 +308,9 @@ try{
       await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
         category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
       updateNotes();
-      if(experiment==='E15')try{
-        py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v['error']})",
-          {status:result.status,run_id:path.basename(runDir),evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
+      try{
+        py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':v['scope'],'run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v.get('error')})",
+          {status:result.status,scope:`${experiment} local Pi ${split} evaluation`,run_id:path.basename(runDir),evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
       }catch(error){console.error('无法更新规模状态：'+String(error));process.exitCode=1;}
       if(!complete)process.exitCode=1;
     }else if(failure)process.exitCode=1;

@@ -147,6 +147,50 @@
       "model_api_trace_sha256": "9413f29ede15205ffcad3a91f9faf53d18fdd24e775f3c775aa9c6c7b70d2e32",
       "result_sha256": "8ddb75be09ff275dcf03216d8e313e935081d646076e34f53658782ee92171f3",
       "eligible_for_model_comparison": true
+    },
+    "E14-R28": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 63,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "62bc6b42cf96d0ceab85c103ce9270fd99352c62d089f965d83dec377397b5b5",
+      "model_api_trace_sha256": "d9a42e05c3fa91ca0adb6368fb380c6aab04e59de551cf3cc31116b9aa2ae124",
+      "result_sha256": "178d2c8cdfb2f1878b447caa5368b30535dda56808c93836e3630c361233a529",
+      "eligible_for_model_comparison": true
+    },
+    "E14-R29": {
+      "tasks": 40,
+      "unique_task_prompts": 27,
+      "unique_model_input_prompts": 27,
+      "api_requests": 245,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "61d79471e84b447bb88dead483a4e53f54d180efe9e4588f82dcfe8073eb5a21",
+      "model_api_trace_sha256": "8340747d5f2dfdf2dbb188761149990bb791883b7b60c2184bf02af8aa797f33",
+      "result_sha256": "40932f5d8ffbb64b9ca2a2162c37aa428a8f18c8cffb3a6d60735f54de9b91ab",
+      "eligible_for_model_comparison": true
+    },
+    "E14-R31": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 121,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "60c39d2c2a464af8d3f8c6df2df6615a85fb89d9e12a45da17cb7506890137d6",
+      "model_api_trace_sha256": "a64a2c8ec47bdbc9fd9f713acc33ee629c4bf9ecdbd57a6f3e5821a20b37da46",
+      "result_sha256": "cf5b63d2052207b520edfaaffd6245d05517e5d919c39f94956e78bdd879adf7",
+      "eligible_for_model_comparison": true
+    },
+    "E14-R33": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 107,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "f2b785679ed823c75e374d18031b6d80b9432e37ac9286ae074a37040cc25e3b",
+      "model_api_trace_sha256": "3f356b86152d42074de9e966fc4ba5d7f8a166333441218ed01d92745e7cbca0",
+      "result_sha256": "f49a3cc9eea5412b51e16f2ebebfbbe77a16702a090ef053069feca8e0d4c728",
+      "eligible_for_model_comparison": true
     }
   }
 }

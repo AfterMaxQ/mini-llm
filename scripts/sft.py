@@ -11,7 +11,8 @@ from pathlib import Path
 
 import torch
 from datasets import load_from_disk
-from peft import LoraConfig
+from peft import LoraConfig, set_peft_model_state_dict
+from safetensors.torch import load_file
 from transformers import TrainerCallback, set_seed
 from trl import SFTConfig, SFTTrainer
 
@@ -96,7 +97,7 @@ class RecordCallback(TrainerCallback):
 
     def refresh(self):
         experiment=self.run.name.split('-')[0]
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
+        script=self.trainer.resource_policy.get('notes_script') or {'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
                 'E14':'scripts/notes_domain.py'}.get(experiment,'scripts/notes_sft.py')
         volume='02B' if experiment=='E14' else '02'
         commands=[[sys.executable, script, '--run', self.run.name] if experiment=='E14' else [sys.executable, script],
@@ -168,7 +169,7 @@ def main():
     if args.size is not None: config["train_size"]=args.size
     if args.seed is not None: config["seed"]=args.seed
     config["data_run"]=resolve_data_run(config["data_run"])
-    frozen=ROOT/"configs/prompt-frozen.json"
+    frozen=ROOT/config.get('evaluation_prompt_config', 'configs/prompt-frozen.json')
     if not frozen.exists(): raise FileNotFoundError("先完成 E08，冻结 dev 提示")
     config["evaluation_prompt_sha256"]=sha256(frozen)
     config["command"]=[sys.executable,*sys.argv]
@@ -224,6 +225,12 @@ def main():
             dataloader_num_workers=0,dataloader_pin_memory=False,remove_unused_columns=False,disable_tqdm=True,
             max_length=None,packing=False,assistant_only_loss=True,dataset_kwargs={"skip_prepare_dataset":True})
         trainer=RecordedTrainer(model=model,args=training_args,processing_class=tokenizer,train_dataset=train_dataset,eval_dataset=dev_dataset,peft_config=peft_config)
+        if config.get('initial_adapter'):
+            # TRL 创建可训练 LoRA 后加载旧权重，避免再次准备量化模型时冻结适配器。
+            adapter_path=ROOT/config['initial_adapter']/'adapter_model.safetensors'
+            assert sha256(adapter_path)==config['initial_adapter_sha256']
+            loaded=set_peft_model_state_dict(trainer.model,load_file(str(adapter_path)),adapter_name='default')
+            assert not loaded.unexpected_keys and not any('lora_' in key for key in loaded.missing_keys)
         trainer.run_directory=run;trainer.supervised_tokens=0;trainer.resource_policy=config
         trainer.expected_validation_ids=set(dev_dataset["sample_id"])
         assert len(trainer.expected_validation_ids)==dev_manifest["independent_trajectories"]
@@ -258,7 +265,7 @@ def main():
         finish_run(run,{"status":"failed","exit_code":1,"error":traceback.format_exc(),
                    'allocated_mib_at_failure':torch.cuda.memory_allocated()/1024**2,
                    'reserved_mib_at_failure':torch.cuda.memory_reserved()/1024**2})
-        script={'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
+        script=config.get('notes_script') or {'E10':'scripts/notes_precision.py','E11':'scripts/notes_tuning.py','E12':'scripts/notes_quality.py',
                 'E14':'scripts/notes_domain.py'}.get(args.experiment,'scripts/notes_sft.py')
         volume='02B' if args.experiment=='E14' else '02'
         command=[sys.executable,script,'--run',run.name] if args.experiment=='E14' else [sys.executable,script]

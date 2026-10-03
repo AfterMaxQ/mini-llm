@@ -1,0 +1,143 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "operation": "pi_model_agent_dev",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R20",
+  "split": "dev",
+  "target_tasks": 16,
+  "evaluated_tasks": 16,
+  "passed_tasks": 0,
+  "category_results": {
+    "config_change": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "failure_recovery": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "function_fix": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "invalid_path_recovery": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "missing_information": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "multi_file": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "no_tool": {
+      "tasks": 2,
+      "passed": 0
+    },
+    "read_locate": {
+      "tasks": 2,
+      "passed": 0
+    }
+  },
+  "records_sha256": "62bc6b42cf96d0ceab85c103ce9270fd99352c62d089f965d83dec377397b5b5",
+  "tasks_sha256": "87fb1e135e25b5dfb75793bcb6fbb4816ae8f86af56a8034b484a070ed6c202e",
+  "model_api_trace_sha256": "d9a42e05c3fa91ca0adb6368fb380c6aab04e59de551cf3cc31116b9aa2ae124",
+  "elapsed_seconds": 769,
+  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表其他任务集或官方榜单表现",
+  "run_id": "E14-R28",
+  "finished": "2026-10-03T09:37:31+08:00",
+  "config": {
+    "experiment": "E14",
+    "operation": "pi_model_agent_dev",
+    "split": "dev",
+    "source_run": "E14-R19",
+    "source_eval_run": "E14-R20",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
+    "adapter": ".local/runs/E14-R19/selected-adapter",
+    "adapter_sha256": "66e17e53377bcfed07f282a36ad67499fb618edc553b52b4362aaaffc99469fd",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "frozen_subset": "pi_dev",
+    "task_count": 16,
+    "ids_sha256": "fdf7a26e5d2ef416fd9b54c8b904c75fa3553780b28957bbd4ae8cd33575b6b9",
+    "context_window": 8192,
+    "max_new_tokens": 1024,
+    "temperature": 0.2,
+    "sampling": "temperature",
+    "inference_seed": 17,
+    "load_in_4bit": true,
+    "enable_thinking": false,
+    "task_timeout_seconds": 300,
+    "max_tool_calls": 12,
+    "api": {
+      "host": "127.0.0.1",
+      "port": 18763,
+      "base_url": "http://127.0.0.1:18763/v1",
+      "provider": "minillm-local",
+      "model": "qwen3-1.7b-e14-r19"
+    },
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
+      "configs/pi-agent-e14-dev.json"
+    ],
+    "process_identity": {
+      "pid": 43848,
+      "created": 1790990680.829451,
+      "command": [
+        "G:\\program files\\Node_js\\node.exe",
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-e14-dev.json"
+      ]
+    },
+    "pi_version": "0.99.1",
+    "pi_sandbox_sha256": "4b2be7e64b720979f2a117677c25917aba226ef0cf608880a8270e2f234ccb20",
+    "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "task_ids": [
+      "dev-ambiguous-target-tenant-2",
+      "dev-ambiguous-target-tenant-5",
+      "dev-await-format-result-1",
+      "dev-await-format-result-2",
+      "dev-conditional-delivery-route-3",
+      "dev-conditional-delivery-route-4",
+      "dev-latest-successful-report-3",
+      "dev-latest-successful-report-4",
+      "dev-named-export-chain-2",
+      "dev-named-export-chain-5",
+      "dev-nearest-rank-percentile-1",
+      "dev-nearest-rank-percentile-4",
+      "dev-quoted-csv-state-2",
+      "dev-quoted-csv-state-5",
+      "dev-subscription-row-selection-1",
+      "dev-subscription-row-selection-4"
+    ],
+    "category_quotas": {
+      "missing_information": 2,
+      "failure_recovery": 2,
+      "read_locate": 2,
+      "invalid_path_recovery": 2,
+      "multi_file": 2,
+      "no_tool": 2,
+      "function_fix": 2,
+      "config_change": 2
+    },
+    "source_task_file_sha256": "92b594b7e0b1be57c35afe275a05b937f2780e668b7b06d010021de38280fe32",
+    "run_id": "E14-R28",
+    "started": "2026-10-03T09:24:42+08:00",
+    "commit": "c217b13c5161b9b18ed3f1449e720913d8578522",
+    "process_id": 45992,
+    "code_snapshot_sha256": "e4d0f761e74bed2cf32d58625bfaa90065a7b0024408b4f09aa89cd3edb0c83f"
+  },
+  "raw_result_sha256": "178d2c8cdfb2f1878b447caa5368b30535dda56808c93836e3630c361233a529",
+  "validity": "valid_harness",
+  "input_delivery_verified": true,
+  "timed_out_tasks": 1,
+  "tool_budget_exhausted_tasks": 0,
+  "observed_tool_requests": 48,
+  "budget_rejections": 2,
+  "non_timeout_failed_tasks": 15
+}

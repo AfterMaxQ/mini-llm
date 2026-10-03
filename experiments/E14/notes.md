@@ -204,7 +204,7 @@ E14-R10 用固定系统提示、真实工具定义及原样工具返回，检查
 
 ![图 E14-3：每类5个场景的最长完整参考历史；虚线为固定上下文预算。](figures/dev-lengths.png)
 
-图里测的是参考解走过的历史。模型可能多读文件、反复失败或生成更长回复，所以这不能保证它的实际轨迹也在预算内；正式运行仍逐条记录长度、截断和超时，保留在40个任务的分母里。
+图里测的是40条dev参考解走过的历史。模型可能多读文件、反复失败或生成更长回复，所以这不能保证它的实际轨迹也在预算内；模型评测使用评分前冻结的16条dev，逐条记录长度、截断和超时，保留完整16条分母。
 
 ## 参考解为什么也没通过？生成的检查文件先出了语法错误
 
@@ -218,7 +218,7 @@ const cases = [["AB-123\n", false]];
 const literal = JSON.stringify(cases);
 ```
 
-## 最终100题能用了么？题目和参考已核验，模型还没跑
+## 最终100题如何冻结？题目和参考已核验
 
 E14-R14 实际检查了100个场景：参考100/100通过，100个初始错误和100个明确错误候选都被拒绝。共397次参考工具调用，保留21次预期错误，以及7个场景中的真实空查询；错误候选另调用工具88次。本轮200个独立容器均已移除，参考与错误候选没有共用状态。
 
@@ -237,7 +237,7 @@ E14-R14 实际检查了100个场景：参考100/100通过，100个初始错误�
 
 这100个场景分属16个模板族，仍不是100种完全不同的问题。测试题要求的算法和状态处理与train、dev有所区别：函数题要考虑图的依赖与环、对象递归及输入引用，多文件题要让读写双方遵守相同契约。它们属于自编的小仓库任务集，正式结果按任务和任务族分别展示，不代替标准榜单。
 
-清单已经冻结。此后用dev选提示词和checkpoint，教师只处理train；最终test等方案确定后统一运行，每个任务重复三次，失败、超时和截断仍留在100题的分母里。
+完整100题及其参考保留。模型评分前另外冻结了dev16和test40：八类分别各2条和5条，test40覆盖全部测试模板族。模型运行按对应的16条或40条完整分母计分，失败、超时和截断都不剔除；配置选择只使用dev，教师训练轨迹只来自train。本册后文报告实际模型执行结果。
 
 ## 答案算对了，空查询题就算成功吗？还要真的完成恢复过程
 
@@ -313,6 +313,11 @@ Pi dev接入排错（E14-R23）：已运行1/16个任务后中止。Pi 将相对
 Pi dev运行（E14-R25）：原始记录为0/16，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
 Pi dev运行（E14-R26）：原始记录为0/16，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
 Pi test运行（E14-R27）：原始记录为0/40，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
+Pi dev：0/16个任务通过；超时、截断或工具错误都留在预定分母中。
+E14-R28耗时769秒；1/16个任务超时，15个未超时任务仍未通过。记录48次工具请求，其中2次因12次调用上限被沙箱拒绝。
+Pi test：4/40个任务通过；超时、截断或工具错误都留在预定分母中。
+固定test40在963秒内完成，八类各5条、无任务超时；7项在请求第13次工具调用时结束并记失败。此前沙箱拒绝超额调用后，会话仍继续生成请求；运行器现在在同一12次预算耗尽时终止会话，不改变预定分母。
+本机API每次生成后释放空闲CUDA缓存，并在客户端断开时停止生成；trace保留请求耗时、取消标记与清理前后显存。任务文本、工具返回和最后的文件判据仍逐条记录，旧文本接线无效的运行不参与成绩比较。
 
 公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。
 
@@ -323,5 +328,54 @@ Pi test运行（E14-R27）：原始记录为0/40，但审计发现不同任务�
 - E14-R25：dev原始观察0/16；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R25.json`。
 - E14-R26：dev原始观察0/16；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R26.json`。
 - E14-R27：test原始观察0/40；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R27.json`。
+- E14-R28：dev 0/16，1/16个任务超时；记录：`experiments/E14/runs/E14-R28.json`。
+- E14-R29：test 4/40；记录：`experiments/E14/runs/E14-R29.json`。
 
 Pi 路径映射核验（E14-R24）：Pi 会话和 SessionManager 均使用`/workspace`；工具返回的`F:/workspace/pi-path-smoke.txt`经隔离write/read往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/E14-R24.json`。
+
+## 针对性工具微调
+
+专项集取自已执行通过的Pi训练参考：16个训练模板族各4条，合计64条；八类各8条。工具调用、原始返回和最终答案保持一致，只把系统提示统一为推理时使用的简短Pi工具示例。原始训练集与dev、test划分保持各自来源。
+
+从E14-R19适配器开始，rank16、seed17、学习率5e-5、梯度累积8，完整轨迹按当前assistant回复展开，训练1个epoch。固定100条公开dev保留初始与末次token加权loss；Pi成功率使用固定16条dev，短提示下的原适配器与新适配器分别运行。
+
+64条轨迹展开为284个回复单元，最长1777token；工具选择、参数、错误返回后的下一步，以及最终回答都在监督中。
+
+### 训练是否实际更新？
+
+E14-R32已更新36步；选中的checkpoint-36公开dev loss为0.189985。任务效果以实际Pi评测为准。
+
+训练耗时378.1秒，392/392个LoRA张量发生实际变化，梯度和loss均有限。固定100条公开dev loss从0.189352变为0.189985，没有下降；专项训练loss低不能替代独立任务验证。
+
+![专项工具训练的真实loss曲线。](figures/focused-training-loss.png)
+
+### 同提示下能否完成新任务？
+
+| 模型 | 运行 | Pi dev | 耗时 | 超时 | 工具预算耗尽 |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 原领域适配器 | E14-R31 | 0/16 | 339秒 | 0 | 4 |
+| 专项适配器 | E14-R33 | 0/16 | 327秒 | 0 | 2 |
+
+两组使用相同短提示、任务ID、seed17和12次工具调用上限；dev包含独立模板族。完成训练或降低loss，都需要通过这组执行结果验证迁移效果。
+
+专项微调新增通过0个任务，成功率变化+0.0个百分点。本轮未证明独立模板上的能力提升，不能把训练loss下降称为任务效果改善。
+
+### 一条实际失败说明什么？
+
+短提示原模型在目标租户缺失的任务中先读取不存在的`src/config.mjs`，再多次运行不存在的`checks.mjs`，最终耗尽工具预算。正确的决策需要识别用户缺失的信息并询问；重复执行同一失败命令没有补充信息。该轨迹说明训练模板中的恢复动作不能直接等同于新仓库上的恢复能力。
+
+```python
+# 专项数据只复用执行通过的训练参考
+assert record['split'] == 'train'
+assert record['validation']['execution'] == 'reference_passed'
+```
+
+### 证据索引
+
+- configs/pi-focused-data.json；configs/pi-focused-prompt.json；configs/sft-pi-focused.json
+- experiments/E14/runs/E14-R32.json；.local/runs/E14-R32/metrics.jsonl
+- configs/pi-agent-focused-baseline-dev.json；scripts/pi_agent_audit.py
+- experiments/E14/runs/E14-R30.json；experiments/E14/runs/E14-R31.json；.local/data/processed/E14-focused-tools/train-64.jsonl
+- experiments/E14/focused-training-audit.json；.local/runs/E14-R32/trainable-parameters.json
+- experiments/E14/runs/E14-R33.json；.local/runs/E14-R33/records.jsonl
+- configs/pi-agent-focused-trained-dev.json

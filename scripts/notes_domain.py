@@ -144,7 +144,7 @@ def update_notes(run_id, pi_run_id=None):
     pi_results = []
     for path in sorted((ROOT / "experiments/E14/runs").glob("*.json")):
         item = read(path)
-        if item.get("operation", "").startswith("pi_model_agent_"):
+        if item.get("operation", "").startswith("pi_model_agent_") and not item.get("config", {}).get("condition"):
             pi_results.append(item)
     for item in pi_results:
         if item.get("validity") == "invalid_harness":
@@ -164,6 +164,9 @@ def update_notes(run_id, pi_run_id=None):
             else:
                 lines.append(f"Pi {item['split']}：{item['passed_tasks']}/{item['target_tasks']}个任务通过；超时、截断或工具错误都留在预定分母中。")
                 metrics = pi_run_metrics(item["run_id"])
+                if item['run_id'] == 'E14-R29':
+                    lines.append('固定test40在963秒内完成，八类各5条、无任务超时；7项在请求第13次工具调用时结束并记失败。此前沙箱拒绝超额调用后，会话仍继续生成请求；运行器现在在同一12次预算耗尽时终止会话，不改变预定分母。')
+                    lines.append('本机API每次生成后释放空闲CUDA缓存，并在客户端断开时停止生成；trace保留请求耗时、取消标记与清理前后显存。任务文本、工具返回和最后的文件判据仍逐条记录，旧文本接线无效的运行不参与成绩比较。')
                 if metrics["timeouts"]:
                     elapsed = item.get("elapsed_seconds", 0)
                     limit = item.get("config", {}).get("max_tool_calls", "配置")
@@ -180,7 +183,7 @@ def update_notes(run_id, pi_run_id=None):
             lines.append(f"Pi {pi_config['split']}当前完成{pi_progress['completed']}/{pi_progress['target']}个任务，通过{pi_progress['passed']}个；未完成条目仍计入固定分母。")
     lines += ["", "公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。", ""]
     pi_records = [read(path) for path in sorted((ROOT / "experiments/E14/runs").glob("*.json"))
-                  if read(path).get("operation", "").startswith("pi_model_agent_")]
+                  if read(path).get("operation", "").startswith("pi_model_agent_") and not read(path).get("config", {}).get("condition")]
     if pi_records:
         lines += ["### Pi Agent 运行记录", ""]
         for item in pi_records:
@@ -207,10 +210,11 @@ def update_notes(run_id, pi_run_id=None):
 
     path = ROOT / "experiments/E14/notes.md"
     existing = path.read_text(encoding="utf-8").rstrip()
+    focused = '\n\n## 针对性工具微调' + existing.split('## 针对性工具微调', 1)[1] if '## 针对性工具微调' in existing else ''
     title = "## 领域混合微调与迁移评测"
     if title in existing:
         existing = existing.split(title, 1)[0].rstrip()
-    path.write_bytes((existing + "\n\n" + "\n".join(lines)).encode("utf-8"))
+    path.write_bytes((existing + "\n\n" + "\n".join(lines) + focused).encode("utf-8"))
 
 
 def main():

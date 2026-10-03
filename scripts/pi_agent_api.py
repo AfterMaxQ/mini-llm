@@ -3,6 +3,8 @@ import argparse
 import hashlib
 import json
 import re
+import select
+import socket
 import sys
 import threading
 import time
@@ -12,7 +14,7 @@ from pathlib import Path
 
 import torch
 from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -121,10 +123,13 @@ class Handler(BaseHTTPRequestHandler):
                 attention_mask = torch.ones_like(input_ids)
                 torch.manual_seed(self.server.inference_seed)
                 torch.cuda.manual_seed_all(self.server.inference_seed)
+                disconnected = DisconnectStop(self.connection)
+                torch.cuda.reset_peak_memory_stats()
                 with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
                     generated = self.server.model.generate(
                         input_ids=input_ids, attention_mask=attention_mask,
                         max_new_tokens=max_new, do_sample=True, temperature=self.server.temperature, use_cache=True,
+                        stopping_criteria=StoppingCriteriaList([disconnected]),
                         pad_token_id=self.server.tokenizer.pad_token_id)
                 new_tokens = generated[0, input_ids.shape[-1]:]
                 text = self.server.tokenizer.decode(new_tokens, skip_special_tokens=True)
@@ -132,6 +137,24 @@ class Handler(BaseHTTPRequestHandler):
                 eos = self.server.model.generation_config.eos_token_id
                 eos = set(eos if isinstance(eos, list) else [eos])
                 truncated = not any(int(token) in eos for token in new_tokens.tolist())
+                reserved_before = round(torch.cuda.memory_reserved() / 1024 ** 2)
+                peak_allocated = round(torch.cuda.max_memory_allocated() / 1024 ** 2)
+                # 释放不同长度请求留下的空闲缓存，控制 reserved 显存。
+                torch.cuda.empty_cache()
+                trace = {"time": started, "run_id": self.server.run_id, "request_id": request_id,
+                         "prompt_tokens": prompt_tokens, "generated_tokens": len(new_tokens),
+                         "seconds": round(time.time() - started, 3),
+                         "temperature": self.server.temperature, "inference_seed": self.server.inference_seed,
+                         "truncated": truncated, "cancelled": disconnected.disconnected,
+                         "prompt_sha256": prompt_hash, "messages_sha256": messages_hash,
+                         "message_roles": message_roles, "tool_names": tool_names,
+                         "tool_calls": calls, "raw_response": text,
+                         "peak_allocated_mib": peak_allocated, "reserved_mib_before_cleanup": reserved_before,
+                         "reserved_mib_after_cleanup": round(torch.cuda.memory_reserved() / 1024 ** 2)}
+                with self.server.trace_lock, self.server.trace_file.open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(trace, ensure_ascii=False) + "\n")
+            if disconnected.disconnected:
+                return
             if payload.get("stream"):
                 self.send_sse(request_id, content, calls, truncated)
             else:
@@ -143,14 +166,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_json(200, {"id": request_id, "object": "chat.completion", "created": int(started),
                     "model": self.server.model_id, "choices": [{"index": 0, "message": message,
                     "finish_reason": "length" if truncated else "tool_calls" if calls else "stop"}]})
-            trace = {"time": started, "run_id": self.server.run_id, "prompt_tokens": prompt_tokens,
-                     "generated_tokens": len(new_tokens), "seconds": round(time.time() - started, 3),
-                     "temperature": self.server.temperature, "inference_seed": self.server.inference_seed,
-                     "truncated": truncated, "prompt_sha256": prompt_hash, "messages_sha256": messages_hash,
-                     "message_roles": message_roles,
-                     "tool_names": tool_names, "tool_calls": calls, "raw_response": text}
-            with self.server.trace_lock, self.server.trace_file.open("a", encoding="utf-8") as handle:
-                handle.write(json.dumps(trace, ensure_ascii=False) + "\n")
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            return
         except Exception as error:
             self.send_json(500, {"error": {"message": str(error)[:300], "type": type(error).__name__}})
             with self.server.trace_lock, self.server.trace_file.open("a", encoding="utf-8") as handle:
@@ -183,6 +200,21 @@ class Handler(BaseHTTPRequestHandler):
         emit({**base, "choices": [{"index": 0, "delta": {}, "finish_reason": finish_reason}]})
         self.wfile.write(b"data: [DONE]\n\n")
         self.wfile.flush()
+
+
+class DisconnectStop(StoppingCriteria):
+    """Pi 中止请求时同步停止本机生成，不让旧请求继续占用 GPU。"""
+    def __init__(self, connection):
+        self.connection = connection
+        self.disconnected = False
+
+    def __call__(self, input_ids, scores, **kwargs):
+        try:
+            if select.select([self.connection], [], [], 0)[0]:
+                self.disconnected = not self.connection.recv(1, socket.MSG_PEEK)
+        except OSError:
+            self.disconnected = True
+        return self.disconnected
 
 
 def main():

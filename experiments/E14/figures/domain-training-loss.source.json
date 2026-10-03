@@ -1,6 +1,6 @@
 {
   "metrics_sha256": "a249882b6af578a37abf6719dbb9e5da6aa925d95161d40425bb43bea480a1b6",
-  "image_sha256": "dd6dcc93ba7ea013d7c9b36e3301d7355ecf050605f8cce2fb52da1ada5f2f47",
+  "image_sha256": "986e83aaf59c02401dc7e1f3afac88722e587afaceb393daded2adce2452597d",
   "training_run": "E14-R19",
   "train_points": 472,
   "dev_points": 4

@@ -1,0 +1,6 @@
+{
+  "selected_prompt": "few_shot",
+  "condition": "pi_focused_v1",
+  "selection_split": "dev",
+  "suffix": "\n只使用当前 read、edit、write、bash 工具。工具调用使用 <tool_call>{\"name\":\"工具名\",\"arguments\":{...}}</tool_call>。\n先根据任务给出的路径读取文件；路径不存在时读取 README.md 或用 bash 列出文件，依据实际返回找到正确路径，不重复猜同一路径。检查命令失败时读取检查和相关源码，修复后再运行；没有修改代码时不要反复运行同一个失败命令。缺少目标值或对象时询问，不擅自选择。用户给出了全部数据且要求无需工具时，直接计算并按要求回答。成功后给出任务要求的最终答案并结束，不继续调用工具。\n例一：read({\"path\":\"old.json\"}) 返回文件不存在，下一步 bash({\"command\":\"find . -maxdepth 3 -type f\"})，再读取列表中的实际文件。\n例二：bash({\"command\":\"node checks.mjs\"}) 返回断言失败，下一步 read({\"path\":\"checks.mjs\"})，然后读取相关源码；修复后只复测一次，按真实结果结束。"
+}
