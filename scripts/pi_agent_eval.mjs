@@ -151,7 +151,7 @@ try{
     assert.equal(evaluation.status,'completed');
     assert.equal(evaluation.config.source_run,config.source_run);
     assert.equal(evaluation.target_tasks,config.task_count);
-    assert.equal(evaluation.ids_sha256,config.ids_sha256);
+    assert.equal(evaluation.config.ids_sha256,config.ids_sha256);
     assert.equal(config.quantization,'NF4');
     assert.equal(config.load_in_4bit,true);
     assert.equal(config.tokenizer_template_sha256,config.student_tokenizer_template_sha256);
