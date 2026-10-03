@@ -1,8 +1,60 @@
 {
-  "word_sha256": "06483f4fecec1d7b00739a1f0b4e06de322f7122f36a6846c5caada8b232d7c5",
-  "rendered": "2026-10-03T15:31:22+08:00",
-  "pdf_sha256": "22536cb0904c836aa73fc4e3478e51e81f17f209342a37c70527b5f3cb7f6a99",
+  "word_sha256": "d06ef0b12afa7b49564e13fc62d6852d87bdfd797c12ac4b7e5233a5cd8ac636",
   "visual_checked": true,
+  "updated": "2026-10-03T15:51:55+08:00",
+  "previous_checked": {
+    "word_sha256": "a004b62b2e9f54e4ec9c336dd7f167854afc13c26df833577c49c8de000eff75",
+    "visual_checked": true,
+    "updated": "2026-10-03T15:47:42+08:00",
+    "checked": "2026-10-03T15:47:42+08:00",
+    "checked_pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "pages": [
+      {
+        "page": 1,
+        "text_characters": 212,
+        "png": ".local\\render\\03\\page-01.png"
+      },
+      {
+        "page": 2,
+        "text_characters": 632,
+        "png": ".local\\render\\03\\page-02.png"
+      },
+      {
+        "page": 3,
+        "text_characters": 1146,
+        "png": ".local\\render\\03\\page-03.png"
+      },
+      {
+        "page": 4,
+        "text_characters": 620,
+        "png": ".local\\render\\03\\page-04.png"
+      },
+      {
+        "page": 5,
+        "text_characters": 894,
+        "png": ".local\\render\\03\\page-05.png"
+      }
+    ],
+    "checks": [
+      "Word 实际导出 PDF 并查看全部 5 页",
+      "E16请求数、初筛数、拒绝信息和累计曲线清楚",
+      "编码快照路径、阶段结论与证据索引排版完整"
+    ]
+  },
+  "checked": "2026-10-03T15:51:55+08:00",
+  "checked_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
   "pages": [
     {
       "page": 1,
@@ -22,71 +74,19 @@
     {
       "page": 4,
       "png": ".local\\render\\03\\page-04.png",
-      "text_characters": 619
+      "text_characters": 620
     },
     {
       "page": 5,
       "png": ".local\\render\\03\\page-05.png",
-      "text_characters": 892
+      "text_characters": 894
     }
-  ],
-  "checked": "2026-10-03T15:32:11+08:00",
-  "checked_pages": [
-    1,
-    2,
-    3,
-    4,
-    5
   ],
   "checks": [
     "Word 实际导出 PDF 并查看全部 5 页",
-    "E16当前请求数、初筛数、拒绝表和累计曲线清楚",
+    "E16请求数、初筛数、拒绝信息和累计曲线清楚",
     "编码快照路径、阶段结论与证据索引排版完整"
   ],
-  "previous_checked": {
-    "word_sha256": "05b177bbed9f5993e5bc95969fc90e92bcb30ff0c1ae59ea34647dabd7a47908",
-    "rendered": "2026-10-03T15:05:01+08:00",
-    "pdf_sha256": "6d66df1e51e3c889efaccf214742f5a6daacd1dd568f6f99e4ea0b65fd1762f4",
-    "visual_checked": true,
-    "pages": [
-      {
-        "page": 1,
-        "png": ".local\\render\\03\\page-01.png",
-        "text_characters": 212
-      },
-      {
-        "page": 2,
-        "png": ".local\\render\\03\\page-02.png",
-        "text_characters": 632
-      },
-      {
-        "page": 3,
-        "png": ".local\\render\\03\\page-03.png",
-        "text_characters": 1146
-      },
-      {
-        "page": 4,
-        "png": ".local\\render\\03\\page-04.png",
-        "text_characters": 619
-      },
-      {
-        "page": 5,
-        "png": ".local\\render\\03\\page-05.png",
-        "text_characters": 848
-      }
-    ],
-    "checked": "2026-10-03T15:05:25+08:00",
-    "checked_pages": [
-      1,
-      2,
-      3,
-      4,
-      5
-    ],
-    "checks": [
-      "Word 实际导出 PDF 并查看全部 5 页",
-      "E16 当前请求数、初筛数、拒绝表和累计曲线清楚",
-      "教师负结果、阶段结论与证据索引排版完整"
-    ]
-  }
+  "rendered": "2026-10-03T15:51:11+08:00",
+  "pdf_sha256": "82c0a99ad86bfeacce167a7212e6c15c820a5f9e7ce8c689e8c755bb4eb6c124"
 }
