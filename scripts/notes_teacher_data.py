@@ -1,5 +1,6 @@
 """依据逐条真实执行记录更新教师轨迹接受率。"""
 import argparse
+import hashlib
 import json
 from collections import Counter
 
@@ -14,7 +15,8 @@ from lab import ROOT, sha256, write_json
 def update(run):
     folder = ROOT / '.local/runs' / run
     config = json.loads((folder / 'config.json').read_text(encoding='utf-8'))
-    rows = [json.loads(line) for line in (folder / 'records.jsonl').read_text(encoding='utf-8').splitlines()]
+    records_snapshot = (folder / 'records.jsonl').read_bytes()
+    rows = [json.loads(line) for line in records_snapshot.decode('utf-8').splitlines()]
     accepted = sum(row['teacher_filter']['accepted'] for row in rows)
     reasons = Counter(reason for row in rows for reason in row['teacher_filter']['reasons'])
     ended = (folder / 'result.json').exists()
@@ -43,9 +45,20 @@ def update(run):
         axis.set_ylim(bottom=0)
         fig.savefig(figure, dpi=300)
         plt.close(fig)
-        write_json(figure.with_suffix('.source.json'), {'run_id': run, 'records_sha256': sha256(folder / 'records.jsonl'),
+        write_json(figure.with_suffix('.source.json'), {'run_id': run, 'records_sha256': hashlib.sha256(records_snapshot).hexdigest(),
                    'figure_sha256': sha256(figure), 'requests': len(rows), 'accepted': accepted})
         lines += ['', '![图 E16-1：逐条执行的累计初筛接受数量](figures/E16-1.png)', '']
+    inspection = ROOT / 'experiments/E16/encoding-inspection.json'
+    if inspection.exists():
+        checked = json.loads(inspection.read_text(encoding='utf-8'))
+        if checked['run_id'] == run:
+            lines += ['## Pi 消息怎样变成训练单元', '',
+                      'Pi 的原生 system 消息可以只有空 content，实际提示保存在结构化 sections 中。转换时使用同版本 Pi 渲染器恢复完整系统提示，包括工作目录；不能把空 content 当成空提示，也不能把 system 角色当作用户消息。', '',
+                      f"对已落盘的{checked['requests']}条请求快照检查，初筛接受的{checked['preliminary_accepted']}条均完整编码成功，展开为{checked['assistant_units']}个当前回复训练单元，共{checked['supervised_tokens']}个监督token；最长输入{checked['max_input_tokens']} tokens。这是运行中快照，尚未达到256条目标。", '',
+                      f"{checked['prefix_checks']}个推理前缀的token哈希与实际API记录逐一相同，规范化消息哈希也相同；历史消息与工具返回不参与当前回复loss。检查没有初始化CUDA，不占用教师推理GPU。", '',
+                      '```python', 'history = messages[:target_message_index]',
+                      'assert sha256(render_tokens(history)) == request["prompt_sha256"]',
+                      'labels[:target_start] = -100', '```', '']
     exported = folder / 'teacher-export.json'
     if exported.exists():
         data = json.loads(exported.read_text(encoding='utf-8'))
@@ -57,6 +70,8 @@ def update(run):
               f'| 逐题执行与本机生成 | `.local/runs/{run}/records.jsonl`；`model-api.jsonl`；`tasks.json` |']
     if exported.exists():
         lines.append(f'| 编码、拒绝与训练文件清单 | `.local/runs/{run}/teacher-export.json`；`teacher-rejections.json`；`teacher-units.json` |')
+    if inspection.exists():
+        lines.append('| 编码快照核对 | `experiments/E16/encoding-inspection.json`；`.local/checks/E16-R01-encoding/records-snapshot.jsonl`；`records-snapshot.inspection.json` |')
     lines.append('')
     (ROOT / 'experiments/E16').mkdir(exist_ok=True)
     (ROOT / 'experiments/E16/notes.md').write_text('\n'.join(lines), encoding='utf-8')

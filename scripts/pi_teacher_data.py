@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import subprocess
 from collections import Counter, defaultdict
 
 from lab import ROOT, sha256, write_json
@@ -45,24 +46,41 @@ def freeze():
                       'maximum_requests': len(selected), 'initial_strata': manifest['initial_strata']}, ensure_ascii=False))
 
 
-def export(run_id):
+def system_prompt(config):
+    custom = read(ROOT / 'configs/pi-reference-data.json')['system_prompt'] + '\n\n' + read(ROOT / config['prompt_config'])['suffix']
+    node = config['command'][0]
+    script = ("import{readFileSync}from'node:fs';import path from'node:path';"
+              "import{buildSystemPrompt}from'./.local/pi/node_modules/@earendil-works/pi-coding-agent/dist/core/system-prompt.js';"
+              "process.stdout.write(buildSystemPrompt({customPrompt:readFileSync(0,'utf8'),cwd:path.resolve('/workspace')}));")
+    # Pi 把系统提示保存在 sections 中；使用同版本渲染器恢复实际发送的文本。
+    return subprocess.check_output([node, '--input-type=module', '-e', script], cwd=ROOT,
+                                   input=custom.encode('utf-8')).decode('utf-8')
+
+
+def convert(run_id, snapshot=None):
+    from pi_agent_api import normalize_messages
     from pi_reference_data import check_arguments, digest
     from templates import action_records, encode_action, tokenizer_and_template
     folder = ROOT / '.local/runs' / run_id
-    config, result = read(folder / 'config.json'), read(folder / 'result.json')
-    assert config['experiment'] == 'E16' and result['status'] == 'completed'
-    for name, key in [('records.jsonl', 'records_sha256'), ('tasks.json', 'tasks_sha256'),
-                      ('model-api.jsonl', 'model_api_trace_sha256')]:
-        assert sha256(folder / name) == result[key]
-    rows = [json.loads(line) for line in (folder / 'records.jsonl').read_text(encoding='utf-8').splitlines()]
+    config = read(folder / 'config.json')
+    assert config['experiment'] == 'E16'
+    if snapshot is None:
+        result = read(folder / 'result.json')
+        assert result['status'] == 'completed'
+        for name, key in [('records.jsonl', 'records_sha256'), ('tasks.json', 'tasks_sha256'),
+                          ('model-api.jsonl', 'model_api_trace_sha256')]:
+            assert sha256(folder / name) == result[key]
+    raw = snapshot if snapshot is not None else folder / 'records.jsonl'
+    rows = [json.loads(line) for line in raw.read_text(encoding='utf-8').splitlines()]
     tasks = read(folder / 'tasks.json')
-    assert len(rows) == result['evaluated_tasks']
+    if snapshot is None:
+        assert len(rows) == result['evaluated_tasks']
     assert [row['task_id'] for row in rows] == [task['task_id'] for task in tasks[:len(rows)]]
     tools = [{'type': 'function', 'function': tool} for tool in read(ROOT / 'configs/pi-tools.json')['tools']]
     definitions = {tool['function']['name']: tool['function'] for tool in tools}
     schema_hash = digest(tools)
     tokenizer, original, marked = tokenizer_and_template()
-    prompt = read(ROOT / 'configs/pi-reference-data.json')['system_prompt'] + '\n\n' + read(ROOT / config['prompt_config'])['suffix']
+    prompt = system_prompt(config)
     records, rejections, units = [], [], []
     for row, task in zip(rows, tasks):
         reasons = list(row['teacher_filter']['reasons'])
@@ -73,8 +91,12 @@ def export(run_id):
                 assert row['task_prompt_sha256'] == hashlib.sha256(task['prompt'].encode()).hexdigest()
                 assert row['model_input_prompt_sha256'] == row['model_requests'][0]['prompt_sha256']
                 messages = [{'role': 'system', 'content': prompt}]
-                for event in row['agent_events']:
+                for index, event in enumerate(row['agent_events']):
+                    if event['role'] == 'system':
+                        assert index == 0 and event['content'] in ('', prompt), 'unexpected_system_message'
+                        continue
                     blocks = event['content']
+                    assert isinstance(blocks, list), 'expected_native_text_blocks'
                     text = ''.join(block['text'] for block in blocks if block['type'] == 'text')
                     if event['role'] == 'assistant':
                         calls = []
@@ -101,7 +123,9 @@ def export(run_id):
                           'reference_answer_source': 'executed_teacher_trajectory',
                           'validation': {'format': True, 'arguments': True, 'execution': 'teacher_passed'}}
                 current_units = []
-                for action in action_records(record):
+                actions = action_records(record)
+                assert len(actions) == len(row['model_requests']), 'unmatched_model_request'
+                for action, request in zip(actions, row['model_requests']):
                     encoded = encode_action(tokenizer, marked, action)
                     text = tokenizer.apply_chat_template(action['messages'], tools=tools, tokenize=False,
                                                          enable_thinking=False, add_generation_prompt=False)
@@ -111,6 +135,11 @@ def export(run_id):
                                                            enable_thinking=False, add_generation_prompt=True)
                     assert text == tagged and text.startswith(prefix)
                     assert tokenizer(text, add_special_tokens=False)['input_ids'] == encoded['input_ids']
+                    prefix_ids = tokenizer(prefix, add_special_tokens=False)['input_ids']
+                    assert hashlib.sha256(json.dumps(prefix_ids, separators=(',', ':')).encode()).hexdigest() == request['prompt_sha256'], 'inference_prefix_tokens_mismatch'
+                    history_hash = hashlib.sha256(json.dumps(normalize_messages(action['messages'][:-1]), ensure_ascii=False,
+                                                             sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+                    assert history_hash == request['messages_sha256'], 'inference_history_mismatch'
                     mask = encoded['assistant_masks']
                     start = next(index for index, value in enumerate(mask) if value)
                     assert all(label == -100 for label in encoded['labels'][:start])
@@ -118,7 +147,8 @@ def export(run_id):
                     targets = sum(label != -100 for label in encoded['labels'][1:])
                     assert targets > 0 and tokenizer.eos_token_id in encoded['labels']
                     current_units.append({'sample_id': task['task_id'], 'message_index': action['target_message_index'],
-                                          'input_tokens': len(encoded['input_ids']), 'supervised_tokens': targets})
+                                          'input_tokens': len(encoded['input_ids']), 'supervised_tokens': targets,
+                                          'inference_prefix_sha256': request['prompt_sha256']})
                 assert current_units
                 record['token_count'] = max(unit['input_tokens'] for unit in current_units)
                 record['target_token_count'] = sum(unit['supervised_tokens'] for unit in current_units)
@@ -129,6 +159,14 @@ def export(run_id):
             rejections.append({'task_id': task['task_id'], 'reasons': reasons})
         else:
             records.append(record)
+    import torch
+    assert not torch.cuda.is_initialized(), '轨迹编码不得占用GPU'
+    return config, rows, records, rejections, units, prompt, original, schema_hash, sha256(raw)
+
+
+def export(run_id):
+    config, rows, records, rejections, units, prompt, original, schema_hash, records_hash = convert(run_id)
+    folder = ROOT / '.local/runs' / run_id
     output = ROOT / '.local/data/processed' / run_id
     output.mkdir(parents=True, exist_ok=True)
     selected = records[:config['valid_target']]
@@ -149,7 +187,8 @@ def export(run_id):
                 'selected_ids': [record['sample_id'] for record in selected],
                 'system_prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
                 'template_sha256': hashlib.sha256(original.encode()).hexdigest(), 'tools_schema_sha256': schema_hash,
-                'raw_records_sha256': result['records_sha256'], 'selection': '保留执行通过且完整编码成功的轨迹，按冻结请求顺序取前256条；128条为前缀'}
+                'raw_records_sha256': records_hash, 'converter_sha256': sha256(ROOT / 'scripts/pi_teacher_data.py'),
+                'selection': '保留执行通过且完整编码成功的轨迹，按冻结请求顺序取前256条；128条为前缀'}
     write_json(output / 'manifest.json', manifest)
     write_json(folder / 'teacher-export.json', manifest)
     write_json(folder / 'teacher-rejections.json', rejections)
@@ -162,13 +201,36 @@ def export(run_id):
     print(json.dumps(manifest, ensure_ascii=False))
 
 
+def inspect(run_id, snapshot):
+    config, rows, records, rejections, units, prompt, original, schema_hash, records_hash = convert(run_id, snapshot)
+    result = {'run_id': run_id, 'operation': 'teacher_encoding_snapshot_inspection', 'requests': len(rows),
+              'preliminary_accepted': sum(row['teacher_filter']['accepted'] for row in rows),
+              'encoded_trajectories': len(records), 'assistant_units': len(units),
+              'supervised_tokens': sum(unit['supervised_tokens'] for unit in units),
+              'max_input_tokens': max((unit['input_tokens'] for unit in units), default=0),
+              'prefix_checks': len(units), 'cuda_initialized': False,
+              'categories': dict(Counter(record['category'] for record in records)),
+              'encoding_rejections': [row for row in rejections if any(reason.startswith('encoding_or_protocol:') for reason in row['reasons'])],
+              'snapshot_sha256': records_hash, 'converter_sha256': sha256(ROOT / 'scripts/pi_teacher_data.py'),
+              'system_prompt_sha256': hashlib.sha256(prompt.encode()).hexdigest(),
+              'template_sha256': hashlib.sha256(original.encode()).hexdigest(), 'tools_schema_sha256': schema_hash,
+              'units': units}
+    write_json(snapshot.with_suffix('.inspection.json'), result)
+    print(json.dumps({key: value for key, value in result.items() if key != 'units'}, ensure_ascii=False))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('operation', choices=['freeze', 'export'])
+    parser.add_argument('operation', choices=['freeze', 'export', 'inspect'])
     parser.add_argument('--run')
+    parser.add_argument('--snapshot')
     args = parser.parse_args()
     if args.operation == 'freeze':
         freeze()
     else:
         assert args.run and args.run.startswith('E16-R') and '/' not in args.run and '\\' not in args.run
-        export(args.run)
+        if args.operation == 'inspect':
+            assert args.snapshot
+            inspect(args.run, ROOT / args.snapshot)
+        else:
+            export(args.run)
