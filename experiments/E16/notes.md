@@ -2,7 +2,7 @@
 
 教师处理冻结train请求。首批512条覆盖八类、16个训练模板族；有效量不足256条时，每批扩展128条，最多1024条。模型输入只有任务提示、工具定义和实际工具返回，不包含参考解。
 
-实际已处理551条，执行与格式初筛接受125条。所有拒绝、截断、超时和预算耗尽均保留；初筛轨迹还要经过完整历史的token编码与监督边界检查，才能计为可训练样本。
+实际已处理583条，执行与格式初筛接受132条。所有拒绝、截断、超时和预算耗尽均保留；初筛轨迹还要经过完整历史的token编码与监督边界检查，才能计为可训练样本。
 
 ## 每条轨迹检查什么
 
@@ -15,10 +15,10 @@ eligible = eligible and not (timeout or truncated or budget_exhausted)
 
 | 拒绝原因 | 涉及轨迹数 |
 | --- | ---: |
-| malformed_tool_call | 29 |
-| task_failed | 426 |
-| tool_budget_exhausted | 73 |
-| truncated_or_cancelled | 28 |
+| malformed_tool_call | 30 |
+| task_failed | 451 |
+| tool_budget_exhausted | 76 |
+| truncated_or_cancelled | 30 |
 | unmatched_tool_result | 1 |
 
 ![图 E16-1：逐条执行的累计初筛接受数量](figures/E16-1.png)
@@ -39,7 +39,7 @@ labels[:target_start] = -100
 
 ## 阶段结论
 
-请求仍在顺序执行；当前初筛125/551。这是训练请求的接受率，不能作为dev或test成功率。
+请求仍在顺序执行；当前初筛132/583。这是训练请求的接受率，不能作为dev或test成功率。
 
 ## 证据索引
 
