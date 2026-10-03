@@ -26,7 +26,7 @@ const scaleLockPath=path.join(root,'.local/scale-lock.json');
 const zero='0'.repeat(64);
 
 function py(code,value={}){
-  return execFileSync(python,['-c',"import json,sys;sys.path.insert(0,'scripts');from lab import ROOT,start_run,finish_run,write_json,sha256;"+code],
+  return execFileSync(python,['-c',"import json,sys;sys.path.insert(0,'scripts');from lab import ROOT,start_run,finish_run,write_json,sha256,now;"+code],
     {cwd:root,input:JSON.stringify(value),encoding:'utf8',windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}}).trim();
 }
 async function save(runDir,name,value){
@@ -265,37 +265,41 @@ try{
 }catch(error){failure=error.stack??String(error);console.error(failure);
   if(runDir){await save(runDir,'failure.json',{error:failure,current,updated:new Date().toISOString()});}
 }finally{
-  await stopApi(api).catch(()=>{});
-  if(runDir){
-    const passed=rows.filter(row=>row.passed).length;
-    const complete=rows.length===config.task_count&&!failure;
-    const result={status:complete?'completed':'failed',exit_code:complete?0:1,operation:config.operation,
-      source_run:config.source_run,source_eval_run:config.source_eval_run,split:config.split,
-      target_tasks:config.task_count,evaluated_tasks:rows.length,passed_tasks:passed,category_results:counts(rows),
-      records_sha256:rows.length?digest(await readFile(path.join(runDir,'records.jsonl'),'utf8')):zero,
-      tasks_sha256:py("print(sha256(ROOT/'.local/runs'/json.load(sys.stdin)['run_id']/'tasks.json'))",{run_id:path.basename(runDir)}),
-      model_api_trace_sha256:await readFile(path.join(runDir,'model-api.jsonl')).then(data=>digest(data)).catch(()=>zero),
-      elapsed_seconds:Math.round((Date.now()-started)/1000),error:failure,
-      scope:`${config.task_count}个冻结Pi ${split}任务的实际Agent执行；不代表其他任务集或官方榜单表现`};
-    const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
-      {id:path.basename(runDir),result});
-    console.log(finished);
-    await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
-      category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
-    updateNotes();
-    if(experiment==='E15')try{
-      py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v['error']})",
-        {status:result.status,run_id:result.run_id,evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
-    }catch(error){console.error('无法更新规模状态：'+String(error));process.exitCode=1;}
-    if(!complete)process.exitCode=1;
-  }else if(failure)process.exitCode=1;
-  if(lockOwned){
-    const lock=await readFile(lockPath,'utf8').then(JSON.parse).catch(()=>null);
-    if(lock?.pid===process.pid)await unlink(lockPath).catch(()=>{});
-  }
-  if(scaleLockOwned){
-    const lock=await readFile(scaleLockPath,'utf8').then(JSON.parse).catch(()=>null);
-    if(lock?.pid===scaleLockIdentity.pid&&lock?.created===scaleLockIdentity.created)await unlink(scaleLockPath).catch(()=>{});
+  try{
+    await stopApi(api).catch(()=>{});
+    if(runDir){
+      const passed=rows.filter(row=>row.passed).length;
+      const complete=rows.length===config.task_count&&!failure;
+      const tasksPath=path.join(runDir,'tasks.json');
+      const result={status:complete?'completed':'failed',exit_code:complete?0:1,operation:config.operation,
+        source_run:config.source_run,source_eval_run:config.source_eval_run,split:config.split,
+        target_tasks:config.task_count,evaluated_tasks:rows.length,passed_tasks:passed,category_results:counts(rows),
+        records_sha256:rows.length?digest(await readFile(path.join(runDir,'records.jsonl'),'utf8')):zero,
+        tasks_sha256:existsSync(tasksPath)?py("print(sha256(ROOT/'.local/runs'/json.load(sys.stdin)['run_id']/'tasks.json'))",{run_id:path.basename(runDir)}):zero,
+        model_api_trace_sha256:await readFile(path.join(runDir,'model-api.jsonl')).then(data=>digest(data)).catch(()=>zero),
+        elapsed_seconds:Math.round((Date.now()-started)/1000),error:failure,
+        scope:`${config.task_count}个冻结Pi ${split}任务的实际Agent执行；不代表其他任务集或官方榜单表现`};
+      const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
+        {id:path.basename(runDir),result});
+      console.log(finished);
+      await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
+        category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
+      updateNotes();
+      if(experiment==='E15')try{
+        py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v['error']})",
+          {status:result.status,run_id:result.run_id,evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
+      }catch(error){console.error('无法更新规模状态：'+String(error));process.exitCode=1;}
+      if(!complete)process.exitCode=1;
+    }else if(failure)process.exitCode=1;
+  }finally{
+    if(lockOwned){
+      const lock=await readFile(lockPath,'utf8').then(JSON.parse).catch(()=>null);
+      if(lock?.pid===process.pid)await unlink(lockPath).catch(()=>{});
+    }
+    if(scaleLockOwned){
+      const lock=await readFile(scaleLockPath,'utf8').then(JSON.parse).catch(()=>null);
+      if(lock?.pid===scaleLockIdentity.pid&&lock?.created===scaleLockIdentity.created)await unlink(scaleLockPath).catch(()=>{});
+    }
   }
 }
 
