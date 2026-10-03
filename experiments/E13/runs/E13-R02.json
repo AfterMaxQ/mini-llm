@@ -132,5 +132,9 @@
     "process_id": 48364,
     "code_snapshot_sha256": "9eee9b3241c71e4efe6d27ff9582373f8a8226e362db3afa3579d112897f6543"
   },
-  "raw_result_sha256": "e188da2b5474445353609012f592658760f8dabe6f145a81bd9385b04fc858ce"
+  "raw_result_sha256": "e188da2b5474445353609012f592658760f8dabe6f145a81bd9385b04fc858ce",
+  "validity": "invalid_harness",
+  "eligible_for_model_comparison": false,
+  "validity_reason": "Pi user content used text-block arrays; the historical API normalizer passed the array through to the tokenizer instead of preserving its text, so this run is excluded from task-capability comparison.",
+  "superseded_by_valid_run": "E13-R03"
 }

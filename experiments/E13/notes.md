@@ -64,75 +64,55 @@ read、edit、write 的文件输入限定在任务工作区，适配层同时检
 
 E13 把已微调的 Qwen3-1.7B 接入 Pi 0.99.1，让模型在真实会话里选择 read、edit、write、bash 工具，并根据工具返回继续处理。每道题使用新的隔离容器和 Agent 会话；最终文件状态、必要的命令输出以及任务要求共同决定是否通过。16 道 dev 任务是从 40 个场景中按类别冻结的子集，每类 2 条。
 
-模型始终使用 E09-R15 适配器，E09 固定 dev 结果为 411/500。Pi 条件沿用 0.2 温度、推理 seed 17、8,192 token 上下文、每题最多 300 秒和 12 次工具调用。下面两轮的差别是送给模型的系统提示。
+模型使用 E09-R15 适配器；E09 固定 dev 结果为 411/500。Pi 条件沿用 0.2 温度、推理 seed 17、8,192 token 上下文、每题最多 300 秒和 12 次工具调用。有效成绩仅统计通过提示内容核验的运行。
 
-### 为什么同一个适配器要看两种提示？
+### 输入检查发现了什么？
 
-第一轮 E13-R01 用了简短的 Pi 项目说明。模型服务正常返回了 16 次，既没有接口错误，也没有截断，但没有一次请求形成工具调用；最常见的原话是“the specific function that I don't have access to”。所以 R01 证明了模型在这套提示下没有动手，尚未走到工具执行和返回匹配这一步。
-
-对照 E09-R16 的离线评测后发现，411/500 的模型选择成绩使用的是冻结的 few-shot 提示。Pi 接入轮没有复用这段示例，提示并不匹配。于是 E13-R02 保持模型、任务、温度、随机种子与工具预算不变，只加回已经冻结的 few-shot 片段；这是提示条件对照，不另行训练模型。
-
-```text
-E13-R01：简短 Pi system prompt
-E13-R02：同一 system prompt + E09 冻结 few-shot 片段
-```
+Pi 以 `[{"type":"text","text":"…"}]` 形式交付用户消息；历史 API 归一化代码没有提取文本块，直接把数组传给 tokenizer。R01/R02 的归档代码和逐题事件均保留了这一输入形态，因此两轮虽完成进程执行，却没有有效送达任务文本，不能作为模型能力成绩。修复后的 API 只接受受支持的文本块，并在每个任务记录任务提示哈希和模型输入提示哈希；不同冻结任务若渲染成相同输入会立即停止。
 
 ### 实际结果如何？
 
 | 运行 | 提示条件 | 任务通过 | 工具调用 | 工具错误返回 | 输出截断 |
 | --- | --- | ---: | ---: | ---: | ---: |
-| E13-R01 | 简短 system prompt | 0/16 | 0 | 0 | 0 |
-| E13-R02 | few_shot | 0/16 | 16 | 0 | 0 |
+| E13-R03 | few_shot | 0/16 | 12 | 6 | 3 |
 
-| 任务类型 | E13-R01 通过 | E13-R02 通过 |
-| --- | ---: | ---: |
-| 缺信息先询问 | 0/2 | 0/2 |
-| 失败后恢复 | 0/2 | 0/2 |
-| 读取定位 | 0/2 | 0/2 |
-| 无效路径恢复 | 0/2 | 0/2 |
-| 多文件修改 | 0/2 | 0/2 |
-| 无需调用工具 | 0/2 | 0/2 |
-| 函数修复 | 0/2 | 0/2 |
-| 配置修改 | 0/2 | 0/2 |
+| 任务类型 | E13-R03 通过 |
+| --- | ---: |
+| 缺信息先询问 | 0/2 |
+| 失败后恢复 | 0/2 |
+| 读取定位 | 0/2 |
+| 无效路径恢复 | 0/2 |
+| 多文件修改 | 0/2 |
+| 无需调用工具 | 0/2 |
+| 函数修复 | 0/2 |
+| 配置修改 | 0/2 |
 
-![E13 Pi dev 两种提示条件下的逐类结果；每类分母均为冻结的 2 条。](figures/pi-agent-dev.png)
+![E13 Pi dev 冻结任务的逐类结果；每类分母均为冻结的 2 条。](figures/pi-agent-dev.png)
 
 ### 失败例子具体卡在哪里？
 
-E13-R01 的逐任务判据记录到 16 条未通过，代表例子如下：
+E13-R03 的逐任务判据记录到 16 条未通过，代表例子如下：
 
 - `dev-ambiguous-target-tenant-2`（缺信息先询问）：answer_missing_required_information。
 - `dev-ambiguous-target-tenant-5`（缺信息先询问）：answer_missing_required_information。
-- `dev-await-format-result-1`（失败后恢复）：execution_check_failed；expected_error_not_observed。
-
-R01 的实际回答节选：
-
-```text
-I'm sorry, but I'm unable to assist with that. The task requires a specific function that I don't have access to. Please provide more details or ask a question that can be addresse
-```
-
-E13-R02 的逐任务判据记录到 16 条未通过，代表例子如下：
-
-- `dev-ambiguous-target-tenant-2`（缺信息先询问）：answer_missing_required_information。
-- `dev-ambiguous-target-tenant-5`（缺信息先询问）：answer_missing_required_information。
-- `dev-await-format-result-1`（失败后恢复）：execution_check_failed；expected_error_not_observed。
-
-R02 虽然每道题都触发了一次工具调用，但 16 次调用的组合只有 1 种；最常见的是 `bash` 执行 `ls`。例如 `dev-ambiguous-target-tenant-2` 返回了文件列表（README.md、settings.json、tenants.json），却没有继续读取租户配置或询问缺失信息。这说明 Pi 确实收到了工具调用并执行了命令，但工具协议跑通不等于任务做对。
-
-```json
-{"tool": "bash", "command": "ls", "timeout": 10}
-```
+- `dev-await-format-result-1`（失败后恢复）：execution_check_failed。
 
 ### 现在能下什么结论？
 
-在相同 16 条冻结任务上，R01 为 0/16，R02 为 0/16，加回冻结 few-shot 后通过数未变0 条。这个差异来自提示条件，不是训练收益；两轮只代表这组 Pi dev 样本，不能外推到 40 条 Pi dev 全量、Pi test 或官方基准。
+修正后的有效运行 E13-R03 在冻结 Pi dev 子集上通过 0/16。该分数只代表这16条任务，不能外推到Pi全量或官方基准。
+
+输入完整性审计：`experiments/E13/prompt-delivery-audit.json`。旧运行原始记录保留，但因任务文本接线不完整而排除：E13-R01、E13-R02。
 
 ## 证据索引
 
 实际配置、逐条任务、模型请求轨迹和精简结果均按运行号分开保存：
 
-- `.local/runs/E13-R01/config.json`、`.local/runs/E13-R01/result.json`、`.local/runs/E13-R01/progress.json`、`.local/runs/E13-R01/records.jsonl`、`.local/runs/E13-R01/model-api.jsonl`、`.local/runs/E13-R01/model-api.stderr.txt`；公开摘要：`experiments/E13/runs/E13-R01.json`
+- `.local/runs/E13-R01/config.json`、`.local/runs/E13-R01/result.json`、`.local/runs/E13-R01/progress.json`、`.local/runs/E13-R01/records.jsonl`、`.local/runs/E13-R01/model-api.jsonl`、`.local/runs/E13-R01/model-api.stderr.txt`；公开摘要：`experiments/E13/runs/E13-R01.json`；无效接线，不参与能力比较
 
-- `.local/runs/E13-R02/config.json`、`.local/runs/E13-R02/result.json`、`.local/runs/E13-R02/progress.json`、`.local/runs/E13-R02/records.jsonl`、`.local/runs/E13-R02/model-api.jsonl`、`.local/runs/E13-R02/model-api.stderr.txt`；公开摘要：`experiments/E13/runs/E13-R02.json`
+- `.local/runs/E13-R02/config.json`、`.local/runs/E13-R02/result.json`、`.local/runs/E13-R02/progress.json`、`.local/runs/E13-R02/records.jsonl`、`.local/runs/E13-R02/model-api.jsonl`、`.local/runs/E13-R02/model-api.stderr.txt`；公开摘要：`experiments/E13/runs/E13-R02.json`；无效接线，不参与能力比较
+
+- `.local/runs/E13-R03/config.json`、`.local/runs/E13-R03/result.json`、`.local/runs/E13-R03/progress.json`、`.local/runs/E13-R03/records.jsonl`、`.local/runs/E13-R03/model-api.jsonl`、`.local/runs/E13-R03/model-api.stderr.txt`；公开摘要：`experiments/E13/runs/E13-R03.json`
+
+输入完整性审计记录：`experiments/E13/prompt-delivery-audit.json`。
 
 抽样配置：`configs/pi-agent-eval.json`；冻结 dev id：`configs/subsets-frozen.json` 的 `pi_dev`；few-shot 来源：`configs/prompt-frozen.json`；E09 模型选择成绩：`experiments/E09/runs/E09-R16.json`。图表数据哈希：`experiments/E13/figures/pi-agent-dev.source.json`。

@@ -310,13 +310,9 @@ Pi每类都是64条：该类两个独立训练模板族各抽32条；公开部�
 固定公开dev通过64/100条；逐轮结果保留了100条完整分母。
 Pi dev接入排错（E14-R21）：已运行2/16个任务后中止。会话工作目录与容器路径映射不一致，工具拒绝访问工作区外路径；本轮不计为模型成绩，冻结分母仍为16。
 Pi dev接入排错（E14-R23）：已运行1/16个任务后中止。Pi 将相对路径规范化为`F:/workspace/README.md`，wrapper未映射该Windows容器根，读取失败后重复请求并耗尽工具预算；本轮不计为模型成绩，冻结分母仍为16。
-Pi dev记录0/16个观察通过；8/16条超时任务在判分前沙箱已被清理，整轮不作为可比模型成绩，原定分母仍为16。
-原始调用记录还显示模型反复读取`F:/workspace/README.md`并耗尽12次工具预算；0/16是本轮原始观测值，不作为有效迁移成绩。
-Pi dev：0/16个任务通过；超时、截断或工具错误都留在预定分母中。
-E14-R26耗时4606秒；14/16个任务超时，2个未超时任务仍未通过。记录412次工具请求，其中220次因12次调用上限被沙箱拒绝。
-Pi test：0/40个任务通过；超时、截断或工具错误都留在预定分母中。
-E14-R27耗时11324秒；37/40个任务超时，3个未超时任务仍未通过。记录953次工具请求，其中490次因12次调用上限被沙箱拒绝。
-E14-R27的40条任务结果与汇总已写入后，运行器在最终进度收尾时报`ReferenceError: tasks is not defined`并退出1；该异常不改变40/40已评、0/40通过的结果。收尾字段现改用冻结配置中的任务数并完成语法核验，未重跑模型。
+Pi dev运行（E14-R25）：原始记录为0/16，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
+Pi dev运行（E14-R26）：原始记录为0/16，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
+Pi test运行（E14-R27）：原始记录为0/40，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。
 
 公开dev的轨迹通过数、Pi任务完成数和token loss回答的是不同问题，不能互相替代。规则参考本身不是Agent成绩；具体错误要回到工具调用、返回和最终文件状态判断。
 
@@ -324,8 +320,8 @@ E14-R27的40条任务结果与汇总已写入后，运行器在最终进度收�
 
 - E14-R21：接线无效，中止于2/16；不作为模型成绩。记录：`experiments/E14/runs/E14-R21.json`。
 - E14-R23：接线无效，中止于1/16；不作为模型成绩。记录：`experiments/E14/runs/E14-R23.json`。
-- E14-R25：dev观察通过0/16；8条超时任务判分时容器已被清理，整轮不作为可比模型成绩；记录：`experiments/E14/runs/E14-R25.json`。
-- E14-R26：dev 0/16，14/16个任务超时；记录：`experiments/E14/runs/E14-R26.json`。
-- E14-R27：test 0/40，37/40个任务超时；记录：`experiments/E14/runs/E14-R27.json`。
+- E14-R25：dev原始观察0/16；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R25.json`。
+- E14-R26：dev原始观察0/16；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R26.json`。
+- E14-R27：test原始观察0/40；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/E14-R27.json`。
 
 Pi 路径映射核验（E14-R24）：Pi 会话和 SessionManager 均使用`/workspace`；工具返回的`F:/workspace/pi-path-smoke.txt`经隔离write/read往返通过，任务容器已移除。未启动模型服务或生成，不属于Agent成绩。记录：`experiments/E14/runs/E14-R24.json`。

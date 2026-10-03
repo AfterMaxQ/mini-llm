@@ -136,5 +136,9 @@
   "timed_out_tasks": 14,
   "non_timeout_failed_tasks": 2,
   "observed_tool_requests": 412,
-  "budget_rejections": 220
+  "budget_rejections": 220,
+  "validity": "invalid_harness",
+  "eligible_for_model_comparison": false,
+  "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+  "superseded_by_valid_run": "E14-R28"
 }

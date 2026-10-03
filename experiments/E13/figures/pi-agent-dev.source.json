@@ -29,8 +29,27 @@
       "run_id": "E13-R02",
       "file": "records.jsonl",
       "sha256": "4a4a8328ad5b2a2c978fe08613efa5c8bb52b5818b4c93d69533990174d87939"
+    },
+    {
+      "run_id": "E13-R03",
+      "file": "progress.json",
+      "sha256": "a9d0327edb6794d4796dcaff3402da4a1311442fbeb6b32cc9a90ad59e6e5e4b"
+    },
+    {
+      "run_id": "E13-R03",
+      "file": "result.json",
+      "sha256": "8ddb75be09ff275dcf03216d8e313e935081d646076e34f53658782ee92171f3"
+    },
+    {
+      "run_id": "E13-R03",
+      "file": "records.jsonl",
+      "sha256": "ca0d0b0b72268020ff469530faa1e57f38ddd4f7f6f5c441a396e2c694cb8d08"
     }
   ],
-  "image_sha256": "2d2c664573178a19cccc34f0f2b82b93bf0b3c6ac7119232585b709b2a194968",
+  "excluded_runs": [
+    "E13-R01",
+    "E13-R02"
+  ],
+  "image_sha256": "8f97d3896de0ff66d89728bd234fb6e1f4aff856312eccf94d612176ea818791",
   "task_count_per_run": 16
 }

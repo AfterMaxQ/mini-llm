@@ -120,7 +120,8 @@ def main():
             train=next((p for p in sorted((ROOT/'.local/runs').glob('E14-R*/result.json'))
                         if json.loads(p.read_text(encoding='utf-8')).get('status')=='trained_pending_tool_eval'),None)
             agent=[r for r in actual if r.get('operation','').startswith('pi_model_agent_')]
-            invalid_harness=[r for r in agent if r.get('status')=='aborted_invalid_harness']
+            invalid_harness=[r for r in agent if r.get('status')=='aborted_invalid_harness' or r.get('validity')=='invalid_harness']
+            eligible=[r for r in agent if r.get('status')=='completed' and r.get('validity')!='invalid_harness']
             if mix:
                 detail='512条公开轨迹与512条Pi轨迹已冻结'
                 failed=[r for r in actual if r.get('status')=='failed']
@@ -134,7 +135,7 @@ def main():
                     score=public[-1]['summaries'][public[-1]['selected_prompt']]['trajectory_passed']
                     detail+=f"；固定公开dev {score}/100"
                 for split,count in [('dev',16),('test',40)]:
-                    matches=[r for r in agent if r.get('split')==split and r.get('status')=='completed']
+                    matches=[r for r in eligible if r.get('split')==split]
                     match=matches[-1] if matches else None
                     if match:
                         detail+=f"；Pi {split} {match['run_id']} {match['passed_tasks']}/{count}"
@@ -145,16 +146,39 @@ def main():
                         detail+=f"；Pi {split}{count}待评"
                 if invalid_harness:
                     record=invalid_harness[-1]
-                    detail+=f"；{record['run_id']}接线错误中止{record['evaluated_tasks']}/{record['target_tasks']}，不计模型成绩"
+                    detail+=f"；文本块接线审计判无效的旧运行：{', '.join(r['run_id'] for r in invalid_harness)}，原始记录保留"
                 harness_smokes=[r for r in actual if r.get('operation',r.get('config',{}).get('operation'))=='pi_path_harness_smoke'
                                 and r.get('status')=='harness_verified']
                 harness_smoke=harness_smokes[-1] if harness_smokes else None
                 if harness_smoke:
                     detail+=f"；{harness_smoke['run_id']}路径映射核验通过，不含模型推理"
-                latest_agent=agent[-1]['run_id'] if agent else mix['run_id']
+                latest_agent=eligible[-1]['run_id'] if eligible else mix['run_id']
                 state=f"{latest_agent}：{detail}"
                 if unfinished:
                     state=f"{unfinished[-1].parent.name}：进行中；{detail}"
+        if number==13 and runs:
+            actual=[json.loads(p.read_text(encoding='utf-8')) for p in runs]
+            agent=[r for r in actual if r.get('operation')=='pi_model_agent_dev']
+            invalid=[r for r in agent if r.get('validity')=='invalid_harness']
+            eligible=[r for r in agent if r.get('status')=='completed' and r.get('validity')!='invalid_harness']
+            if eligible:
+                record=eligible[-1]
+                detail=f"Pi dev {record['passed_tasks']}/{record['target_tasks']}；固定16条有效接线观察"
+                if invalid:
+                    detail+=f"；排除的旧接线运行：{', '.join(r['run_id'] for r in invalid)}，原始记录保留"
+                state=f"{record['run_id']}：{detail}"
+            elif invalid:
+                state=f"{invalid[-1]['run_id']}：历史运行文本块接线无效，记录保留；修复后评测待执行"
+        if number==15 and runs:
+            actual=[json.loads(p.read_text(encoding='utf-8')) for p in runs]
+            agent=[r for r in actual if r.get('operation')=='pi_teacher_agent_dev']
+            invalid=[r for r in agent if r.get('validity')=='invalid_harness']
+            eligible=[r for r in agent if r.get('status')=='completed' and r.get('validity')!='invalid_harness']
+            if eligible:
+                record=eligible[-1]
+                state=f"{record['run_id']}：教师 Pi dev {record['passed_tasks']}/{record['target_tasks']}"
+            elif invalid:
+                state=f"{invalid[-1]['run_id']}：文本块接线审计判无效，原始记录保留；有效教师评测待执行"
         note = f"[阅读](../experiments/{experiment}/notes.md)" if (folder / "notes.md").exists() else "—"
         lines.append(f"| {experiment} | {title} | {state} | {note} |")
     lines += ["", "## 阅读与复查", "", "实验笔记按问题和实际过程展开；各实验 runs 中保存精简结果，图表附带来源哈希。Word 正文来自同一份 Markdown，文件与归档位置集中放在分册总结后的证据索引。", "",

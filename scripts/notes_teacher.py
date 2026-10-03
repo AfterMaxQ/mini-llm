@@ -32,6 +32,9 @@ def update(run_id):
     progress_path, result_path = folder / "progress.json", folder / "result.json"
     progress = read(progress_path) if progress_path.exists() else {}
     result = read(result_path) if result_path.exists() else {}
+    student_run = config["source_eval_run"]
+    student_eval = read(ROOT / "experiments/E14/runs" / f"{student_run}.json")
+    assert student_eval.get("validity") != "invalid_harness"
     rows = progress.get("rows", [])
     assert config["experiment"] == "E15" and config["operation"] == "pi_teacher_agent_dev"
     passed = sum(bool(row.get("passed")) for row in rows)
@@ -68,7 +71,7 @@ def update(run_id):
     lines = [
         "# E15：4B 教师的工具任务表现",
         "",
-        "本轮直接在本机加载 Qwen3-4B 基础模型，以 NF4 量化和该模型自带的 Qwen3 chat template 接入 Pi。模型没有经过本项目的 LoRA 微调；评测使用冻结的 Pi dev16、同一 few-shot 提示和隔离工具容器。E14-R26 的领域微调学生在同一固定 dev 子集通过0/16，作为同任务参照。结论以实际任务记录为准，不从参数量推断教师更可靠。",
+        f"本轮直接在本机加载 Qwen3-4B 基础模型，以 NF4 量化和该模型自带的 Qwen3 chat template 接入 Pi。模型没有经过本项目的 LoRA 微调；评测使用冻结的 Pi dev16、同一 few-shot 提示和隔离工具容器。E14 学生有效接入运行 {student_run} 在同一固定 dev 子集通过 {student_eval['passed_tasks']}/{student_eval['target_tasks']}，作为同集参照。结论以实际任务记录为准，不从参数量推断教师更可靠。",
         "",
         "## 固定条件",
         "",
@@ -102,6 +105,11 @@ def update(run_id):
         lines += ["## 一个实际失败例子", "",
                   f"任务 `{failure['task_id']}`（{LABELS.get(failure['category'], failure['category'])}）未通过：{reasons}。",
                   f"模型最终回复：`{answer or '无最终文本回复'}`。该例保留在原始16题分母中。", ""]
+    if (ROOT / "experiments/E15/runs/E15-R02.json").exists():
+        old = read(ROOT / "experiments/E15/runs/E15-R02.json")
+        if old.get("validity") == "invalid_harness":
+            lines += ["## 输入完整性复核", "",
+                      f"E15-R02 的16题原始记录保留，但 Pi 文本块未被旧 API 转成模型输入；其 `{old['passed_tasks']}/{old['target_tasks']}` 观测不作为教师能力成绩。修复后的本轮逐题保存任务提示与模型输入哈希，并检查不同任务输入不碰撞。审计见 `experiments/E13/prompt-delivery-audit.json`。", ""]
     lines += [
         "## 本机加载入口",
         "",
@@ -120,12 +128,12 @@ def update(run_id):
         f"| 教师运行配置、逐题进度、结果与模型回复 | `{folder.relative_to(ROOT).as_posix()}/config.json`；`{folder.relative_to(ROOT).as_posix()}/progress.json`；`{folder.relative_to(ROOT).as_posix()}/result.json` |",
         f"| 教师本机 API 请求轨迹 | `{folder.relative_to(ROOT).as_posix()}/model-api.jsonl` |",
         "| 教师模型来源与 NF4 配置 | `configs/pi-agent-e15-teacher-dev.json`；`.local/models/Qwen3-4B/download-manifest.json` |",
-        "| 冻结任务及学生同集参照 | `configs/subsets-frozen.json`；`experiments/E14/runs/E14-R26.json` |",
+        f"| 冻结任务及学生同集参照 | `configs/subsets-frozen.json`；`experiments/E14/runs/{student_run}.json` |",
         "",
     ]
     path = ROOT / "experiments/E15/notes.md"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(lines), encoding="utf-8")
+    path.write_bytes("\n".join(lines).encode("utf-8"))
 
 
 def main():

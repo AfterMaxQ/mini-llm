@@ -132,5 +132,9 @@
     "process_id": 49448,
     "code_snapshot_sha256": "520a1e8bad1489fffafe6dcedb6e138a30c2c50aa61399ff8d0b50fa689fa8e0"
   },
-  "raw_result_sha256": "b0299094afc56c0b106d4d92fc36aee0258fcfc4e7d4477604e4f86eeb72204e"
+  "raw_result_sha256": "b0299094afc56c0b106d4d92fc36aee0258fcfc4e7d4477604e4f86eeb72204e",
+  "validity": "invalid_harness",
+  "eligible_for_model_comparison": false,
+  "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+  "superseded_by_valid_run": "E14-R28"
 }

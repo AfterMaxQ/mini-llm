@@ -1,9 +1,9 @@
 {
   "status": "completed",
   "exit_code": 0,
-  "operation": "pi_model_agent_dev",
-  "source_run": "E09-R15",
-  "source_eval_run": "E09-R16",
+  "operation": "pi_teacher_agent_dev",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R26",
   "split": "dev",
   "target_tasks": 16,
   "evaluated_tasks": 16,
@@ -42,22 +42,30 @@
       "passed": 0
     }
   },
-  "records_sha256": "0abac6c0f35b6cbcfcc7bf045703d5f83099d8a35464af5e1bb11704915cc445",
+  "records_sha256": "6b5ba09bbbe124abdc559beab529d91cc92c43318261a9dbdf09b94c303ae290",
   "tasks_sha256": "87fb1e135e25b5dfb75793bcb6fbb4816ae8f86af56a8034b484a070ed6c202e",
-  "model_api_trace_sha256": "91bd3453874f7ac583aa1430101c6492aa31fdff9895dda5f6e401303230852d",
-  "elapsed_seconds": 74,
-  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表Pi test或全量项目任务表现",
-  "run_id": "E13-R01",
-  "finished": "2026-10-02T19:49:49+08:00",
+  "model_api_trace_sha256": "c068d1e48a33870d3cec3c322502369d9eda0f821e1b3075ee24c561f5cc47a8",
+  "elapsed_seconds": 110,
+  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表其他任务集或官方榜单表现",
+  "run_id": "E15-R02",
+  "finished": "2026-10-03T08:31:42+08:00",
   "config": {
-    "experiment": "E13",
-    "operation": "pi_model_agent_dev",
+    "experiment": "E15",
+    "operation": "pi_teacher_agent_dev",
     "split": "dev",
-    "source_run": "E09-R15",
-    "source_eval_run": "E09-R16",
-    "adapter": ".local/runs/E09-R15/selected-adapter",
-    "adapter_sha256": "9dc08d652bd0721c8ebcc5ff9d87831dfecfcb07f1f1967907429aeb4a2be14a",
-    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "source_run": "E14-R19",
+    "source_eval_run": "E14-R26",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
+    "base_model_path": ".local/models/Qwen3-4B",
+    "model_manifest_path": ".local/models/Qwen3-4B/download-manifest.json",
+    "model_manifest_sha256": "2bf636151ab7f3fec2671196f6193f32f4ebeea0ac0e6704ef3aa0dfcc25c7f5",
+    "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "quantization": "NF4",
+    "load_in_4bit": true,
+    "tokenizer_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "student_tokenizer_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
     "frozen_subset": "pi_dev",
     "task_count": 16,
     "ids_sha256": "fdf7a26e5d2ef416fd9b54c8b904c75fa3553780b28957bbd4ae8cd33575b6b9",
@@ -66,33 +74,33 @@
     "temperature": 0.2,
     "sampling": "temperature",
     "inference_seed": 17,
-    "load_in_4bit": true,
     "enable_thinking": false,
     "task_timeout_seconds": 300,
     "max_tool_calls": 12,
     "api": {
       "host": "127.0.0.1",
-      "port": 18762,
-      "base_url": "http://127.0.0.1:18762/v1",
+      "port": 18765,
+      "base_url": "http://127.0.0.1:18765/v1",
       "provider": "minillm-local",
-      "model": "qwen3-1.7b-e09-r15"
+      "model": "qwen3-4b-teacher-nf4-e15",
+      "display_name": "Qwen3-4B Teacher NF4 E15"
     },
     "command": [
       "G:\\program files\\Node_js\\node.exe",
       "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
-      "configs\\pi-agent-eval.json"
+      "configs/pi-agent-e15-teacher-dev.json"
     ],
     "process_identity": {
-      "pid": 41668,
-      "created": 1790941714.3208604,
+      "pid": 44628,
+      "created": 1790987392.1865115,
       "command": [
         "G:\\program files\\Node_js\\node.exe",
-        "scripts\\pi_agent_eval.mjs",
-        "configs\\pi-agent-eval.json"
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-e15-teacher-dev.json"
       ]
     },
     "pi_version": "0.99.1",
-    "pi_sandbox_sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11",
+    "pi_sandbox_sha256": "4b2be7e64b720979f2a117677c25917aba226ef0cf608880a8270e2f234ccb20",
     "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
     "task_ids": [
       "dev-ambiguous-target-tenant-2",
@@ -123,15 +131,15 @@
       "config_change": 2
     },
     "source_task_file_sha256": "92b594b7e0b1be57c35afe275a05b937f2780e668b7b06d010021de38280fe32",
-    "run_id": "E13-R01",
-    "started": "2026-10-02T19:48:35+08:00",
-    "commit": "2053d3e6df3fa7617826f9ecbf286a38f9b1d4c6",
-    "process_id": 25132,
-    "code_snapshot_sha256": "a8d09e7d263dc588e02f30d14a66d94e516bb5e175e67fff9751cc1e39f9d111"
+    "run_id": "E15-R02",
+    "started": "2026-10-03T08:29:53+08:00",
+    "commit": "ecd0191253017a52e0cb4c5ef0ff2f9c9c6d54f2",
+    "process_id": 49416,
+    "code_snapshot_sha256": "0a0ba113a5579198da44752d2ea5b77ea9bf0cb2c6fe6caef962dcfc7c58c02b"
   },
-  "raw_result_sha256": "52beab841563a7f9975e3590ec7494a926ee6dbec0b18a7a9f191cc422e3a287",
+  "raw_result_sha256": "46e6311a620a2b630be9a4209792c68f4a1c79a3f00dd69322bfa0174d2c8712",
   "validity": "invalid_harness",
   "eligible_for_model_comparison": false,
-  "validity_reason": "Pi user content used text-block arrays; the historical API normalizer passed the array through to the tokenizer instead of preserving its text, so this run is excluded from task-capability comparison.",
-  "superseded_by_valid_run": "E13-R03"
+  "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+  "superseded_by_valid_run": "E15-R03"
 }

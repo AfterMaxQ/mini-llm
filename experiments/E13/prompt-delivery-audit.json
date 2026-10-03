@@ -1,0 +1,152 @@
+{
+  "issue": "Pi content blocks were not flattened to text before local tokenizer rendering.",
+  "historical_behavior": "normalize_messages assigned message.get('content') directly, so Pi [{type:'text',text:...}] arrays did not become plain user text.",
+  "historical_code_archives": {
+    "E13-R01": ".local/runs/E13-R01/code.zip",
+    "E13-R02": ".local/runs/E13-R02/code.zip",
+    "E14-R25": ".local/runs/E14-R25/code.zip",
+    "E14-R26": ".local/runs/E14-R26/code.zip",
+    "E14-R27": ".local/runs/E14-R27/code.zip",
+    "E15-R02": ".local/runs/E15-R02/code.zip"
+  },
+  "affected_runs": [
+    {
+      "run_id": "E13-R01",
+      "task_rows": 16,
+      "unique_task_prompts": 10,
+      "unique_first_request_prompt_hashes": 0,
+      "first_request_prompt_hash_available": false,
+      "first_request_prompt_tokens": [
+        915,
+        918,
+        919,
+        920,
+        921,
+        922,
+        923
+      ],
+      "record_sha256": "0abac6c0f35b6cbcfcc7bf045703d5f83099d8a35464af5e1bb11704915cc445",
+      "model_api_trace_sha256": "91bd3453874f7ac583aa1430101c6492aa31fdff9895dda5f6e401303230852d",
+      "result_sha256": "52beab841563a7f9975e3590ec7494a926ee6dbec0b18a7a9f191cc422e3a287",
+      "validity_reason": "Pi user content used text-block arrays; the historical API normalizer passed the array through to the tokenizer instead of preserving its text, so this run is excluded from task-capability comparison.",
+      "superseded_by_valid_run": "E13-R03"
+    },
+    {
+      "run_id": "E13-R02",
+      "task_rows": 16,
+      "unique_task_prompts": 10,
+      "unique_first_request_prompt_hashes": 16,
+      "first_request_prompt_hash_available": true,
+      "first_request_prompt_tokens": [
+        2305,
+        2306,
+        2307,
+        2308,
+        2309,
+        2310,
+        2312
+      ],
+      "record_sha256": "4a4a8328ad5b2a2c978fe08613efa5c8bb52b5818b4c93d69533990174d87939",
+      "model_api_trace_sha256": "decdb0b23357b748ac9a5fab6ce8690c515b18308210ba4fa02d4da3fc801a82",
+      "result_sha256": "e188da2b5474445353609012f592658760f8dabe6f145a81bd9385b04fc858ce",
+      "validity_reason": "Pi user content used text-block arrays; the historical API normalizer passed the array through to the tokenizer instead of preserving its text, so this run is excluded from task-capability comparison.",
+      "superseded_by_valid_run": "E13-R03"
+    },
+    {
+      "run_id": "E14-R25",
+      "task_rows": 16,
+      "unique_task_prompts": 10,
+      "unique_first_request_prompt_hashes": 1,
+      "first_request_prompt_hash_available": true,
+      "first_request_prompt_tokens": [
+        2266
+      ],
+      "record_sha256": "0614526216fb955a1cf04461a0145fdf56ebb6e8f07470ab55e57ce196a15ab8",
+      "model_api_trace_sha256": "24de5d217a761396e4f29991708718ddfd6421ee673384afb0ad324aa6f70621",
+      "result_sha256": "b0299094afc56c0b106d4d92fc36aee0258fcfc4e7d4477604e4f86eeb72204e",
+      "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+      "superseded_by_valid_run": "E14-R28"
+    },
+    {
+      "run_id": "E14-R26",
+      "task_rows": 16,
+      "unique_task_prompts": 10,
+      "unique_first_request_prompt_hashes": 1,
+      "first_request_prompt_hash_available": true,
+      "first_request_prompt_tokens": [
+        2266
+      ],
+      "record_sha256": "dbada8633092ab106ea2e70383281d862f9ef1b6ecdbc32fb6290047a9d16b68",
+      "model_api_trace_sha256": "83d659d810d680a047a28930ebd5f0874cb04d36123f78ccde219250cbbf3999",
+      "result_sha256": "4ebe79447306e1fd9c2f4cf8f65df8c383214aea9b68b0313e3e6b7ddb0e499a",
+      "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+      "superseded_by_valid_run": "E14-R28"
+    },
+    {
+      "run_id": "E14-R27",
+      "task_rows": 40,
+      "unique_task_prompts": 27,
+      "unique_first_request_prompt_hashes": 1,
+      "first_request_prompt_hash_available": true,
+      "first_request_prompt_tokens": [
+        2266
+      ],
+      "record_sha256": "72a5b471acd669e7a26e677d4ab87ec267e42fe33dd3ae9d59a1e614b55cd3ff",
+      "model_api_trace_sha256": "a5d1ee55ffb068e2249e64daddb52b4c6aae01d7ad06db30326d8a2d0afa6c88",
+      "result_sha256": "d629a039fbbdeb352cafd1c5858da12b356b3c16167b4341a48a16e1dd30b28c",
+      "validity_reason": "All 40 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+      "superseded_by_valid_run": "E14-R29"
+    },
+    {
+      "run_id": "E15-R02",
+      "task_rows": 16,
+      "unique_task_prompts": 10,
+      "unique_first_request_prompt_hashes": 1,
+      "first_request_prompt_hash_available": true,
+      "first_request_prompt_tokens": [
+        2266
+      ],
+      "record_sha256": "6b5ba09bbbe124abdc559beab529d91cc92c43318261a9dbdf09b94c303ae290",
+      "model_api_trace_sha256": "c068d1e48a33870d3cec3c322502369d9eda0f821e1b3075ee24c561f5cc47a8",
+      "result_sha256": "46e6311a620a2b630be9a4209792c68f4a1c79a3f00dd69322bfa0174d2c8712",
+      "validity_reason": "All 16 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+      "superseded_by_valid_run": "E15-R03"
+    }
+  ],
+  "corrected_behavior": "scripts/pi_agent_api.py flattens supported text blocks, skips thinking blocks, and rejects unsupported content blocks; the evaluator stores each task prompt hash and model-input hash and rejects collisions across distinct task prompts.",
+  "corrective_code_commit": "6f82f54",
+  "rerun_mapping": {
+    "E13-R01": {
+      "valid_replacement": "E13-R03"
+    },
+    "E13-R02": {
+      "valid_replacement": "E13-R03"
+    },
+    "E14-R25": {
+      "valid_replacement": "E14-R28"
+    },
+    "E14-R26": {
+      "valid_replacement": "E14-R28"
+    },
+    "E14-R27": {
+      "valid_replacement": "E14-R29"
+    },
+    "E15-R02": {
+      "valid_replacement": "E15-R03"
+    }
+  },
+  "created_utc": "2026-10-03T00:57:29.267656+00:00",
+  "corrected_run_verification": {
+    "E13-R03": {
+      "tasks": 16,
+      "unique_task_prompts": 10,
+      "unique_model_input_prompts": 10,
+      "api_requests": 28,
+      "prompt_hash_match_per_task": true,
+      "records_sha256": "ca0d0b0b72268020ff469530faa1e57f38ddd4f7f6f5c441a396e2c694cb8d08",
+      "model_api_trace_sha256": "9413f29ede15205ffcad3a91f9faf53d18fdd24e775f3c775aa9c6c7b70d2e32",
+      "result_sha256": "8ddb75be09ff275dcf03216d8e313e935081d646076e34f53658782ee92171f3",
+      "eligible_for_model_comparison": true
+    }
+  }
+}

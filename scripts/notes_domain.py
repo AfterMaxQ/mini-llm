@@ -147,6 +147,9 @@ def update_notes(run_id, pi_run_id=None):
         if item.get("operation", "").startswith("pi_model_agent_"):
             pi_results.append(item)
     for item in pi_results:
+        if item.get("validity") == "invalid_harness":
+            lines.append(f"Pi {item['split']}运行（{item['run_id']}）：原始记录为{item['passed_tasks']}/{item['target_tasks']}，但审计发现不同任务没有形成各自的模型输入；本轮保留原始分母和记录，不作为模型成绩。审计：`experiments/E13/prompt-delivery-audit.json`。")
+            continue
         if item.get("status") == "aborted_invalid_harness":
             if item["run_id"] == "E14-R23":
                 reason = "Pi 将相对路径规范化为`F:/workspace/README.md`，wrapper未映射该Windows容器根，读取失败后重复请求并耗尽工具预算"
@@ -181,7 +184,9 @@ def update_notes(run_id, pi_run_id=None):
     if pi_records:
         lines += ["### Pi Agent 运行记录", ""]
         for item in pi_records:
-            if item.get("status") == "aborted_invalid_harness":
+            if item.get("validity") == "invalid_harness":
+                lines.append(f"- {item['run_id']}：{item['split']}原始观察{item['passed_tasks']}/{item['target_tasks']}；任务文本接线审计未通过，不参与能力比较。审计：`experiments/E13/prompt-delivery-audit.json`。记录：`experiments/E14/runs/{item['run_id']}.json`。")
+            elif item.get("status") == "aborted_invalid_harness":
                 lines.append(f"- {item['run_id']}：接线无效，中止于{item['evaluated_tasks']}/{item['target_tasks']}；不作为模型成绩。记录：`experiments/E14/runs/{item['run_id']}.json`。")
             else:
                 invalid = teardown_judgement_count(item["run_id"])
@@ -205,7 +210,7 @@ def update_notes(run_id, pi_run_id=None):
     title = "## 领域混合微调与迁移评测"
     if title in existing:
         existing = existing.split(title, 1)[0].rstrip()
-    path.write_text(existing + "\n\n" + "\n".join(lines), encoding="utf-8")
+    path.write_bytes((existing + "\n\n" + "\n".join(lines)).encode("utf-8"))
 
 
 def main():

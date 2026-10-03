@@ -42,19 +42,22 @@
       "passed": 0
     }
   },
-  "records_sha256": "0abac6c0f35b6cbcfcc7bf045703d5f83099d8a35464af5e1bb11704915cc445",
+  "records_sha256": "ca0d0b0b72268020ff469530faa1e57f38ddd4f7f6f5c441a396e2c694cb8d08",
   "tasks_sha256": "87fb1e135e25b5dfb75793bcb6fbb4816ae8f86af56a8034b484a070ed6c202e",
-  "model_api_trace_sha256": "91bd3453874f7ac583aa1430101c6492aa31fdff9895dda5f6e401303230852d",
-  "elapsed_seconds": 74,
-  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表Pi test或全量项目任务表现",
-  "run_id": "E13-R01",
-  "finished": "2026-10-02T19:49:49+08:00",
+  "model_api_trace_sha256": "9413f29ede15205ffcad3a91f9faf53d18fdd24e775f3c775aa9c6c7b70d2e32",
+  "elapsed_seconds": 333,
+  "scope": "16个冻结Pi dev任务的实际Agent执行；不代表其他任务集或官方榜单表现",
+  "run_id": "E13-R03",
+  "finished": "2026-10-03T09:08:14+08:00",
   "config": {
     "experiment": "E13",
     "operation": "pi_model_agent_dev",
     "split": "dev",
     "source_run": "E09-R15",
     "source_eval_run": "E09-R16",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
     "adapter": ".local/runs/E09-R15/selected-adapter",
     "adapter_sha256": "9dc08d652bd0721c8ebcc5ff9d87831dfecfcb07f1f1967907429aeb4a2be14a",
     "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
@@ -80,19 +83,19 @@
     "command": [
       "G:\\program files\\Node_js\\node.exe",
       "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
-      "configs\\pi-agent-eval.json"
+      "configs/pi-agent-eval.json"
     ],
     "process_identity": {
-      "pid": 41668,
-      "created": 1790941714.3208604,
+      "pid": 49016,
+      "created": 1790989360.9066656,
       "command": [
         "G:\\program files\\Node_js\\node.exe",
-        "scripts\\pi_agent_eval.mjs",
-        "configs\\pi-agent-eval.json"
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-eval.json"
       ]
     },
     "pi_version": "0.99.1",
-    "pi_sandbox_sha256": "91fc109b55d2190c8e96c7a4ed6d0549b4d75f67db3558fcef7b7bb6c1ebae11",
+    "pi_sandbox_sha256": "4b2be7e64b720979f2a117677c25917aba226ef0cf608880a8270e2f234ccb20",
     "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
     "task_ids": [
       "dev-ambiguous-target-tenant-2",
@@ -123,15 +126,15 @@
       "config_change": 2
     },
     "source_task_file_sha256": "92b594b7e0b1be57c35afe275a05b937f2780e668b7b06d010021de38280fe32",
-    "run_id": "E13-R01",
-    "started": "2026-10-02T19:48:35+08:00",
-    "commit": "2053d3e6df3fa7617826f9ecbf286a38f9b1d4c6",
-    "process_id": 25132,
-    "code_snapshot_sha256": "a8d09e7d263dc588e02f30d14a66d94e516bb5e175e67fff9751cc1e39f9d111"
+    "run_id": "E13-R03",
+    "started": "2026-10-03T09:02:42+08:00",
+    "commit": "6f82f54d6598f7f3dbc5aeb904e5738c6571e70b",
+    "process_id": 17032,
+    "code_snapshot_sha256": "1c8b0bf8bc9b09c3125bc457c0cf8ff98ce82b0520de117be3a1c0c0f56e992e"
   },
-  "raw_result_sha256": "52beab841563a7f9975e3590ec7494a926ee6dbec0b18a7a9f191cc422e3a287",
-  "validity": "invalid_harness",
-  "eligible_for_model_comparison": false,
-  "validity_reason": "Pi user content used text-block arrays; the historical API normalizer passed the array through to the tokenizer instead of preserving its text, so this run is excluded from task-capability comparison.",
-  "superseded_by_valid_run": "E13-R03"
+  "raw_result_sha256": "8ddb75be09ff275dcf03216d8e313e935081d646076e34f53658782ee92171f3",
+  "validity": "valid_harness",
+  "eligible_for_model_comparison": true,
+  "input_delivery_verified": true,
+  "input_prompt_audit": "experiments/E13/prompt-delivery-audit.json"
 }

@@ -158,5 +158,9 @@
   },
   "raw_result_sha256": "d629a039fbbdeb352cafd1c5858da12b356b3c16167b4341a48a16e1dd30b28c",
   "runner_exit_code_after_result": 1,
-  "runner_finalization_error": "ReferenceError: tasks is not defined at scripts/pi_agent_eval.mjs:251:82 while saving final progress.json; the 40-task evaluation result had already been written."
+  "runner_finalization_error": "ReferenceError: tasks is not defined at scripts/pi_agent_eval.mjs:251:82 while saving final progress.json; the 40-task evaluation result had already been written.",
+  "validity": "invalid_harness",
+  "eligible_for_model_comparison": false,
+  "validity_reason": "All 40 distinct frozen tasks had the same first model-input hash and 2266 prompt tokens; the historical API normalizer dropped Pi text-block content.",
+  "superseded_by_valid_run": "E14-R29"
 }
