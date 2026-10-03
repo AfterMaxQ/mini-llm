@@ -255,7 +255,7 @@ def update_summary(completed):
         files=f"scripts/pi_path_smoke.mjs；experiments/E14/runs/{path_smoke['run_id']}.json"
         if not any(path_smoke['run_id']+'.json' in line for line in evidence.splitlines()):
             evidence=put_evidence(evidence,'Pi Agent路径映射核验（未运行模型）',files)
-        pi_intro+='Pi Agent dev接线运行R21和R23分别在2/16、1/16处因 Windows 路径映射错误中止，均不计模型成绩。R24在不请求模型的本机烟测中，以Pi生成的`F:/workspace/...`规范化路径完成隔离write/read往返；正式dev仍按冻结的16题评测。\n\n'
+        pi_intro+='Pi Agent dev接线运行R21和R23分别在2/16、1/16处因 Windows 路径映射错误中止，均不计模型成绩。R24在不请求模型的本机烟测中，以Pi生成的`F:/workspace/...`规范化路径完成隔离write/read往返。修正后的固定dev16评测R26通过0/16，冻结test40评测R27通过0/40。\n\n'
     deduplicated=[];seen_files=set()
     for line in evidence.splitlines():
         if line.startswith('| ') and line.count('|') >= 3:
@@ -291,10 +291,8 @@ def update_summary(completed):
         ('Pi 领域混合来源哈希失败与修正','experiments/E14/runs/E14-R17.json；configs/domain-mix.json'),
         ('Pi 512+512冻结清单与数据构建','scripts/domain_mix.py；configs/domain-mix-frozen.json；experiments/E14/runs/E14-R18.json'),
         ('Pi 领域微调及固定公开dev','configs/sft-domain.json；configs/offline-eval-domain.json；configs/scale-domain.json'),
-        ('Pi 接线失败运行（不计模型成绩）','experiments/E14/runs/E14-R21.json'),
-        ('Pi 第二次接线失败运行（不计模型成绩）','experiments/E14/runs/E14-R23.json'),
-        ('Pi 会话路径映射烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R22.json'),
-        ('Pi Windows规范化路径烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R24.json'),
+        ('Pi 路径映射隔离烟测（不含模型推理）','scripts/pi_path_smoke.mjs；experiments/E14/runs/E14-R22.json；experiments/E14/runs/E14-R24.json'),
+        ('Pi Agent dev16与test40评测及容器时序核验','experiments/E14/runs/E14-R25.json；experiments/E14/runs/E14-R26.json；experiments/E14/runs/E14-R27.json；configs/pi-agent-e14-dev.json；configs/pi-agent-e14-test.json；scripts/pi_agent_eval.mjs；scripts/pi_sandbox.mjs'),
     ]
     present_labels={line.split('|',2)[1].strip() for line in pi_rows}
     for label,files in pi_evidence_rows:
@@ -320,7 +318,7 @@ def update_summary(completed):
             lines.insert(marker_index,row)
         main_evidence='\n'.join(lines)+'\n'
     pi_evidence='## 证据索引\n\n| 内容 | 对应记录 |\n| --- | --- |\n'+'\n'.join(pi_rows)+'\n'
-    pi_evidence+='\n完整工具返回、文件状态与容器记录保存在本地运行档案，公开结果给出来源哈希。理解回顾仍未回答，参考解释不代表用户已掌握。\n'
+    pi_evidence+='\n理解回顾仍未回答，参考解释不代表用户已掌握。\n'
     path.write_text(intro+main_evidence,encoding='utf-8')
     if pi_rows:pi_summary.write_text(pi_intro+pi_evidence,encoding='utf-8')
 

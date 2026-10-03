@@ -1,0 +1,162 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "operation": "pi_model_agent_test",
+  "source_run": "E14-R19",
+  "source_eval_run": "E14-R20",
+  "split": "test",
+  "target_tasks": 40,
+  "evaluated_tasks": 40,
+  "passed_tasks": 0,
+  "category_results": {
+    "config_change": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "failure_recovery": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "function_fix": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "invalid_path_recovery": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "missing_information": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "multi_file": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "no_tool": {
+      "tasks": 5,
+      "passed": 0
+    },
+    "read_locate": {
+      "tasks": 5,
+      "passed": 0
+    }
+  },
+  "records_sha256": "72a5b471acd669e7a26e677d4ab87ec267e42fe33dd3ae9d59a1e614b55cd3ff",
+  "tasks_sha256": "ad330f03c5f6b59eb3b9d35c60b81d2fe22e0a77647c51eb0e83000cb9dd752b",
+  "model_api_trace_sha256": "a5d1ee55ffb068e2249e64daddb52b4c6aae01d7ad06db30326d8a2d0afa6c88",
+  "elapsed_seconds": 11324,
+  "scope": "40个冻结Pi test任务的实际Agent执行；不代表其他任务集或官方榜单表现",
+  "run_id": "E14-R27",
+  "finished": "2026-10-03T07:25:55+08:00",
+  "config": {
+    "experiment": "E14",
+    "operation": "pi_model_agent_test",
+    "split": "test",
+    "source_run": "E14-R19",
+    "source_eval_run": "E14-R20",
+    "prompt_config": "configs/prompt-frozen.json",
+    "prompt_sha256": "9cc58f39f0e16df47046dd4f6dfd787ed9a2d3808b4820f44bb13d53f5f6a2e4",
+    "selected_prompt": "few_shot",
+    "adapter": ".local/runs/E14-R19/selected-adapter",
+    "adapter_sha256": "66e17e53377bcfed07f282a36ad67499fb618edc553b52b4362aaaffc99469fd",
+    "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "frozen_subset": "pi_test",
+    "task_count": 40,
+    "ids_sha256": "e1044eee6f6ec699ef50a32c314a9ba6e6e504b1d849833cb6bfb68d37fb40cb",
+    "context_window": 8192,
+    "max_new_tokens": 1024,
+    "temperature": 0.2,
+    "sampling": "temperature",
+    "inference_seed": 17,
+    "load_in_4bit": true,
+    "enable_thinking": false,
+    "task_timeout_seconds": 300,
+    "max_tool_calls": 12,
+    "api": {
+      "host": "127.0.0.1",
+      "port": 18764,
+      "base_url": "http://127.0.0.1:18764/v1",
+      "provider": "minillm-local",
+      "model": "qwen3-1.7b-e14-r19"
+    },
+    "command": [
+      "G:\\program files\\Node_js\\node.exe",
+      "F:\\mini-llm-agent-lab\\scripts\\pi_agent_eval.mjs",
+      "configs/pi-agent-e14-test.json"
+    ],
+    "process_identity": {
+      "pid": 45852,
+      "created": 1790972230.4341233,
+      "command": [
+        "G:\\program files\\Node_js\\node.exe",
+        "scripts/pi_agent_eval.mjs",
+        "configs/pi-agent-e14-test.json"
+      ]
+    },
+    "pi_version": "0.99.1",
+    "pi_sandbox_sha256": "4b2be7e64b720979f2a117677c25917aba226ef0cf608880a8270e2f234ccb20",
+    "frozen_manifest_sha256": "9e6633149f4a3efd5b3185ab1645bc3c05ce0ffa5f923651f07040e3633abc01",
+    "task_ids": [
+      "test-checksum-envelope-contract-2",
+      "test-checksum-envelope-contract-4",
+      "test-checksum-envelope-contract-7",
+      "test-empty-query-alias-recovery-4",
+      "test-empty-query-alias-recovery-5",
+      "test-empty-query-alias-recovery-6",
+      "test-first-match-rule-insertion-2",
+      "test-first-match-rule-insertion-4",
+      "test-first-match-rule-insertion-6",
+      "test-fragmented-event-latest-state-2",
+      "test-fragmented-event-latest-state-7",
+      "test-given-f1-reduced-fraction-1",
+      "test-given-f1-reduced-fraction-4",
+      "test-given-f1-reduced-fraction-5",
+      "test-global-regex-state-1",
+      "test-global-regex-state-5",
+      "test-global-regex-state-6",
+      "test-nested-default-reference-sharing-3",
+      "test-nested-default-reference-sharing-6",
+      "test-ordered-request-veto-1",
+      "test-ordered-request-veto-2",
+      "test-ordered-request-veto-3",
+      "test-permission-mask-to-set-1",
+      "test-permission-mask-to-set-6",
+      "test-recursive-merge-delete-2",
+      "test-recursive-merge-delete-4",
+      "test-recursive-merge-delete-7",
+      "test-shared-quota-detach-1",
+      "test-shared-quota-detach-4",
+      "test-stable-topological-order-3",
+      "test-stable-topological-order-5",
+      "test-transitive-build-invalidation-4",
+      "test-transitive-build-invalidation-5",
+      "test-unequal-group-weighted-mean-3",
+      "test-unequal-group-weighted-mean-4",
+      "test-unspecified-page-base-1",
+      "test-unspecified-page-base-2",
+      "test-unspecified-page-base-3",
+      "test-unspecified-retention-action-1",
+      "test-unspecified-retention-action-3"
+    ],
+    "category_quotas": {
+      "multi_file": 5,
+      "invalid_path_recovery": 5,
+      "config_change": 5,
+      "no_tool": 5,
+      "failure_recovery": 5,
+      "read_locate": 5,
+      "function_fix": 5,
+      "missing_information": 5
+    },
+    "source_task_file_sha256": "b3cb2a0e2f6f92a96dd9c9819181f9585149df4e8a6483b758a9564a4692649d",
+    "run_id": "E14-R27",
+    "started": "2026-10-03T04:17:12+08:00",
+    "commit": "97eb8e5ccb0c48a44cc4189fe224727b7e412ddb",
+    "process_id": 13984,
+    "code_snapshot_sha256": "9fbd93281b56f96ba7cef45bdbbd3946b826ee3690aed616b8f69e3fecb0b368"
+  },
+  "raw_result_sha256": "d629a039fbbdeb352cafd1c5858da12b356b3c16167b4341a48a16e1dd30b28c",
+  "runner_exit_code_after_result": 1,
+  "runner_finalization_error": "ReferenceError: tasks is not defined at scripts/pi_agent_eval.mjs:251:82 while saving final progress.json; the 40-task evaluation result had already been written."
+}

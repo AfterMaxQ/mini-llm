@@ -165,6 +165,10 @@ def update_notes(run_id, pi_run_id=None):
                     elapsed = item.get("elapsed_seconds", 0)
                     limit = item.get("config", {}).get("max_tool_calls", "配置")
                     lines.append(f"{item['run_id']}耗时{elapsed}秒；{metrics['timeouts']}/{item['target_tasks']}个任务超时，{metrics['failed_without_timeout']}个未超时任务仍未通过。记录{metrics['attempts']}次工具请求，其中{metrics['budget_rejections']}次因{limit}次调用上限被沙箱拒绝。")
+            if item.get("runner_finalization_error"):
+                target = item["target_tasks"]
+                failure = item["runner_finalization_error"].split(" at ", 1)[0]
+                lines.append(f"{item['run_id']}的{target}条任务结果与汇总已写入后，运行器在最终进度收尾时报`{failure}`并退出1；该异常不改变{target}/{target}已评、{item['passed_tasks']}/{target}通过的结果。收尾字段现改用冻结配置中的任务数并完成语法核验，未重跑模型。")
     if pi_run_id:
         live = ROOT / ".local/runs" / pi_run_id
         pi_config_path, pi_progress_path = live / "config.json", live / "progress.json"

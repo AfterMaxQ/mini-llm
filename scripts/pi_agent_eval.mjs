@@ -248,7 +248,7 @@ try{
     const finished=py("v=json.load(sys.stdin);print(json.dumps(finish_run(ROOT/'.local/runs'/v['id'],v['result']),ensure_ascii=False))",
       {id:path.basename(runDir),result});
     console.log(finished);
-    await saveProgress(runDir,{status:result.status,completed:rows.length,target:tasks.length,passed,
+    await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
       category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
     updateNotes();
     if(!complete)process.exitCode=1;
