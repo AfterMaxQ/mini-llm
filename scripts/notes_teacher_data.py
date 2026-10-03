@@ -71,7 +71,8 @@ def update(run):
     if exported.exists():
         lines.append(f'| 编码、拒绝与训练文件清单 | `.local/runs/{run}/teacher-export.json`；`teacher-rejections.json`；`teacher-units.json` |')
     if inspection.exists():
-        lines.append('| 编码快照核对 | `experiments/E16/encoding-inspection.json`；`.local/checks/E16-R01-encoding/records-snapshot.jsonl`；`records-snapshot.inspection.json` |')
+        evidence = checked['evidence']
+        lines.append(f"| 编码快照核对 | `experiments/E16/encoding-inspection.json`；`{evidence['snapshot']}`；`{evidence['inspection']}` |")
     lines.append('')
     (ROOT / 'experiments/E16').mkdir(exist_ok=True)
     (ROOT / 'experiments/E16/notes.md').write_text('\n'.join(lines), encoding='utf-8')

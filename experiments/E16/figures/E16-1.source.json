@@ -1,7 +1,7 @@
 {
   "run_id": "E16-R01",
-  "records_sha256": "34d0a70207c10a8c2e0b61f3ff18fb09c6e82daea2c921112bbe70fcd1b9455e",
-  "figure_sha256": "8cf2d0cf200bb47a357dfe2237590529563979ee408fb3af96f4bc86ee77fb16",
-  "requests": 52,
-  "accepted": 13
+  "records_sha256": "1033d544ed6cd1a007ab0370d4fd4a78b95fda592949e046f0baae250a852225",
+  "figure_sha256": "da2b539a830236746cebfcd42bea41ec336d3f0b1570f07caaf4bd20132fbc18",
+  "requests": 433,
+  "accepted": 95
 }
