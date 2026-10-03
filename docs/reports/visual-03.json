@@ -1,12 +1,12 @@
 {
-  "word_sha256": "d06ef0b12afa7b49564e13fc62d6852d87bdfd797c12ac4b7e5233a5cd8ac636",
+  "word_sha256": "f6b25e8e94f78ef1cdc4bc1b336d9c81be73c8fb7566cd02504e90bcde8870b5",
   "visual_checked": true,
-  "updated": "2026-10-03T15:51:55+08:00",
+  "updated": "2026-10-03T16:27:16+08:00",
   "previous_checked": {
-    "word_sha256": "a004b62b2e9f54e4ec9c336dd7f167854afc13c26df833577c49c8de000eff75",
+    "word_sha256": "d06ef0b12afa7b49564e13fc62d6852d87bdfd797c12ac4b7e5233a5cd8ac636",
     "visual_checked": true,
-    "updated": "2026-10-03T15:47:42+08:00",
-    "checked": "2026-10-03T15:47:42+08:00",
+    "updated": "2026-10-03T15:51:55+08:00",
+    "checked": "2026-10-03T15:51:55+08:00",
     "checked_pages": [
       1,
       2,
@@ -17,37 +17,41 @@
     "pages": [
       {
         "page": 1,
-        "text_characters": 212,
-        "png": ".local\\render\\03\\page-01.png"
+        "png": ".local\\render\\03\\page-01.png",
+        "text_characters": 212
       },
       {
         "page": 2,
-        "text_characters": 632,
-        "png": ".local\\render\\03\\page-02.png"
+        "png": ".local\\render\\03\\page-02.png",
+        "text_characters": 632
       },
       {
         "page": 3,
-        "text_characters": 1146,
-        "png": ".local\\render\\03\\page-03.png"
+        "png": ".local\\render\\03\\page-03.png",
+        "text_characters": 1146
       },
       {
         "page": 4,
-        "text_characters": 620,
-        "png": ".local\\render\\03\\page-04.png"
+        "png": ".local\\render\\03\\page-04.png",
+        "text_characters": 620
       },
       {
         "page": 5,
-        "text_characters": 894,
-        "png": ".local\\render\\03\\page-05.png"
+        "png": ".local\\render\\03\\page-05.png",
+        "text_characters": 894
       }
     ],
     "checks": [
       "Word 实际导出 PDF 并查看全部 5 页",
       "E16请求数、初筛数、拒绝信息和累计曲线清楚",
       "编码快照路径、阶段结论与证据索引排版完整"
-    ]
+    ],
+    "rendered": "2026-10-03T15:51:11+08:00",
+    "pdf_sha256": "82c0a99ad86bfeacce167a7212e6c15c820a5f9e7ce8c689e8c755bb4eb6c124"
   },
-  "checked": "2026-10-03T15:51:55+08:00",
+  "checked": "2026-10-03T08:28:43.679728+00:00",
+  "rendered": "2026-10-03T16:27:19+08:00",
+  "pdf_sha256": "a82e89432dfb24321119c040778926731384ee3d2cd288b0fe1f10682d83bcc1",
   "checked_pages": [
     1,
     2,
@@ -58,35 +62,38 @@
   "pages": [
     {
       "page": 1,
-      "png": ".local\\render\\03\\page-01.png",
-      "text_characters": 212
+      "png": ".local/render/03/page-01.png",
+      "text_characters": 212,
+      "sha256": "3da5495ebd6376e633bcd024e4da337a9641b8ba4928daa63b8ab01b30563c47"
     },
     {
       "page": 2,
-      "png": ".local\\render\\03\\page-02.png",
-      "text_characters": 632
+      "png": ".local/render/03/page-02.png",
+      "text_characters": 632,
+      "sha256": "2e991df85ea59831fda06931ce83d5a99b4f6e64eb25d132b99325290c6776f5"
     },
     {
       "page": 3,
-      "png": ".local\\render\\03\\page-03.png",
-      "text_characters": 1146
+      "png": ".local/render/03/page-03.png",
+      "text_characters": 1146,
+      "sha256": "d3817ec0edf5eacc06afdf9bdd95a97710f6eea168472db7d33fea17ca54ef9a"
     },
     {
       "page": 4,
-      "png": ".local\\render\\03\\page-04.png",
-      "text_characters": 620
+      "png": ".local/render/03/page-04.png",
+      "text_characters": 620,
+      "sha256": "9dd9247b456d6ffda131acaa339c73ce456ecb2f49bcf98954a8faf9a479924f"
     },
     {
       "page": 5,
-      "png": ".local\\render\\03\\page-05.png",
-      "text_characters": 894
+      "png": ".local/render/03/page-05.png",
+      "text_characters": 894,
+      "sha256": "122c918e22b658762782d9599080be2532d7a74cd6e404e21c355a7a987c6ba5"
     }
   ],
   "checks": [
-    "Word 实际导出 PDF 并查看全部 5 页",
-    "E16请求数、初筛数、拒绝信息和累计曲线清楚",
-    "编码快照路径、阶段结论与证据索引排版完整"
-  ],
-  "rendered": "2026-10-03T15:51:11+08:00",
-  "pdf_sha256": "82c0a99ad86bfeacce167a7212e6c15c820a5f9e7ce8c689e8c755bb4eb6c124"
+    "Word实际导出PDF并查看全部5页",
+    "中文、表格、图注、短代码与页码可读，无越界或空白页",
+    "551条执行记录与550条编码快照分别注明，125条有效轨迹与333个前缀核对一致"
+  ]
 }
