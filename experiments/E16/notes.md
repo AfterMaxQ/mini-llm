@@ -2,7 +2,7 @@
 
 教师处理冻结train请求。首批512条覆盖八类、16个训练模板族；有效量不足256条时，每批扩展128条，最多1024条。模型输入只有任务提示、工具定义和实际工具返回，不包含参考解。
 
-实际已处理583条，执行与格式初筛接受132条。所有拒绝、截断、超时和预算耗尽均保留；初筛轨迹还要经过完整历史的token编码与监督边界检查，才能计为可训练样本。
+生成已停止，实际完成614条请求，执行与格式初筛接受139条。本批640条中的其余26条没有完整结果，不计作模型失败。所有已完成请求的拒绝、截断和预算耗尽记录均保留。
 
 ## 每条轨迹检查什么
 
@@ -15,10 +15,10 @@ eligible = eligible and not (timeout or truncated or budget_exhausted)
 
 | 拒绝原因 | 涉及轨迹数 |
 | --- | ---: |
-| malformed_tool_call | 30 |
-| task_failed | 451 |
-| tool_budget_exhausted | 76 |
-| truncated_or_cancelled | 30 |
+| malformed_tool_call | 33 |
+| task_failed | 475 |
+| tool_budget_exhausted | 81 |
+| truncated_or_cancelled | 32 |
 | unmatched_tool_result | 1 |
 
 ![图 E16-1：逐条执行的累计初筛接受数量](figures/E16-1.png)
@@ -27,9 +27,9 @@ eligible = eligible and not (timeout or truncated or budget_exhausted)
 
 Pi 的原生 system 消息可以只有空 content，实际提示保存在结构化 sections 中。转换时使用同版本 Pi 渲染器恢复完整系统提示，包括工作目录；不能把空 content 当成空提示，也不能把 system 角色当作用户消息。
 
-对已落盘的550条请求快照检查，初筛接受的125条均完整编码成功，展开为333个当前回复训练单元，共25033个监督token；最长输入2940 tokens。这是运行中快照，尚未达到256条目标。
+对停止后的614条请求快照检查，初筛接受的139条均完整编码成功，展开为367个当前回复训练单元，共27294个监督token；最长输入2940 tokens。有效轨迹尚未达到256条目标。
 
-333个推理前缀的token哈希与实际API记录逐一相同，规范化消息哈希也相同；历史消息与工具返回不参与当前回复loss。检查没有初始化CUDA，不占用教师推理GPU。
+367个推理前缀的token哈希与实际API记录逐一相同，规范化消息哈希也相同；历史消息与工具返回不参与当前回复loss。检查没有初始化CUDA，不占用教师推理GPU。
 
 ```python
 history = messages[:target_message_index]
@@ -39,7 +39,9 @@ labels[:target_start] = -100
 
 ## 阶段结论
 
-请求仍在顺序执行；当前初筛132/583。这是训练请求的接受率，不能作为dev或test成功率。
+614条已完成请求中，139条通过执行、格式与完整编码检查，接受率22.6%。有效轨迹集中于无工具回答44条、信息不足43条、配置修改39条、失败恢复13条；其余四类没有有效轨迹。这是训练请求的接受率，不能作为dev或test成功率。
+
+256条共同提示的蒸馏对照与128/256规模比较尚未执行。139条有效轨迹、全部拒绝记录及中断工作区已保留，不能将本阶段记作蒸馏验收完成。
 
 ## 证据索引
 
@@ -47,4 +49,5 @@ labels[:target_start] = -100
 | --- | --- |
 | 冻结请求与教师条件 | `configs/teacher-requests-frozen.json`；`.local/runs/E16-R01/config.json` |
 | 逐题执行与本机生成 | `.local/runs/E16-R01/records.jsonl`；`model-api.jsonl`；`tasks.json` |
-| 编码快照核对 | `experiments/E16/encoding-inspection.json`；`.local/checks/E16-R01-encoding/records-550-snapshot.jsonl`；`.local/checks/E16-R01-encoding/records-550-snapshot.inspection.json` |
+| 编码快照核对 | `experiments/E16/encoding-inspection.json`；`.local/checks/E16-R01-encoding/records-614-stopped-snapshot.jsonl`；`.local/checks/E16-R01-encoding/records-614-stopped-snapshot.inspection.json` |
+| 停止记录与中断工作区 | `experiments/E16/runs/E16-R01.json`；`.local/checks/E16-R01-stop/capture.json`；`.local/checks/E16-R01-stop/files-manifest.json` |
