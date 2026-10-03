@@ -287,7 +287,7 @@ try{
       updateNotes();
       if(experiment==='E15')try{
         py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v['error']})",
-          {status:result.status,run_id:result.run_id,evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
+          {status:result.status,run_id:path.basename(runDir),evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
       }catch(error){console.error('无法更新规模状态：'+String(error));process.exitCode=1;}
       if(!complete)process.exitCode=1;
     }else if(failure)process.exitCode=1;
