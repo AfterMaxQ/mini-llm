@@ -104,6 +104,10 @@ async function stopApi(child){
 let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false;
 const started=Date.now();
 function updateNotes(){
+  if(experiment==='E15'){
+    spawnSync(python,['scripts/notes_teacher.py','--run',path.basename(runDir)],{cwd:root,windowsHide:true});
+    return;
+  }
   const script=experiment==='E14'?'scripts/notes_domain.py':'scripts/notes_pi_agent.py';
   const args=experiment==='E14'?['--run',config.source_run,'--pi-run',path.basename(runDir)]:['--run',path.basename(runDir)];
   spawnSync(python,[script,...args],{cwd:root,windowsHide:true});
@@ -112,24 +116,38 @@ function updateNotes(){
 try{
   checkLock();lockOwned=true;
   assert.equal(policy.pi_version,'0.99.1');
-  assert(['E13','E14'].includes(experiment));
+  assert(['E13','E14','E15'].includes(experiment));
   assert(['dev','test'].includes(split));
   assert(sourceTasks);
-  assert.equal(config.operation,`pi_model_agent_${split}`);
+  assert.equal(config.operation,experiment==='E15'?'pi_teacher_agent_dev':`pi_model_agent_${split}`);
   if(experiment==='E13'){
     assert.equal(split,'dev');
     assert.equal(config.source_run,'E09-R15');
     assert.equal(config.source_eval_run,'E09-R16');
-  }else{
+  }else if(experiment==='E14'){
     const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
     const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
     assert.equal(source.status,'trained_pending_tool_eval');
     assert.equal(evaluation.status,'completed');
     assert.equal(evaluation.config.source_train_run,config.source_run);
+  }else{
+    const source=JSON.parse(await readFile(path.join(root,'.local/runs',config.source_run,'result.json'),'utf8'));
+    const evaluation=JSON.parse(await readFile(path.join(root,'experiments/E14/runs',`${config.source_eval_run}.json`),'utf8'));
+    assert.equal(config.split,'dev');
+    assert.equal(config.frozen_subset,'pi_dev');
+    assert.equal(source.status,'trained_pending_tool_eval');
+    assert.equal(evaluation.status,'completed');
+    assert.equal(evaluation.config.source_run,config.source_run);
+    assert.equal(evaluation.target_tasks,config.task_count);
+    assert.equal(evaluation.ids_sha256,config.ids_sha256);
+    assert.equal(config.quantization,'NF4');
+    assert.equal(config.load_in_4bit,true);
+    assert.equal(config.tokenizer_template_sha256,config.student_tokenizer_template_sha256);
+    assert.equal(config.model_manifest_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['model_manifest_path']))",config));
   }
   assert.equal(config.selected_prompt,'few_shot');
   assert.equal(config.prompt_sha256,py("print(sha256(ROOT/json.load(sys.stdin)['prompt_config']))",config));
-  assert.equal(config.adapter_sha256,py("import json,sys;print(sha256(ROOT/json.load(sys.stdin)['adapter']/'adapter_model.safetensors'))",config));
+  if(experiment!=='E15')assert.equal(config.adapter_sha256,py("import json,sys;print(sha256(ROOT/json.load(sys.stdin)['adapter']/'adapter_model.safetensors'))",config));
   const frozen=JSON.parse(await readFile(path.join(root,'configs/subsets-frozen.json'),'utf8'))[config.frozen_subset];
   assert.equal(frozen.selected_count,config.task_count);
   assert.equal(frozen.ids_sha256,config.ids_sha256);
@@ -160,7 +178,7 @@ try{
   const settings=pi.SettingsManager.inMemory({}, {projectTrusted:true});
   const modelRuntime=await pi.ModelRuntime.create({authPath,modelsPath:null,refreshOnCreate:false});
   modelRuntime.registerProvider(config.api.provider,{name:'MiniLLM local',api:'openai-completions',
-    baseUrl:config.api.base_url,apiKey:'local',authHeader:true,models:[{id:config.api.model,name:'Qwen3-1.7B E09-R15',
+    baseUrl:config.api.base_url,apiKey:'local',authHeader:true,models:[{id:config.api.model,name:config.api.display_name??'Qwen3-1.7B E09-R15',
       api:'openai-completions',baseUrl:config.api.base_url,reasoning:false,input:['text'],
       cost:{input:0,output:0,cacheRead:0,cacheWrite:0},contextWindow:config.context_window,maxTokens:config.max_new_tokens,
       compat:{maxTokensField:'max_tokens',requiresToolResultName:true,supportsTemperature:false,supportsDeveloperRole:false}}]});

@@ -12,11 +12,12 @@ from pathlib import Path
 
 import torch
 from peft import PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from lab import sha256
-from model_utils import load_model
+from model_utils import load_model, model_loading_kwargs
 from templates import tokenizer_and_template
 
 
@@ -175,8 +176,29 @@ def main():
     parser.add_argument("--trace", required=True)
     args = parser.parse_args()
     config = json.loads((ROOT / args.config).read_text(encoding="utf-8"))
-    tokenizer, _, _ = tokenizer_and_template()
-    model = PeftModel.from_pretrained(load_model(), ROOT / config["adapter"])
+    if config.get("base_model_path"):
+        manifest_path = ROOT / config["model_manifest_path"]
+        assert sha256(manifest_path) == config["model_manifest_sha256"], "教师模型清单哈希不匹配"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        assert manifest["revision"] == config["model_revision"]
+        assert manifest["repo"] == "Qwen/Qwen3-4B"
+        assert config["quantization"] == "NF4" and config["load_in_4bit"]
+        model_path = ROOT / config["base_model_path"]
+        tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+        template_hash = hashlib.sha256(tokenizer.chat_template.encode("utf-8")).hexdigest()
+        assert template_hash == config["tokenizer_template_sha256"], "教师 tokenizer 模板哈希不匹配"
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path, **model_loading_kwargs(config.get("load_in_4bit", True)))
+        model.config.use_cache = True
+        model_details = {"base_model": config["base_model_path"],
+                         "model_revision": config["model_revision"],
+                         "model_manifest_sha256": config["model_manifest_sha256"],
+                         "tokenizer_template_sha256": template_hash,
+                         "quantization": config["quantization"]}
+    else:
+        tokenizer, _, _ = tokenizer_and_template()
+        model = PeftModel.from_pretrained(load_model(), ROOT / config["adapter"])
+        model_details = {"adapter_sha256": sha256(ROOT / config["adapter"] / "adapter_model.safetensors")}
     model.config.use_cache = True
     model.eval()
     server = ThreadingHTTPServer((config["api"]["host"], config["api"]["port"]), Handler)
@@ -186,7 +208,7 @@ def main():
     server.temperature, server.inference_seed = config["temperature"], config["inference_seed"]
     server.trace_file = Path(args.trace)
     server.generate_lock, server.trace_lock = threading.Lock(), threading.Lock()
-    print(json.dumps({"status": "ready", "run_id": args.run_id, "adapter_sha256": sha256(ROOT / config["adapter"] / "adapter_model.safetensors"),
+    print(json.dumps({"status": "ready", "run_id": args.run_id, **model_details,
                       "model": config["api"]["model"], "gpu": torch.cuda.get_device_name(0),
                       "reserved_mib": round(torch.cuda.memory_reserved() / 1024 ** 2)}, ensure_ascii=False), flush=True)
     server.serve_forever(poll_interval=0.5)
