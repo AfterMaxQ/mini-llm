@@ -113,6 +113,7 @@ async function stopApi(child){
 }
 
 let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false,scaleLockOwned=false,scaleLockIdentity;
+const initialPromptHashes=new Map();
 const started=Date.now();
 function updateNotes(){
   if(experiment==='E15'){
@@ -250,6 +251,15 @@ try{
         entry.container_removed=removed.code===0;entry.container_remove_error=removed.code===0?undefined:removed.stderr;
       }
     }
+    const firstRequest=entry.model_requests?.[0];
+    assert(firstRequest?.prompt_sha256,`任务 ${task.task_id} 没有本机模型请求轨迹`);
+    for(const [previousPrompt,previousHash] of initialPromptHashes){
+      if(previousPrompt!==task.prompt)assert.notEqual(firstRequest.prompt_sha256,previousHash,
+        '不同冻结任务提示被渲染为相同的模型输入');
+    }
+    initialPromptHashes.set(task.prompt,firstRequest.prompt_sha256);
+    entry.task_prompt_sha256=digest(task.prompt);
+    entry.model_input_prompt_sha256=firstRequest.prompt_sha256;
     entry.finished=new Date().toISOString();entry.seconds=Math.round((Date.now()-taskStart)/1000*1000)/1000;
     rows.push(entry);await appendFile(path.join(runDir,'records.jsonl'),JSON.stringify(entry)+'\n','utf8');
     await saveProgress(runDir,{status:'running',completed:rows.length,target:tasks.length,passed:rows.filter(row=>row.passed).length,

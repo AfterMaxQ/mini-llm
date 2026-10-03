@@ -24,7 +24,20 @@ from templates import tokenizer_and_template
 def normalize_messages(messages):
     result = []
     for message in messages:
-        item = {"role": message["role"], "content": message.get("content") or ""}
+        content = message.get("content")
+        if isinstance(content, list):
+            parts = []
+            for block in content:
+                if not isinstance(block, dict) or block.get("type") not in {"text", "thinking"}:
+                    raise ValueError("当前本机评测只支持文本消息块")
+                if block["type"] == "text":
+                    parts.append(block.get("text") or "")
+            content = "".join(parts)
+        elif content is None:
+            content = ""
+        elif not isinstance(content, str):
+            raise TypeError("消息 content 必须是字符串或文本块列表")
+        item = {"role": message["role"], "content": content}
         if message.get("name"):
             item["name"] = message["name"]
         if message.get("tool_calls"):
@@ -99,6 +112,8 @@ class Handler(BaseHTTPRequestHandler):
                 tool_names = sorted(tool.get("function", {}).get("name", "") for tool in tools or [])
                 message_roles = [message["role"] for message in messages]
                 prompt_hash = hashlib.sha256(json.dumps(encoded[0].tolist(), separators=(",", ":")).encode()).hexdigest()
+                messages_hash = hashlib.sha256(json.dumps(messages, ensure_ascii=False, sort_keys=True,
+                                                           separators=(",", ":")).encode("utf-8")).hexdigest()
                 if prompt_tokens >= self.server.context_window:
                     raise ValueError("context_overflow")
                 max_new = min(int(payload.get("max_tokens") or self.server.max_new_tokens),
@@ -131,7 +146,8 @@ class Handler(BaseHTTPRequestHandler):
             trace = {"time": started, "run_id": self.server.run_id, "prompt_tokens": prompt_tokens,
                      "generated_tokens": len(new_tokens), "seconds": round(time.time() - started, 3),
                      "temperature": self.server.temperature, "inference_seed": self.server.inference_seed,
-                     "truncated": truncated, "prompt_sha256": prompt_hash, "message_roles": message_roles,
+                     "truncated": truncated, "prompt_sha256": prompt_hash, "messages_sha256": messages_hash,
+                     "message_roles": message_roles,
                      "tool_names": tool_names, "tool_calls": calls, "raw_response": text}
             with self.server.trace_lock, self.server.trace_file.open("a", encoding="utf-8") as handle:
                 handle.write(json.dumps(trace, ensure_ascii=False) + "\n")
