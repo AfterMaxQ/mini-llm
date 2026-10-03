@@ -1,7 +1,7 @@
 // 使用冻结的 Pi dev 场景、原生 Pi 会话和隔离工具完成模型评测。
 import assert from 'node:assert/strict';
 import {spawn,spawnSync,execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync,unlinkSync} from 'node:fs';
+import {existsSync,readFileSync,writeFileSync,unlinkSync} from 'node:fs';
 import {appendFile,readFile,rename,unlink,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
@@ -22,6 +22,7 @@ const pi=await import(pathToFileURL(path.join(packageRoot,'dist/index.js')).href
 const {createToolDefinitionFromAgentTool}=await import(pathToFileURL(path.join(packageRoot,'dist/core/tools/tool-definition-wrapper.js')).href);
 const python=path.join(root,'.local/venv-train/Scripts/python.exe');
 const lockPath=path.join(root,'.local/pi-agent-lock.json');
+const scaleLockPath=path.join(root,'.local/scale-lock.json');
 const zero='0'.repeat(64);
 
 function py(code,value={}){
@@ -36,6 +37,16 @@ async function save(runDir,name,value){
 async function saveProgress(runDir,progress){await save(runDir,'progress.json',progress);}
 function identity(){
   return JSON.parse(py("import psutil;p=psutil.Process(json.load(sys.stdin)['pid']);print(json.dumps({'pid':p.pid,'created':p.create_time(),'command':p.cmdline()}))",{pid:process.pid}));
+}
+function checkGpuLock(){
+  if(existsSync(scaleLockPath)){
+    const previous=JSON.parse(readFileSync(scaleLockPath,'utf8'));
+    const alive=py("import psutil;v=json.load(sys.stdin);print(psutil.pid_exists(v['pid']) and abs(psutil.Process(v['pid']).create_time()-v['created'])<1)",previous)==='True';
+    throw new Error(alive?'已有GPU队列或任务正在运行':'发现失效GPU锁；核对原运行记录后再继续');
+  }
+  scaleLockIdentity=identity();
+  writeFileSync(scaleLockPath,JSON.stringify(scaleLockIdentity,null,2),{flag:'wx'});
+  scaleLockOwned=true;
 }
 function checkLock(){
   try{
@@ -101,7 +112,7 @@ async function stopApi(child){
   await new Promise(resolve=>child.once('exit',resolve));
 }
 
-let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false;
+let runDir,api,rows=[],current=null,failure,lastNotes=Date.now(),lockOwned=false,scaleLockOwned=false,scaleLockIdentity;
 const started=Date.now();
 function updateNotes(){
   if(experiment==='E15'){
@@ -114,6 +125,7 @@ function updateNotes(){
   spawnSync(python,['scripts/report.py','--volume','02B'],{cwd:root,windowsHide:true});
 }
 try{
+  checkGpuLock();
   checkLock();lockOwned=true;
   assert.equal(policy.pi_version,'0.99.1');
   assert(['E13','E14','E15'].includes(experiment));
@@ -172,6 +184,8 @@ try{
     rows=progress.rows??[];
     assert(rows.every((row,index)=>row.task_id===frozen.ids[index]));
   }else runDir=py("v=json.load(sys.stdin);print(start_run(v['experiment'],v))",runConfig);
+  if(experiment==='E15')py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':'running','scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'process_identity':v['process_identity']})",
+    {run_id:path.basename(runDir),process_identity:scaleLockIdentity});
   await save(runDir,'tasks.json',tasks);
   await appendFile(path.join(runDir,'records.jsonl'),'','utf8');
   const authPath=path.join(root,'.local/pi-agent-runtime','auth.json');
@@ -269,11 +283,19 @@ try{
     await saveProgress(runDir,{status:result.status,completed:rows.length,target:config.task_count,passed,
       category_results:counts(rows),rows,last_task:rows.at(-1)?.task_id??null,updated:new Date().toISOString(),error:failure});
     updateNotes();
+    if(experiment==='E15')try{
+      py("v=json.load(sys.stdin);write_json(ROOT/'.local/scale-state.json',{'status':v['status'],'scope':'E15 Qwen3-4B NF4 teacher validation on frozen Pi dev16','run_id':v['run_id'],'time':now(),'evaluated_tasks':v['evaluated_tasks'],'passed_tasks':v['passed_tasks'],'error':v['error']})",
+        {status:result.status,run_id:result.run_id,evaluated_tasks:result.evaluated_tasks,passed_tasks:result.passed_tasks,error:result.error});
+    }catch(error){console.error('无法更新规模状态：'+String(error));process.exitCode=1;}
     if(!complete)process.exitCode=1;
   }else if(failure)process.exitCode=1;
   if(lockOwned){
     const lock=await readFile(lockPath,'utf8').then(JSON.parse).catch(()=>null);
     if(lock?.pid===process.pid)await unlink(lockPath).catch(()=>{});
+  }
+  if(scaleLockOwned){
+    const lock=await readFile(scaleLockPath,'utf8').then(JSON.parse).catch(()=>null);
+    if(lock?.pid===scaleLockIdentity.pid&&lock?.created===scaleLockIdentity.created)await unlink(scaleLockPath).catch(()=>{});
   }
 }
 
